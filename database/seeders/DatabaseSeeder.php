@@ -107,6 +107,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Filipino',
             'code' => 'F1',
         ]);
+
         $faculty = User::factory()->create([
             'name' => 'Faculty',
             'email' => 'faculty@example.com',
@@ -121,12 +122,6 @@ class DatabaseSeeder extends Seeder
             'role_id' => 2
         ]);
 
-        $student = User::factory()->create([
-            'name' => 'Student',
-            'email' => 'student@example.com',
-            'password' => Hash::make('111'),
-            'role_id' => 3
-        ]);
         $sl1 = SubjectLoad::factory()->create([
             'students_id' => $student->id,
             'faculties_id' => $faculty->id,
