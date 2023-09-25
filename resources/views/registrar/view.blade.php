@@ -40,19 +40,21 @@
                                         <th>Middle Name</th>
                                         <th>Last Name</th>
                                         <th>Extension</th>
-                                        <!--<th>Birthday</th>-->
-                                        <!--<th>Age</th>-->
-                                        <!--<th>Barangay</th>-->
-                                        <!--<th>City/Municipality</th>-->
-                                        <!--<th>Province</th>-->
-                                        <!--<th>Mobile No.</th>-->
-                                        <!--<th>Facebook Acc.</th>-->
-                                        <!--<th>Junior High</th>-->
-                                        <!--<th>Year Graduated</th>-->
-                                        <!--<th>Strand</th>-->
-                                        <!--<th>Graduation Type</th>-->
-                                        <!--<th>PSA/Birth Certificate</th>-->
-                                        <!--<th>Form 138</th>-->
+                                    {{--
+                                        <th>Birthday</th>
+                                        <th>Age</th>
+                                        <th>Barangay</th>
+                                        <th>City/Municipality</th>
+                                        <th>Province</th>
+                                        <th>Mobile No.</th>
+                                        <th>Facebook Acc.</th>
+                                        <th>Junior High</th>
+                                        <th>Year Graduated</th>
+                                        <th>Strand</th>
+                                        <th>Graduation Type</th>
+                                        <th>PSA/Birth Certificate</th>
+                                        <<th>Form 138</th>
+                                    --}}
                                         <th>Action</th>
 
                                     </tr>
@@ -67,24 +69,6 @@
                                             <td>{{ $item->middle_name }}</td>
                                             <td>{{ $item->last_name }}</td>
                                             <td>{{ $item->extension }}</td>
-                                            <!--<td>{{ $item->birthday }}</td>-->
-                                            <!--<td>{{ $item->age }}</td>-->
-                                            <!--<td>{{ $item->barangay }}</td>-->
-                                            <!--<td>{{ $item->city_municipality }}</td>-->
-                                            <!--<td>{{ $item->province }}</td>-->
-                                            <!--<td>{{ $item->mobile_number }}</td>-->
-                                            <!--<td>{{ $item->facebook_account }}</td>-->
-                                            <!--<td>{{ $item->junior_high }}</td>-->
-                                            <!--<td>{{ $item->year_graduated }}</td>-->
-                                            <!--<td>{{ $item->strand }}</td>-->
-                                            <!--<td>{{ $item->graduation_type }}</td>-->
-                                            <!--<td>
-                                                <img src="{{$item->psa ? asset('storage/' . $item->psa) : asset('/images/no-image.png')}}" alt="PSA" width="70" height="50">
-                                            </td>-->
-                                            
-                                            <!--<td>
-                                                <img src="{{$item->form_138 ? asset('storage/' . $item->form_138) : asset('/images/no-image.png')}}" alt="PSA" width="70" height="50">
-                                            </td>-->
                                             
                                             <td>
                                                 <a href="{{ url('/show-table' . $item->id ) }}" title="Show Admissions">

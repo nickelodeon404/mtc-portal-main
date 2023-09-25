@@ -78,7 +78,7 @@
                                 <div class="mb-3">
                                     <label for="mobile_number" class="form-label">Mobile Number</label>
                                     <input type="number" class="form-control" name="mobile_number" id="mobile_number"
-                                        placeholder="Mobile Number" value="+63" required>
+                                        placeholder="Mobile Number" required>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +93,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="facebook_account" class="form-label">Facebook Account</label>
-                                    <input type="text" class="form-control" name="facebook_account" id="facebook_account"
+                                    <input type="text" class="form-control" name="facebook" id="facebook"
                                         placeholder="Facebook Account">
                                 </div>
                             </div>
@@ -175,6 +175,18 @@
                                     <input type="file" class="form-control" name="form_138" id="form_138">
                                 </div>
                             </div>
+                    {{--
+                        <div class="row">
+                        <div class="col-md-15">
+                            <div class="mb-3">
+                                <label for="otp" class="form-label">OTP</label>
+                                <input type="text" class="form-control" name="otp" id="otp" placeholder="Enter OTP" required>
+                            </div>
+                        </div>
+                                <button type="button" id="send-otp-button">Send OTP</button>
+                        </div>
+                    --}}
+
                             <div class="row-md-6">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" name="confirmationCheck" id="confirmationCheck" required>
@@ -183,7 +195,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-primary">Submit</button>
+                        <button class="btn btn-primary" id="send-otp">Submit</button>
                     </form>
                     @if(session('success'))
                         <div class="alert alert-success">
@@ -191,23 +203,34 @@
                         </div>
                     @endif
 
-                   {{-- <!-- OTP Verification Form -->
-                    @if(isset($mobileNumber))
-                        <form action="{{ route('admission.verify-otp') }}" method="post">
-                            @csrf
-                            <input type="hidden" name="mobile_number" value="{{ $mobileNumber }}">
-                            <label for="otp">Enter OTP sent to your mobile number:</label>
-                            <input type="number" name="otp" id="otp" required>
-                            @error('otp')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                            <button type="submit">Verify OTP</button>
-                        </form>
-                    @endif
-                    --}}
+
+                    
 
                 </div>
             </div>
         </div>
     </section>
+{{--
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('send-otp-button').addEventListener('click', function () {
+            // Get the mobile number from the form
+            var mobileNumber = document.getElementById('mobile_number').value;
+
+            // Send an AJAX request to the sendOTP route
+            axios.post('/sendOTP', {
+                mobile_number: mobileNumber
+            })
+            .then(function (response) {
+                // Handle success, e.g., display a message to the user
+                alert(response.data.message);
+            })
+            .catch(function (error) {
+                // Handle error, e.g., display an error message
+                alert(error.response.data.message);
+            });
+        });
+    });
+</script>
+--}}
 @endsection

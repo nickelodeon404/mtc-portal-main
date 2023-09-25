@@ -6,11 +6,12 @@ use App\Models\Enrolled;
 use App\Models\Admission;
 use App\Models\Enrollment;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 
 class EnrollmentController extends Controller
 {
-   	public function index()
+    public function index()
     {
         $data = DB::table('admission')->orderBy('id')->get();
 
@@ -30,31 +31,31 @@ class EnrollmentController extends Controller
 
     public function store(Request $request)
     {
-    	$validatedData = $request->validate([
-    		'lrn' => 'required',
-    		'email' => 'required',
-        	'first_name' => 'required|max:50',
-        	'middle_name' => 'nullable|max:50',
-        	'last_name' => 'required|max:50',
-        	'extension' => 'nullable|max:5',
-        	'birthday' => 'required|date',
-        	'age' => 'required|integer',
-        	'mobile_number' => 'required|digits:11',
-        	'facebook' => 'nullable',
-        	'region' => 'required',
-        	'province' => 'required',
-        	'barangay' => 'required',
-        	'city_municipality' => 'required',
-        	'status' => 'required',
-        	'grade_level' => 'required',
-        	'junior_high' => 'required',
-        	'graduation_type' => 'required',
+        $validatedData = $request->validate([
+            'lrn' => 'required',
+            'email' => 'required',
+            'first_name' => 'required|max:50',
+            'middle_name' => 'nullable|max:50',
+            'last_name' => 'required|max:50',
+            'extension' => 'nullable|max:5',
+            'birthday' => 'required|date',
+            'age' => 'required|integer',
+            'mobile_number' => 'required|digits:11',
+            'facebook' => 'nullable',
+            'region' => 'required',
+            'province' => 'required',
+            'barangay' => 'required',
+            'city_municipality' => 'required',
+            'status' => 'required',
+            'grade_level' => 'required',
+            'junior_high' => 'required',
+            'graduation_type' => 'required',
 
-    	]);
+        ]);
 
-    	$enrollment = Enrollment::create($validatedData);
+        $enrollment = Enrollment::create($validatedData);
 
-    	// Optionally, you can redirect to a success page or perform additional actions
+        // Optionally, you can redirect to a success page or perform additional actions
 
         return redirect()->back()->with('success', 'Success!! Your enrollment was submitted!!');
     }
@@ -67,7 +68,7 @@ class EnrollmentController extends Controller
         // or, fetch data for editing using query builder
         $item = DB::table('enrollment')->where('id', $id)->first();
 
-        return view('/registrar/show', ['item' => $item]); //'show' in the code is the show.blade.php.
+        return view('/registrar/update_enrollment_table', ['item' => $item]); //'show' in the code is the show.blade.php.
     }
 
     public function view()
@@ -142,5 +143,22 @@ class EnrollmentController extends Controller
             "admission" => Admission::where("users_id", "=", $userid)->first()
         ]);
     }
+
+    //Edit the data
+public function update(Request $request, string $id): RedirectResponse
+{
+    $validatedData = $request->all();
+
+    $enrollment = Enrollment::find($id);
+
+    if (!$enrollment) {
+        return redirect()->back()->with('error', 'Enrollment not found.');
+    }
+
+    $enrollment->update($validatedData);
+
+    return redirect('/enrollment_table-table')->with('success', 'Enrollment data updated successfully.');
+}
+
 
 }

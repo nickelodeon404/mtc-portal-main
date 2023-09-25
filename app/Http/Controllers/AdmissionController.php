@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Strand;
-use Twilio\Rest\Client;
 use App\Models\Admission;
 
 use Illuminate\Http\Request;
@@ -12,6 +11,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+
+use Illuminate\Support\Facades\Http;
+use GuzzleHttp\Client;
+
 
 
 
@@ -52,7 +55,7 @@ class AdmissionController extends Controller
             "age" => "required",
             "mobile_number" => "required",
             "email" => "required|email",
-            "facebook_account" => "nullable",
+            "facebook" => "nullable",
             "barangay" => "required",
             "city_municipality" => "required",
             "province" => "required",
@@ -62,6 +65,15 @@ class AdmissionController extends Controller
             "strand" => "required",
             "confirmationCheck" => "required",
         ]);
+
+ /*   // Generate and send OTP using Semaphore.co API
+    $otp = mt_rand(1000, 9999); // Generate a random 4-digit OTP
+    $response = Http::post('https://api.semaphore.co/api/v4/otp', [
+        'number' => $validatedData['mobile_number'],
+        'otp' => $otp,
+        'api_key' => 'ba7fdf3b96f281f479dce941fbeddf1b',
+    ]);
+*/
 
         // Store the uploaded PSA image in the 'public/images' directory
         if ($request->hasFile('psa')) {
@@ -98,7 +110,7 @@ class AdmissionController extends Controller
             "age" =>$validatedData['age'],
             "mobile_number" =>$validatedData['mobile_number'],
             "email" => $validatedData['email'],
-            "facebook_account" => $validatedData['facebook_account'],
+            "facebook" => $validatedData['facebook'],
             "barangay" => $validatedData['barangay'],
             "city_municipality" => $validatedData['city_municipality'],
             "province" =>$validatedData['province'],
@@ -109,10 +121,23 @@ class AdmissionController extends Controller
             "confirmationCheck" =>$validatedData['confirmationCheck'], // Hash the password
         ]);
 
+        return redirect()->back()->with('success', 'Admission form submitted successfully');
+    }
         // Optionally, you can redirect to a success page or perform additional actions
 
-        return redirect()->back()->with('success', 'Success!! Your admission was submitted!!');
+ /*       if ($response->successful()) {
+        // OTP sent successfully
+        // Save admission data to the database
+        // ...
+
+        return redirect()->back()->with('success', 'Admission form submitted successfully');
+    } else {
+        // Handle OTP sending failure
+        return redirect()->back()->with('error', 'Failed to send OTP. Please try again.');
+    }
+
     } 
+*/
 
 
     public function show(string $id)
@@ -160,4 +185,52 @@ class AdmissionController extends Controller
         // Optionally, redirect to a different route after successful deletion.
         return redirect('/view-table');
     }
+
+ /* 
+       // Method to send OTP
+    public function sendOTP(Request $request)
+    {
+        $mobileNumber = $request->input('mobile_number');
+
+        // Generate a random OTP (you can implement your own OTP generation logic)
+        $otp = rand(1000, 9999);
+
+        // Send OTP using Semaphore.co API
+        $response = Http::post('https://api.semaphore.co/api/v4/otp', [
+            'api_key' => 'ba7fdf3b96f281f479dce941fbeddf1b',
+            'phone_number' => $mobileNumber,
+            'otp_code' => $otp,
+        ]);
+
+        // Check if OTP was sent successfully and store the mobile number for verification
+        if ($response->successful()) {
+            return view('admissions.index', ['mobileNumber' => $mobileNumber]);
+        } else {
+            return back()->withErrors(['otp_send_error' => 'Failed to send OTP']);
+        }
+    }
+
+    // Method to verify OTP
+    public function verifyOTP(Request $request)
+    {
+        $otp = $request->input('otp');
+        $mobileNumber = $request->input('mobile_number');
+
+        // Verify OTP using Semaphore.co API
+        $response = Http::post('https://api.semaphore.co/api/v4/otp', [
+            'api_key' => 'ba7fdf3b96f281f479dce941fbeddf1b',
+            'phone_number' => $mobileNumber,
+            'otp_code' => $otp,
+        ]);
+
+        // Check if OTP verification was successful
+        if ($response->successful()) {
+            // OTP is valid, continue with your application logic
+            return redirect()->route('your.success.route');
+        } else {
+            // Invalid OTP, display an error message
+            return back()->withErrors(['otp_verification_error' => 'Invalid OTP']);
+        }
+    }
+*/
 }

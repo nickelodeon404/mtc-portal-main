@@ -61,7 +61,7 @@
                                     	<td><strong>Mobile No:</strong> {{ $item->mobile_number }}</td>
                                     </tr>
                                     <tr>
-                                    	<td><strong>Facebook Account:</strong> {{ $item->facebook_account }}</td>
+                                    	<td><strong>Facebook Account:</strong> {{ $item->facebook }}</td>
                                     </tr>
                                     <tr>
                                     	<td><strong>Junior High:</strong> {{ $item->junior_high }}</td>

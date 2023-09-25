@@ -88,6 +88,8 @@
                                                 </button>
                                             </form>
 
+                                            <a href="{{ url('/enrollment' . $item->id) }}" title="Edit"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button></a>
+
                                             <form method="POST" action="{{ url('enrollment' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline"> <!--'enrollment is the table from databases'-->
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
@@ -101,7 +103,7 @@
                                 </tbody>
                             </table>
                         </div>
-                </div>		
+                </div>      
             </div>
         </main>
         <x-footer />
