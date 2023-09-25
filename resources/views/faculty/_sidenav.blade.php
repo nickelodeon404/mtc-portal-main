@@ -6,7 +6,7 @@
                 <a class="nav-link" href="#">
                     Dashboard
                 </a>
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/faculty">
                     Grades
                 </a>
             </div>

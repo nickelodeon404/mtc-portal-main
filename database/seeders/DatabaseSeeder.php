@@ -122,6 +122,13 @@ class DatabaseSeeder extends Seeder
             'role_id' => 2
         ]);
 
+        $student = User::factory()->create([
+            'name' => 'default',
+            'email' => 'example@example.com',
+            'password' => Hash::make('do not login this account'),
+            'role_id' => 3
+        ]);
+
         $sl1 = SubjectLoad::factory()->create([
             'students_id' => $student->id,
             'faculties_id' => $faculty->id,
