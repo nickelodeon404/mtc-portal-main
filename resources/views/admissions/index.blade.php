@@ -9,9 +9,7 @@
                     <hr class="divider" />
                 </div>
                 <div class="col-lg-8 align-self-baseline">
-                    <p class="text-white-75 mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
-                        reprehenderit ipsa saepe autem, aspernatur nihil laudantium eius accusamus, est esse id iusto
-                        magni voluptatum at voluptates sapiente. Architecto, optio rerum!</p>
+                    <p class="text-white-75 mb-5">!</p>
                     <a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
                 </div>
             </div>
