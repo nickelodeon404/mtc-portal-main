@@ -58,7 +58,7 @@
         </div>
     </header>
     <!-- Strands -->
-    <section class="page-section" style="background-color: #ae84d9;" id="STEM">
+    <section class="page-section" style="background-color: #9759d4;" id="STEM">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5">
                 <div class="col-lg-6 text-justify">
@@ -77,7 +77,7 @@
     
     
     
-    <section class="page-section" style="background-color: #925fc5;" id="HUMSS">
+    <section class="page-section" style="background-color: #efcb49;" id="HUMSS">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-end">
                 <div class="col-lg-8 text-center">
@@ -93,7 +93,7 @@
         </div>
     </section>
 
-    <section class="page-section" style="background-color: #ae84d9;" id="ABM">
+    <section class="page-section" style="background-color: #9759d4;" id="ABM">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-start">
                 <div class="col-lg-8 text-center">
@@ -109,7 +109,7 @@
         </div>
     </section>
 
-    <section class="page-section" style="background-color: #925fc5;" id="GAS">
+    <section class="page-section" style="background-color: #efcb49;" id="GAS">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-end">
                 <div class="col-lg-8 text-center">
@@ -125,7 +125,7 @@
         </div>
     </section>
 
-    <section class="page-section" style="background-color: #ae84d9;" id="AD">
+    <section class="page-section" style="background-color: #9759d4;" id="AD">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -141,7 +141,7 @@
         </div>
     </section>
 
-    <section class="page-section" style="background-color: #925fc5;" id="HE">
+    <section class="page-section" style="background-color: #efcb49;" id="HE">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -157,7 +157,7 @@
         </div>
     </section>
 
-    <section class="page-section" style="background-color: #ae84d9;" id="ICT">
+    <section class="page-section" style="background-color: #9759d4;" id="ICT">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-8 text-center">
