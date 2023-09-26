@@ -18,10 +18,10 @@
     </header>
 
     <!-- About -->
-    <section class="page-section" style="background-color: #925fc5;" id="about">
+    <section class="page-section" style="background-color: #ad61fa;" id="about">
         <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-8 text-center">
+            <div class="row gx-4 gx-lg-5 justify-content-start">
+                <div class="col-lg-8 text-start">
                     <!-- Title for the About section -->
                     <h1 class="text-white mt-0">About the School</h1>
                     <hr class="divider divider-primary" />
@@ -41,7 +41,7 @@
     </section>
 
     <!-- Philosophy -->
-    <section class="page-section" style="background-color: #ae84d9;" id="philosophy">
+    <section class="page-section" style="background-color: #f8d041;" id="philosophy">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -63,7 +63,7 @@
     </section>
     
     <!-- Vision -->
-    <section class="page-section" style="background-color: #925fc5;" id="vision">
+    <section class="page-section" style="background-color: #ad61fa;" id="vision">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -82,7 +82,7 @@
     </section>
 
     <!-- Mission -->
-    <section class="page-section" style="background-color: #ae84d9;" id="mission">
+    <section class="page-section" style="background-color: #f8d041;" id="mission">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -98,7 +98,7 @@
     </section>
 
     <!-- Goals -->
-    <section class="page-section" style="background-color: #925fc5;" id="goals">
+    <section class="page-section" style="background-color: #ad61fa;" id="goals">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-8 text-center">
