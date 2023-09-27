@@ -5,32 +5,44 @@
         <main>
             <div class="container-fluid px-4">
                 <ol class="breadcrumb mt-4">
-                    <li class="breadcrumb-item active">Dashboard</li>
+                    <li class="breadcrumb-item active">Update Faculty Information</li>
                 </ol>
-                <h1 class="mt-4">Dashboard</h1>
-                <div class="row">
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-primary text-white mb-4">
-                            <div class="card-body">Primary Card</div>
+                <h1 class="mt-4">Update Information</h1>
+
+                <form>
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cellphone_number" class="form-label">Cellphone Number:</label>
+                                <input type="text" id="cellphone_number" name="cellphone_number" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="address" class="form-label">Address:</label>
+                                <input type="text" id="address" name="address" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="birthday" class="form-label">Birthday:</label>
+                                <input type="date" id="birthday" name="birthday" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email_address" class="form-label">Email Address:</label>
+                                <input type="email" id="email_address" name="email_address" class="form-control" required>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-secondary text-white mb-4">
-                            <div class="card-body">Secondary Card</div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-success text-white mb-4">
-                            <div class="card-body">Success Card</div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-danger text-white mb-4">
-                            <div class="card-body">Danger Card</div>
-                        </div>
-                    </div>
-                </div>
+                </form>
+
+                    <button type="submit" class="btn btn-primary">Edit</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
             </div>
+
         </main>
         <x-footer />
     </x-panel>
