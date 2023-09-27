@@ -118,3 +118,8 @@ Route::patch('/enrollment{id}', [EnrollmentController::class, 'update'])
 
 //ROUTE FOR OTP SEMEPHORE.CO API
 Route::post('/sendOTP', 'AdmissionController@sendOTP');
+
+//ROUTE FOR Update_Faculty
+Route::get('update_faculty' , function () {
+    return view ('update_faculty');
+});

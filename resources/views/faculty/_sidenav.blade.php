@@ -13,7 +13,7 @@
         </div>
         <div class="sb-sidenav-menu" style="align-self: end; margin-top: 400px;">
             <div class="nav">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="update_faculty">
                     Update Faculty Information
                  </a>
             </div>
