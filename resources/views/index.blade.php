@@ -1,6 +1,36 @@
 @extends('layouts.app')
 
 @section('content')
+
+<style>
+    /* Your existing styles here */
+
+    /* Custom styles for the footer */
+    .footer-content {
+        text-align: right; /* Align the content to the right */
+    }
+
+    .contact-heading {
+        text-align: right; /* Align the "Contact us" heading to the right */
+        margin-top: 0; /* Remove top margin for the heading */
+    }
+
+    .divider-primary {
+        background-color: #ad61fa; /* Apply the primary color to the divider */
+        height: 2px; /* Adjust the height of the divider */
+        margin: 1rem 0; /* Add spacing above and below the divider */
+    }
+
+    /* Custom style for the contact icon */
+    .contact-icon {
+        font-size: 24px; /* Adjust the icon size */
+        vertical-align: middle; /* Align the icon vertically with text */
+        margin-right: 5px; /* Add spacing between icon and text */
+        color: #000000; /* Set the icon color to white */
+    }
+</style>
+
+
     <!-- Masthead -->
     <header class="masthead">
         <div class="container px-4 px-lg-5 h-100">
@@ -120,7 +150,19 @@
     <!-- Footer -->
     <footer class="bg-light py-5">
         <div class="container px-4 px-lg-5">
-            <div class="small text-center text-muted">Copyright &copy; 2023</div>
+            <div class="row gx-4 gx-lg-5 justify-content-center small text-center text-muted" >
+                <div class="col-lg-8">
+                    <h1 class="contact-heading text-black mt-0">
+                        <span class="contact-icon">&#9990;</span> Contact us <!-- Unicode call icon -->
+                    </h1>
+                    <hr class="divider-primary" />
+                    <p class="text-black mb-2 footer-content"><b>Mother Theresa Colegio de Iriga</b></p>
+                    <p class="text-black mb-2 footer-content">Brookside, San Roque, Iriga City</p>
+                    <p class="text-black mb-2 footer-content">Email: mtc.iriga@gmail.com</p>
+                    <p class="text-black mb-2 footer-content">Contact numbers: 0946-340-3540 / 0946-879-3445</p>
+                    <p class="text-black mb-2 footer-content">Phone: 05 433 16866</p>
+                </div>
+            </div>
         </div>
     </footer>
 @endsection
