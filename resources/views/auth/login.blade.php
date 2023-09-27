@@ -28,6 +28,22 @@
         text-transform: uppercase; /* Capitalize the text */
         width: 100%; /* Set the buttons to the same width */
     }
+
+    /* This is for the rectangular button */
+    .back-button {
+        height: 50px;
+        background: #ad61fa;
+        box-shadow: #ad61fa;
+        backdrop-filter: blur(2.4px);
+        -webkit-backdrop-filter: blur(2.4px);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 8px;
+        margin-bottom: 10px;
+        padding: 10px 20px;
+        color: #fff;
+        text-transform: uppercase; /* Capitalize the text */
+        width: 20%; 
+    }
 </style>
 
 <header class="masthead">
@@ -63,8 +79,13 @@
             <div class="col-12 mt-3">
                 <x-flash-message />
             </div>
+                <!-- Back to Home button with .back-button class -->
+                <button type="submit" class="back-button mt-4">Back to Home</button>
         </div>
     </div>
+    
 </header>
+
+
 
 @endsection
