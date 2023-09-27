@@ -30,9 +30,10 @@ Route::get('admission', function () {
     return view('admissions.index');
 });
 
-Route::get('academics', function () {
-    return view('academics');
+Route::get('academics', function () { //academics = blade name identifyer this is the one that input to the href
+    return view('academics');          //academics = blade name
 });
+
 
 Route::get('login', function () {
     return view('login');
@@ -121,5 +122,5 @@ Route::post('/sendOTP', 'AdmissionController@sendOTP');
 
 //ROUTE FOR Update_Faculty
 Route::get('update_faculty' , function () {
-    return view ('update_faculty');
+    return view ('/faculty/update_faculty');
 });
