@@ -90,7 +90,7 @@
         <!-- Container for center-aligning the button with the form -->
         <div class="d-flex justify-content-center">
             <!-- Back to Home button centered in the middle -->
-            <button type="submit" class="back-button mt-4">Back to Home</button>
+            <button type="submit" class="back-button mt-4"><a href="/" style="text-decoration: none; color: white;">Back to Home</a></button>
         </div>
     </div>
 </header>
