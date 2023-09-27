@@ -9,6 +9,9 @@
                 <a class="nav-link" href="/faculty">
                     Grades
                 </a>
+                <a class="nav-link" href="#">
+                    Update Faculty Information
+                 </a>
             </div>
         </div>
         <div class="sb-sidenav-footer">
