@@ -16,7 +16,7 @@
     }
 
     .divider-primary {
-        background-color: #ad61fa; /* Apply the primary color to the divider */
+        background-color: #000000; /* Apply the primary color to the divider */
         height: 2px; /* Adjust the height of the divider */
         margin: 1rem 0; /* Add spacing above and below the divider */
     }
@@ -48,13 +48,13 @@
     </header>
 
     <!-- About -->
-    <section class="page-section" style="background-color: #ad61fa;" id="about">
+    <section class="page-section" style="background-color: #5c2c78;" id="about">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-start">
                 <div class="col-lg-8 text-start">
                     <!-- Title for the About section -->
                     <h1 class="text-white mt-0">About the School</h1>
-                    <hr class="divider divider-primary" />
+                    <hr class="divider divider-primary" style="background-color: #000000;" />
                     
                     <!-- Introduction paragraph about the school -->
                     <p class="text-white mb-4 text-justify">
@@ -64,19 +64,19 @@
                     <!-- Additional paragraph about the school -->
                     <p class="text-white mb-4 text-justify">.For more than 30 years of existence, Mother Theresa Colegio Group of Schools has maintained its stature of quality education and scholarship.
                     </p>
-                    <hr class="divider divider-primary" />
+                    <hr class="divider divider-primary" style="background-color: #000000;" />
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Philosophy -->
-    <section class="page-section" style="background-color: #f8d041;" id="philosophy">
+    <section class="page-section" style="background-color: #F1CC4A;" id="philosophy">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-8 text-center">
                     <h1 class="text-white mt-0">Philosophy</h1>
-                    <hr class="divider divider-primary" />
+                    <hr class="divider divider-primary" style="background-color: #000000;" />
                     <ul class="text-white mb-4 text-justify"> 
                         <li>Christ-Centered: “God above all.”</li>
                         <li>Champion: “Excellence is our Air.”</li>
@@ -86,54 +86,54 @@
                         <li>Celebrated: “We cheered and celebrated one’s YOUniqueness.”</li>
                         <li>Contemporary: “Innovate Always.”</li>
                     </ul>
-                    <hr class="divider divider-primary" />
+                    <hr class="divider divider-primary" style="background-color: #000000;" />
                 </div>
             </div>
         </div>
     </section>
     
     <!-- Vision -->
-    <section class="page-section" style="background-color: #ad61fa;" id="vision">
+    <section class="page-section" style="background-color: #5c2c78;" id="vision">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-8 text-center">
                     <h1 class="text-white mt-0">Vision</h1>
-                    <hr class="divider divider-primary" />
+                    <hr class="divider divider-primary" style="background-color: #000000;" />
                     <p class="text-white mb-4 text-justify">
                         Mother Theresa Colegio Group of Schools is a platform for the development of students’ core gifts and a channel of serving others through discipleship, education and volunteerism.
                     </p>
                     <p class="text-white mb-4 text-justify">
                         Mother Theresa Colegio Group of Schools envision to be the Top-of-the-mind scholarship institution in the Philippines, serving 100,000 scholars by the year 2050.
                     </p>
-                    <hr class="divider divider-primary" />
+                    <hr class="divider divider-primary" style="background-color: #000000;" />
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Mission -->
-    <section class="page-section" style="background-color: #f8d041;" id="mission">
+    <section class="page-section" style="background-color: #F1CC4A;" id="mission">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-8 text-center">
                     <h1 class="text-white mt-0">Mission</h1>
-                    <hr class="divider divider-primary" />
+                    <hr class="divider divider-primary" style="background-color: #000000;" />
                     <p class="text-white mb-4 text-justify">
                         Mother Theresa Colegio Group of Schools advocates passiondriven community, developing passionate, above-average students in their chosen crafts, allowing them to embrace their uniqueness and encourage them to strengthen their core as they bless the world with their gifts.
                     </p>
-                    <hr class="divider divider-primary" />
+                    <hr class="divider divider-primary" style="background-color: #000000;" />
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Goals -->
-    <section class="page-section" style="background-color: #ad61fa;" id="goals">
+    <section class="page-section" style="background-color: #5c2c78;" id="goals">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-8 text-center">
                     <h1 class="text-white mt-0">Goals</h1>
-                    <hr class="divider divider-primary" />
+                    <hr class="divider divider-primary" style="background-color: #000000;" />
                     <ul class="text-white mb-4 text-justify"> 
                         <li>Achieve peak performance in academic and non-academic pursuits.</li>
                         <li>Encourage involvement of diversified learners in all undertakings.</li>
@@ -141,7 +141,7 @@
                         <li>Safeguard that the learning competencies are proactive to the demands of 21st Century.</li>
                         <li>Enrollment to Employment of the students.</li>
                     </ul>
-                    <hr class="divider divider-primary" />
+                    <hr class="divider divider-primary" style="background-color: #000000;" />
                 </div>
             </div>
         </div>
@@ -155,7 +155,7 @@
                     <h1 class="contact-heading text-black mt-0">
                         <span class="contact-icon">&#9990;</span> Contact us <!-- Unicode call icon -->
                     </h1>
-                    <hr class="divider-primary" />
+                    <hr class="divider divider-primary" style="background-color: #000000;" />
                     <p class="text-black mb-2 footer-content"><b>Mother Theresa Colegio de Iriga</b></p>
                     <p class="text-black mb-2 footer-content">Brookside, San Roque, Iriga City</p>
                     <p class="text-black mb-2 footer-content">Email: mtc.iriga@gmail.com</p>
