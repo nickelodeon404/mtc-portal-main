@@ -67,6 +67,7 @@
 
                     <hr class="divider divider-primary" style="background-color: #000000;" />
                 </div>
+                <!--ILAGAY MO TONG IMAGE CODE SA BABA NG CLOSING TAG NA </div>-->
             <!-- Image -->
             <div class="col-lg-4" style="display: inline-block; vertical-align: top;">
                 <img src="/img/img_about.jpg" alt="about" width="500" height="350">
@@ -95,6 +96,9 @@
                     </ul>
                     <hr class="divider divider-primary" style="background-color: #000000;" />
                 </div>
+                <!--DITO MAG LALAGAY NG IMAGE-->
+
+                <!--END-->
             </div>
         </div>
     </section>
@@ -114,6 +118,9 @@
                     </p>
                     <hr class="divider divider-primary" style="background-color: #000000;" />
                 </div>
+                <!--DITO MAG LALAGAY NG IMAGE-->
+                
+                <!--END-->
             </div>
         </div>
     </section>
@@ -130,6 +137,9 @@
                     </p>
                     <hr class="divider divider-primary" style="background-color: #000000;" />
                 </div>
+                <!--DITO MAG LALAGAY NG IMAGE-->
+                
+                <!--END-->
             </div>
         </div>
     </section>
@@ -150,6 +160,9 @@
                     </ul>
                     <hr class="divider divider-primary" style="background-color: #000000;" />
                 </div>
+                <!--DITO MAG LALAGAY NG IMAGE-->
+                
+                <!--END-->
             </div>
         </div>
     </section>
