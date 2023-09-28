@@ -47,6 +47,17 @@
         </div>
     </header>
 
+    <!-- MTC Group of Schools -->
+    <section class="page-section" style="background-color: #5c2c78;" id="">
+        <div class="container px-4 px-lg-5" style="">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                    <img src="/img/aboutt.jpg" alt="about" width="1200" height="700">
+                </div>
+            </div>
+        </div>    
+    </section>    
+    
     <!-- About -->
     <section class="page-section" style="background-color: #5c2c78;" id="about">
         <div class="container px-4 px-lg-5" style="">
@@ -70,7 +81,7 @@
                 <!--ILAGAY MO TONG IMAGE CODE SA BABA NG CLOSING TAG NA </div>-->
             <!-- Image -->
             <div class="col-lg-4" style="display: inline-block; vertical-align: top;">
-                <img src="/img/img_about.jpg" alt="about" width="500" height="350">
+                <img src="/img/about_the_school.jpg" alt="about" width="530" height="350">
             </div>
             <!-- End of Image -->
             </div>
