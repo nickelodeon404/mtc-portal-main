@@ -15,4 +15,8 @@ class Strand extends Model
         'name',
         'acronym'
     ];
+
+    public function User(){
+        return $this->hasMany(User::class, 'strands_id' );
+    }
 }
