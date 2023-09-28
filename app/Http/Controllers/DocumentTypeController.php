@@ -2,17 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\AcademicRecordDocuments;
 use App\Models\DocumentType; // Make sure to import the RecordRequest model
-use Illuminate\Support\Facades\DB;
 
 class DocumentTypeController extends Controller
 {
     public function index()
     {
         $data = DB::table('admission')->orderBy('strand')->get();
-
+        $G11 = DB::table('users')
+            ->join('strands', 'users.strands_id', '=', 'strands.id')
+            ->where('users.role_id', '=', 3)
+            ->where('users.year_level', '=', '11')
+            ->selectRaw('strands.acronym, COUNT(*) as studentsCount')
+            ->groupBy('strands.acronym')
+            ->get();
+        $G12 = DB::table('users')
+            ->join('strands', 'users.strands_id', '=', 'strands.id')
+            ->where('users.role_id', '=', 3)
+            ->where('users.year_level', '=', '12')
+            ->selectRaw('strands.acronym, COUNT(*) as studentsCount')
+            ->groupBy('strands.acronym')
+            ->get();
+            // dd($G12);
+        // $G12 = User::where('role_id', '=', '3')->where('year_level', '=', '12')->get();
         // Fetch data for Enrollment section as well
         $enrollmentData = DB::table('enrollment')->orderBy('grade_level')->get();
 
@@ -20,19 +36,26 @@ class DocumentTypeController extends Controller
 
         $reqDocument = DB::table('document_types')->get();
 
-        return view('registrar.index', ['data' => $data, 'enrollmentData' => $enrollmentData, 'enrolledData' => $enrolledData, 'reqDocument' => $reqDocument]);
+        return view('registrar.index', [
+            'data' => $data,
+            'enrollmentData' => $enrollmentData,
+            'enrolledData' => $enrolledData,
+            'reqDocument' => $reqDocument,
+            'G11' => $G11,
+            'G12' => $G12
+        ]);
     }
 
     public function create()
     {
-       // return view('/students/academic/index');
+        // return view('/students/academic/index');
     }
 
     public function view()
     {
-        $data = DB::table('admission')->orderBy('strand')->get()->toArray();//ordered by strand alphabetically
+        $data = DB::table('admission')->orderBy('strand')->get()->toArray(); //ordered by strand alphabetically
 
-        $enrollmentData = DB::table('enrollment')->orderBy('grade_level')->get()->toArray();//ordered by strand alphabetically
+        $enrollmentData = DB::table('enrollment')->orderBy('grade_level')->get()->toArray(); //ordered by strand alphabetically
 
         $enrolledData = DB::table('enrolled')->orderBy('grade_level')->get()->toArray();
 
@@ -43,26 +66,26 @@ class DocumentTypeController extends Controller
 
     public function store(Request $request)
     {
-    $validatedData = $request->validate([
-        'name' => 'required',
-        'document_type' => 'required|array',
-    ]);
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'document_type' => 'required|array',
+        ]);
 
-    $ard = $validatedData['document_type'];//$ard means academic record documents
+        $ard = $validatedData['document_type']; //$ard means academic record documents
 
-    // Loop through the selected document types and save them
-    foreach ($ard as $ard) {
-        // Create a new DocumentType instance and save it
-        $documentType = new DocumentType();
-        $documentType->name = $validatedData['name'];
-        $documentType->document_type = $ard;
-        $documentType->save();
+        // Loop through the selected document types and save them
+        foreach ($ard as $ard) {
+            // Create a new DocumentType instance and save it
+            $documentType = new DocumentType();
+            $documentType->name = $validatedData['name'];
+            $documentType->document_type = $ard;
+            $documentType->save();
+        }
+
+        return redirect()->back()->with('success', 'Success!! Your request was submitted!!');
     }
 
-    return redirect()->back()->with('success', 'Success!! Your request was submitted!!');
-    }
-
-   public function destroy($id)
+    public function destroy($id)
     {
         $ard = DocumentType::find($id);
 

@@ -52,4 +52,7 @@ class User extends Authenticatable
     public function studentLoad(){
         return $this->hasMany(SubjectLoad::class, 'students_id');
     }
+    public function Strand(){
+        return $this->belongsTo(Strand::class, 'strands_id');
+    }
 }

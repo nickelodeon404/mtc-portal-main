@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Strand;
 use App\Models\User;
 use App\Models\Grade;
 use App\Models\Subject;
@@ -33,7 +34,7 @@ class DatabaseSeeder extends Seeder
             'acronym' => 'ABM'
         ]);
 
-        DB::table('strands')->insert([
+        $GAS = Strand::factory('strands')->create([
             'name' => 'General Academic Strand',
             'acronym' => 'GAS'
         ]);
@@ -43,7 +44,7 @@ class DatabaseSeeder extends Seeder
             'acronym' => 'HUMSS'
         ]);
 
-        DB::table('strands')->insert([
+        $STEM = Strand::factory('strands')->create([
             'name' => 'Science, Technology, Engineering & Mathematics',
             'acronym' => 'STEM'
         ]);
@@ -111,6 +112,8 @@ class DatabaseSeeder extends Seeder
         $faculty = User::factory()->create([
             'name' => 'Faculty',
             'email' => 'faculty@example.com',
+            'year_level' => 'not applicable',
+            'strands_id' => $GAS->id,
             'password' => Hash::make('111'),
             'role_id' => 1
         ]);
@@ -118,13 +121,41 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Registrar',
             'email' => 'registrar@example.com',
+            'year_level' => 'not applicable',
             'password' => Hash::make('111'),
+            'strands_id' => $GAS->id,
             'role_id' => 2
         ]);
 
         $student = User::factory()->create([
             'name' => 'default',
             'email' => 'example@example.com',
+            'year_level' => '11',
+            'strands_id' => $GAS->id,
+            'password' => Hash::make('do not login this account'),
+            'role_id' => 3
+        ]);
+        User::factory()->create([
+            'name' => 'default1',
+            'email' => 'example1@example.com',
+            'year_level' => '12',
+            'strands_id' => $GAS->id,
+            'password' => Hash::make('do not login this account'),
+            'role_id' => 3
+        ]);
+        User::factory()->create([
+            'name' => 'default2',
+            'email' => 'example2@example.com',
+            'year_level' => '11',
+            'strands_id' => $STEM->id,
+            'password' => Hash::make('do not login this account'),
+            'role_id' => 3
+        ]);
+        User::factory()->create([
+            'name' => 'default3',
+            'email' => 'example3@example.com',
+            'year_level' => '12',
+            'strands_id' => $STEM->id,
             'password' => Hash::make('do not login this account'),
             'role_id' => 3
         ]);

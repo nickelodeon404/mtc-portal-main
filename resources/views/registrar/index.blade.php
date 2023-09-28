@@ -67,13 +67,22 @@
 
     <!-- JavaScript to create and populate the bar graph -->
     <script>
+        var Grade11 = @json($G11);
+        console.log(Grade11);
+        const acronym = Grade11.map(item => item.acronym);
+        const studentCount = Grade11.map(item => item.studentsCount);
+        var Grade12 = @json($G12);
+        
+        // const acronym1 = Grade12.map(item => item.acronym);
+        const studentCount1 = Grade12.map(item => item.studentsCount);
+        console.log(studentCount1);
         var ctx = document.getElementById('barGraph').getContext('2d');
         var data = {
-            labels: ['GAS', 'ABM', 'HUMSS', 'STEM', 'ICT', 'AD', 'HE'], // Your labels here
+            labels: acronym, // Your labels here
             datasets: [
                 {
                     label: 'Grade 11',
-                    data: [10, 20, 30, 40, 50, 60, 70], // Your Grade 11 data values here
+                    data: studentCount, // Your Grade 11 data values here
                     backgroundColor: [
                         'rgba(92, 44, 120, 0.2)', // Custom color for Grade 11
                         
@@ -86,7 +95,7 @@
                 },
                 {
                     label: 'Grade 12',
-                    data: [5, 15, 25, 35, 45, 55, 65], // Your Grade 12 data values here
+                    data: studentCount1, // Your Grade 12 data values here
                     backgroundColor: [
                         'rgba(241, 204, 74, 0.2)', // Custom color for Grade 12
                        

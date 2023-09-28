@@ -14,7 +14,7 @@ class EnrollmentController extends Controller
     public function index()
     {
         $data = DB::table('admission')->orderBy('id')->get();
-
+        // $Users = User::all();
         // Fetch data for Enrollment section as well
         $enrollmentData = DB::table('enrollment')->orderBy('grade_level')->get();
 
