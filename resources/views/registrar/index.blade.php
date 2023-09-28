@@ -76,13 +76,11 @@
                     data: [10, 20, 30, 40, 50, 60, 70], // Your Grade 11 data values here
                     backgroundColor: [
                         'rgba(92, 44, 120, 0.2)', // Custom color for Grade 11
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
+                        
                     ],
                     borderColor: [
                         'rgba(92, 44, 120, 1)', // Custom color for Grade 11
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
+                       
                     ],
                     borderWidth: 1
                 },
@@ -91,13 +89,11 @@
                     data: [5, 15, 25, 35, 45, 55, 65], // Your Grade 12 data values here
                     backgroundColor: [
                         'rgba(241, 204, 74, 0.2)', // Custom color for Grade 12
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
+                       
                     ],
                     borderColor: [
                         'rgba(241, 204, 74, 1)', // Custom color for Grade 12
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)',
+                        
                     ],
                     borderWidth: 1
                 }
