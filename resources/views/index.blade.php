@@ -49,7 +49,7 @@
 
     <!-- About -->
     <section class="page-section" style="background-color: #5c2c78;" id="about">
-        <div class="container px-4 px-lg-5">
+        <div class="container px-4 px-lg-5" style="">
             <div class="row gx-4 gx-lg-5 justify-content-start">
                 <div class="col-lg-8 text-start">
                     <!-- Title for the About section -->
@@ -64,10 +64,17 @@
                     <!-- Additional paragraph about the school -->
                     <p class="text-white mb-4 text-justify">.For more than 30 years of existence, Mother Theresa Colegio Group of Schools has maintained its stature of quality education and scholarship.
                     </p>
+
                     <hr class="divider divider-primary" style="background-color: #000000;" />
                 </div>
+            <!-- Image -->
+            <div class="col-lg-4" style="display: inline-block; vertical-align: top;">
+                <img src="/img/img_about.jpg" alt="about" width="500" height="350">
+            </div>
+            <!-- End of Image -->
             </div>
         </div>
+
     </section>
 
     <!-- Philosophy -->
