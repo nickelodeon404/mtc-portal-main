@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
+
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
 
@@ -84,13 +87,16 @@ class AdmissionController extends Controller
         if ($request->hasFile('psa')) {
             $psaPath = $request->file('psa')->store('images', 'public');
             $validatedData['psa'] = $psaPath;
+
         }
 
         // Store the uploaded Form 138 image in the 'public/images' directory
         if ($request->hasFile('form_138')) {
             $form138Path = $request->file('form_138')->store('images', 'public');
             $validatedData['form_138'] = $form138Path;
+
         }
+
         // dd($validatedData['first_name']);
         $firstThreeLetters = substr(str_replace(' ', '', $validatedData['first_name']), 0, 3);
         $randomPassword = rand(100000, 999999);
@@ -98,13 +104,13 @@ class AdmissionController extends Controller
             'role_id' => 3,
 
             'strands_id' => [
-                              "ABM" => 1,
-                              "GAS" => 2,
-                              "HUMSS" => 3,
-                              "STEM" => 4,
-                              "TVL-ICT" => 5,
+                                 "ABM" => 1,
+                                 "GAS" => 2,
+                               "HUMSS" => 3,
+                                "STEM" => 4,
+                             "TVL-ICT" => 5,
                               "TVL-HE" => 6,
-                              "Arts & Design" => 7,
+                       "Arts & Design" => 7,
                             ] 
                               [$validatedData['strand']
                             ],

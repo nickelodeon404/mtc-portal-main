@@ -156,7 +156,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="psaCertificate" class="form-label">Photo of PSA/Birth Certificate </label>
+                                <label for="psa" class="form-label">Photo of PSA/Birth Certificate </label>
                                 <input type="file" class="form-control" name="psa" id="psa">
                             </div>
                         </div>
