@@ -2,12 +2,18 @@
 @section('content')
     @include('registrar._sidenav')
     <style type="text/css">
-        a{
+        a {
             text-decoration: none;
             color: #fff;
         }
-        a:hover{
+
+        a:hover {
             color: #fff;
+        }
+
+        /* CSS to make headings bigger */
+        .heading {
+            font-size: 22px; 
         }
     </style>
     <x-panel>
@@ -21,38 +27,39 @@
                     <div class="col-xl-3 col-md-6">
                         <div class="card bg-dark text-white mb-4">
                             <div class="card-body">
-                                Admissions
-                                 <span class="badge bg-danger">{{ count($data ?? []) }}</span>
+                                <span class="heading">Admissions</span>
+                                <span class="badge bg-danger">{{ count($data ?? []) }}</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-md-6">
                         <div class="card bg-dark text-white mb-4">
                             <div class="card-body">
-                            Academic Record Request
+                                <span class="heading">Academic Record Request</span>
                                 <span class="badge bg-danger">{{ count($reqDocument ?? []) }}</span>
-                        </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-md-6">
                         <div class="card bg-dark text-white mb-4">
                             <div class="card-body">
-                            Enrollment
-                            <span class="badge bg-danger">{{ count($enrollmentData ?? []) }}</span>
-                        </div>
+                                <span class="heading">Enrollment</span>
+                                <span class="badge bg-danger">{{ count($enrollmentData ?? []) }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             
-                    
-                    <!-- Centered Column for Bar Graph -->
-                    <div class="col-md-6 offset-md-3">
-                        <div class="card">
-                            <div class="card-header">
-                                <b>MTC ENROLLED STUDENTS</b>
-                            </div>
-                            <div class="card-body">
-                                <canvas id="barGraph"></canvas>
+                <!-- Centered Column for Bar Graph -->
+                <div class="col-md-6 offset-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <b>MTC ENROLLED STUDENTS</b>
+                        </div>
+                        <div class="card-body">
+                            <!-- Center and size the chart -->
+                            <div style="display: flex; justify-content: center; align-items: center; height: 60vh;">
+                                <canvas id="barGraph" style="max-width: 800px; width: 100%;"></canvas>
                             </div>
                         </div>
                     </div>
@@ -78,30 +85,30 @@
         console.log(studentCount1);
         var ctx = document.getElementById('barGraph').getContext('2d');
         var data = {
-            labels: acronym, // Your labels here
+            labels: acronym, 
             datasets: [
                 {
                     label: 'Grade 11',
-                    data: studentCount, // Your Grade 11 data values here
+                    data: studentCount, 
                     backgroundColor: [
-                        'rgba(92, 44, 120, 0.2)', // Custom color for Grade 11
+                        'rgba(92, 44, 120, 0.2)', 
                         
                     ],
                     borderColor: [
-                        'rgba(92, 44, 120, 1)', // Custom color for Grade 11
+                        'rgba(92, 44, 120, 1)', 
                        
                     ],
                     borderWidth: 1
                 },
                 {
                     label: 'Grade 12',
-                    data: studentCount1, // Your Grade 12 data values here
+                    data: studentCount1, 
                     backgroundColor: [
-                        'rgba(241, 204, 74, 0.2)', // Custom color for Grade 12
+                        'rgba(241, 204, 74, 0.2)', 
                        
                     ],
                     borderColor: [
-                        'rgba(241, 204, 74, 1)', // Custom color for Grade 12
+                        'rgba(241, 204, 74, 1)', 
                         
                     ],
                     borderWidth: 1
