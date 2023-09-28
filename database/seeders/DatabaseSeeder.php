@@ -135,6 +135,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('do not login this account'),
             'role_id' => 3
         ]);
+    
         User::factory()->create([
             'name' => 'default1',
             'email' => 'example1@example.com',
@@ -159,7 +160,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('do not login this account'),
             'role_id' => 3
         ]);
-
+    
         $sl1 = SubjectLoad::factory()->create([
             'students_id' => $student->id,
             'faculties_id' => $faculty->id,

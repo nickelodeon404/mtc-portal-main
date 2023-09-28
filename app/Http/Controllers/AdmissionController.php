@@ -96,6 +96,19 @@ class AdmissionController extends Controller
         $randomPassword = rand(100000, 999999);
         $user = User::create([
             'role_id' => 3,
+
+            'strands_id' => [
+                              "ABM" => 1,
+                              "GAS" => 2,
+                              "HUMSS" => 3,
+                              "STEM" => 4,
+                              "TVL-ICT" => 5,
+                              "TVL-HE" => 6,
+                              "Arts & Design" => 7,
+                            ] 
+                              [$validatedData['strand']
+                            ],
+
             'name' => $validatedData['last_name'] . $validatedData['first_name'],
             'email' => $validatedData['last_name'] . $firstThreeLetters . $randomPassword . "@example.com",
             'password' => Hash::make($randomPassword),
