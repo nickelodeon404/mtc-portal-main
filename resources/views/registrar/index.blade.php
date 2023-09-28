@@ -49,7 +49,7 @@
                     <div class="col-md-6 offset-md-3">
                         <div class="card">
                             <div class="card-header">
-                                Bar Graph
+                                <b>MTC ENROLLED STUDENTS</b>
                             </div>
                             <div class="card-body">
                                 <canvas id="barGraph"></canvas>
@@ -69,22 +69,35 @@
     <script>
         var ctx = document.getElementById('barGraph').getContext('2d');
         var data = {
-            labels: ['Label 1', 'Label 2', 'Label 3'], // Your labels here
-            datasets: [{
-                label: 'Data',
-                data: [10, 20, 30], // Your data values here
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                ],
-                borderWidth: 1
-            }]
+            labels: ['GAS', 'ABM', 'HUMSS', 'STEM', 'ICT', 'AD', 'HE'], // Your labels here
+            datasets: [
+                {
+                    label: 'Grade 11',
+                    data: [10, 20, 30, 40, 50, 60, 70], // Your Grade 11 data values here
+                    backgroundColor: [
+                        'rgba(92, 44, 120, 0.2)', // Custom color for Grade 11
+                        
+                    ],
+                    borderColor: [
+                        'rgba(92, 44, 120, 1)', // Custom color for Grade 11
+                       
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    label: 'Grade 12',
+                    data: [5, 15, 25, 35, 45, 55, 65], // Your Grade 12 data values here
+                    backgroundColor: [
+                        'rgba(241, 204, 74, 0.2)', // Custom color for Grade 12
+                       
+                    ],
+                    borderColor: [
+                        'rgba(241, 204, 74, 1)', // Custom color for Grade 12
+                        
+                    ],
+                    borderWidth: 1
+                }
+            ]
         };
         var config = {
             type: 'bar',
