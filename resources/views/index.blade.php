@@ -3,30 +3,28 @@
 @section('content')
 
 <style>
-    /* Your existing styles here */
 
     /* Custom styles for the footer */
     .footer-content {
-        text-align: right; /* Align the content to the right */
-    }
+        text-align: right; 
 
     .contact-heading {
-        text-align: right; /* Align the "Contact us" heading to the right */
-        margin-top: 0; /* Remove top margin for the heading */
+        text-align: right; 
+        margin-top: 0; 
     }
 
     .divider-primary {
-        background-color: #000000; /* Apply the primary color to the divider */
-        height: 2px; /* Adjust the height of the divider */
-        margin: 1rem 0; /* Add spacing above and below the divider */
+        background-color: #000000; 
+        height: 2px; 
+        margin: 1rem 0; 
     }
 
     /* Custom style for the contact icon */
     .contact-icon {
-        font-size: 24px; /* Adjust the icon size */
-        vertical-align: middle; /* Align the icon vertically with text */
-        margin-right: 5px; /* Add spacing between icon and text */
-        color: #000000; /* Set the icon color to white */
+        font-size: 24px; 
+        vertical-align: middle; 
+        margin-right: 5px; 
+        color: #000000; 
     }
 </style>
 
