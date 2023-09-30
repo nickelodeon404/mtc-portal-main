@@ -58,120 +58,76 @@
         </div>
     </header>
     <!-- Strands -->
-    <section class="page-section" style="background-color: #ad61fa;" id="STEM">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5">
-                <div class="col-lg-6 text-justify">
-                    <!-- Text content -->
-                    <h1 class="text-white mt-0">Science, Technology, Engineering, and Mathematics (STEM)</h1>
-                    <hr class="divider divider-primary" />
-                    <h2 class="text-white mt-0">Why <b>STEM?</b></h2>
-                    <p class="text-white mb-4">
-                        If the career that you want to pursue is related to the Science and Mathematics field, then you must take STEM. This strand is quite challenging and at the same time enjoyable for you will be able to experience hands-on learning. This strand is for those who want to pursue Engineering, Medical Courses, AB Math, Information Technology, and the like.
-                    </p>
-                    <hr class="divider divider-primary"/>
-                </div>
-            </div>
-        </div>  x
-    </section>
-    
-    
-    
-    <section class="page-section" style="background-color: #f8d041;" id="HUMSS">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-end">
-                <div class="col-lg-8 text-center">
-                    <h1 class="text-white mt-0">Humanities and Social Sciences (HUMSS)</h1>
-                    <hr class="divider divider-primary" />
-                    <h2 class="text-white mt-0">Why <b>HUMSS?</b></h2>
-                    <p class="text-white mb-4 text-justify">
-                        This strand is for those students who want to pursue college courses such as Education, Political Science, AB English or Literature, Mass Communication, Theater Arts, and other related career paths.
-                    </p>
-                    <hr class="divider divider-primary" />
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="page-section" style="background-color: #ad61fa;" id="ABM">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-start">
-                <div class="col-lg-8 text-center">
-                    <h1 class="text-white mt-0">Accountancy and Business Management (ABM)</h1>
-                    <hr class="divider divider-primary" />
-                    <h2 class="text-white mt-0">Why <b>ABM?</b></h2>
-                    <p class="text-white mb-4 text-justify">
-                        Do you think you can excel in business? Then the ABM track is right for you! Related courses are Business Administration, Tourism Management, Hotel and Restaurant Management, Accountancy, Real Estate Management, Entrepreneurship, and all courses related to business and management. 
-                    </p>
-                    <hr class="divider divider-primary" />
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="page-section" style="background-color: #f8d041;" id="GAS">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-end">
-                <div class="col-lg-8 text-center">
-                    <h1 class="text-white mt-0">General Academic Strand (GAS)</h1>
-                    <hr class="divider divider-primary" />
-                    <h2 class="text-white mt-0">Why <b>GAS?</b></h2>
-                    <p class="text-white mb-4 text-justify">
-                        If you are not yet sure of which career path to walk on, we suggest that you take the General Academic Strand. This strand offers courses that are related to all fields. You will be able to experience a variety of learning experiences to explore the different interesting fields which you can study in college. The General Academic Strand is for all types of courses.
-                    </p>
-                    <hr class="divider divider-primary" />
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="page-section" style="background-color: #ad61fa;" id="AD">
-        <div class="container px-4 px-lg-5">
+   
+    <section class="page-section" style="background-color: #5c2c78;" id="">
+        <div class="container px-4 px-lg-5" style="">
             <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h1 class="text-white mt-0">Arts and Design (AD)</h1>
-                    <hr class="divider divider-primary" />
-                    <h2 class="text-white mt-0">Why <b>AD?</b></h2>
-                    <p class="text-white mb-4 text-justify">
-                        If you want to unleash the artist in you in your future career path, then the Arts and Design track is suited for you. This program is designed for students who want to further enhance their creativity and the effectiveness of their artistic expression.
-                    </p>
-                    <hr class="divider divider-primary" />
+                <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                    <img src="/img/stem.jpg" alt="about" width="1200" height="700">
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="page-section" style="background-color: #f8d041;" id="HE">
-        <div class="container px-4 px-lg-5">
+        </div>    
+    </section>  
+    
+    <section class="page-section" style="background-color: #f8d041;" id="">
+        <div class="container px-4 px-lg-5" style="">
             <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h1 class="text-white mt-0">Home Economics (HE)</h1>
-                    <hr class="divider divider-primary" />
-                    <h2 class="text-white mt-0">Why <b>HE?</b></h2>
-                    <p class="text-white mb-4 text-justify">
-                        The Home Economics (HE) strand offers various specializations that can lead to livelihood projects at home. This strand aims to give you job-ready skills that can help you finding the right employment.
-                    </p>
-                    <hr class="divider divider-primary" />
+                <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                    <img src="/img/humss.jpg" alt="about" width="1200" height="700">
                 </div>
             </div>
-        </div>
-    </section>
+        </div>    
+    </section>  
 
-    <section class="page-section" style="background-color: #ad61fa;" id="ICT">
-        <div class="container px-4 px-lg-5">
+    <section class="page-section" style="background-color: #5c2c78;" id="">
+        <div class="container px-4 px-lg-5" style="">
             <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h1 class="text-white mt-0">Information Communications Technology (ICT)</h1>
-                    <hr class="divider divider-primary" />
-                    <h2 class="text-white mt-0">Why <b>ICT?</b></h2>
-                    <p class="text-white mb-4 text-justify">
-                        Information and Communications Technology (ICT) track is the right one for you. ICT is a Senior High School strand that prepares you for a career in Information and Communication Technology. It equips you with advanced skills in computer systems, programming, creating web pages, and basic animation.
-                    </p>
-                    <hr class="divider divider-primary" />
+                <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                    <img src="/img/abm.jpg" alt="about" width="1200" height="700">
                 </div>
             </div>
-        </div>
-    </section>
+        </div>    
+    </section>  
+
+    <section class="page-section" style="background-color: #f8d041;" id="">
+        <div class="container px-4 px-lg-5" style="">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                    <img src="/img/gas.jpg" alt="about" width="1200" height="700">
+                </div>
+            </div>
+        </div>    
+    </section>  
+
+    <section class="page-section" style="background-color: #5c2c78;" id="">
+        <div class="container px-4 px-lg-5" style="">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                    <img src="/img/ad.jpg" alt="about" width="1200" height="700">
+                </div>
+            </div>
+        </div>    
+    </section>  
+
+    <section class="page-section" style="background-color: #f8d041;" id="">
+        <div class="container px-4 px-lg-5" style="">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                    <img src="/img/he.jpg" alt="about" width="1200" height="700">
+                </div>
+            </div>
+        </div>    
+    </section> 
+
+    <section class="page-section" style="background-color: #5c2c78;" id="">
+        <div class="container px-4 px-lg-5" style="">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                    <img src="/img/ict.jpg" alt="about" width="1200" height="700">
+                </div>
+            </div>
+        </div>    
+    </section>  
 
     <!-- Footer-->
     <footer class="bg-light py-5">
