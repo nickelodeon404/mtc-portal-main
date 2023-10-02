@@ -117,8 +117,23 @@ Route::patch('/enrollment{id}', [EnrollmentController::class, 'update'])
     ->name('enrollment.update');
 
 
-//ROUTE FOR OTP SEMEPHORE.CO API
-Route::post('/sendOTP', 'AdmissionController@sendOTP');
+//ROUTE FOR OTP TWILIO
+
+//Route::post('/', function () {
+//    return view('admissions.index');
+//})->name('index');
+
+Route::get('/verify', function () {
+   return view('admissions.verify');
+})->name('verify');
+
+
+Route::post('/', 'App\Http\Controllers\AdmissionController@store')->name('index');
+Route::post('/verify', 'App\Http\Controllers\AdmissionController@verify')->name('verify');
+
+
+
+//END OF TWILIO ROUTE
 
 //ROUTE FOR Update_Faculty
 Route::get('update_faculty' , function () {

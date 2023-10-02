@@ -25,7 +25,10 @@ return new class extends Migration
             $table->string('barangay')->nullable(false);
             $table->string('city_municipality')->nullable(false);
             $table->string('province')->nullable(false);
-            $table->string('mobile_number', 11)->nullable(false);
+            $table->string('mobile_number', 13)->nullable(false);
+
+            $table->boolean('isVerified')->default(false);
+            
             $table->string('facebook')->nullable(true);
             $table->string('junior_high')->nullable(false);
             $table->string('year_graduated')->nullable(true);

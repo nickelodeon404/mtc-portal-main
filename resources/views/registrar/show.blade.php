@@ -23,7 +23,6 @@
                         <div class="table-responsive">
                             <table class="table table-wider">
                                 <thead>
-                                	
                                     <tr>
                                         <td><strong>LRN:</strong></strong> {{ $item->lrn }}</td>
                                     </tr>
@@ -90,7 +89,6 @@
                                                 </a>
                                             </td>
                                         </tr>
-                                   
                                 </thead>
                             </table>
                         </div>

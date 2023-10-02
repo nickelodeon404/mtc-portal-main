@@ -49,7 +49,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="mobileInput" class="form-label">Mobile Number</label>
-                                <input type="number" class="form-control" id="mobile_number" name="mobile_number" placeholder="Enter Mobile Number" value="{{$admission->mobile_number}}" readonly>
+                                <input type="tel" class="form-control" id="mobile_number" name="mobile_number" placeholder="Enter Mobile Number" value="{{$admission->mobile_number}}" readonly>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="emailInput" class="form-label">Email Address</label>

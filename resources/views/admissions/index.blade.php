@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+<head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+</head>
 <!-- Masthead -->
 <header class="masthead">
     <div class="container px-4 px-lg-5 h-100">
@@ -77,7 +80,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="mobile_number" class="form-label">* Mobile Number</label>
-                                <input type="number" class="form-control" name="mobile_number" id="mobile_number" placeholder="Mobile Number" required>
+                                <input type="tel" class="form-control" name="mobile_number" id="mobile_number" value="+63" maxlength="13" placeholder="Mobile Number" required>
                             </div> 
                         </div>
                     </div>
@@ -167,17 +170,7 @@
                             </div>
                         </div>
                     </div>
-                    {{--
-                    <div class="row">
-                        <div class="col-md-15">
-                            <div class="mb-3">
-                                <label for="otp" class="form-label">OTP</label>
-                                <input type="text" class="form-control" name="otp" id="otp" placeholder="Enter OTP" required>
-                            </div>
-                        </div>
-                        <button type="button" id="send-otp-button">Send OTP</button>
-                    </div>
-                    --}}
+                    
 
                     <div class="row-md-6">
                         <div class="form-check mb-3">
@@ -186,7 +179,7 @@
                                 are correctly submitted.</label>
                         </div>
                     </div>
-                    <button class="btn btn-primary" id="send-otp">Submit</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
                 @if(session('success'))
                 <div class="alert alert-success mt-3">
@@ -198,4 +191,31 @@
         </div>
     </div>
 </section>
+
+{{--THIS SCRIPT PREVENTS THE MOBILE NUMBER COUNTRY CODE TO BE ERASED!!--}}
+<script>
+    // Get the input element
+    var mobileNumberInput = document.getElementById("mobile_number");
+
+    // Store the initial value
+    var initialValue = "+63";
+
+    // Listen for the input event
+    mobileNumberInput.addEventListener("input", function () {
+        // Check if the input value starts with "+63"
+        if (!mobileNumberInput.value.startsWith(initialValue)) {
+            // If not, prepend "+63" to the input value
+            mobileNumberInput.value = initialValue + mobileNumberInput.value;
+        }
+    });
+
+    // Listen for the keydown event to handle backspace
+    mobileNumberInput.addEventListener("keydown", function (event) {
+        if (event.key === "Backspace" && mobileNumberInput.selectionStart <= initialValue.length) {
+            // Prevent backspace when the cursor is at or before "+63"
+            event.preventDefault();
+        }
+    });
+</script>
+
 @endsection

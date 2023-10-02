@@ -48,7 +48,7 @@
                                         <td><strong>Age:</strong> <div class="col-md-6 mb-3"> <input type="number" class="form-control" id="age" name="age" placeholder="Enter Age" value="{{$item->age}}"> </td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Mobile No:</strong> <div class="col-md-6 mb-3"> <input type="number" class="form-control" id="mobile_number" name="mobile_number" placeholder="Enter Mobile Number" value="{{$item->mobile_number}}"> </td>
+                                        <td><strong>Mobile No:</strong> <div class="col-md-6 mb-3"> <input type="tel" class="form-control" id="mobile_number" name="mobile_number" placeholder="Enter Mobile Number" value="{{$item->mobile_number}}"> </td>
                                     </tr>
                                     <tr>
                                         <td><strong>Email:</strong> <div class="col-md-6 mb-3"> <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Address" value="{{$item->email}}"> </td>

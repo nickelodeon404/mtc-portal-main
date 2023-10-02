@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('extension',5)->nullable(true);
             $table->date('birthday')->nullable();
             $table->integer('age')->nullable(false);
-            $table->string('mobile_number', 11)->nullable(false);
+            $table->string('mobile_number', 13)->nullable(false);
             $table->string('facebook')->nullable(true);
             $table->string('region')->nullable(false);
             $table->string('province')->nullable(false);

@@ -40,7 +40,7 @@ class EnrollmentController extends Controller
             'extension' => 'nullable|max:5',
             'birthday' => 'required|date',
             'age' => 'required|integer',
-            'mobile_number' => 'required|digits:11',
+            'mobile_number' => 'required|string',
             'facebook' => 'nullable',
             'region' => 'required',
             'province' => 'required',

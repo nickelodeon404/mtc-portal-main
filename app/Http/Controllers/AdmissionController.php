@@ -16,13 +16,15 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 
 use Illuminate\Support\Facades\Http;
-use GuzzleHttp\Client;
+use Twilio\Rest\Client;
+//use GuzzleHttp\Client;
 
 
 
 
 class AdmissionController extends Controller
 {
+
 
     public function index()
     {
@@ -72,16 +74,9 @@ class AdmissionController extends Controller
             "graduation_type" => "required",
             "strand" => "required",
             "confirmationCheck" => "required",
+         //   'psa' => 'nullable|file|mimes:jpeg,jpg,png|max:2048', // Validate as a file with a max size of 2048 KB.
+         //   'form_138' => 'nullable|mimes:jpeg,jpg,png|max:2048', // Validate as a file with a max size of 2048 KB.
         ]);
-
-        /*   // Generate and send OTP using Semaphore.co API
-           $otp = mt_rand(1000, 9999); // Generate a random 4-digit OTP
-           $response = Http::post('https://api.semaphore.co/api/v4/otp', [
-               'number' => $validatedData['mobile_number'],
-               'otp' => $otp,
-               'api_key' => 'ba7fdf3b96f281f479dce941fbeddf1b',
-           ]);
-       */
 
         // Store the uploaded PSA image in the 'public/images' directory
         if ($request->hasFile('psa')) {
@@ -123,6 +118,22 @@ class AdmissionController extends Controller
         // Fetch the valid options for "strand" from the database
         $strands = Strand::all(); // Assuming "Strand" is the model for the "strands" table
 
+
+//OTP CREATE VERIFICATION
+
+        // Get credentials from .env 
+        $token = getenv("TWILIO_AUTH_TOKEN");
+        $twilio_sid = getenv("TWILIO_SID");
+        $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
+        $twilio = new Client($twilio_sid, $token);
+
+        $verification = $twilio->verify->v2->services($twilio_verify_sid)
+        ->verifications
+        ->create($validatedData['mobile_number'], "sms");
+        //->create($validatedData['verification_code'], array('to' => $validatedData['mobile_number'], "sms"));
+
+//END OF OTP CREATE VERIFICATION
+
         // $admission = Admission::create($validatedData);
         Admission::create([
             "users_id" => $user->id,
@@ -147,31 +158,45 @@ class AdmissionController extends Controller
             // Hash the password
         ]);
 
-        return redirect()->back()->with('success', 'Admission form submitted successfully');
+        return redirect()->route('verify')->with(['mobile_number' => $validatedData['mobile_number']]); //this is from otp.
+        //return redirect()->back()->with('success', 'Admission form submitted successfully');
     }
-    // Optionally, you can redirect to a success page or perform additional actions
 
-    /*       if ($response->successful()) {
-           // OTP sent successfully
-           // Save admission data to the database
-           // ...
-
-           return redirect()->back()->with('success', 'Admission form submitted successfully');
-       } else {
-           // Handle OTP sending failure
-           return redirect()->back()->with('error', 'Failed to send OTP. Please try again.');
-       }
-
-       } 
-   */
+// OTP VERIFY DATA
+    protected function verify(Request $request)
+    {
+        $validatedData = $request->validate([
+            'verification_code' => ['required', 'numeric'],
+            'mobile_number' => ['required', 'string'],
+        ]);
+        // Get credentials from .env
+        $token = getenv("TWILIO_AUTH_TOKEN");
+        $twilio_sid = getenv("TWILIO_SID");
+        $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
+        $twilio = new Client($twilio_sid, $token);
+        $verification = $twilio->verify->v2->services($twilio_verify_sid)
+            ->verificationChecks
+            ->create([
+                'to' => $validatedData['mobile_number'],
+                'code' => $validatedData['verification_code']
+            ]);
+        if ($verification->valid) {
+            $admission = tap(Admission::where('mobile_number', $validatedData['mobile_number']))->update(['isVerified' => true]);
+            // Authenticate user 
+            //User::login($admission->first());
+            return redirect()->route('index')->with(['success' => 'mobile number verified']);
+        }
+        return back()->with(['mobile_number' => $validatedData['mobile_number'], 'error' => 'Invalid verification code entered!']);
+    }
+//END OF OTP VERIFY DATA
 
 
     public function show(string $id)
     {
         // Fetch data for editing using a Model
         // $item = YourModelName::findOrFail($id);
-
         // or, fetch data for editing using query builder
+
         $item = DB::table('admission')->where('id', $id)->first();
 
         return view('/registrar/show', ['item' => $item]); //'show' in the code is the edit.blade.php.
@@ -190,13 +215,6 @@ class AdmissionController extends Controller
     }
 
 
-
-    public function edit($id)
-    {
-
-    }
-
-
     public function destroy($id)
     {
         $admission = Admission::find($id);
@@ -212,51 +230,51 @@ class AdmissionController extends Controller
         return redirect('/view-table');
     }
 
-    /* 
-          // Method to send OTP
-       public function sendOTP(Request $request)
-       {
-           $mobileNumber = $request->input('mobile_number');
+/*
+    //FOR SEMAPHORE.CO OTP VERIFICATION
+public function sendOTP(Request $request) {
+    try{
+        $phoneNumber = $request->input('mobile_number');
 
-           // Generate a random OTP (you can implement your own OTP generation logic)
-           $otp = rand(1000, 9999);
+        // Generate a random OTP
+        $otp = rand(1000, 9999);
 
-           // Send OTP using Semaphore.co API
-           $response = Http::post('https://api.semaphore.co/api/v4/otp', [
-               'api_key' => 'ba7fdf3b96f281f479dce941fbeddf1b',
-               'phone_number' => $mobileNumber,
-               'otp_code' => $otp,
-           ]);
+        // Save the OTP somewhere for later verification
+        session(['otp' => $otp]);
 
-           // Check if OTP was sent successfully and store the mobile number for verification
-           if ($response->successful()) {
-               return view('admissions.index', ['mobileNumber' => $mobileNumber]);
-           } else {
-               return back()->withErrors(['otp_send_error' => 'Failed to send OTP']);
-           }
-       }
+        // Send the OTP via Semaphore.co API
+        $apiKey = config('app.semaphore_api_key');
+        $url = "https://api.semaphore.co/api/v4/messages";
+        $client = new Client();
 
-       // Method to verify OTP
-       public function verifyOTP(Request $request)
-       {
-           $otp = $request->input('otp');
-           $mobileNumber = $request->input('mobile_number');
+        $response = $client->post($url, [
+            'headers' => [
+                'Authorization' => "Bearer $apiKey",
+                'Content-Type' => 'application/json',
+            ],
+            'json' => [
+                'phone' => $phoneNumber,
+                'message' => "Your OTP is: $otp",
+            ],
+        ]);
 
-           // Verify OTP using Semaphore.co API
-           $response = Http::post('https://api.semaphore.co/api/v4/otp', [
-               'api_key' => 'ba7fdf3b96f281f479dce941fbeddf1b',
-               'phone_number' => $mobileNumber,
-               'otp_code' => $otp,
-           ]);
+        return response()->json(['message' => 'OTP sent successfully']);
+    } catch (\Exception $e) {
+        Log::error('Error sending OTP: ' . $e->getMessage());
+        return response()->json(['message' => 'Failed to send OTP'], 500);
+    }
+}
 
-           // Check if OTP verification was successful
-           if ($response->successful()) {
-               // OTP is valid, continue with your application logic
-               return redirect()->route('your.success.route');
-           } else {
-               // Invalid OTP, display an error message
-               return back()->withErrors(['otp_verification_error' => 'Invalid OTP']);
-           }
-       }
-   */
+    public function verifyOTP(Request $request)
+    {
+        $userOTP = $request->input('otp');
+        $savedOTP = session('otp');
+
+        if ($userOTP == $savedOTP) {
+            return response()->json(['message' => 'OTP verified successfully']);
+        } else {
+            return response()->json(['message' => 'OTP verification failed'], 400);
+        }
+    }
+*/
 }

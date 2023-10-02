@@ -24,6 +24,9 @@ class Admission extends Model
         'city_municipality',
         'province',
         'mobile_number',
+
+        'isVerified',
+        
         'facebook',
         'junior_high',
         'year_graduated',
