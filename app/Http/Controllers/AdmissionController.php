@@ -178,7 +178,7 @@ class AdmissionController extends Controller
             ->verificationChecks
             ->create([
                 'to' => $validatedData['mobile_number'],
-                'code' => $validatedData['verification_code']
+                'code' => $validatedData['verification_code'],
             ]);
         if ($verification->valid) {
             $admission = tap(Admission::where('mobile_number', $validatedData['mobile_number']))->update(['isVerified' => true]);
