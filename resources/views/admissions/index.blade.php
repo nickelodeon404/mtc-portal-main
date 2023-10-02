@@ -13,13 +13,13 @@
             </div>
             <div class="col-lg-8 align-self-baseline">
                 <p class="text-white-75 mb-5"></p>
-                <a class="btn btn-primary btn-xl" href="#about">Proceed to admission</a>
+                <a class="btn btn-primary btn-xl" href="#admission">Proceed to admission</a>
             </div>
         </div>
     </div>
 </header>
 
-<!-- About-->
+<!-- Admission-->
 <section class="page-section" id="admission" style="background-color: #5c2c78a3; padding: 20px;">
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
