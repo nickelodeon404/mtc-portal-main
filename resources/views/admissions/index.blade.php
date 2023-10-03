@@ -20,7 +20,7 @@
 </header>
 
 <!-- Admission-->
-<section class="page-section" id="admission" style="background-color: #5c2c78a3; padding: 20px;">
+<section class="page-section" id="admission" style="background-color: #5c2c78c7; padding: 20px;">
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-lg-8">
