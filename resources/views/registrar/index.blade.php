@@ -13,7 +13,7 @@
 
         /* CSS to make headings bigger */
         .heading {
-            font-size: 22px; 
+            font-size: 20px; 
         }
     </style>
     <x-panel>
