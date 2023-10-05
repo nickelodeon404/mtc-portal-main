@@ -24,11 +24,6 @@
                                 <input type="text" id="address" name="address" class="form-control" required>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="birthday" class="form-label">Birthday:</label>
-                                <input type="date" id="birthday" name="birthday" class="form-control" required>
-                            </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">

@@ -18,6 +18,9 @@
                 <a class="nav-link" href="{{ url('/academic_record_request_table-table') }}">
                     Academic Record Request
                 </a>
+                <a class="nav-link" href="{{ url('/academic_record_request_table-table') }}">
+                    Manage Account
+                </a>
             </div>
         </div>
         <div class="sb-sidenav-footer">
