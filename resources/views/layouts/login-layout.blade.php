@@ -27,6 +27,7 @@
     <!-- Scripts -->
     {{-- @vite(['resources/js/app.js']) --}}
 
+
 </head>
 
 <body id="page-top">

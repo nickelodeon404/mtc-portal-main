@@ -3,29 +3,30 @@
 @section('content')
 
 <style>
-
     /* Custom styles for the footer */
     .footer-content {
-        text-align: right; 
+        text-align: right;
+    }
 
     .contact-heading {
-        text-align: right; 
-        margin-top: 0; 
+        text-align: right;
+        margin-top: 0;
     }
 
     .divider-primary {
-        background-color: #000000; 
-        height: 2px; 
-        margin: 1rem 0; 
+        background-color: #000000;
+        height: 2px;
+        margin: 1rem 0;
     }
 
     /* Custom style for the contact icon */
     .contact-icon {
-        font-size: 24px; 
-        vertical-align: middle; 
-        margin-right: 5px; 
-        color: #000000; 
+        font-size: 24px;
+        vertical-align: middle;
+        margin-right: 5px;
+        color: #000000;
     }
+
 </style>
 
 
@@ -39,14 +40,14 @@
                 </div>
                 <div class="col-lg-8 align-self-baseline">
                     <p class="text-white-75 mb-5">Stay Informed</p>
-                    <a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
+                    <a class="btn btn-primary btn-xl" href="#mtc">Find Out More</a>
                 </div>
             </div>
         </div>
     </header>
 
     <!-- MTC Group of Schools -->
-    <section class="page-section" style="background-color: #5c2c78;" id="">
+    <section class="page-section" style="background-color: #5c2c78;" id="mtc">
         <div class="container px-4 px-lg-5" style="">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-4 d-flex justify-content-center align-items-center">
@@ -179,15 +180,13 @@
     <!-- Footer -->
     <footer class="bg-light py-5">
         <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center small text-center text-muted" >
+            <div class="row gx-4 gx-lg-5 justify-content-end small text-end text-muted">
                 <div class="col-lg-8">
-                    <h1 class="contact-heading text-black mt-0">
+                    <h3 class="contact-heading text-black mt-0">
                         <span class="contact-icon">&#9990;</span> Contact us <!-- Unicode call icon -->
-                    </h1>
-                    <hr class="divider divider-primary" style="background-color: #000000;" />
-                    <p class="text-black mb-2 footer-content"><b>Mother Theresa Colegio de Iriga</b></p>
-                    <p class="text-black mb-2 footer-content">Brookside, San Roque, Iriga City</p>
-                    <p class="text-black mb-2 footer-content">Email: mtc.iriga@gmail.com</p>
+                    </h3>
+                    <p class="text-black mb-2 footer-content">Address: Brookside, San Roque, Iriga City</p>
+                    <p class="text-black mb-2 footer-content">Email: <a href="mailto:mtc.iriga@gmail.com">mtc.iriga@gmail.com</a></p>
                     <p class="text-black mb-2 footer-content">Contact numbers: 0946-340-3540 / 0946-879-3445</p>
                     <p class="text-black mb-2 footer-content">Phone: 05 433 16866</p>
                 </div>
