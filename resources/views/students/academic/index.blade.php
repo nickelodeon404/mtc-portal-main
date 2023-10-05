@@ -31,9 +31,7 @@
                 {!! csrf_field() !!}
                 <div class="mb-4">
                     <label for="student"><strong>Name:</strong></label>
-                    @foreach (\App\Models\Admission::all() as $admission) 
-                    <label for="student"><strong>&nbsp;{{$admission->first_name}} {{$admission->middle_name}} {{$admission->last_name}}</strong></label>
-                    @endforeach
+                    <label for="student"><strong>&nbsp;{{ Auth::user()->name }}</strong></label>
                 </div>
                 <div class="form-check mb-4">
                     <label for="document_type"><strong>Document Types:</strong></label><br>
