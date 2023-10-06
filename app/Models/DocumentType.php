@@ -11,5 +11,5 @@ class DocumentType extends Model
 
     protected $table = 'document_types';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'document_type'];
+    protected $fillable = ['student', 'document_type', 'purpose'];
 }

@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('document_types', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable(false);
+            $table->string('student')->nullable(false);
             $table->string('document_type')->nullable(false);
+            $table->string('purpose')->nullable(false);
             $table->timestamps();
         });
     }

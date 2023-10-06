@@ -67,8 +67,9 @@ class DocumentTypeController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required',
+            'student' => 'required',
             'document_type' => 'required|array',
+            'purpose' => 'required'
         ]);
 
         $ard = $validatedData['document_type']; //$ard means academic record documents
@@ -77,8 +78,9 @@ class DocumentTypeController extends Controller
         foreach ($ard as $ard) {
             // Create a new DocumentType instance and save it
             $documentType = new DocumentType();
-            $documentType->name = $validatedData['name'];
+            $documentType->student = $validatedData['student'];
             $documentType->document_type = $ard;
+            $documentType->purpose = $validatedData['purpose'];
             $documentType->save();
         }
 

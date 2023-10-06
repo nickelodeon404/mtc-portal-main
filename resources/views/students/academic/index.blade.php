@@ -30,8 +30,11 @@
                 <form action="{{ url('document_types') }}" method="POST">
                 {!! csrf_field() !!}
                 <div class="mb-4">
-                    <label for="student"><strong>Name:</strong></label>
-                    <label for="student"><strong>&nbsp;{{ Auth::user()->name }}</strong></label>
+                    @foreach (\App\Models\Admission::where('users_id', auth()->user()->id)->get() as $admission)
+                        <label for="student"><strong>Name:</strong>
+                            <input type="text" id="student" name="student" value="{{ $admission->first_name }} {{ $admission->last_name }}" style="font-weight: bold; border: none;" readonly>
+                        </label>
+                    @endforeach
                 </div>
                 <div class="form-check mb-4">
                     <label for="document_type"><strong>Document Types:</strong></label><br>
@@ -40,6 +43,10 @@
                             <input class="text" type="checkbox" name="document_type[]" id="document_type" value="{{ $ard->name }}">{{ $ard->name }}
                         </label><br>
                     @endforeach
+                </div>
+                <div class="mb-4">
+                    <label for="purpose" class="form-label"><b>Purpose:</b></label><br>
+                    <textarea rows="4" cols="50" name="purpose" id="purpose" placeholder="Write your purpose here!" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Send Request</button>
                 </form>         
