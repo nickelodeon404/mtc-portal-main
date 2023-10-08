@@ -3,6 +3,9 @@
         <x-logo />
         <div class="sb-sidenav-menu">
             <div class="nav">
+                <a class="nav-link" href="#">
+                    Dashboard
+                </a>
                 <a class="nav-link" href="/student">
                     Enrollment Form
                 </a>

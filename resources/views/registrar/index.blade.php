@@ -13,7 +13,12 @@
 
         /* CSS to make headings bigger */
         .heading {
-            font-size: 20px; 
+            font-size: 18px;
+        }
+
+        /* Icon Styles */
+        .icon {
+            margin-right: 10px;
         }
     </style>
     <x-panel>
@@ -27,7 +32,7 @@
                     <div class="col-xl-3 col-md-6">
                         <div class="card bg-dark text-white mb-4">
                             <div class="card-body">
-                                <span class="heading">Admissions</span>
+                                <span class="heading"><i class="fas fa-graduation-cap icon"></i>Admissions</span>
                                 <span class="badge bg-danger">{{ count($data ?? []) }}</span>
                             </div>
                         </div>
@@ -35,7 +40,7 @@
                     <div class="col-xl-3 col-md-6">
                         <div class="card bg-dark text-white mb-4">
                             <div class="card-body">
-                                <span class="heading">Academic Record Request</span>
+                                <span class="heading"><i class="fas fa-file-alt icon"></i>Academic Record Request</span>
                                 <span class="badge bg-danger">{{ count($reqDocument ?? []) }}</span>
                             </div>
                         </div>
@@ -43,13 +48,13 @@
                     <div class="col-xl-3 col-md-6">
                         <div class="card bg-dark text-white mb-4">
                             <div class="card-body">
-                                <span class="heading">Enrollment</span>
+                                <span class="heading"><i class="fas fa-user-graduate icon"></i>Enrollment</span>
                                 <span class="badge bg-danger">{{ count($enrollmentData ?? []) }}</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            
+
                 <!-- Centered Column for Bar Graph -->
                 <div class="col-md-6 offset-md-3">
                     <div class="card">
@@ -69,13 +74,15 @@
         <x-footer />
     </x-panel>
 
-    <!-- Include Chart.js -->
+    <!-- Include Font Awesome and Chart.js -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 
     <!-- JavaScript to create and populate the bar graph -->
     <script>
         var Grade11 = @json($G11);
         console.log(Grade11);
+        3
         const acronym = Grade11.map(item => item.acronym);
         const studentCount = Grade11.map(item => item.studentsCount);
         var Grade12 = @json($G12);

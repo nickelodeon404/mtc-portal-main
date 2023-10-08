@@ -5,14 +5,29 @@
 
     <x-panel>
         <main>
-            <div class="container-fluid px-4">
-                <h1 class="mt-4 text-center">Hello, Coach ______!</h1>
+            <div class="container mt-4">
+                <!-- Faculty Profile Section -->
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <img src="{{ asset('path/to/faculty/profile/image.jpg') }}" alt="Faculty Image" class="img-fluid rounded-circle mb-4" style="max-width: 200px;">
+                                <h1 class="mt-2">Hello, Coach ________</h1>
+                                <p class="text-muted">Department of Sports Science</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Faculty Profile Section -->
+
                 <!-- Event Calendar -->
-                <div class="col-xl-9 col-md-6 mx-auto">
-                    <div class="card">
-                        <div class="card-body event-calendar">
-                            <h2 class="text-center">Event Calendar</h2>
-                            <div id="calendar"></div>
+                <div class="row justify-content-center mt-4">
+                    <div class="col-md-10">
+                        <div class="card">
+                            <div class="card-body event-calendar">
+                                <h2 class="text-center">Event Calendar</h2>
+                                <div id="calendar"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -29,47 +44,36 @@
     <!-- Custom CSS for Event Calendar -->
     <style>
         .event-calendar {
-            background-color: #f1d7ff; /* background */
-            border: 1px solid #d4d9e3; /* border */
+            background-color: #f7f7f7;
             border-radius: 10px;
             padding: 20px;
         }
 
         .event-calendar h2 {
             font-size: 24px;
-            color: #333333; /* text color */
+            color: #333333;
             margin-bottom: 20px;
         }
 
         .fc-day {
-            background-color: #ffffff; /* background for day cells */
-            border: 1px solid #d4d9e3; /* border */
+            background-color: #ffffff;
+            border: 1px solid #d4d9e3;
             border-radius: 5px;
         }
 
         .fc-day:hover {
-            background-color: #fff0ff; /* background on hover */
+            background-color: #f0f0f0;
         }
 
         .fc-event {
-            background-color: #e0b0ff; /* background for events */
+            background-color: #3498db;
             border: none;
             border-radius: 5px;
-            color: #ffffff; /* White text color */
+            color: #ffffff;
         }
 
         .fc-event:hover {
-            background-color: #f1d7ff; /* hover */
-        }
-
-        /* Responsive Calendar Styles */
-        @media (max-width: 768px) {
-            .event-calendar {
-                padding: 10px;
-            }
-            .event-calendar h2 {
-                font-size: 20px;
-            }
+            background-color: #2b7cba;
         }
     </style>
 
@@ -78,11 +82,10 @@
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth', // You can change the view mode
-                editable: true, // Allow event creation and editing
-                selectable: true, // Allow selecting date range for new events
+                initialView: 'dayGridMonth',
+                editable: true,
+                selectable: true,
                 events: [
-                    // Here, you can dynamically fetch and display events from your database or data source
                     {
                         title: 'Event 1',
                         start: '2023-10-10',
@@ -95,16 +98,14 @@
                     },
                     // Add more events as needed
                 ],
-                // Custom styling
-                eventBackgroundColor: '#3498db', // Set event background color
-                eventTextColor: '#ffffff', // Set event text color to white
+                eventBackgroundColor: '#3498db',
+                eventTextColor: '#ffffff',
                 headerToolbar: {
                     left: 'prev,next today',
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
                 },
                 dateClick: function(info) {
-                    // Handle date click here to add a new event
                     var title = prompt('Event Title:');
                     if (title) {
                         calendar.addEvent({
