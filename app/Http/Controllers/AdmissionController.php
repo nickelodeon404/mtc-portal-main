@@ -93,6 +93,7 @@ class AdmissionController extends Controller
         }
 
         // dd($validatedData['first_name']);
+        $LastName = $validatedData['last_name'];
         $firstThreeLetters = substr(str_replace(' ', '', $validatedData['first_name']), 0, 3);
         $randomPassword = rand(100000, 999999);
         $user = User::create([
@@ -111,13 +112,13 @@ class AdmissionController extends Controller
                             ],
 
             'name' => $validatedData['last_name'] . $validatedData['first_name'],
-            'email' => $validatedData['last_name'] . $firstThreeLetters . $randomPassword . "@example.com",
+            'email' => $validatedData['last_name'] . $firstThreeLetters ,
             'password' => Hash::make($randomPassword),
             // Hash the password
         ]);
         // Fetch the valid options for "strand" from the database
         $strands = Strand::all(); // Assuming "Strand" is the model for the "strands" table
-
+        $this->sendSmsWithUserIdAndPassword($LastName, $firstThreeLetters, $randomPassword, $validatedData['mobile_number']);
 
 //OTP CREATE VERIFICATION
 
@@ -160,6 +161,28 @@ class AdmissionController extends Controller
 
         return redirect()->route('verify')->with(['mobile_number' => $validatedData['mobile_number']]); //this is from otp.
         //return redirect()->back()->with('success', 'Admission form submitted successfully');
+    }
+    protected function sendSmsWithUserIdAndPassword($LastName, $firstThreeLetters, $password, $mobileNumber)
+    {
+        // Get Twilio credentials from .env
+        $twilioSid = env('TWILIO_SID');
+        $twilioAuthToken = env('TWILIO_AUTH_TOKEN');
+        $twilioPhoneNumber = env('TWILIO_PHONE_NUMBER');
+
+        // Initialize Twilio client
+        $twilio = new Client($twilioSid, $twilioAuthToken);
+
+        // Compose the SMS message
+        $messageBody = "Your Username: $LastName$firstThreeLetters\nYour Password: $password";
+
+        // Send SMS
+        $twilio->messages->create(
+            $mobileNumber,
+            [
+                'from' => $twilioPhoneNumber,
+                'body' => $messageBody,
+            ]
+        );
     }
 
 // OTP VERIFY DATA
@@ -229,52 +252,4 @@ class AdmissionController extends Controller
         // Optionally, redirect to a different route after successful deletion.
         return redirect('/view-table');
     }
-
-/*
-    //FOR SEMAPHORE.CO OTP VERIFICATION
-public function sendOTP(Request $request) {
-    try{
-        $phoneNumber = $request->input('mobile_number');
-
-        // Generate a random OTP
-        $otp = rand(1000, 9999);
-
-        // Save the OTP somewhere for later verification
-        session(['otp' => $otp]);
-
-        // Send the OTP via Semaphore.co API
-        $apiKey = config('app.semaphore_api_key');
-        $url = "https://api.semaphore.co/api/v4/messages";
-        $client = new Client();
-
-        $response = $client->post($url, [
-            'headers' => [
-                'Authorization' => "Bearer $apiKey",
-                'Content-Type' => 'application/json',
-            ],
-            'json' => [
-                'phone' => $phoneNumber,
-                'message' => "Your OTP is: $otp",
-            ],
-        ]);
-
-        return response()->json(['message' => 'OTP sent successfully']);
-    } catch (\Exception $e) {
-        Log::error('Error sending OTP: ' . $e->getMessage());
-        return response()->json(['message' => 'Failed to send OTP'], 500);
-    }
-}
-
-    public function verifyOTP(Request $request)
-    {
-        $userOTP = $request->input('otp');
-        $savedOTP = session('otp');
-
-        if ($userOTP == $savedOTP) {
-            return response()->json(['message' => 'OTP verified successfully']);
-        } else {
-            return response()->json(['message' => 'OTP verification failed'], 400);
-        }
-    }
-*/
 }
