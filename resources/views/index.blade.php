@@ -51,7 +51,7 @@
         <div class="container px-4 px-lg-5" style="">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-4 d-flex justify-content-center align-items-center">
-                    <img src="/img/aboutt.jpg" alt="about" width="1200" height="700">
+                    <img src="/img/aboutt.jpg" alt="about" width="1520" height="900">
                 </div>
             </div>
         </div>    
@@ -63,119 +63,118 @@
             <div class="row gx-4 gx-lg-5 justify-content-start">
                 <div class="col-lg-8 text-start">
                     <!-- Title for the About section -->
-                    <h1 class="text-white mt-0">About the School</h1>
+                    <h1 class="text-white mt-0" style="font-size: 36px; font-weight: bold; text-transform: uppercase;">About the School</h1>
                     <hr class="divider divider-primary" style="background-color: #000000;" />
                     
                     <!-- Introduction paragraph about the school -->
-                    <p class="text-white mb-4 text-justify">
-                        <b>Mother Theresa Colegio Group of Schools</b> position itself as a forerunner in providing scholarship programs to the Filipino youth around the globe aiming to produce quality young innovators, making them the competitiveadvantage of the Philippine Nation.
+                    <p class="text-white mb-4 text-justify" style="font-size: 18px; line-height: 1.5; font-family: 'Arial', sans-serif;">
+                        <b>Mother Theresa Colegio Group of Schools</b> positions itself as a forerunner in providing scholarship programs to the Filipino youth around the globe, aiming to produce quality young innovators who will become the competitive advantage of the Philippine Nation.
                     </p>
-
+    
                     <!-- Additional paragraph about the school -->
-                    <p class="text-white mb-4 text-justify">.For more than 30 years of existence, Mother Theresa Colegio Group of Schools has maintained its stature of quality education and scholarship.
+                    <p class="text-white mb-4 text-justify" style="font-size: 18px; line-height: 1.5; font-family: 'Arial', sans-serif;">For more than 30 years of existence, Mother Theresa Colegio Group of Schools has maintained its stature of providing quality education and scholarship opportunities.
                     </p>
-
+    
                     <hr class="divider divider-primary" style="background-color: #000000;" />
                 </div>
-                <!--ILAGAY MO TONG IMAGE CODE SA BABA NG CLOSING TAG NA </div>-->
-            <!-- Image -->
-            <div class="col-lg-4" style="display: inline-block; vertical-align: top;">
-                <img src="/img/about_the_school.jpg" alt="about" width="530" height="350">
-            </div>
-            <!-- End of Image -->
-            </div>
-        </div>
-
-    </section>
-
-    <!-- Philosophy -->
-    <section class="page-section" style="background-color: #F1CC4A;" id="philosophy">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h1 class="text-white mt-0">Philosophy</h1>
-                    <hr class="divider divider-primary" style="background-color: #000000;" />
-                    <ul class="text-white mb-4 text-justify"> 
-                        <li>Christ-Centered: “God above all.”</li>
-                        <li>Champion: “Excellence is our Air.”</li>
-                        <li>Collaborative: “Competition is out, Collaboration is in.”</li>
-                        <li>Community: “WE is better than I.”</li>
-                        <li>Caring: “We are each other’s keeper.”</li>
-                        <li>Celebrated: “We cheered and celebrated one’s YOUniqueness.”</li>
-                        <li>Contemporary: “Innovate Always.”</li>
-                    </ul>
-                    <hr class="divider divider-primary" style="background-color: #000000;" />
+                <!-- Image -->
+                <div class="col-lg-4" style="display: inline-block; vertical-align: top;">
+                    <img src="/img/about_the_school.jpg" alt="about" width="500" height="300" style="border-radius: 10px; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);">
                 </div>
-                <!--DITO MAG LALAGAY NG IMAGE-->
-
-                <!--END-->
+                <!-- End of Image -->
             </div>
         </div>
     </section>
     
-    <!-- Vision -->
-    <section class="page-section" style="background-color: #5c2c78;" id="vision">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h1 class="text-white mt-0">Vision</h1>
-                    <hr class="divider divider-primary" style="background-color: #000000;" />
-                    <p class="text-white mb-4 text-justify">
-                        Mother Theresa Colegio Group of Schools is a platform for the development of students’ core gifts and a channel of serving others through discipleship, education and volunteerism.
-                    </p>
-                    <p class="text-white mb-4 text-justify">
-                        Mother Theresa Colegio Group of Schools envision to be the Top-of-the-mind scholarship institution in the Philippines, serving 100,000 scholars by the year 2050.
-                    </p>
-                    <hr class="divider divider-primary" style="background-color: #000000;" />
-                </div>
-                <!--DITO MAG LALAGAY NG IMAGE-->
-                
-                <!--END-->
+   <!-- Philosophy -->
+<section class="page-section" style="background-color: #F1CC4A;" id="philosophy">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h1 class="text-white mt-0" style="font-size: 36px; font-weight: bold;">Philosophy</h1>
+                <hr class="divider divider-primary" style="background-color: #000000;" />
+                <ul class="text-white mb-4 text-justify" style="font-size: 18px; line-height: 1.5;">
+                    <li>Christ-Centered: <strong>“God above all.”</strong></li>
+                    <li>Champion: <strong>“Excellence is our Air.”</strong></li>
+                    <li>Collaborative: <strong>“Competition is out, Collaboration is in.”</strong></li>
+                    <li>Community: <strong>“WE is better than I.”</strong></li>
+                    <li>Caring: <strong>“We are each other’s keeper.”</strong></li>
+                    <li>Celebrated: <strong>“We cheered and celebrated one’s YOUniqueness.”</strong></li>
+                    <li>Contemporary: <strong>“Innovate Always.”</strong></li>
+                </ul>
+                <hr class="divider divider-primary" style="background-color: #000000;" />
             </div>
-        </div>
-    </section>
+            <!--DITO MAG LALAGAY NG IMAGE-->
 
-    <!-- Mission -->
-    <section class="page-section" style="background-color: #F1CC4A;" id="mission">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h1 class="text-white mt-0">Mission</h1>
-                    <hr class="divider divider-primary" style="background-color: #000000;" />
-                    <p class="text-white mb-4 text-justify">
-                        Mother Theresa Colegio Group of Schools advocates passiondriven community, developing passionate, above-average students in their chosen crafts, allowing them to embrace their uniqueness and encourage them to strengthen their core as they bless the world with their gifts.
-                    </p>
-                    <hr class="divider divider-primary" style="background-color: #000000;" />
-                </div>
-                <!--DITO MAG LALAGAY NG IMAGE-->
-                
-                <!--END-->
-            </div>
+            <!--END-->
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Goals -->
-    <section class="page-section" style="background-color: #5c2c78;" id="goals">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h1 class="text-white mt-0">Goals</h1>
-                    <hr class="divider divider-primary" style="background-color: #000000;" />
-                    <ul class="text-white mb-4 text-justify"> 
-                        <li>Achieve peak performance in academic and non-academic pursuits.</li>
-                        <li>Encourage involvement of diversified learners in all undertakings.</li>
-                        <li>Highlight transparency and accountability of available education resources.</li>
-                        <li>Safeguard that the learning competencies are proactive to the demands of 21st Century.</li>
-                        <li>Enrollment to Employment of the students.</li>
-                    </ul>
-                    <hr class="divider divider-primary" style="background-color: #000000;" />
-                </div>
-                <!--DITO MAG LALAGAY NG IMAGE-->
-                
-                <!--END-->
+<!-- Vision -->
+<section class="page-section" style="background-color: #5c2c78;" id="vision">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h1 class="text-white mt-0" style="font-size: 36px; font-weight: bold;">Vision</h1>
+                <hr class="divider divider-primary" style="background-color: #000000;" />
+                <p class="text-white mb-4 text-justify" style="font-size: 18px; line-height: 1.5;">
+                    Mother Theresa Colegio Group of Schools is a platform for the development of students’ core gifts and a channel of serving others through discipleship, education, and volunteerism.
+                </p>
+                <p class="text-white mb-4 text-justify" style="font-size: 18px; line-height: 1.5;">
+                    Mother Theresa Colegio Group of Schools envisions to be the Top-of-the-mind scholarship institution in the Philippines, serving 100,000 scholars by the year 2050.
+                </p>
+                <hr class="divider divider-primary" style="background-color: #000000;" />
             </div>
+            <!--DITO MAG LALAGAY NG IMAGE-->
+
+            <!--END-->
         </div>
-    </section>
+    </div>
+</section>
+
+<!-- Mission -->
+<section class="page-section" style="background-color: #F1CC4A;" id="mission">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h1 class="text-white mt-0" style="font-size: 36px; font-weight: bold;">Mission</h1>
+                <hr class="divider divider-primary" style="background-color: #000000;" />
+                <p class="text-white mb-4 text-justify" style="font-size: 18px; line-height: 1.5;">
+                    Mother Theresa Colegio Group of Schools advocates passion-driven community, developing passionate, above-average students in their chosen crafts, allowing them to embrace their uniqueness and encourage them to strengthen their core as they bless the world with their gifts.
+                </p>
+                <hr class="divider divider-primary" style="background-color: #000000;" />
+            </div>
+            <!--DITO MAG LALAGAY NG IMAGE-->
+
+            <!--END-->
+        </div>
+    </div>
+</section>
+
+<!-- Goals -->
+<section class="page-section" style="background-color: #5c2c78;" id="goals">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h1 class="text-white mt-0" style="font-size: 36px; font-weight: bold;">Goals</h1>
+                <hr class="divider divider-primary" style="background-color: #000000;" />
+                <ul class="text-white mb-4 text-justify" style="font-size: 18px; line-height: 1.5;">
+                    <li>Achieve peak performance in academic and non-academic pursuits.</li>
+                    <li>Encourage involvement of diversified learners in all undertakings.</li>
+                    <li>Highlight transparency and accountability of available education resources.</li>
+                    <li>Safeguard that the learning competencies are proactive to the demands of the 21st Century.</li>
+                    <li>Enrollment to Employment of the students.</li>
+                </ul>
+                <hr class="divider divider-primary" style="background-color: #000000;" />
+            </div>
+            <!--DITO MAG LALAGAY NG IMAGE-->
+
+            <!--END-->
+        </div>
+    </div>
+</section>
+
 
     <!-- Footer -->
     <footer class="bg-light py-5">

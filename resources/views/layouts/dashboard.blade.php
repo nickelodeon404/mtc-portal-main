@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +11,6 @@
     <title>Mother Theresa Colegio De Iriga Inc.</title>
     <link href="css/admin.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-
 
     <style>
         .nav-link:hover {
@@ -35,14 +32,27 @@
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             @auth
-            
             <h5 class="d-flex align-items-center justify-content-center text-light ml-3 mb-0">{{auth()->user()->name }}</h5>
             @endauth
+            <!-- Notification Icon -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                <a class="nav-link dropdown-toggle" id="notificationDropdown" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-bell"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationDropdown">
+                    <li><a class="dropdown-item" href="#!">New Notification 1</a></li>
+                    <li><a class="dropdown-item" href="#!">New Notification 2</a></li>
+                    <li><a class="dropdown-item" href="#!">New Notification 3</a></li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" href="#!">View All Notifications</a></li>
+                </ul>
+            </li>
+            <!-- User Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                     <li><a class="dropdown-item" href="#!">Settings</a></li>
                     <li>
                         <hr class="dropdown-divider" />
@@ -54,6 +64,7 @@
                         </a></li>
                 </ul>
             </li>
+            <!-- Logout Form -->
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
             </form>

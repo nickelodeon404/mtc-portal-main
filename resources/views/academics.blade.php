@@ -63,7 +63,7 @@
         <div class="container px-4 px-lg-5" style="">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-4 d-flex justify-content-center align-items-center">
-                    <img src="/img/stem.jpg" alt="about" width="1200" height="700">
+                    <img src="/img/stem.jpg" alt="about" width="1550" height="1000">
                 </div>
             </div>
         </div>    
@@ -73,7 +73,7 @@
         <div class="container px-4 px-lg-5" style="">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-4 d-flex justify-content-center align-items-center">
-                    <img src="/img/humss.jpg" alt="about" width="1200" height="700">
+                    <img src="/img/humss.jpg" alt="about" width="1550" height="1000">
                 </div>
             </div>
         </div>    
@@ -83,7 +83,7 @@
         <div class="container px-4 px-lg-5" style="">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-4 d-flex justify-content-center align-items-center">
-                    <img src="/img/abm.jpg" alt="about" width="1200" height="700">
+                    <img src="/img/abm.jpg" alt="about" width="1550" height="1000">
                 </div>
             </div>
         </div>    
@@ -93,7 +93,7 @@
         <div class="container px-4 px-lg-5" style="">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-4 d-flex justify-content-center align-items-center">
-                    <img src="/img/gas.jpg" alt="about" width="1200" height="700">
+                    <img src="/img/gas.jpg" alt="about" width="1550" height="1000">
                 </div>
             </div>
         </div>    
@@ -103,7 +103,7 @@
         <div class="container px-4 px-lg-5" style="">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-4 d-flex justify-content-center align-items-center">
-                    <img src="/img/ad.jpg" alt="about" width="1200" height="700">
+                    <img src="/img/ad.jpg" alt="about" width="1550" height="1000">
                 </div>
             </div>
         </div>    
@@ -113,7 +113,7 @@
         <div class="container px-4 px-lg-5" style="">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-4 d-flex justify-content-center align-items-center">
-                    <img src="/img/he.jpg" alt="about" width="1200" height="700">
+                    <img src="/img/he.jpg" alt="about" width="1550" height="1000">
                 </div>
             </div>
         </div>    
@@ -123,7 +123,7 @@
         <div class="container px-4 px-lg-5" style="">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-4 d-flex justify-content-center align-items-center">
-                    <img src="/img/ict.jpg" alt="about" width="1200" height="700">
+                    <img src="/img/ict.jpg" alt="about" width="1550" height="1000">
                 </div>
             </div>
         </div>    

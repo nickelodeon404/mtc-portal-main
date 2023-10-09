@@ -44,7 +44,7 @@
     }
 
     .nav-item a.nav-link:hover {
-        background-color: #007bff;
+        background-color: #333;
         color: #fff;
     }
 
