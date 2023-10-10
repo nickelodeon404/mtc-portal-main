@@ -52,14 +52,14 @@
                 </div>
                 <div class="col-lg-8 align-self-baseline">
                     <p class="text-white-75 mb-5"></p>
-                    <a class="btn btn-primary btn-xl" href="#about">Click here for more info</a>
+                    <a class="btn btn-primary btn-xl" href="#stem">Click here for more info</a>
                 </div>
             </div>
         </div>
     </header>
     <!-- Strands -->
    
-    <section class="page-section" style="background-color: #5c2c78;" id="">
+    <section class="page-section" style="background-color: #5c2c78;" id="stem">
         <div class="container px-4 px-lg-5" style="">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-4 d-flex justify-content-center align-items-center">
