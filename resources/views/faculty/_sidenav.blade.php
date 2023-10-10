@@ -4,12 +4,12 @@
         <div class="sb-sidenav-menu" style="overflow-y: hidden;">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/faculty">
                         <i class="fas fa-tachometer-alt"></i> Dashboard
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/faculty">
+                    <a class="nav-link" href="/grade">
                         <i class="fas fa-book"></i> Grades
                     </a>
                 </li>
