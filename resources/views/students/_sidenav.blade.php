@@ -23,7 +23,7 @@
             <x-logo />
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/student">
                         <i class="fas fa-tachometer-alt"></i> Dashboard
                     </a>
                     <a class="nav-link" href="/student">
