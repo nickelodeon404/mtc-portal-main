@@ -40,8 +40,8 @@ Route::get('login', function () {
 })->middleware('auth');
 
 
-Route::get('student', function () {
-    return view('students.index');
+Route::get('dashboard', function () { //dashboard is a name that you can put into href"" it can be customize by the name you desired to use.. Its just like a variable name..
+    return view('students.index'); //location of the blade index.blade
 })->middleware('student');
 
 
