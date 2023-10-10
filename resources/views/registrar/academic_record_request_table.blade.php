@@ -36,6 +36,7 @@
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Requested Document/s</th>
+                                        <th>Purpose</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -43,8 +44,9 @@
                                     @foreach($reqDocument as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->student }}</td>
                                             <td>{{ $item->document_type }}</td>
+                                            <td>{{ $item->purpose }}</td>
 
                                             <td>
                                                 <!--<a href="{{ url('/show-table' . $item->id ) }}" title="Edit Admissions">
