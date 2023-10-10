@@ -39,11 +39,11 @@ Route::get('login', function () {
     return view('login');
 })->middleware('auth');
 
-/*
+
 Route::get('student', function () {
     return view('students.index');
 })->middleware('student');
-*/
+
 
 // Route::get('student', function () {
 //     return view('students.enrollment.index');
