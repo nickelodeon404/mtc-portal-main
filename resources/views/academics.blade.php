@@ -63,29 +63,18 @@
         <div class="container px-4 px-lg-5" style="">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-4 d-flex justify-content-center align-items-center">
-                    <img src="/img/STEMM.jpg" alt="about" width="900" height="500">
-                </div>
-            </div>
-        </div>    
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5">
-                <div class="col-lg-6 text-justify">
-                    <!-- Text content -->
-                    <h2 class="text-white mt-0">Why <b>STEM?</b></h2>
-                    <p class="text-white mb-4">
-                        If the career that you want to pursue is related to the Science and Mathematics field, then you must take STEM. This strand is quite challenging and at the same time enjoyable for you will be able to experience hands-on learning. This strand is for those who want to pursue Engineering, Medical Courses, AB Math, Information Technology, and the like.
-                    </p>
-                    <hr class="divider divider-primary"/>
+                    <img src="/img/STEMM.jpg" alt="about" width="1520" height="800">
                 </div>
             </div>
         </div>
-    </section>  
+    </section>
+    
     
     <section class="page-section" style="background-color: #f8d041;" id="">
         <div class="container px-4 px-lg-5" style="">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-4 d-flex justify-content-center align-items-center">
-                    <img src="/img/humss.jpg" alt="about" width="1550" height="1000">
+                    <img src="/img/HUMSSS.jpg" alt="about" width="1520" height="800">
                 </div>
             </div>
         </div>    
@@ -95,17 +84,7 @@
         <div class="container px-4 px-lg-5" style="">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-4 d-flex justify-content-center align-items-center">
-                    <img src="/img/abm.jpg" alt="about" width="1550" height="1000">
-                </div>
-            </div>
-        </div>    
-    </section>  
-
-    <section class="page-section" style="background-color: #f8d041;" id="">
-        <div class="container px-4 px-lg-5" style="">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-4 d-flex justify-content-center align-items-center">
-                    <img src="/img/gas.jpg" alt="about" width="1550" height="1000">
+                    <img src="/img/abm.jpg" alt="about" width="1520" height="800">
                 </div>
             </div>
         </div>    
@@ -115,17 +94,27 @@
         <div class="container px-4 px-lg-5" style="">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-4 d-flex justify-content-center align-items-center">
-                    <img src="/img/ad.jpg" alt="about" width="1550" height="1000">
+                    <img src="/img/GASS.jpg" alt="about" width="1520" height="800">
                 </div>
             </div>
         </div>    
     </section>  
 
-    <section class="page-section" style="background-color: #f8d041;" id="">
+    <section class="page-section" style="background-color: #5c2c78;" id="">
         <div class="container px-4 px-lg-5" style="">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-4 d-flex justify-content-center align-items-center">
-                    <img src="/img/he.jpg" alt="about" width="1550" height="1000">
+                    <img src="/img/ADD.jpg" alt="about" width="1520" height="800">
+                </div>
+            </div>
+        </div>    
+    </section>  
+
+    <section class="page-section" style="background-color: #5c2c78;" id="">
+        <div class="container px-4 px-lg-5" style="">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                    <img src="/img/HEE.jpg" alt="about" width="1520" height="800">
                 </div>
             </div>
         </div>    
@@ -135,7 +124,7 @@
         <div class="container px-4 px-lg-5" style="">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-4 d-flex justify-content-center align-items-center">
-                    <img src="/img/ict.jpg" alt="about" width="1550" height="1000">
+                    <img src="/img/ICTT.jpg" alt="about" width="1520" height="800">
                 </div>
             </div>
         </div>    
