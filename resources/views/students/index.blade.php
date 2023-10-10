@@ -5,7 +5,14 @@
     
  <x-panel>
         <main>
-            <div class="container-fluid px-4">
+            <div class="container-fluid px-4 mt-4">
+                
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <h1 class="mt-2 text-center">Welcome, ________!</h1>
+                    </div>
+                </div>                
+
                 <ol class="breadcrumb mt-4">
                     <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
@@ -32,7 +39,6 @@
                         </div>
                     </div>
                 </div>
-                    <h1>ANO PWEDE ILAGAY SA DASHBOARD NG STUDENT?</h1>
             </div>
         </main>
         <x-footer />
