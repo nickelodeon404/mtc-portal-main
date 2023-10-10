@@ -64,6 +64,12 @@ Route::get('faculty', function () {
     return view('faculty.index');
 })->middleware('faculty');
 
+//ROUTE FOR FACULTY GRADE
+Route::get('grade', function () {
+    return view('faculty.grade');
+})->middleware('faculty');
+//END
+
 Route::get('registrar', function () {
     return view('registrar.index');
 })->middleware('registrar');
