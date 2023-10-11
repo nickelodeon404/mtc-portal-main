@@ -12,7 +12,7 @@
                         <div class="card">
                             <div class="card-body text-center">
                                 <img src="{{ asset('path/to/faculty/profile/image.jpg') }}" alt="Faculty Image" class="img-fluid rounded-circle mb-4" style="max-width: 200px;">
-                                <h1 class="mt-2">Hello, Coach ________</h1>
+                                <h1 class="mt-2 text-center">Hello, Coach {{ Auth::user()->name }}!</h1>
                                 <p class="text-muted">Department of Sports Science</p>
                             </div>
                         </div>
