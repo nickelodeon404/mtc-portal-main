@@ -4,51 +4,39 @@
     @include('students._sidenav')
     <x-panel>
         <main>
-            <div class="container-fluid px-4">
-                <ol class="breadcrumb mt-4">
-                    <li class="breadcrumb-item active">Grades</li>
-                </ol>
-                <h1>Grades</h1>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Subject Name</th>
-                            <th>Quarter</th>
-                            <th>Grade</th>
-                            {{-- <th>Average</th> --}}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($grades as $grade)
-                        <tr>
+            <div class="container-fluid px-4 mt-4">
+                <h1 class="mb-4">Grades</h1>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Subject Name</th>
+                                <th>Quarter</th>
+                                <th>Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                             @php
-                                // echo $ave;
-                                    $ave = ($ave + $grade->grade) ;
+                                $totalAverage = 0;
+                            @endphp
+                            @foreach ($grades as $grade)
+                                <tr>
+                                    <td>{{$grade->name}}</td>
+                                    <td>{{$grade->quarter}}</td>
+                                    <td>{{$grade->grade}}</td>
+                                </tr>
+                                @php
+                                    $totalAverage += $grade->grade;
                                 @endphp
-                            <td>{{$grade->name}}</td>
-                            <td>{{$grade->quarter}}</td>
-                            <td>{{$grade->grade}}</td>
-                            {{-- <td>
-                                
-                            </td> --}}
-                        </tr>
-                        @endforeach
-                        <tr>
-                            <td>Total Average: </td>
-                            <td></td>
-                            <td>
-                                {{ $ave / count($grades)}}
-                                {{-- @php
-                                // echo $ave;
-                                    $ave = ($ave + $grade->grade) ;
-                                    if ($loop->index == count($grades)-1) {
-                                        echo $ave / count($grades);
-                                    }
-                                @endphp --}}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                            @endforeach
+                            <tr>
+                                <td><strong>Total Average:</strong></td>
+                                <td></td>
+                                <td><strong>{{ number_format($totalAverage / count($grades), 2) }}</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </main>
         <x-footer />

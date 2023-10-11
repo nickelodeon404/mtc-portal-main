@@ -40,24 +40,27 @@
                                         <th>Middle Name</th>
                                         <th>Last Name</th>
                                         <th>Extension</th>
+                                    {{--
                                         <th>Birthday</th>
                                         <th>Age</th>
-                                        <th>Mobile No.</th>
-                                        <th>Facebook</th>
-                                        <th>Region</th>
-                                        <th>Province</th>
                                         <th>Barangay</th>
                                         <th>City/Municipality</th>
-                                        <th>Status</th>
-                                        <th>Grade Level</th>
+                                        <th>Province</th>
+                                        <th>Mobile No.</th>
+                                        <th>Facebook Acc.</th>
                                         <th>Junior High</th>
+                                        <th>Year Graduated</th>
+                                        <th>Strand</th>
                                         <th>Graduation Type</th>
+                                        <th>PSA/Birth Certificate</th>
+                                        <<th>Form 138</th>
+                                    --}}
                                         <th>Action</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($enrolledData as $item)
+                                    @foreach($data as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->lrn }}</td>
@@ -66,19 +69,13 @@
                                             <td>{{ $item->middle_name }}</td>
                                             <td>{{ $item->last_name }}</td>
                                             <td>{{ $item->extension }}</td>
-                                            <td>{{ $item->birthday }}</td>
-                                            <td>{{ $item->age }}</td>
-                                            <td>{{ $item->mobile_number }}</td>
-                                            <td>{{ $item->facebook }}</td>
-                                            <td>{{ $item->region }}</td>
-                                            <td>{{ $item->province }}</td>
-                                            <td>{{ $item->barangay }}</td>
-                                            <td>{{ $item->city_municipality }}</td>
-                                            <td>{{ $item->status }}</td>
-                                            <td>{{ $item->grade_level }}</td>
-                                            <td>{{ $item->junior_high }}</td>
-                                            <td>{{ $item->graduation_type }}</td>
+                                            
                                             <td>
+                                                <a href="{{ url('/show-table' . $item->id ) }}" title="Show Admissions">
+                                                    <button class="btn btn-primary btn-sm">
+                                                        <i class="fa fa-eye" aria-hidden="true"></i> View
+                                                    </button>
+                                                </a>
 
                                             <form method="POST" action="{{ url('enrolled' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline"> <!--'enrolled is the table from databases'-->
                                                 {{ method_field('DELETE') }}
