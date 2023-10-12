@@ -7,6 +7,7 @@ use App\Http\Controllers\EnrolledController;
 use App\Http\Controllers\AdmissionController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\DocumentTypeController;
+use App\Http\Controllers\ManageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -108,6 +109,11 @@ Route::post('/enrollment/{id}/add-to-enrolled', [EnrollmentController::class, 'a
 
 Route::delete('/enrolled/{id}', [EnrolledController::class, 'destroy'])->name('enrolled.destroy');
 
+//Route for Manage Account
+Route::get('/registrar', [ManageController::class, 'index']);
+Route::get('/manage-table', [ManageController::class, 'view']);
+
+Route::delete('/enrollment/{id}', [EnrollmentController::class, 'destroy'])->name('users.destroy');
 
 //Route For record_requests table
 Route::post('/document_types', [DocumentTypeController::class, 'store'])->name('document_types.store'); //document_types is  the database table.

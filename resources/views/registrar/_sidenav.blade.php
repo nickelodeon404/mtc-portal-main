@@ -34,7 +34,7 @@
                     <a class="nav-link" href="{{ url('/academic_record_request_table-table') }}">
                         <i class="fas fa-file-alt"></i> Academic Record Request
                     </a>
-                    <a class="nav-link" href="{{ url('/manage-account') }}">
+                    <a class="nav-link" href="{{ url('/manage-table') }}">
                         <i class="fas fa-user-cog"></i> Manage Account
                     </a>
                 </div>
