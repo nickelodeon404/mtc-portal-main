@@ -97,4 +97,11 @@
         </main>
         <x-footer />
     </x-panel>
+
+    <style> 
+    /* Set background color for the entire page */
+    body {
+            background-color: #f0f0f0; /* Adjust the color as needed */
+        }
+    </style>
 @endsection

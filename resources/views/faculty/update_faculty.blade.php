@@ -14,7 +14,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="card">
-                                <div class="card-body d-flex flex-column justify-content-center" style="background-color: lavender;">
+                                <div class="card-body d-flex flex-column justify-content-center" style="background-color: rgb(206, 191, 243);">
                                     <h2 class="card-title text-center">Personal Information</h2>
                                     <form>
                                         @csrf
@@ -41,4 +41,11 @@
             </main>
             <x-footer />
         </x-panel>
+
+        <style> 
+            /* Set background color for the entire page */
+            body {
+                    background-color: #f0f0f0; /* Adjust the color as needed */
+                }
+            </style>
     @endsection

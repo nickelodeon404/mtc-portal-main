@@ -192,4 +192,5 @@
             </div>
         </div>
     </footer>
+    <!-- Footer -->
 @endsection

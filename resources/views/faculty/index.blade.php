@@ -11,9 +11,7 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="card-body text-center">
-                                <img src="{{ asset('path/to/faculty/profile/image.jpg') }}" alt="Faculty Image" class="img-fluid rounded-circle mb-4" style="max-width: 200px;">
                                 <h1 class="mt-2 text-center">Hello, Coach {{ Auth::user()->name }}!</h1>
-                                <p class="text-muted">Department of Sports Science</p>
                             </div>
                         </div>
                     </div>
@@ -43,6 +41,12 @@
 
     <!-- Custom CSS for Event Calendar -->
     <style>
+
+        /* Set background color for the entire page */
+        body {
+            background-color: #f0f0f0; /* Adjust the color as needed */
+        }
+
         .event-calendar {
             background-color: #f7f7f7;
             border-radius: 10px;
@@ -57,7 +61,7 @@
 
         .fc-day {
             background-color: #ffffff;
-            border: 1px solid #d4d9e3;
+            border: 1px solid #c3cee4;
             border-radius: 5px;
         }
 

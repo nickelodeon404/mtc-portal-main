@@ -126,4 +126,11 @@
         </main>
         <x-footer />
     </x-panel>
+
+    <style> 
+    body {
+             background-color: #fef6ff; /* Adjust the color as needed */
+             }
+             
+    </style>
 @endsection
