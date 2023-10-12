@@ -12,7 +12,7 @@
                             {!! csrf_field() !!}
                             <div class="row mb-3">
                                 <div class="col-md-3">
-                                    <label for="year">Year</label>
+                                    <label for="year"><b>Year</b></label>
                                     <select name="year" id="year" class="form-control">
                                         <option value="">Select a year level</option>
                                         <!-- Add your year options here -->
@@ -22,7 +22,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <label for="strand">Strand</label>
+                                    <label for="strand"><b>Strand</b></label>
                                     <select name="strand" id="strand" class="form-control">
                                         <option value="">Select a Strand</option>
                                         <!-- Add your strand options here -->
@@ -37,7 +37,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <label for="section">Section</label>
+                                    <label for="section"><b>Section</b></label>
                                     <select name="section" id="section" class="form-control">
                                         <option value="">Select a Section</option>
                                         <!-- Add your section options here -->
@@ -47,7 +47,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <label for="subject">Subject</label>
+                                    <label for="subject"><b>Subject</b></label>
                                     <select name="subject" id="subject" class="form-control">
                                         <option value="">Select a Subject</option>
                                         <!-- Add your subject options here -->

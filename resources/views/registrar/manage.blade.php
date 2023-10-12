@@ -40,7 +40,7 @@
         }
 
         .table-wider th {
-            background-color: #ae48dd;
+            background-color: #5c2c78;
             color: #fff;
         }
 

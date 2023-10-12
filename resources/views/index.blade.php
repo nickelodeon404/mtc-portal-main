@@ -27,6 +27,31 @@
         color: #000000;
     }
 
+    @keyframes pulse {
+        0% {
+            transform: scale(0.9);
+        }
+        50% {
+            transform: scale(1);
+        }
+        100% {
+            transform: scale(0.9);
+        }
+    }
+
+    /* Image Animation */
+    .animated-image {
+        animation: rotate 4s linear infinite;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
 </style>
 
 

@@ -15,9 +15,9 @@
             font-size: 15px;
             width: 55%;
             margin: 0 auto;
-            background-color: #e9deee; /* White background for the form */
+            background-color: #5c2c7848; /* White background for the form */
             padding: 20px;
-            border: 1px solid #ccc; /* Border to resemble paper */
+            border: 1px solid #5c2c7850; /* Border to resemble paper */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Paper shadow */
         }
 
@@ -37,7 +37,7 @@
         }
 
         .checkbox-inline {
-            margin-right: 15px;
+            margin-right: 20px;
             cursor: pointer;
         }
 

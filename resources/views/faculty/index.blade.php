@@ -48,7 +48,7 @@
         }
 
         .event-calendar {
-            background-color: #e3cce2;
+            background-color: #5c2c784e ;
             border-radius: 10px;
             padding: 20px;
         }

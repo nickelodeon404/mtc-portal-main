@@ -2,19 +2,38 @@
 @section('content')
     @include('registrar._sidenav')
     <style type="text/css">
+
         /* Set background color for the entire page */
         body {
             background-color: #f0f0f0; /* Adjust the color as needed */
         }
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
 
-        /* Improve overall layout and spacing */
+        a:hover {
+            color: #fff;
+        }
+
+        /* CSS to make headings bigger */
+        .heading {
+            font-size: 20px;
+        }
+
+        /* Icon Styles */
+        .icon {
+            margin-right: 10px;
+        }
+
+         /* Improve overall layout and spacing */
         .container {
             padding: 20px;
         }
 
         /* Style for breadcrumbs */
         .breadcrumb {
-            background-color: transparent;
+            background-color: #f0f0f0;
             margin: 0;
         }
 
@@ -28,13 +47,13 @@
             margin: 20px 0;
         }
 
-        /* Style for cards */
-        .card {
-            background-color: #fff; /* Card background color */
+         /* Style for cards */
+         .card {
+            background-color: 5c2c78; /* Card background color */
             border: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(138, 2, 153, 0.313);
             border-radius: 5px;
-            padding: 20px;
+            padding: 10px;
             margin: 5px; /* Increase the margin to make the cards larger */
         }
 
@@ -54,33 +73,32 @@
             height: 400px; /* Adjust the height as needed */
         }
     </style>
-
     <x-panel>
         <main>
-            <div class="container">
+            <div class="container-fluid px-4">
                 <ol class="breadcrumb mt-4">
-                    <li class="breadcrumb-item active">Mother Theresa Colegio de Iriga</li>
+                    <li class="breadcrumb-item active"><b>Mother Theresa Colegio de Iriga</b></li>
                 </ol>
-                <h1>Dashboard</h1>
+                <h1 class="mt-4"> Dashboard</h1>
                 <div class="row">
-                    <div class="col-xl-3 col-md-6 d-flex justify-content-center">
-                        <div class="card">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-dark text-white mb-4">
                             <div class="card-body">
                                 <span class="heading"><i class="fas fa-graduation-cap icon"></i>Admissions</span>
                                 <span class="badge bg-danger">{{ count($data ?? []) }}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-md-6 d-flex justify-content-center">
-                        <div class="card">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-dark text-white mb-4">
                             <div class="card-body">
                                 <span class="heading"><i class="fas fa-file-alt icon"></i>Academic Record Request</span>
                                 <span class="badge bg-danger">{{ count($reqDocument ?? []) }}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-md-6 d-flex justify-content-center">
-                        <div class="card">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-dark text-white mb-4">
                             <div class="card-body">
                                 <span class="heading"><i class="fas fa-user-graduate icon"></i>Enrollment</span>
                                 <span class="badge bg-danger">{{ count($enrollmentData ?? []) }}</span>
@@ -90,14 +108,15 @@
                 </div>
 
                 <!-- Centered Column for Bar Graph -->
-                <div class="col-md-6 offset-md-3 mt-4">
+                <div class="col-md-6 offset-md-3">
                     <div class="card">
-                            <div class="card-header">
-                                <b>MTC ENROLLED STUDENTS</b>
-                            </div>
+                        <div class="card-header">
+                            <b>MTC ENROLLED STUDENTS</b>
+                        </div>
                         <div class="card-body">
-                            <div style="display: flex; justify-content: center; align-items: center;">
-                                <canvas id="barGraph"></canvas>
+                            <!-- Center and size the chart -->
+                            <div style="display: flex; justify-content: center; align-items: center; height: 60vh;">
+                                <canvas id="barGraph" style="max-width: 800px; width: 100%;"></canvas>
                             </div>
                         </div>
                     </div>

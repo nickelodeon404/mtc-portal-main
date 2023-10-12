@@ -5,9 +5,9 @@
 
     <style type="text/css">
 
-body {
+        body {
              background-color: #f0f0f0; /* Adjust the color as needed */
-            }
+             }
         a {
             text-decoration: none;
             color: #fff;
@@ -40,7 +40,7 @@ body {
         }
 
         .table-wider th {
-            background-color: #ae48dd;
+            background-color: #5c2c78;
             color: #fff;
         }
 
