@@ -6,6 +6,8 @@
     <style>
         /* Set background image to resemble paper */
         body {
+            
+             background-color: #fef6ff; /* Adjust the color as needed */
             background-image: url('paper-background.jpg'); /* Replace 'paper-background.jpg' with your image path */
             background-repeat: repeat; /* Repeat the background image */
         }

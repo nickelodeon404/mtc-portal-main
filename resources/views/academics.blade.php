@@ -17,13 +17,53 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap"
         rel="stylesheet">
     <!-- SimpleLightbox plugin CSS-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        /* Add your custom styles here */
+
+        /* Background animation for the masthead */
+        .masthead {
+            background: linear-gradient(to bottom, #021e45 0%, #5c2c78 100%);
+            background-size: 100% 200%;
+            animation: gradientAnimation 10s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 100% 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        /* Style for the "Click here for more info" button */
+        .btn-primary {
+            background-color: #5c2c78;
+            border-color: #5c2c78;
+        }
+
+        .btn-primary:hover {
+            background-color: #f8d041;
+            border-color: ##f8d041;
+        }
+
+        /* Style for the sections with images */
+        .page-section {
+            padding: 100px 0;
+        }
+
+        /* Style for the footer */
+        .bg-light {
+            background-color: #f8d041;
+        }
+    </style>
 </head>
 
 <body id="page-top">
-    <!-- Navigation-->
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
         <div class="container px-4 px-lg-5">
             <!-- <a class="navbar-brand" href="#page-top">MTC</a> -->
@@ -42,7 +82,8 @@
             </div>
         </div>
     </nav>
-    <!-- Masthead-->
+
+    <!-- Masthead -->
     <header class="masthead">
         <div class="container px-4 px-lg-5 h-100">
             <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
@@ -57,6 +98,7 @@
             </div>
         </div>
     </header>
+
     <!-- Strands -->
    
     <section class="page-section" style="background-color: #5c2c78;" id="stem">
@@ -75,16 +117,6 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-4 d-flex justify-content-center align-items-center">
                     <img src="/img/HUMSSS.jpg" alt="about" width="1520" height="800">
-                </div>
-            </div>
-        </div>    
-    </section>  
-
-    <section class="page-section" style="background-color: #5c2c78;" id="">
-        <div class="container px-4 px-lg-5" style="">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-4 d-flex justify-content-center align-items-center">
-                    <img src="/img/abm.jpg" alt="about" width="1520" height="800">
                 </div>
             </div>
         </div>    
@@ -130,22 +162,23 @@
         </div>    
     </section>  
 
-    <!-- Footer-->
+    <!-- Footer -->
     <footer class="bg-light py-5">
         <div class="container px-4 px-lg-5">
             <div class="small text-center text-muted">Copyright &copy; 2023</div>
         </div>
     </footer>
-    <!-- Bootstrap core JS-->
+
+    <!-- Bootstrap core JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- SimpleLightbox plugin JS-->
+    <!-- SimpleLightbox plugin JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
-    <!-- Core theme JS-->
+    <!-- Core theme JS -->
     <script src="js/scripts.js"></script>
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
     <!-- * *                               SB Forms JS                               * *-->
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 

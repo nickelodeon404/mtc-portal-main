@@ -3,6 +3,16 @@
 @section('content')
 
 <style>
+
+    .btn-primary {
+       background-color: #5c2c78;
+       border-color: #5c2c78;
+        }
+
+    .btn-primary:hover {
+        background-color: #f8d041;
+        border-color: ##f8d041;
+        }
     /* Custom styles for the footer */
     .footer-content {
         text-align: right;
