@@ -1,3 +1,8 @@
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
 <div id="layoutSidenav_nav">
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <x-logo />
@@ -13,7 +18,7 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button" id="gradesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-book"></i> Grades
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="gradesDropdown">
+                        <div class="dropdown-menu" aria-labelledby="gradesDropdown" style="position: absolute; z-index: 1000;">
                             <a class="dropdown-item" href="#">Philosophy</a>
                             <a class="dropdown-item" href="#">Probability and Statistics</a>
                             <a class="dropdown-item" href="#">Personal Development</a>
@@ -23,7 +28,6 @@
                 </li>
             </ul>
         </div>
-        <div class="sb-sidenav-menu" style="align-self: end; margin-top: 400px; overflow-y: hidden;">
             <ul class="nav">
                 <li class="nav-item">
                     <a class="nav-link" href="update_faculty">
@@ -31,7 +35,6 @@
                     </a>
                 </li>
             </ul>
-        </div>
         <div class="sb-sidenav-footer">
             <div class="small">Logged in as:</div>
             <span class="user-name">{{ Auth::user()->name }}</span>
