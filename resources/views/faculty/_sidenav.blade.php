@@ -9,9 +9,17 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/grade">
-                        <i class="fas fa-book"></i> Grades
-                    </a>
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="gradesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-book"></i> Grades
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="gradesDropdown">
+                            <a class="dropdown-item" href="#">Philosophy</a>
+                            <a class="dropdown-item" href="#">Probability and Statistics</a>
+                            <a class="dropdown-item" href="#">Personal Development</a>
+                            <!-- Add more dropdown items as needed -->
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -30,6 +38,7 @@
         </div>
     </nav>
 </div>
+
 
 
 <style>

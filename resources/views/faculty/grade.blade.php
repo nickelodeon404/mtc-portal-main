@@ -47,14 +47,10 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <label for="subject"><b>Subject</b></label>
-                                    <select name="subject" id="subject" class="form-control">
-                                        <option value="">Select a Subject</option>
-                                        <!-- Add your subject options here -->
-                                        <option value="math">Math</option>
-                                        <option value="science">Science</option>
-                                        <!-- Add more options as needed -->
-                                    </select>
+                                    <!-- Add some margin and padding to align the button with the dropdown -->
+                                    <div style="margin-top: 20px;">
+                                        <button type="button" class="btn btn-primary btn-block">Okay</button>
+                                    </div>
                                 </div>
                             </div>
                             <table class="table">
@@ -80,11 +76,12 @@
                                         <td>
                                             <input type="text" name="remarks" class="form-control">
                                         </td>
+                                    </tr>
                                 </tbody>
                             </table>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Post</button>
                                     <a href="{{ url('/grade') }}" style="text-decoration: none;">
                                         <button type="button" class="btn btn-danger" style="margin-left: 20px;">Cancel</button>
                                     </a>
@@ -101,7 +98,7 @@
     <style> 
     /* Set background color for the entire page */
     body {
-            background-color: #f0f0f0; /* Adjust the color as needed */
-        }
+        background-color: #f0f0f0; /* Adjust the color as needed */
+    }
     </style>
 @endsection
