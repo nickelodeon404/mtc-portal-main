@@ -62,7 +62,7 @@
     <x-panel>
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Manage Accounts</h1>
+                <h1 class="mt-4">Manage User Accounts</h1>
                 <div class="row">
                     <div class="table-responsive mt-4">
                         <table class="table table-wider">
