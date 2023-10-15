@@ -7,7 +7,7 @@
 
         body {
              background-color: #f0f0f0; /* Adjust the color as needed */
-             }
+        }
         a {
             text-decoration: none;
             color: #fff;
@@ -62,58 +62,63 @@
     <x-panel>
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Manage User Accounts</h1>
                 <div class="row">
-                    <div class="table-responsive mt-4">
-                        <table class="table table-wider">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Role ID</th>
-                                    <th>Strand ID</th>
-                                    <th>Year Level</th>
-                                    <th>Username</th>
-                                    <th>Password</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($user as $item)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->role_id }}</td>
-                                        <td>{{ $item->strands_id }}</td>
-                                        <td>{{ $item->year_level }}</td>
-                                        <td>{{ $item->email }}</td>
-                                        <td>{{ $item->password }}</td>
-
-                                        <td>
-                                            <a href="{{ url('/show-table' . $item->id) }}" title="Show Admissions">
-                                                <button class="btn btn-primary btn-sm btn-action">
-                                                    <i class="fa fa-eye" aria-hidden="true"></i> View
-                                                </button>
-                                            </a>
-
-                                            <form method="POST" action="{{ url('users' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm btn-action" title="Delete Student" onclick="return confirm(&quot;Confirm delete?&quot;)">
-                                                    <i class="fa fa-trash" aria-hidden="true"></i> Delete
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                    <div class="col-12 d-flex justify-content-between">
+                        <h1 class="mt-4">Manage User Accounts</h1>
+                        <div>
+                            <a href="{{ url('/add-account') }}" class="btn btn-primary btn-action" style="margin-top: 30px;">
+                                Add Account
+                            </a>
+                        </div>
                     </div>
+                </div>
+                <div class="table-responsive mt-4">
+                    <table class="table table-wider">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Role ID</th>
+                                <th>Strand ID</th>
+                                <th>Year Level</th>
+                                <th>Username</th>
+                                <th>Password</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($user as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->role_id }}</td>
+                                    <td>{{ $item->strands_id }}</td>
+                                    <td>{{ $item->year_level }}</td>
+                                    <td>{{ $item->email }}</td>
+                                    <!-- To display asterisks for the password -->
+                                    <td>{{ str_repeat('*', strlen($item->password)) }}</td>
+                                    <td>
+                                        <a href="{{ url('/show-table' . $item->id) }}" title="Show Admissions">
+                                            <button class="btn btn-primary btn-sm btn-action">
+                                                <i class="fa fa-eye" aria-hidden="true"></i> View
+                                            </button>
+                                        </a>
+                                        <form method="POST" action="{{ url('users' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                            {{ method_field('DELETE') }}
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="btn btn-danger btn-sm btn-action" title="Delete Student" onclick="return confirm(&quot;Confirm delete?&quot;)">
+                                                <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </main>
         <x-footer />
     </x-panel>
 </section>
-
 @endsection
