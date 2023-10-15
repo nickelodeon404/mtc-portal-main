@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SubjectLoad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -37,6 +38,11 @@ class HomeController extends Controller
         } else {
             return redirect('/home');
         }
+    }
+    public function faculty(){
+        return view('faculty.index',[
+            'subjects' => SubjectLoad::where('faculties_id', '=', auth()->user()->id)->get(),
+        ]);
     }
 
 }

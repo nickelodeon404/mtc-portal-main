@@ -4,36 +4,43 @@
     @include('faculty._sidenav')
     <x-panel>
         <main>
+            <x-flash-message></x-flash-message>
             <div class="container-fluid px-4 mt-4">
-                <h1>Grading Sheet</h1>
+                <h1>Grading Sheet in {{ $actSubject->name }}</h1>
                 <div class="create-card mt-5">
                     <div class="card-body">
-                        <form action="{{ url('grade') }}" method="post">
-                            {!! csrf_field() !!}
+                        {{-- <form action="{{ url('grade') }}" method="post"> --}}
+                        {{-- {!! csrf_field() !!} --}}
+                        <form action="{{ route('faculty.grade.subject', ['subject' => $actSubject->id]) }}">
                             <div class="row mb-3">
+
                                 <div class="col-md-3">
-                                    <label for="year"><b>Year</b></label>
+                                    <label for="year" class="form-label"><b>Year</b></label>
                                     <select name="year" id="year" class="form-control">
-                                        <option disabled selected>Select a year level</option>
+                                        <option value="" selected>All</option>
                                         <!-- Add your year options here -->
-                                        <option value="2023">Grade 11</option>
-                                        <option value="2024">Grade 12</option>
+                                        <option value="11" {{ request('year') == 11 ? 'selected' : '' }}>Grade 11
+                                        </option>
+                                        <option value="12" {{ request('year') == 12 ? 'selected' : '' }}>Grade 12
+                                        </option>
                                         <!-- Add more options as needed -->
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                <label for="strand" class="form-label">* Preferred Strand</label>
-                                    <select class="form-select" name="strand" id="strand" required>
-                                        <option disabled selected>Select a Strand</option>
-                                            @foreach (\App\Models\Strand::all() as $strand) 
-                                                <option value="{{ $strand->acronym }}">{{ $strand->name }}</option>
-                                            @endforeach
+                                    <label for="strand" class="form-label">* Preferred Strand</label>
+                                    <select class="form-select" name="strand" id="strand">
+                                        <option value="" selected>All</option>
+                                        @foreach (\App\Models\Strand::all() as $strand)
+                                            <option value="{{ $strand->id }}"
+                                                {{ request('strand') == $strand->id ? 'selected' : '' }}>{{ $strand->name }}
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <label for="section"><b>Section</b></label>
+                                    <label for="section" class="form-label"><b>Section</b></label>
                                     <select name="section" id="section" class="form-control">
-                                        <option selected disabled>Select a Section</option>
+                                        <option value="" selected>All</option>
                                         <!-- Add your section options here -->
                                         <option value="sectionA">A</option>
                                         <option value="sectionB">B</option>
@@ -43,45 +50,75 @@
                                 <div class="col-md-3">
                                     <!-- Add some margin and padding to align the button with the dropdown -->
                                     <div style="margin-top: 20px;">
-                                        <button type="button" class="btn btn-primary btn-block">Okay</button>
+                                        <button type="submit" class="btn btn-primary btn-block mt-2"> <i
+                                                class="fa-solid fa-filter"></i> Filter Students</button>
                                     </div>
                                 </div>
+
                             </div>
+                        </form>
+                        <form action="{{route('faculty.grade.post')}}" method="POST">
+                            @csrf
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th>LRN or Student ID</th>
                                         <th>Name</th>
+                                        <th>Strand</th>
+                                        <th>Year</th>
+                                        <th>Section</th>
+
                                         <th>Final Grade</th>
                                         <th>Remarks</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <input type="text" name="lrn_or_student_id" class="form-control">
-                                        </td>
-                                        <td>
-                                            <input type="text" name="name" class="form-control">
-                                        </td>
-                                        <td>
-                                            <input type="text" name="final_grade" class="form-control">
-                                        </td>
-                                        <td>
-                                            <input type="text" name="remarks" class="form-control">
-                                        </td>
-                                    </tr>
+                                    @foreach ($students as $student)
+                                        <tr>
+                                            <td>
+                                                <input type="hidden" name="subjectLoads_id[]" value="{{$student->subjectLoad}}">
+                                                <input type="text" name="student_id[]" class="form-control" disabled
+                                                    readonly  value="{{ $student->id }}" </td>
+                                            <td>
+                                                <input type="text" name="name[]" class="form-control" disabled
+                                                    value="{{ $student->name }}" readonly >
+                                            </td>
+                                            <td>
+                                                <input type="text" name="strand[]" class="form-control" disabled
+                                                    value="{{ $student->strand }}" readonly >
+                                            </td>
+                                            <td>
+                                                <input type="text" name="year[]" class="form-control" disabled
+                                                    value="{{ $student->year_level }}" readonly > 
+                                            </td>
+                                            <td>
+                                                <input type="text" name="section[]" class="form-control" disabled
+                                                    value="{{ $student->section ?? 'Unknown' }}" readonly >
+                                            </td>
+                                            <td>
+                                                <input type="number" name="final_grade[]" onchange="updateRemarks(this)"
+                                                    class="form-control" value="{{old('final_grade')[$loop->index] ?? 75}}">
+                                            </td>
+                                            <td>
+                                                <input type="text" name="remarks[]" class="form-control" readonly >
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
                                 </tbody>
                             </table>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <button type="submit" class="btn btn-primary">Post</button>
+                            <div class="d-flex align-items-center justify-content-end">
+                                <div class="">
+                                    
                                     <a href="{{ url('/grade') }}" style="text-decoration: none;">
-                                        <button type="button" class="btn btn-danger" style="margin-left: 20px;">Cancel</button>
+                                        <button type="button" class="btn btn-danger"
+                                            style="margin-left: 20px;">Cancel</button>
                                     </a>
+                                    <button type="submit" class="btn btn-primary">Post</button>
                                 </div>
                             </div>
                         </form>
+                        {{-- </form> --}}
                     </div>
                 </div>
             </div>
@@ -89,10 +126,16 @@
         <x-footer />
     </x-panel>
 
-    <style> 
-    /* Set background color for the entire page */
-    body {
-        background-color: #f0f0f0; /* Adjust the color as needed */
-    }
+    <style>
+        /* Set background color for the entire page */
+        body {
+            background-color: #f0f0f0;
+            /* Adjust the color as needed */
+        }
     </style>
+    <script>
+        function updateRemarks(final_grade) {
+            console.log(final_grade.nextSibling;);
+        }
+    </script>
 @endsection

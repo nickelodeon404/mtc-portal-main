@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GradeController;
@@ -61,14 +62,12 @@ Route::get('academic', function () {
 
 Route::get('grades', [GradeController::class, 'studentGrade'])->middleware('student');
 
-Route::get('faculty', function () {
-    return view('faculty.index');
-})->middleware('faculty');
+Route::get('faculty',[HomeController::class, 'faculty'])->middleware('faculty');
 
 //ROUTE FOR FACULTY GRADE
-Route::get('grade', function () {
-    return view('faculty.grade');
-})->middleware('faculty');
+Route::get('grade', [GradeController::class, 'facultyGrading'])->middleware('faculty');
+Route::get('faculty/grade/subject/{subject}', [GradeController::class, 'facultyGrading'])->middleware('faculty')->name('faculty.grade.subject');
+Route::post('faculty/grade/post', [GradeController::class, 'postGrade'])->middleware('faculty')->name('faculty.grade.post');
 //END
 
 Route::get('registrar', function () {

@@ -19,10 +19,9 @@
                             <i class="fas fa-book"></i> Grades
                         </a>
                         <div class="dropdown-menu" aria-labelledby="gradesDropdown" style="position: absolute; z-index: 1000;">
-                            <a class="dropdown-item" href="/grade">Philosophy</a>
-                            <a class="dropdown-item" href="/grade">Probability and Statistics</a>
-                            <a class="dropdown-item" href="grade">Personal Development</a>
-                            <!-- Add more dropdown items as needed -->
+                            @foreach ($subjects as $subject)
+                                <a class="dropdown-item" href="{{route('faculty.grade.subject', ['subject' => $subject->subjects_id]) }}">{{$subject->subject->name}}</a>
+                            @endforeach
                         </div>
                     </div>
                 </li>

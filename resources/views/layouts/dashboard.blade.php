@@ -9,9 +9,9 @@
     <link rel="icon" type="image/x-icon" href="img/logo.png" />
     <meta name="author" content="" />
     <title>Mother Theresa Colegio De Iriga Inc.</title>
-    <link href="css/admin.css" rel="stylesheet" />
+    <link href="{{asset('css/admin.css')}}" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-
+    {{-- <script src="//unpkg.com/alpinejs" defer></script> --}}
     <style>
         .nav-link:hover {
             text-decoration: underline;
@@ -75,7 +75,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
-    <script src="js/admin.js"></script>
+    <script src="{{asset('js/admin.js')}}"></script>
 </body>
 
 </html>
