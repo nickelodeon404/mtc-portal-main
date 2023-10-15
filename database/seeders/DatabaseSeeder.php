@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Admission;
 use App\Models\Strand;
 use App\Models\User;
 use App\Models\Grade;
@@ -129,10 +130,10 @@ class DatabaseSeeder extends Seeder
     
         $student = User::factory()->create([
             'name' => 'default',
-            'email' => 'example@example.com',
+            'email' => 'default@example.com',
             'year_level' => '11',
             'strands_id' => $GAS->id,
-            'password' => Hash::make('do not login this account'),
+            'password' => Hash::make('111'),
             'role_id' => 3
         ]);
     /*
@@ -202,6 +203,25 @@ class DatabaseSeeder extends Seeder
             'grade' => '92',
             'quarter' => '1',
             'subjectLoads_id' => $sl4
+        ]);
+
+        Admission::factory()->create([
+            'users_id' => $student->id,
+            'lrn' => '19006581235',
+            'email' => 'default@example.com',
+            'first_name' => 'Student_first_name',
+            'middle_name' => 'Student_middle_name',
+            'last_name' => 'Student_last_name',
+            'birthday' => '2023-10-02',
+            'age' => '23',
+            'barangay' => 'Bagumbayan',
+            'city_municipality' => 'Baao',
+            'province' => 'Camarines Sur',
+            'mobile_number' => '09123456789',
+            'junior_high' => 'Baao National High School',
+            'year_graduated' => '2016',
+            'strand' => 'STEM',
+            'graduation_type' => 'public',
         ]);
 
     }

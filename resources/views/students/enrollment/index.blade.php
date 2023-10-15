@@ -17,7 +17,7 @@
                         {!! csrf_field() !!}
                         <div class="mb-3">
                             <label for="lrnInput" class="form-label">LRN (Learner Reference Number)</label>
-                            <input type="text" class="form-control" id="lrn" name="lrn" placeholder="Enter LRN" value="{{$admission->lrn}}" disabled>
+                            <input type="text" class="form-control" id="lrn" name="lrn" placeholder="Enter LRN" value="{{$admission->id}}" disabled>
                         </div>
                         <div class="row">
                             <div class="col-md-4 mb-3">
