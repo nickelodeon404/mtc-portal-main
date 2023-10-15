@@ -14,7 +14,7 @@
                                 <div class="col-md-3">
                                     <label for="year"><b>Year</b></label>
                                     <select name="year" id="year" class="form-control">
-                                        <option value="">Select a year level</option>
+                                        <option disabled selected>Select a year level</option>
                                         <!-- Add your year options here -->
                                         <option value="2023">Grade 11</option>
                                         <option value="2024">Grade 12</option>
@@ -22,24 +22,18 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <label for="strand"><b>Strand</b></label>
-                                    <select name="strand" id="strand" class="form-control">
-                                        <option value="">Select a Strand</option>
-                                        <!-- Add your strand options here -->
-                                        <option value="strand1">Accountancy, Business, and Management</option>
-                                        <option value="strand2">Arts and Design</option>
-                                        <option value="strand3">General Academic Strand</option>
-                                        <option value="strand4">Home Economics</option>
-                                        <option value="strand5">Humanities and Social Sciences</option>
-                                        <option value="strand6">Information and Communication Technology</option>
-                                        <option value="strand7">Science, Technology, Engineering, and Mathematics</option>
-                                        <!-- Add more options as needed -->
+                                <label for="strand" class="form-label">* Preferred Strand</label>
+                                    <select class="form-select" name="strand" id="strand" required>
+                                        <option disabled selected>Select a Strand</option>
+                                            @foreach (\App\Models\Strand::all() as $strand) 
+                                                <option value="{{ $strand->acronym }}">{{ $strand->name }}</option>
+                                            @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-3">
                                     <label for="section"><b>Section</b></label>
                                     <select name="section" id="section" class="form-control">
-                                        <option value="">Select a Section</option>
+                                        <option selected disabled>Select a Section</option>
                                         <!-- Add your section options here -->
                                         <option value="sectionA">A</option>
                                         <option value="sectionB">B</option>

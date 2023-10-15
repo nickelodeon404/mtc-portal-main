@@ -19,9 +19,9 @@
                             <i class="fas fa-book"></i> Grades
                         </a>
                         <div class="dropdown-menu" aria-labelledby="gradesDropdown" style="position: absolute; z-index: 1000;">
-                            <a class="dropdown-item" href="#">Philosophy</a>
-                            <a class="dropdown-item" href="#">Probability and Statistics</a>
-                            <a class="dropdown-item" href="#">Personal Development</a>
+                            <a class="dropdown-item" href="/grade">Philosophy</a>
+                            <a class="dropdown-item" href="/grade">Probability and Statistics</a>
+                            <a class="dropdown-item" href="grade">Personal Development</a>
                             <!-- Add more dropdown items as needed -->
                         </div>
                     </div>
