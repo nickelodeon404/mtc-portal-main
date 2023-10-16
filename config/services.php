@@ -32,7 +32,7 @@ return [
     ],
 
     'twilio' => [
-        'sid' => env('TWILIO_SID'),
+        'sid' => env('TWILIO_VERIFY_SID'),
         'token' => env('TWILIO_AUTH_TOKEN'),
         'verify' => env('TWILIO_VERIFY'),
         'from' => env('TWILIO_PHONE_NUMBER'),
