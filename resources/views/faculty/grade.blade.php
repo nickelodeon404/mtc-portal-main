@@ -97,7 +97,7 @@
                                             </td>
                                             <td>
                                                 <input type="number" name="final_grade[]" onchange="updateRemarks(this)"
-                                                    class="form-control" value="{{old('final_grade')[$loop->index] ?? 75}}">
+                                                    class="form-control" value="{{old('final_grade')[$loop->index] ?? ""}}" required   >
                                             </td>
                                             <td>
                                                 <input type="text" name="remarks[]" class="form-control" readonly >
