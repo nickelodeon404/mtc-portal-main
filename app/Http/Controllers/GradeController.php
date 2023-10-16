@@ -36,6 +36,7 @@ class GradeController extends Controller
             ->where('subjects.id', '=', $subject->id)
             ->where('subject_loads.faculties_id', '=', $facultyID)
             ->select('users.*', 'strands.acronym as strand', 'subject_loads.id as subjectLoad' );
+        
             
         if (request('year') ?? false) {
             $teacherload = $teacherload->where('users.year_level', '=', request('year'));
