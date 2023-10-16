@@ -98,7 +98,7 @@
                                             <td>
                                                 <input type="number" name="final_grade[]" onchange="updateRemarks(this)"
                                                     class="form-control" value="{{
-                                                   \App\Models\Grade::where('subjectLoads_id', $student->subjectLoad)->first()->grade ?? old('final_grade')[$loop->index] ?? ""}}"
+                                                    old('final_grade')[$loop->index] ?? \App\Models\Grade::where('subjectLoads_id', $student->subjectLoad)->first()->grade ?? ""}}"
                                                      required   >
                                             </td>
                                             <td>
