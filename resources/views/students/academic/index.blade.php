@@ -37,12 +37,14 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-
         .checkbox-inline {
-            margin-right: 20px;
-            cursor: pointer;
+        margin-right: 20px;
+        cursor: pointer; Add margin to create space below the checkbox label */
         }
 
+        .checkbox-inline input[type="checkbox"] {
+        transform: scale(1.5); /* Adjust the scale factor as needed to make the checkbox bigger */
+        }
         button {
             margin-top: 20px;
             padding: 10px 20px;
@@ -84,10 +86,12 @@
                             <label for="document_type"><strong>Document Types:</strong></label><br>
                             @foreach (\App\Models\AcademicRecordDocuments::all() as $ard)
                                 <label class="checkbox-inline">
-                                    <input class="text" type="checkbox" name="document_type[]" id="document_type" value="{{ $ard->name }}">{{ $ard->name }}
+                                    <input class="text" type="checkbox" name="document_type[]" id="document_type" value="{{ $ard->name }}"> &nbsp; {{ $ard->name }}
+                                    <!-- Added a space character (&nbsp;) before the name -->
                                 </label><br>
                             @endforeach
                         </div>
+                        
                         <div class="mb-4">
                             <label for="purpose" class="form-label"><b>Purpose:</b></label><br>
                             <textarea rows="4" cols="50" name="purpose" id="purpose" placeholder="Write your purpose here!" required></textarea>

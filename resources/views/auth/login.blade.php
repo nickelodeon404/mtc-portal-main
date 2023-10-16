@@ -79,8 +79,6 @@
                         </div>
                         <button type="submit" class="btn btn-dark glass-button mt-4">Login</button>
                     </form>
-                    <!-- Forgot Password link -->
-                    <a href="{{ route('password.request') }}" class="text-white mt-2">Forgot Password?</a>
                 </div>
             </div>
             <div class="col-12 mt-3">
