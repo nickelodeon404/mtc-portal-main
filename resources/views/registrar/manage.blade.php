@@ -57,6 +57,20 @@
             margin-right: 5px;
         }
 
+        /* Styling for the "Add Account" button */
+        .btn-add-account {
+            background-color: #2ecc71; /* Change the color as needed */
+            color: #fff;
+            font-size: 18px;
+            padding: 10px 20px; /* Adjust the padding to make the button bigger */
+            border: none;
+            border-radius: 5px; /* Rounded corners */
+        }
+        
+        .btn-add-account:hover {
+            background-color: #27ae60; /* Change the hover color */
+        }
+
     </style>
 
     <x-panel>
@@ -66,7 +80,7 @@
                     <div class="col-12 d-flex justify-content-between">
                         <h1 class="mt-4">Manage User Accounts</h1>
                         <div>
-                            <a href="{{ url('/add-account') }}" class="btn btn-primary btn-action" style="margin-top: 30px;">
+                            <a href="{{ url('/add-account') }}" class="btn btn-add-account" style="margin-top: 30px;">
                                 Add Account
                             </a>
                         </div>
@@ -81,8 +95,8 @@
                                 <th>Role ID</th>
                                 <th>Strand ID</th>
                                 <th>Year Level</th>
-                                <th>Username</th>
-                                <th>Password</th>
+                                <!-- <th>Username</th> -->
+                                <!-- <th>Password</th> -->
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -94,13 +108,18 @@
                                     <td>{{ $item->role_id }}</td>
                                     <td>{{ $item->strands_id }}</td>
                                     <td>{{ $item->year_level }}</td>
-                                    <td>{{ $item->email }}</td>
+                                    <!-- <td>{{ $item->email }}</td> -->
                                     <!-- To display asterisks for the password -->
-                                    <td>{{ str_repeat('*', strlen($item->password)) }}</td>
+                                    <!-- <td>{{ str_repeat('*', strlen($item->password)) }}</td> -->
                                     <td>
                                         <a href="{{ url('/show-table' . $item->id) }}" title="Show Admissions">
                                             <button class="btn btn-primary btn-sm btn-action">
                                                 <i class="fa fa-eye" aria-hidden="true"></i> View
+                                            </button>
+                                        </a>
+                                        <a href="{{ url('/update-account/' . $item->id) }}" title="Update Account">
+                                            <button class="btn btn-warning btn-sm btn-action">
+                                                <i class="fa fa-edit" aria-hidden="true"></i> Update
                                             </button>
                                         </a>
                                         <form method="POST" action="{{ url('users' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
