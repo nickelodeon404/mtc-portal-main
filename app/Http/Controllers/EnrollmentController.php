@@ -60,7 +60,7 @@ class EnrollmentController extends Controller
         return redirect()->back()->with('success', 'Success!! Your enrollment was submitted!!');
     }
 
-    public function show(string $id)
+    public function edit(string $id)
     {
         // Fetch data for editing using a Model
         // $item = YourModelName::findOrFail($id);
@@ -70,7 +70,7 @@ class EnrollmentController extends Controller
 
         return view('/registrar/update_enrollment_table', ['item' => $item]); //'show' in the code is the show.blade.php.
     }
-    public function viewData(string $id)
+    public function show(string $id)
     {
         // Fetch data for editing using a Model
         // $item = YourModelName::findOrFail($id);

@@ -97,8 +97,14 @@ Route::delete('/admission/{id}', [AdmissionController::class, 'destroy'])->name(
 //Route for Enrollment
 Route::get('/registrar', [EnrollmentController::class, 'index']);
 Route::get('/enrollment_table-table', [EnrollmentController::class, 'view']);
-Route::get('/show_enrollment{registrar}', [EnrollmentController::class, 'viewData'])->name('enrollmment.registrar.viewData');//view enrollment data
+Route::get('/show_enrollment{registrar}', [EnrollmentController::class, 'show'])->name('enrollmment.registrar.show');//view enrollment data
 Route::delete('/enrollment/{id}', [EnrollmentController::class, 'destroy'])->name('enrollment.destroy');
+/*Route for updating the student data in enrollment table*/
+Route::get('/enrollment{id}', [EnrollmentController::class, 'edit'])
+    ->name('enrollment.edit');
+
+Route::patch('/enrollment{id}', [EnrollmentController::class, 'update'])
+    ->name('enrollment.update');
 
 //Route for Enrolled
 Route::get('/registrar', [EnrolledController::class, 'index']);
@@ -119,12 +125,6 @@ Route::get('/registrar', [DocumentTypeController::class, 'index']);
 Route::get('/academic_record_request_table-table', [DocumentTypeController::class, 'view']);
 Route::delete('/document_types/{id}', [DocumentTypeController::class, 'destroy'])->name('document_types.destroy');
 
-/*Route for updating the student data in enrollment table*/
-Route::get('/enrollment{id}', [EnrollmentController::class, 'show'])
-    ->name('enrollment.show');
-
-Route::patch('/enrollment{id}', [EnrollmentController::class, 'update'])
-    ->name('enrollment.update');
 
 
 //ROUTE FOR OTP TWILIO
