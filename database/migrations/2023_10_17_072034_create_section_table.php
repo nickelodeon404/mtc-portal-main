@@ -13,17 +13,13 @@ return new class extends Migration
     {
         Schema::create('section', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('student_id');
-            $table->unsignedBigInteger('strand_id'); // Foreign key column
-            $table->unsignedBigInteger('grade_level'); // Define the grade level column as BIGINT
-
-            // Define the foreign key constraint
-            $table->foreign('student_id')->references('id')->on('enrolled');
-            $table->foreign('strand_id')->references('id')->on('strands');
-            $table->foreign('grade_level')->references('grade_level')->on('enrolled');
+            $table->foreignId('student_id')->constrained('enrolled', 'id')->onUpdate('cascade')->unsigned();
+            $table->foreignId('strand_id')->constrained('strands', 'id')->onUpdate('cascade');
+            $table->foreignId('grade_level')->constrained('enrolled', 'grade_level')->onUpdate('cascade');
             $table->timestamps();
         });
     }
+    
 
     /**
      * Reverse the migrations.
@@ -33,5 +29,3 @@ return new class extends Migration
         Schema::dropIfExists('section');
     }
 };
-
-

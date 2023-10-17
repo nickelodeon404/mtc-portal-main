@@ -30,11 +30,10 @@ return new class extends Migration
             $table->string('status')->nullable(false);
 
             // Create a foreign key column
-            $table->unsignedBigInteger('grade_level')->nullable();
-            $table->foreign('grade_level')
+            $table->foreignId('grade_level')
                   ->references('id')
                   ->on('enrolled')
-                  ->onDelete('set null');
+                  ->onUpdate('cascade');
 
             $table->string('junior_high')->nullable(false);
             $table->string('graduation_type')->nullable(false);
