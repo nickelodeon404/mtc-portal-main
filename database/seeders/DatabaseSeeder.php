@@ -62,7 +62,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('strands')->insert([
             'name' => 'Arts & Design',
-            'acronym' => 'Arts & Design'
+            'acronym' => 'ARTS & DESIGN'
         ]);
 
         //Data for academic_record_documents
@@ -222,6 +222,153 @@ class DatabaseSeeder extends Seeder
             'year_graduated' => '2016',
             'strand' => 'STEM',
             'graduation_type' => 'public',
+        ]);
+
+//SECTION A
+        DB::table('section')->insert([
+            'sec' => 'A',
+            'strand' => 'ABM',
+            'year' => 'Grade 11',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'A',
+            'strand' => 'HUMSS',
+            'year' => 'Grade 11',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'A',
+            'strand' => 'STEM',
+            'year' => 'Grade 11',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'A',
+            'strand' => 'STEM',
+            'year' => 'Grade 11',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'A',
+            'strand' => 'TVL-ICT',
+            'year' => 'Grade 11',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'A',
+            'strand' => 'TVL-HE',
+            'year' => 'Grade 11',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'A',
+            'strand' => 'ARTS & DESIGN',
+            'year' => 'Grade 11',
+        ]);
+//SECTION B
+        DB::table('section')->insert([
+            'sec' => 'B',
+            'strand' => 'ABM',
+            'year' => 'Grade 11',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'B',
+            'strand' => 'HUMSS',
+            'year' => 'Grade 11',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'B',
+            'strand' => 'STEM',
+            'year' => 'Grade 11',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'B',
+            'strand' => 'STEM',
+            'year' => 'Grade 11',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'B',
+            'strand' => 'TVL-ICT',
+            'year' => 'Grade 11',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'B',
+            'strand' => 'TVL-HE',
+            'year' => 'Grade 11',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'B',
+            'strand' => 'ARTS & DESIGN',
+            'year' => 'Grade 11',
+        ]);
+
+//SECTION A GRADE 12
+        DB::table('section')->insert([
+            'sec' => 'A',
+            'strand' => 'ABM',
+            'year' => 'Grade 12',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'A',
+            'strand' => 'HUMSS',
+            'year' => 'Grade 12',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'A',
+            'strand' => 'STEM',
+            'year' => 'Grade 12',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'A',
+            'strand' => 'STEM',
+            'year' => 'Grade 12',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'A',
+            'strand' => 'TVL-ICT',
+            'year' => 'Grade 12',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'A',
+            'strand' => 'TVL-HE',
+            'year' => 'Grade 12',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'A',
+            'strand' => 'ARTS & DESIGN',
+            'year' => 'Grade 12',
+        ]);
+
+//SECTION B GRADE 12
+        DB::table('section')->insert([
+            'sec' => 'B',
+            'strand' => 'ABM',
+            'year' => 'Grade 12',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'B',
+            'strand' => 'HUMSS',
+            'year' => 'Grade 12',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'B',
+            'strand' => 'STEM',
+            'year' => 'Grade 12',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'B',
+            'strand' => 'STEM',
+            'year' => 'Grade 12',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'B',
+            'strand' => 'TVL-ICT',
+            'year' => 'Grade 12',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'B',
+            'strand' => 'TVL-HE',
+            'year' => 'Grade 12',
+        ]);
+        DB::table('section')->insert([
+            'sec' => 'B',
+            'strand' => 'ARTS & DESIGN',
+            'year' => 'Grade 12',
         ]);
 
     }
