@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\AcademicRecordDocuments;
 use App\Models\DocumentType; // Make sure to import the RecordRequest model
+//use App\Models\Admission; //NEWLY ADD
+use Illuminate\Support\Facades\Http;
+//use Twilio\Rest\Client; //NEWLY ADDED
 
 class DocumentTypeController extends Controller
 {
@@ -71,6 +74,12 @@ class DocumentTypeController extends Controller
             'document_type' => 'required|array',
             'purpose' => 'required'
         ]);
+        //NEWLY ADDED
+      /*  Admission::create([
+            "mobile_number" => $validatedData['mobile_number'],
+        ]);
+        */
+        //END OF NEWLY ADDED
 
         $ard = $validatedData['document_type']; //$ard means academic record documents
 
@@ -82,11 +91,39 @@ class DocumentTypeController extends Controller
             $documentType->document_type = $ard;
             $documentType->purpose = $validatedData['purpose'];
             $documentType->save();
+
+            //$this->sendSmsAcademicRecordRequest($ard, $validatedData['mobile_number']);//NEWLY ADD
         }
 
         return redirect()->back()->with('success', 'Success!! Your request was submitted!!');
     }
+//NEWLY ADDED
+/*
+    protected function sendSmsAcademicRecordRequest($ard)
+    {
+        
+        // Get Twilio credentials from .env
+        $twilioSid = env('TWILIO_SID');
+        $twilioAuthToken = env('TWILIO_AUTH_TOKEN');
+        $twilioPhoneNumber = env('TWILIO_PHONE_NUMBER');
 
+        // Initialize Twilio client
+        $twilio = new Client($twilioSid, $twilioAuthToken);
+
+        // Compose the SMS message
+        $messageBody = "Your Requested Document: $ARD \nYou can claim this on or before";
+
+        // Send SMS
+        $twilio->messages->create(
+            $mobileNumber,
+            [
+                'from' => $twilioPhoneNumber,
+                'body' => $messageBody,
+            ]
+        );
+    }
+    */
+//END OF NEWLY ADDED
     public function destroy($id)
     {
         $ard = DocumentType::find($id);

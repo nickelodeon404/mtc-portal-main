@@ -17,6 +17,8 @@ class EnrolledController extends Controller
 
         $enrolledData = DB::table('enrolled')->orderBy('grade_level')->get();
 
+        $enrolledData = Enrolled::paginate(10); // 10 is the number of items per page
+
         return view('registrar.index', ['data' => $data, 'enrollmentData' => $enrollmentData, 'enrolledData' => $enrolledData]);
 
     }

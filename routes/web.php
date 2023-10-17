@@ -130,9 +130,9 @@ Route::patch('/enrollment{id}', [EnrollmentController::class, 'update'])
 
 //ROUTE FOR OTP TWILIO
 
-//Route::post('/', function () {
-//    return view('admissions.index');
-//})->name('index');
+Route::post('/', function () {
+   return view('admissions.index');
+})->name('index');
 
 Route::get('/verify', function () {
    return view('admissions.verify');

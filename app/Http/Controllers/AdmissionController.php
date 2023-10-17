@@ -42,6 +42,7 @@ class AdmissionController extends Controller
             'enrolledData' => $enrolledData,
             'users' => $Users,
         ])->with('Admission', $Admission);
+
     }
 
 
