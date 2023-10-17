@@ -11,11 +11,11 @@
     <x-panel>
         <main>
             <div class="container-fluid px-4">
-                @if(session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                 <h1 class="mt-4">Enrollment Form</h1>
                 <p><span style="color: red;">* required fields</span></p>
                 <div class="container">
@@ -23,11 +23,16 @@
                         {!! csrf_field() !!}
                         <div class="mb-3">
                             <label for="lrnInput" class="form-label">LRN (Learner Reference Number)</label>
+<<<<<<< Updated upstream
                             <input type="text" class="form-control" id="lrn" name="lrn" placeholder="Enter LRN" value="{{$admission->lrn}}" style="background-color: #CDCDCD;" style="background-color: #CDCDCD;" readonly>
+=======
+                            <input type="text" class="form-control" id="lrn" name="lrn" placeholder="Enter LRN" value="{{$admission->lrn}}" readonly>
+>>>>>>> Stashed changes
                         </div>
                         <div class="row">
                             <div class="col-md-4 mb-3">
                                 <label for="firstNameInput" class="form-label">First Name</label>
+<<<<<<< Updated upstream
                                 <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name" value="{{$admission->first_name}}" style="background-color: #CDCDCD;" readonly>
                             </div>
                             <div class="col-md-4 mb-3">
@@ -37,94 +42,157 @@
                             <div class="col-md-4 mb-3">
                                 <label for="lastNameInput" class="form-label">Last Name</label>
                                 <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name" value="{{$admission->last_name}}" style="background-color: #CDCDCD;" readonly>
+=======
+                                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name" value="{{$admission->first_name}}" readonly>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="middleNameInput" class="form-label">Middle Name</label>
+                                <input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="Enter Middle Name" value="{{$admission->middle_name}}" readonly>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="lastNameInput" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name" value="{{$admission->last_name}}" readonly>
+>>>>>>> Stashed changes
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="extensionInput" class="form-label">Extension Name</label>
+<<<<<<< Updated upstream
                             <input type="text" class="form-control" id="extension" name="extension" placeholder="Enter Extension Name" value="{{$admission->extension}}" style="background-color: #CDCDCD;" readonly>
+=======
+                            <input type="text" class="form-control" id="extension" name="extension" placeholder="Enter Extension Name" value="{{$admission->extension}}" readonly>
+>>>>>>> Stashed changes
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="birthdayInput" class="form-label">Birthday</label>
+<<<<<<< Updated upstream
                                 <input type="date" class="form-control" id="birthday" name="birthday" value="{{$admission->birthday}}" style="background-color: #CDCDCD;" readonly>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="ageInput" class="form-label">Age</label>
                                 <input type="number" class="form-control" id="age" name="age" placeholder="Enter Age" value="{{$admission->age}}" style="background-color: #CDCDCD;" readonly>
+=======
+                                <input type="date" class="form-control" id="birthday" name="birthday" value="{{$admission->birthday}}" readonly>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="ageInput" class="form-label">Age</label>
+                                <input type="number" class="form-control" id="age" name="age" placeholder="Enter Age" value="{{$admission->age}}" readonly>
+>>>>>>> Stashed changes
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="mobileInput" class="form-label">Mobile Number</label>
+<<<<<<< Updated upstream
                                 <input type="tel" class="form-control" id="mobile_number" name="mobile_number" placeholder="Enter Mobile Number" value="{{$admission->mobile_number}}" style="background-color: #CDCDCD;" readonly>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="emailInput" class="form-label">Email Address</label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Address" value="{{$admission->email}}" style="background-color: #CDCDCD;" readonly>
+=======
+                                <input type="tel" class="form-control" id="mobile_number" name="mobile_number" placeholder="Enter Mobile Number" value="{{$admission->mobile_number}}" readonly>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="emailInput" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Address" value="{{$admission->email}}" readonly>
+>>>>>>> Stashed changes
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="facebookInput" class="form-label">Facebook Account</label>
+<<<<<<< Updated upstream
                                 <input type="text" class="form-control" id="facebook" name="facebook" placeholder="Enter Facebook Account" value="{{$admission->facebook}}" style="background-color: #CDCDCD;" readonly>
+=======
+                                <input type="text" class="form-control" id="facebook" name="facebook" placeholder="Enter Facebook Account" value="{{$admission->facebook}}" readonly>
+>>>>>>> Stashed changes
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="regionInput" class="form-label"> <b> <span style="color: red;">*</span></b> Region</label>
+                                <label for="regionInput" class="form-label"><b> <span style="color: red;">*</span> Region</b></label>
                                 <input type="text" class="form-control" id="region" name="region" placeholder="Enter Region" value="{{$admission->region}}" required>
+                            <div class="invalid-feedback">
+                                Reqion is required.
+                            </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="provinceInput" class="form-label">Province</label>
+<<<<<<< Updated upstream
                                 <input type="text" class="form-control" id="province" name="province" placeholder="Enter Province" value="{{$admission->province}}" style="background-color: #CDCDCD;" readonly>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="barangayInput" class="form-label">Barangay</label>
                                 <input type="text" class="form-control" id="barangay" name="barangay" placeholder="Enter Barangay" value="{{$admission->barangay}}" style="background-color: #CDCDCD;" readonly>
+=======
+                                <input type="text" class="form-control" id="province" name="province" placeholder="Enter Province" value="{{$admission->province}}" readonly>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="barangayInput" class="form-label">Barangay</label>
+                                <input type="text" class="form-control" id="barangay" name="barangay" placeholder="Enter Barangay" value="{{$admission->barangay}}" readonly>
+>>>>>>> Stashed changes
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="cityInput" class="form-label">City/Municipality</label>
+<<<<<<< Updated upstream
                                 <input type="text" class="form-control" id="city_municipality" name="city_municipality" placeholder="Enter City/Municipality" value="{{$admission->city_municipality}}" style="background-color: #CDCDCD;" readonly>
+=======
+                                <input type="text" class="form-control" id="city_municipality" name="city_municipality" placeholder="Enter City/Municipality" value="{{$admission->city_municipality}}" readonly>
+>>>>>>> Stashed changes
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="statusSelect" class="form-label"><b> <span style="color: red;">*</span></b>Status</label>
+                                <label for="statusSelect" class="form-label"><b> <span style="color: red;">*</span> Status</b></label>
                                 <select class="form-select" id="status" name="status" required>
-                                    <option value="" selected>Select One</option>
+                                    <option >Select One</option>
                                     <option>New Student</option>
                                     <option>Transfer Student</option>
                                     <option>Returning Student</option>
                                 </select>
+                                <div class="invalid-feedback" id="statusFeedback">
+                                    Status is required.
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="gradeSelect" class="form-label"><b> <span style="color: red;">*</span></b>Grade Level to Enroll</label>
+                                <label for="gradeSelect" class="form-label"><b> <span style="color: red;">*</span> Grade Level to Enroll </b></label>
                                 <select class="form-select" id="grade_level" name="grade_level" required>
-                                    <option value="" selected>Select One</option>
+                                    <option disabled selected>Select One</option>
                                     <option>Grade 11</option>
                                     <option>Grade 12</option>
                                     <!-- Add more grade levels as needed -->
                                 </select>
+                                <div class="invalid-feedback">
+                                    Grade level is required.
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="lastSchool" class="form-label">Last School Attended</label>
                                     <input type="text" class="form-control" id="junior_high" name="junior_high"
+<<<<<<< Updated upstream
                                         placeholder="Last School Attended" value="{{$admission->junior_high}}" style="background-color: #CDCDCD;" readonly>
+=======
+                                        placeholder="Last School Attended" value="{{$admission->junior_high}}" readonly>
+>>>>>>> Stashed changes
                                 </div>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="graduationType" class="form-label"><b> <span style="color: red;">*</span></b>Are you a:</label>
-                            <select class="form-select" id="graduation_type" name="graduation_type" required>
-                                <option value="" selected>Select an option</option>
-                                <option value="Public Completer" {{$admission->graduation_type == "Public Completer" ? "selected" : ""}}>Public Completer</option>
-                                <option value="Private Completer" {{$admission->lrn == "Private Completer" ? "selected" : ""}}>Private Completer</option>
-                                <option value="ALS Graduate" {{$admission->lrn == "ALS Graduate" ? "selected" : ""}}>ALS Graduate</option>
-                            </select>
-                        </div>
+                            <label for="graduationType" class="form-label"><b> <span style="color: red;">*</span> Are you a:</b></label>
+                                <select class="form-select" id="graduation_type" name="graduation_type" required>
+                                    <option disabled selected>Select an option</option>
+                                    <option value="Public Completer" {{$admission->graduation_type == "Public Completer" ? "selected" : ""}}>Public Completer</option>
+                                    <option value="Private Completer" {{$admission->lrn == "Private Completer" ? "selected" : ""}}>Private Completer</option>
+                                    <option value="ALS Graduate" {{$admission->lrn == "ALS Graduate" ? "selected" : ""}}>ALS Graduate</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select an option.
+                                </div>
+                            </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
@@ -132,4 +200,8 @@
         </main>
         <x-footer />
     </x-panel>
+<<<<<<< Updated upstream
 @endsection
+=======
+@endsection
+>>>>>>> Stashed changes

@@ -105,9 +105,9 @@
                                                 </button>
                                             </form>
 
-                                            <a href="{{ url('/enrollment' . $item->id) }}" title="Edit">
+                                            <a href="{{ url('/enrollment' . $item->id) }}" title="Update">
                                                 <button class="btn btn-info btn-sm btn-action">
-                                                    <i class="fa fa-pencil" aria-hidden="true"></i> Edit
+                                                    <i class="fa fa-pencil" aria-hidden="true"></i> Update
                                                 </button>
                                             </a>
 
