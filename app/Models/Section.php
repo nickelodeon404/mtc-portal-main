@@ -13,15 +13,16 @@ class Section extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'student_id',
         'strand_id',
         'grade_level',
     ];
 
-    public function student()
+/* 
+   public function student()
     {
         return $this->belongsTo(Enrolled::class, 'student_id');
     }
+*/
 
     public function strand()
     {
