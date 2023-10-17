@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\AcademicRecordDocuments;
 use App\Models\DocumentType; // Make sure to import the RecordRequest model
-//use App\Models\Admission; //NEWLY ADD
+use App\Models\Admission; //NEWLY ADD
 use Illuminate\Support\Facades\Http;
-//use Twilio\Rest\Client; //NEWLY ADDED
+use Twilio\Rest\Client; //NEWLY ADDED
 
 class DocumentTypeController extends Controller
 {
@@ -75,10 +75,10 @@ class DocumentTypeController extends Controller
             'purpose' => 'required'
         ]);
         //NEWLY ADDED
-      /*  Admission::create([
+        Admission::create([
             "mobile_number" => $validatedData['mobile_number'],
         ]);
-        */
+        
         //END OF NEWLY ADDED
 
         $ard = $validatedData['document_type']; //$ard means academic record documents
@@ -92,13 +92,13 @@ class DocumentTypeController extends Controller
             $documentType->purpose = $validatedData['purpose'];
             $documentType->save();
 
-            //$this->sendSmsAcademicRecordRequest($ard, $validatedData['mobile_number']);//NEWLY ADD
+            $this->sendSmsAcademicRecordRequest($ard, $validatedData['mobile_number']);//NEWLY ADD
         }
 
         return redirect()->back()->with('success', 'Success!! Your request was submitted!!');
     }
 //NEWLY ADDED
-/*
+
     protected function sendSmsAcademicRecordRequest($ard)
     {
         
@@ -122,7 +122,7 @@ class DocumentTypeController extends Controller
             ]
         );
     }
-    */
+
 //END OF NEWLY ADDED
     public function destroy($id)
     {

@@ -33,6 +33,23 @@ class ManageController extends Controller
         return view('registrar.manage', ['user' => $user]);
     }
 
+
+   //Edit the data
+   public function update(Request $request, string $id): RedirectResponse
+   {
+       $validatedData = $request->all();
+   
+       $user = User::find($id);
+   
+       if (!$user) {
+           return redirect()->back()->with('error', 'User not found.');
+       }
+   
+       $user->update($validatedData);
+   
+       return redirect('/manage-table')->with('success', 'User data updated successfully.');
+   }
+
     public function destroy($id)
     {
         $user = User::find($id);

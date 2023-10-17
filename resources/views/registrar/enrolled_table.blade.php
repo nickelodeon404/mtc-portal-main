@@ -84,7 +84,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($data as $item)
+                                @foreach($enrolledData as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->lrn }}</td>

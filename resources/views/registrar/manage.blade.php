@@ -117,7 +117,7 @@
                                                 <i class="fa fa-eye" aria-hidden="true"></i> View
                                             </button>
                                         </a>
-                                        <a href="{{ url('/update-account/' . $item->id) }}" title="Update Account">
+                                        <a href="{{ url('/users/' . $item->id) }}" title="Update Account">
                                             <button class="btn btn-warning btn-sm btn-action">
                                                 <i class="fa fa-edit" aria-hidden="true"></i> Update
                                             </button>

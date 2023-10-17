@@ -94,25 +94,23 @@ Route::get('/view-table', [AdmissionController::class, 'view']);
 Route::get('/show-table{registrar}', [AdmissionController::class, 'show'])->name('admin.registrar.show');
 Route::delete('/admission/{id}', [AdmissionController::class, 'destroy'])->name('admission.destroy');
 
-//Route for Enrollees
+//Route for Enrollment
 Route::get('/registrar', [EnrollmentController::class, 'index']);
 Route::get('/enrollment_table-table', [EnrollmentController::class, 'view']);
-
+Route::get('/show_enrollment-table{registrar}', [EnrollmentController::class, 'show'])->name('enrolmment.registrar.show');
 Route::delete('/enrollment/{id}', [EnrollmentController::class, 'destroy'])->name('enrollment.destroy');
 
 //Route for Enrolled
 Route::get('/registrar', [EnrolledController::class, 'index']);
 Route::get('/enrolled_table-table', [EnrolledController::class, 'view']);
-
 Route::post('/enrollment/{id}/add-to-enrolled', [EnrollmentController::class, 'addToEnrolled'])->name('enrollment.addToEnrolled');
-
 Route::delete('/enrolled/{id}', [EnrolledController::class, 'destroy'])->name('enrolled.destroy');
 
 //Route for Manage Account
 Route::get('/registrar', [ManageController::class, 'index']);
 Route::get('/manage-table', [ManageController::class, 'view']);
+Route::delete('/users/{id}', [ManageController::class, 'destroy'])->name('users.destroy');
 
-Route::delete('/enrollment/{id}', [EnrollmentController::class, 'destroy'])->name('users.destroy');
 
 //Route For record_requests table
 Route::post('/document_types', [DocumentTypeController::class, 'store'])->name('document_types.store'); //document_types is  the database table.

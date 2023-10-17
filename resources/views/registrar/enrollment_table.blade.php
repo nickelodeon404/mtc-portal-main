@@ -3,9 +3,7 @@
 @section('content')
     @include('registrar._sidenav')
 
-    {{--PAGINATION--}}
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-    {{--END--}}
+
 
     <style type="text/css">
         body {
@@ -83,7 +81,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($data as $item)
+                                @foreach($enrollmentData as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->lrn }}</td>
@@ -94,7 +92,7 @@
                                         <td>{{ $item->extension }}</td>
 
                                         <td>
-                                            <a href="{{ url('/show-table' . $item->id ) }}" title="Show Admissions">
+                                            <a href="{{ url('/show_enrollment-table' . $item->id ) }}" title="Show Admissions">
                                                 <button class="btn btn-primary btn-sm btn-action">
                                                     <i class="fa fa-eye" aria-hidden="true"></i> View
                                                 </button>
@@ -133,16 +131,6 @@
     </x-panel>
 </section>
 
-{{--PAGINATION--}}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Add jQuery -->
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> <!-- Add DataTables script -->
-<script>
-    $(document).ready(function () {
-        $('#enrollment').DataTable({
-            pagingType: 'full_numbers'
-        });
-    });
-</script>
-{{--END--}}
+
 
 @endsection
