@@ -92,7 +92,7 @@
                                         <td>{{ $item->extension }}</td>
 
                                         <td>
-                                            <a href="{{ url('/show_enrollment-table' . $item->id ) }}" title="Show Enrollment">
+                                            <a href="{{ url('/show_enrollment' . $item->id ) }}" title="Show Enrollment">
                                                 <button class="btn btn-primary btn-sm btn-action">
                                                     <i class="fa fa-eye" aria-hidden="true"></i> View
                                                 </button>

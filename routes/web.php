@@ -97,7 +97,7 @@ Route::delete('/admission/{id}', [AdmissionController::class, 'destroy'])->name(
 //Route for Enrollment
 Route::get('/registrar', [EnrollmentController::class, 'index']);
 Route::get('/enrollment_table-table', [EnrollmentController::class, 'view']);
-Route::get('/show_enrollment-table{registrar}', [EnrollmentController::class, 'show'])->name('enrollmment.registrar.show');
+Route::get('/show_enrollment{registrar}', [EnrollmentController::class, 'viewData'])->name('enrollmment.registrar.viewData');//view enrollment data
 Route::delete('/enrollment/{id}', [EnrollmentController::class, 'destroy'])->name('enrollment.destroy');
 
 //Route for Enrolled

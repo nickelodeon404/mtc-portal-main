@@ -38,7 +38,7 @@ class EnrollmentController extends Controller
             'middle_name' => 'nullable|max:50',
             'last_name' => 'required|max:50',
             'extension' => 'nullable|max:5',
-            'birthday' => 'required',
+            'birthday' => 'required|date',
             'age' => 'required|integer',
             'mobile_number' => 'required|string',
             'facebook' => 'nullable',
@@ -68,9 +68,18 @@ class EnrollmentController extends Controller
         // or, fetch data for editing using query builder
         $item = DB::table('enrollment')->where('id', $id)->first();
 
+        return view('/registrar/update_enrollment_table', ['item' => $item]); //'show' in the code is the show.blade.php.
+    }
+    public function viewData(string $id)
+    {
+        // Fetch data for editing using a Model
+        // $item = YourModelName::findOrFail($id);
+
+        // or, fetch data for editing using query builder
+        $item = DB::table('enrollment')->where('id', $id)->first();
+
         return view('/registrar/show_enrollment', ['item' => $item]); //'show' in the code is the show.blade.php.
     }
-
     public function view()
     {
         $enrollmentData = DB::table('enrollment')->orderBy('grade_level')->get()->toArray();//ordered by strand alphabetically
