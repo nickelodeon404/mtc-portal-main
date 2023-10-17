@@ -103,8 +103,8 @@
                                 <label for="gradeSelect" class="form-label"><b> <span style="color: red;">*</span></b>Grade Level to Enroll</label>
                                 <select class="form-select" id="grade_level" name="grade_level" required>
                                     <option value="" selected>Select One</option>
-                                    <option>Grade 11</option>
-                                    <option>Grade 12</option>
+                                    <option>11</option>
+                                    <option>12</option>
                                     <!-- Add more grade levels as needed -->
                                 </select>
                             </div>

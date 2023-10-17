@@ -17,8 +17,6 @@ class EnrolledController extends Controller
 
         $enrolledData = DB::table('enrolled')->orderBy('grade_level')->get();
 
-        $enrolledData = Enrolled::paginate(10); // 10 is the number of items per page
-
         return view('registrar.index', ['data' => $data, 'enrollmentData' => $enrollmentData, 'enrolledData' => $enrolledData]);
 
     }
@@ -47,7 +45,7 @@ class EnrolledController extends Controller
         // or, fetch data for editing using query builder
         $item = DB::table('enrolled')->where('id', $id)->first();
 
-        return view('/registrar/show_enrolled', ['item' => $item]); //'show' in the code is the show.blade.php.
+        return view('/registrar/show', ['item' => $item]); //'show' in the code is the show.blade.php.
     }
 
     public function view()

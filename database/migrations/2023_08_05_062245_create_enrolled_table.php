@@ -33,7 +33,8 @@ return new class extends Migration
             $table->foreignId('grade_level')
                   ->references('id')
                   ->on('enrolled')
-                  ->onUpdate('cascade');
+                  ->onUpdate('cascade')
+                  ->onDelete('cascade');
 
             $table->string('junior_high')->nullable(false);
             $table->string('graduation_type')->nullable(false);

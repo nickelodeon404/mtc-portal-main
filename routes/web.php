@@ -9,6 +9,7 @@ use App\Http\Controllers\AdmissionController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\DocumentTypeController;
 use App\Http\Controllers\ManageController;
+use App\Http\Controllers\SMSController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -149,3 +150,8 @@ Route::post('/verify', 'App\Http\Controllers\AdmissionController@verify')->name(
 Route::get('update_faculty' , function () {
     return view ('/faculty/update_faculty');
 });
+
+//SEND SMS NOTIFICATION IN TWILIO
+Route::get("/sendsms", [SMSController::class, 'sendsms']);
+
+//END OF SMS NOTIFICATION IN TWILIO

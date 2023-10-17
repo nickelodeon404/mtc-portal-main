@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('barangay')->nullable(false);
             $table->string('city_municipality')->nullable(false);
             $table->string('status')->nullable(false);
-            $table->string('grade_level')->nullable(false);
+            $table->bigInteger('grade_level')->unsigned();
             $table->string('junior_high')->nullable(false);
             $table->string('graduation_type')->nullable(false);
             $table->timestamps();

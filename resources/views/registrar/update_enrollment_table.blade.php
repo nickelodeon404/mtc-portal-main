@@ -82,8 +82,8 @@
                                         <td><strong>Grade Level to Enroll:</strong> <div class="col-md-6 mb-3">
                                 <select class="form-select" id="grade_level" name="grade_level" value="{{$item->grade_level}}">
                                     <option disabled selected>Select One</option>
-                                    <option>Grade 11</option>
-                                    <option>Grade 12</option>
+                                    <option>11</option>
+                                    <option>12</option>
                                     <!-- Add more grade levels as needed -->
                                 </select>
                             </div> </td>

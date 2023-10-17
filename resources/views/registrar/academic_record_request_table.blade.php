@@ -107,7 +107,7 @@
                             </tbody>
                         </table>
                     </div>
-                    
+                    <form action="{{ url('/sendsms') }}" method="get">
                         <!-- The Modal -->
                         <div class="modal fade" id="myModal">
                         <div class="modal-dialog">
@@ -123,9 +123,9 @@
                             <div class="modal-body">
                                 <div class="mb-4">
                                     <label for="purpose" class="form-label"><b>Message:</b></label><br>
-                                    <textarea rows="4" cols="50" name="smsAcad" id="smsAcad" style="font-weight: bold; font-size: 15px;" required>You can claim your requested document/s on or before:</textarea>
-                                        <input type="date" id="claimDate" name="claimDate" required>
-                                        <input type="time" id="time" name="time" required>
+                                    <textarea rows="4" cols="50" name="message" id="message" style="font-weight: bold; font-size: 15px;" required>You can claim your requested document/s on or before:</textarea>
+                                        <input type="date" id="message" name="message" required>
+                                        <input type="time" id="message" name="message" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Send</button>
                             </div>
@@ -133,7 +133,7 @@
                             </div>
                         </div>
                         </div>
-
+                    </form>
                 </div>
             </div>
         </main>
