@@ -13,9 +13,14 @@ return new class extends Migration
     {
         Schema::create('section', function (Blueprint $table) {
             $table->id();
-            $table->string('sec');
-            $table->string('strand');
-            $table->string('year');
+            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('strand_id'); // Foreign key column
+            $table->unsignedBigInteger('grade_level'); // Define the grade level column as BIGINT
+
+            // Define the foreign key constraint
+            $table->foreign('student_id')->references('id')->on('enrolled');
+            $table->foreign('strand_id')->references('id')->on('strands');
+            $table->foreign('grade_level')->references('grade_level')->on('enrolled');
             $table->timestamps();
         });
     }
@@ -28,3 +33,5 @@ return new class extends Migration
         Schema::dropIfExists('section');
     }
 };
+
+

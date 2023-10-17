@@ -6,9 +6,6 @@
     {{--PAGINATION--}}
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     {{--END--}}
-    {{--Modal--}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    {{--End--}}
 
     <style type="text/css">
 

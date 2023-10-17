@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('lrn');
             $table->string('email')->nullable(false);
             $table->string('first_name', 50)->nullable(false);
-            $table->string('middle_name',50)->nullable(true);
-            $table->string('last_name',50)->nullable(false);
-            $table->string('extension',5)->nullable(true);
+            $table->string('middle_name', 50)->nullable(true);
+            $table->string('last_name', 50)->nullable(false);
+            $table->string('extension', 5)->nullable(true);
             $table->date('birthday')->nullable();
             $table->integer('age')->nullable(false);
             $table->string('mobile_number', 13)->nullable(false);
@@ -28,7 +28,14 @@ return new class extends Migration
             $table->string('barangay')->nullable(false);
             $table->string('city_municipality')->nullable(false);
             $table->string('status')->nullable(false);
-            $table->string('grade_level')->nullable(false);
+
+            // Create a foreign key column
+            $table->unsignedBigInteger('grade_level')->nullable();
+            $table->foreign('grade_level')
+                  ->references('id')
+                  ->on('enrolled')
+                  ->onDelete('set null');
+
             $table->string('junior_high')->nullable(false);
             $table->string('graduation_type')->nullable(false);
             $table->timestamps();
@@ -43,3 +50,7 @@ return new class extends Migration
         Schema::dropIfExists('enrolled');
     }
 };
+
+
+
+
