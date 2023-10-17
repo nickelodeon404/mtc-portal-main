@@ -6,6 +6,9 @@
     {{--PAGINATION--}}
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     {{--END--}}
+    {{--Modal--}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    {{--End--}}
 
     <style type="text/css">
 
@@ -90,11 +93,9 @@
                                         <td>{{ $item->purpose }}</td>
 
                                         <td>
-                                            <!--<a href="{{ url('/show-table' . $item->id ) }}" title="Edit Admissions">
-                                                <button class="btn btn-primary btn-sm">
-                                                    <i class="fa fa-eye" aria-hidden="true"></i> View
-                                                </button>
-                                            </a>-->
+                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#myModal">
+                                                Manage
+                                            </button>
 
                                             <form method="POST" action="{{ url('document_types' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
@@ -109,6 +110,33 @@
                             </tbody>
                         </table>
                     </div>
+                    
+                        <!-- The Modal -->
+                        <div class="modal fade" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Manage Request</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <div class="mb-4">
+                                    <label for="purpose" class="form-label"><b>Message:</b></label><br>
+                                    <textarea rows="4" cols="50" name="smsAcad" id="smsAcad" style="font-weight: bold; font-size: 15px;" required>You can claim your requested document/s on or before:</textarea>
+                                        <input type="date" id="claimDate" name="claimDate" required>
+                                        <input type="time" id="time" name="time" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Send</button>
+                            </div>
+
+                            </div>
+                        </div>
+                        </div>
+
                 </div>
             </div>
         </main>
