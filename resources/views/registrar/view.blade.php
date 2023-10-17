@@ -92,6 +92,7 @@
                                         <td>{{ $item->middle_name }}</td>
                                         <td>{{ $item->last_name }}</td>
                                         <td>{{ $item->extension }}</td>
+                                        
 
                                         <td>
                                             <a href="{{ url('/show-table' . $item->id) }}" title="Show Admissions">
