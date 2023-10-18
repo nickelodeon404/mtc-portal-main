@@ -43,9 +43,9 @@
                                         <option value="" selected>All</option>
                                         <!-- Add your section options here -->
                                         @foreach ($sections as $section)
-                                            <option value="{{$section}}"
-                                            {{ request('section') == $section ? 'selected' : '' }}>{{$section}}</option>
-
+                                            <option value="{{ $section }}"
+                                                {{ request('section') == $section ? 'selected' : '' }}>{{ $section }}
+                                            </option>
                                         @endforeach
                                         <!-- Add more options as needed -->
                                     </select>
@@ -60,7 +60,7 @@
 
                             </div>
                         </form>
-                        <form action="{{route('faculty.grade.post')}}" method="POST">
+                        <form action="{{ route('faculty.grade.post') }}" method="POST">
                             @csrf
                             <table class="table">
                                 <thead>
@@ -79,33 +79,34 @@
                                     @foreach ($students as $student)
                                         <tr>
                                             <td>
-                                                <input type="hidden" name="subjectLoads_id[]" value="{{$student->subjectLoad}}">
+                                                <input type="hidden" name="subjectLoads_id[]"
+                                                    value="{{ $student->subjectLoad }}">
                                                 <input type="text" name="student_id[]" class="form-control" disabled
-                                                    readonly  value="{{ $student->id }}" </td>
+                                                    readonly value="{{ $student->id }}" </td>
                                             <td>
                                                 <input type="text" name="name[]" class="form-control" disabled
-                                                    value="{{ $student->name }}" readonly >
+                                                    value="{{ $student->name }}" readonly>
                                             </td>
                                             <td>
                                                 <input type="text" name="strand[]" class="form-control" disabled
-                                                    value="{{ $student->strand }}" readonly >
+                                                    value="{{ $student->strand }}" readonly>
                                             </td>
                                             <td>
                                                 <input type="text" name="year[]" class="form-control" disabled
-                                                    value="{{ $student->year_level }}" readonly > 
+                                                    value="{{ $student->year_level }}" readonly>
                                             </td>
                                             <td>
                                                 <input type="text" name="section[]" class="form-control" disabled
-                                                    value="{{ $student->section ?? 'Unknown' }}" readonly >
+                                                    value="{{ $student->section ?? 'Unknown' }}" readonly>
                                             </td>
                                             <td>
                                                 <input type="number" name="final_grade[]" onchange="updateRemarks(this)"
-                                                    class="form-control" value="{{
-                                                    old('final_grade')[$loop->index] ?? \App\Models\Grade::where('subjectLoads_id', $student->subjectLoad)->first()->grade ?? ""}}"
-                                                     required   >
+                                                    class="form-control"
+                                                    value="{{ old('final_grade')[$loop->index] ?? (\App\Models\Grade::where('subjectLoads_id', $student->subjectLoad)->first()->grade ?? '') }}"
+                                                    required>
                                             </td>
                                             <td>
-                                                <input type="text" name="remarks[]" class="form-control" readonly >
+                                                <input type="text" name="remarks[]" class="form-control" readonly>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -114,7 +115,7 @@
                             </table>
                             <div class="d-flex align-items-center justify-content-end">
                                 <div class="">
-                                    
+
                                     <a href="{{ url('/grade') }}" style="text-decoration: none;">
                                         <button type="button" class="btn btn-danger"
                                             style="margin-left: 20px;">Cancel</button>
@@ -140,7 +141,23 @@
     </style>
     <script>
         function updateRemarks(final_grade) {
-            console.log(final_grade.nextSibling;);
+            const finalGradeInput = final_grade;
+            const remarksInput = finalGradeInput.closest('tr').querySelector('input[name="remarks[]"]');
+            const finalGrade = finalGradeInput.value;
+            let remarks = '';
+
+            if (finalGrade >= 75) {
+                remarks = 'Passed';
+            } else{
+                remarks = 'Failed';
+            } 
+            remarksInput.value = remarks;
         }
+        document.addEventListener('DOMContentLoaded', function() {
+            const finalGradeInputs = document.querySelectorAll('input[name="final_grade[]"]');
+            finalGradeInputs.forEach(function(input) {
+                updateRemarks(input);
+            });
+        });
     </script>
 @endsection
