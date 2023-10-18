@@ -42,8 +42,11 @@
                                     <select name="section" id="section" class="form-control">
                                         <option value="" selected>All</option>
                                         <!-- Add your section options here -->
-                                        <option value="sectionA">A</option>
-                                        <option value="sectionB">B</option>
+                                        @foreach ($sections as $section)
+                                            <option value="{{$section}}"
+                                            {{ request('section') == $section ? 'selected' : '' }}>{{$section}}</option>
+
+                                        @endforeach
                                         <!-- Add more options as needed -->
                                     </select>
                                 </div>

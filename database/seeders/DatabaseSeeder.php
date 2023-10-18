@@ -3,11 +3,13 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Admission;
-use App\Models\Strand;
+use App\Models\StudentSection;
 use App\Models\User;
 use App\Models\Grade;
+use App\Models\Strand;
+use App\Models\Section;
 use App\Models\Subject;
+use App\Models\Admission;
 use App\Models\SubjectLoad;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -113,8 +115,6 @@ class DatabaseSeeder extends Seeder
         $faculty = User::factory()->create([
             'name' => 'Faculty',
             'email' => 'faculty@example.com',
-            'year_level' => 'not applicable',
-            'strands_id' => $GAS->id,
             'password' => Hash::make('111'),
             'role_id' => 1
         ]);
@@ -122,17 +122,13 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Registrar',
             'email' => 'registrar@example.com',
-            'year_level' => 'not applicable',
             'password' => Hash::make('111'),
-            'strands_id' => $GAS->id,
             'role_id' => 2
         ]);
     
         $student = User::factory()->create([
             'name' => 'default',
             'email' => 'default@example.com',
-            'year_level' => '11',
-            'strands_id' => $GAS->id,
             'password' => Hash::make('111'),
             'role_id' => 3
         ]);
@@ -222,6 +218,41 @@ class DatabaseSeeder extends Seeder
             'year_graduated' => '2016',
             'strand' => 'STEM',
             'graduation_type' => 'public',
+        ]);
+
+        $A = Section::factory()->create([
+            'strand_id' => 1,
+            'year_level' => '11',
+            'name' => "A"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 1,
+            'year_level' => '11',
+            'name' => "B"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 1,
+            'year_level' => '11',
+            'name' => "C"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 2,
+            'year_level' => '11',
+            'name' => "A"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 2,
+            'year_level' => '11',
+            'name' => "B"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 2,
+            'year_level' => '11',
+            'name' => "C"
+        ]);
+        StudentSection::factory()->create([
+            'section_id' => $A->id,
+            'student_id' => $student->id
         ]);
 
     }

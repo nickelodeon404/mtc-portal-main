@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('student_section', function (Blueprint $table) {
             $table->id();
             $table->foreignId('section_id')->constrained('section', 'id')->onUpdate('cascade')->unsigned();
-            $table->foreignId('student_id')->constrained('enrolled', 'id')->onUpdate('cascade')->unsigned();
+            $table->foreignId('student_id')->constrained('users', 'id')->onUpdate('cascade')->unsigned();
             $table->timestamps();
         });
     }

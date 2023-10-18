@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             //$table->foreignId('student_id')->constrained('enrolled', 'id')->onUpdate('cascade')->unsigned();
             $table->foreignId('strand_id')->constrained('strands', 'id')->onUpdate('cascade');
-            $table->foreignId('grade_level')->constrained('enrolled', 'grade_level')->onUpdate('cascade');
+            $table->enum('year_level', [11, 12, 'not applicable']);
+            $table->char('name', 5);
             $table->timestamps();
         });
     }

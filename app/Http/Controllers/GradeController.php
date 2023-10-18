@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Grade;
+use App\Models\Section;
 use App\Models\User;
 use App\Models\Subject;
 use App\Models\SubjectLoad;
@@ -32,28 +33,34 @@ class GradeController extends Controller
         $teacherload = DB::table('users')
             ->join('subject_loads', 'users.id', '=', 'subject_loads.students_id')
             ->join('subjects', 'subjects.id', '=', 'subject_loads.subjects_id')
-            ->join('strands', 'users.strands_id', '=', 'strands.id')
+            ->join('student_section', 'users.id', '=', 'student_section.student_id')
+            ->join('section', 'student_section.section_id', '=', 'section.id')
+            ->join('strands', 'section.strand_id', '=', 'strands.id')
             ->where('subjects.id', '=', $subject->id)
             ->where('subject_loads.faculties_id', '=', $facultyID)
-            ->select('users.*', 'strands.acronym as strand', 'subject_loads.id as subjectLoad' );
+            ->select('users.*', 'strands.acronym as strand', 'subject_loads.id as subjectLoad', 'section.year_level', 'section.name as section' );
         
             
         if (request('year') ?? false) {
-            $teacherload = $teacherload->where('users.year_level', '=', request('year'));
+            $teacherload = $teacherload->where('section.year_level', '=', request('year'));
         }
         if(request('strand') ?? false){
-            $teacherload = $teacherload->where('users.strands_id', '=', request('strand'));
+            $teacherload = $teacherload->where('strands.id', '=', request('strand'));
+        }
+        if(request('section') ?? false){
+            $teacherload = $teacherload->where('section.name', '=', request('section'));
         }
         $teacherload = $teacherload->get();
 
 
         // $teacherload = User::findorFail($facultyID)->teacherLoad;
         
-        // dd($teacherload);
+        // dd(Section::distinct()->pluck('name'));
         return view('faculty.grade',[
             'students' => $teacherload,
             'subjects' => SubjectLoad::where('faculties_id', '=', auth()->user()->id)->get(),
             'actSubject' => $subject,
+            'sections' => Section::distinct()->pluck('name')
         ]);
         
         
