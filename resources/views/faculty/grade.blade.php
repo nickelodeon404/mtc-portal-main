@@ -140,7 +140,7 @@
     </style>
     <script>
         function updateRemarks(final_grade) {
-            console.log(final_grade.nextSibling;);
+            console.log(final_grade.nextSibling);
         }
     </script>
 @endsection

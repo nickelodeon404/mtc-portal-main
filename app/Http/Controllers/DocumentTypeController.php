@@ -17,21 +17,9 @@ class DocumentTypeController extends Controller
     {
         $data = DB::table('admission')->orderBy('strand')->get();
         $G11 = DB::table('users')
-            ->join('strands', 'users.strands_id', '=', 'strands.id')
-            ->where('users.role_id', '=', 3)
-            ->where('users.year_level', '=', '11')
-            ->selectRaw('strands.acronym, COUNT(*) as studentsCount')
-            ->groupBy('strands.acronym')
-            ->get();
+            ->where('users.role_id', '=', 3)->get();
         $G12 = DB::table('users')
-            ->join('strands', 'users.strands_id', '=', 'strands.id')
-            ->where('users.role_id', '=', 3)
-            ->where('users.year_level', '=', '12')
-            ->selectRaw('strands.acronym, COUNT(*) as studentsCount')
-            ->groupBy('strands.acronym')
-            ->get();
-            // dd($G12);
-        // $G12 = User::where('role_id', '=', '3')->where('year_level', '=', '12')->get();
+            ->where('users.role_id', '=', 3)->get();
         // Fetch data for Enrollment section as well
         $enrollmentData = DB::table('enrollment')->orderBy('grade_level')->get();
 
@@ -98,35 +86,7 @@ class DocumentTypeController extends Controller
 
         return redirect()->back()->with('success', 'Success!! Your request was submitted!!');
     }
-/*
-//NEWLY ADDED
 
-    protected function sendSmsAcademicRecordRequest($ard)
-    {
-        
-        // Get Twilio credentials from .env
-        $twilioSid = env('TWILIO_SID');
-        $twilioAuthToken = env('TWILIO_AUTH_TOKEN');
-        $twilioPhoneNumber = env('TWILIO_PHONE_NUMBER');
-
-        // Initialize Twilio client
-        $twilio = new Client($twilioSid, $twilioAuthToken);
-
-        // Compose the SMS message
-        $messageBody = "Your Requested Document: $ARD \nYou can claim this on or before";
-
-        // Send SMS
-        $twilio->messages->create(
-            $mobileNumber,
-            [
-                'from' => $twilioPhoneNumber,
-                'body' => $messageBody,
-            ]
-        );
-    }
-
-//END OF NEWLY ADDED
-*/
     public function destroy($id)
     {
         $ard = DocumentType::find($id);
