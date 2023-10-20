@@ -82,7 +82,8 @@
                                                 <input type="hidden" name="subjectLoads_id[]"
                                                     value="{{ $student->subjectLoad }}">
                                                 <input type="text" name="student_id[]" class="form-control" disabled
-                                                    readonly value="{{ $student->id }}" </td>
+                                                    readonly value="{{ $student->id }}"> 
+                                            </td>
                                             <td>
                                                 <input type="text" name="name[]" class="form-control" disabled
                                                     value="{{ $student->name }}" readonly>

@@ -93,8 +93,8 @@
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Role ID</th>
-                                <th>Strand ID</th>
-                                <th>Year Level</th>
+                                <!-- <th>Strand ID</th> -->
+                                <!-- <th>Year Level</th> -->
                                 <!-- <th>Username</th> -->
                                 <!-- <th>Password</th> -->
                                 <th>Action</th>
@@ -106,8 +106,8 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->role_id }}</td>
-                                    <td>{{ $item->strands_id }}</td>
-                                    <td>{{ $item->year_level }}</td>
+                                   {{-- <td>{{ $item->strands_id }}</td> --}}
+                                   {{-- <td>{{ $item->year_level }}</td> --}}
                                     <!-- <td>{{ $item->email }}</td> -->
                                     <!-- To display asterisks for the password -->
                                     <!-- <td>{{ str_repeat('*', strlen($item->password)) }}</td> -->

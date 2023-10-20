@@ -99,7 +99,8 @@ class AdmissionController extends Controller
         $randomPassword = rand(100000, 999999);
         $user = User::create([
             'role_id' => 3,
-
+/*
+Causing the Error!!
             'strands_id' => [
                                  "ABM" => 1,
                                  "GAS" => 2,
@@ -111,7 +112,7 @@ class AdmissionController extends Controller
                             ] 
                               [$validatedData['strand']
                             ],
-
+*/
             'name' => $validatedData['last_name'] . $validatedData['first_name'],
             'email' => $validatedData['last_name'] . $firstThreeLetters ,
             'password' => Hash::make($randomPassword),
