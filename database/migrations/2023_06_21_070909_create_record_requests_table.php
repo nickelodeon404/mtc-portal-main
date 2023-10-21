@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('record_requests', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student')->constrained('admission', 'id');
+            $table->foreignId('student_id')->constrained('admission', 'id');
+            $table->string('student');
+            $table->string('mobile_number');
             $table->foreignId('document_type')->constrained('academic_record_documents', 'id');
             $table->string('purpose');
             $table->boolean('is_approved')->default(false);
             $table->date('claim_by');
+            $table->date('message_date');
+            $table->time('message_time');
             $table->timestamps();
         });
     }

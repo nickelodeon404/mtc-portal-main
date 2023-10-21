@@ -4,38 +4,48 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Twilio\Rest\Client;
-use App\Models\Enrolled;
-use Illuminate\Http\RedirectResponse;
+use App\Models\DocumentType;
+use App\Models\RecordRequest;
+use Illuminate\Support\Facades\Auth;
 
 class SMSController extends Controller
 {
-    public function sendsms(Request $request)
+    public function sendSms(Request $request)
     {
+        // Validate the request data
         $validatedData = $request->validate([
-
-            "mobile_number" => "required",     
+            "mobile_number" => "required",
+            "message_date" => "required",
+            "message_time" => "required",
+            "message" => "required",
         ]);
 
-        $message = $request->message;
+        // Get the validated data
+        $message = $validatedData['message'] . ' ' . $validatedData['message_date'] . ' ' . $validatedData['message_time'];
+        $mobileNumber = $validatedData['mobile_number'];
 
-    	Enrolled::create([
-  
-            "mobile_number" => $validatedData['mobile_number'],
+        // Get Twilio credentials from the environment
+        $twilioSid = env('TWILIO_SID');
+        $twilioAuthToken = env('TWILIO_AUTH_TOKEN');
+        $twilioPhoneNumber = env('TWILIO_PHONE_NUMBER');
 
-        ]);
+        // Initialize the Twilio client
+        $twilio = new Client($twilioSid, $twilioAuthToken);
 
-        $sid = getenv("TWILIO_SID");
-        $token = getenv("TWILIO_AUTH_TOKEN");
-        $sendernumber = getenv("TWILIO_PHONE_NUMBER");
+        // Send SMS to the user
+        try {
+            $twilio->messages->create(
+                $mobileNumber,
+                [
+                    'from' => $twilioPhoneNumber,
+                    'body' => $message,
+                ]
+            );
 
-        $twilio = new Client($sid, $token);
 
-        $message = $twilio->messages
-                          ->create($validatedData['mobile_number'],
-                            [
-                                "body" => $message,
-                                "from" => $sendernumber
-                            ]
-                        );
+            return redirect()->route('academic_record_request_table')->with('success', 'SMS sent successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'SMS could not be sent. Please try again.');
+        }
     }
 }

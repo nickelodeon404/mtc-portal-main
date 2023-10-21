@@ -123,11 +123,16 @@ class EnrollmentController extends Controller
 
         // Delete the data from the enrollment table
         $enrollment->delete();
+ // Debugging statements
+ dd('Data transferred successfully.');
 
-        return redirect()->back()->with('success', 'Student added to enrolled successfully.');
-    } catch (\Exception $e) {
-        return redirect()->back()->with('error', 'An error occurred while transferring the student to enrolled.');
-    }
+ return redirect()->back()->with('success', 'Student added to enrolled successfully.');
+} catch (\Exception $e) {
+ // Debugging statements
+ dd('Error occurred: ' . $e->getMessage());
+
+ return redirect()->back()->with('error', 'An error occurred while transferring the student to enrolled.');
+}
 }
     
     public function destroy($id)

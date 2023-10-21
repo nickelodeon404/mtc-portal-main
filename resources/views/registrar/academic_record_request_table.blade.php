@@ -65,83 +65,97 @@
     </style>
 
 
-    <x-panel>
-        <main>
-            <div class="container-fluid px-4">
-                <h1 class="mt-4">Academic Record Request</h1>
-                <div class="row">
-                    <div class="table-responsive mt-4">
-                        <table id="academic" class="table table-wider">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Requested Document/s</th>
-                                    <th>Purpose</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($reqDocument as $item)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->student }}</td>
-                                        <td>{{ $item->document_type }}</td>
-                                        <td>{{ $item->purpose }}</td>
+<x-panel>
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Academic Record Request</h1>
+            <div class="row">
+                <div class="table-responsive mt-4">
+                    <table id="academic" class="table table-wider">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Phone Number</th>
+                                <th>Requested Document/s</th>
+                                <th>Purpose</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($reqDocument as $item)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->student }}</td>
+                                <td>{{ $item->mobile_number }}</td>
+                                <td>{{ $item->document_type }}</td>
+                                <td>{{ $item->purpose }}</td>
 
-                                        <td>
-                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#myModal">
-                                                Manage
-                                            </button>
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#myModal-{{ $item->id }}">
+                                        Manage
+                                    </button>
 
-                                            <form method="POST" action="{{ url('document_types' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm btn-action" title="Delete Request" onclick="return confirm(&quot;Confirm delete?&quot;)">
-                                                    <i class="fa fa-trash" aria-hidden="true"></i> Delete
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    <form action="{{ url('/sendsms') }}" method="get">
-                        <!-- The Modal -->
-                        <div class="modal fade" id="myModal">
+                                    <form method="POST" action="{{ url('document_types' . '/' . $item->id) }}"
+                                        accept-charset="UTF-8" style="display:inline">
+                                        {{ method_field('DELETE') }}
+                                        {{ csrf_field() }}
+                                        <button type="submit" class="btn btn-danger btn-sm btn-action"
+                                            title="Delete Request"
+                                            onclick="return confirm(&quot;Confirm delete?&quot;)">
+                                            <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                @foreach($reqDocument as $item)
+                <form action="{{ route('send-sms') }}" method="post">
+                    @csrf
+
+                    <!-- The Modal -->
+                    <div class="modal fade" id="myModal-{{ $item->id }}">
                         <div class="modal-dialog">
                             <div class="modal-content">
 
-                            <!-- Modal Header -->
-                            <div class="modal-header">
-                                <h4 class="modal-title">Manage Request</h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                            </div>
-
-                            <!-- Modal body -->
-                            <div class="modal-body">
-                                <div class="mb-4">
-                                    <label for="purpose" class="form-label"><b>Message:</b></label><br>
-                                    <textarea rows="4" cols="50" name="message" id="message" style="font-weight: bold; font-size: 15px;" required>You can claim your requested document/s on or before:</textarea>
-                                        <input type="date" id="message" name="message" required>
-                                        <input type="time" id="message" name="message" required>
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Manage Request</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Send</button>
-                            </div>
 
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <div class="mb-4">
+                                        <label for="message" class="form-label"><b>Message:</b></label><br>
+                                        <textarea rows="4" cols="50" name="message" id="message"
+                                            style="font-weight: bold; font-size: 15px;"
+                                            required>You can claim your requested document/s on or before:</textarea>
+                                        <input type="date" id="message_date" name="message_date" required>
+                                        <input type="time" id="message_time" name="message_time" required>
+                                    </div>
+                                    <input type="hidden" name="mobile_number" value="{{ $item->mobile_number }}">
+                                    <input type="hidden" name="document_type" value="{{ $item->document_type }}">
+                                    <input type="hidden" name="student" value="{{ $item->student }}">
+                                    <button type="submit" class="btn btn-primary">Send</button>
+                                </div>
                             </div>
                         </div>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
+                @endforeach
             </div>
-        </main>
-        <x-footer />
-    </x-panel>
+        </div>
+    </main>
+    <x-footer />
+</x-panel>
 </section>
 
-{{--PAGINATION--}}
+{{-- PAGINATION --}}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Add jQuery -->
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> <!-- Add DataTables script -->
 <script>
@@ -151,6 +165,5 @@
         });
     });
 </script>
-{{--END--}}
-
+{{-- END --}}
 @endsection

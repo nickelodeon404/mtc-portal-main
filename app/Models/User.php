@@ -45,7 +45,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
     public function admissions(){
-        return $this->hasOne(User::class, 'users_id');
+        return $this->hasOne(Admission::class, 'users_id');
     }
     public function teacherLoad(){
         return $this->hasMany(SubjectLoad::class, 'faculties_id');
@@ -56,4 +56,11 @@ class User extends Authenticatable
     public function Strand(){
         return $this->belongsTo(Strand::class, 'strands_id');
     }
+
+    public function recordRequests()
+    {
+        return $this->hasMany(RecordRequest::class, 'student_id');
+    }
+
+    
 }

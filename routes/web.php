@@ -152,6 +152,7 @@ Route::get('update_faculty' , function () {
 });
 
 //SEND SMS NOTIFICATION IN TWILIO
-Route::get("/sendsms", [SMSController::class, 'sendsms']);
+Route::get('/academic_record_request_table', 'App\Http\Controllers\DocumentTypeController@view')->name('academic_record_request_table');
+Route::post('/send-sms', 'App\Http\Controllers\SMSController@sendSms')->name('send-sms');
 
 //END OF SMS NOTIFICATION IN TWILIO

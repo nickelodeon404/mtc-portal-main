@@ -78,8 +78,13 @@
                         <div class="mb-4">
                             @foreach (\App\Models\Admission::where('users_id', auth()->user()->id)->get() as $admission)
                                 <label for="student"><strong>Name:</strong>
-                                    <input type="text" id="student" name="student" value="{{ $admission->first_name }} {{ $admission->last_name }}" style="font-weight: bold; border: none;" readonly>
+                                    <br><input type="text" id="student" name="student" value="{{ $admission->first_name }} {{ $admission->last_name }}" style="font-weight: bold; border: none;" readonly>
                                 </label>
+                                <label for="mobile_number"><strong>Phone No:</strong>
+                                    <br><input type="text" id="mobile_number" name="mobile_number" value="{{ $admission->mobile_number}} " style="font-weight: bold; border: none;" readonly>
+                                </label>
+                                <!-- <label for="student_phone_number">Phone Number:</label>
+                                <input type="text" name="student_phone_number" class="form-control" required> -->
                             @endforeach
                         </div>
                         <div class="form-check mb-4">
