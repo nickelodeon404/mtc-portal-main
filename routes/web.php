@@ -93,6 +93,7 @@ Route::post('/enrollment', [EnrollmentController::class, 'store']);
 Route::get('/registrar', [AdmissionController::class, 'index']);
 Route::get('/view-table', [AdmissionController::class, 'view']);
 Route::get('/show-table{registrar}', [AdmissionController::class, 'show'])->name('admin.registrar.show');
+Route::post('/view-table/{id}', 'App\Http\Controllers\AdmissionController@admitStudent')->name('admitStudent');
 Route::delete('/admission/{id}', [AdmissionController::class, 'destroy'])->name('admission.destroy');
 
 //Route for Enrollment

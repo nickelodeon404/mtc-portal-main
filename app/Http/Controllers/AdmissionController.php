@@ -51,7 +51,6 @@ class AdmissionController extends Controller
         return view('admissions.index'); //index is located at admissions -> its the folder name/"index.blade.php" -> its the index in admissions.index
     }
 
-
     public function store(Request $request)
     {
         // $validatedData = $request->all();
@@ -99,20 +98,6 @@ class AdmissionController extends Controller
         $randomPassword = rand(100000, 999999);
         $user = User::create([
             'role_id' => 3,
-/*
-Causing the Error!!
-            'strands_id' => [
-                                 "ABM" => 1,
-                                 "GAS" => 2,
-                               "HUMSS" => 3,
-                                "STEM" => 4,
-                             "TVL-ICT" => 5,
-                              "TVL-HE" => 6,
-                       "Arts & Design" => 7,
-                            ] 
-                              [$validatedData['strand']
-                            ],
-*/
             'name' => $validatedData['last_name'] . $validatedData['first_name'],
             'email' => $validatedData['last_name'] . $firstThreeLetters ,
             'password' => Hash::make($randomPassword),
@@ -120,7 +105,9 @@ Causing the Error!!
         ]);
         // Fetch the valid options for "strand" from the database
         $strands = Strand::all(); // Assuming "Strand" is the model for the "strands" table
-        $this->sendSmsWithUserIdAndPassword($LastName, $firstThreeLetters, $randomPassword, $validatedData['mobile_number']);
+
+//Message Generator
+       // $this->sendSmsWithUserIdAndPassword($LastName, $firstThreeLetters, $randomPassword, $validatedData['mobile_number']);
 
 //OTP CREATE VERIFICATION
 
@@ -163,8 +150,34 @@ Causing the Error!!
 
         return redirect()->route('verify')->with(['mobile_number' => $validatedData['mobile_number']]); //this is from otp.
         //return redirect()->back()->with('success', 'Admission form submitted successfully');
+        // Pass $randomPassword as a parameter when redirecting to the 'admitStudent' route
     }
-    protected function sendSmsWithUserIdAndPassword($LastName, $firstThreeLetters, $password, $mobileNumber)
+
+    public function admitStudent($id)
+    {
+        
+        $admission = Admission::find($id);
+
+        if (!$admission) {
+            return redirect()->back()->with('error', 'Admission record not found.');
+        }
+
+        // Generate the message with username and password
+        $message = "Welcome to our school!\n";
+        $message .= "Your Username: " . $admission->user->email . "\n";
+        $message .= "Your Password: " . $admission->user->password . "\n";
+
+        // Send the message using Twilio
+        $this->sendSmsWithUsernameAndPassword($admission->mobile_number, $message);
+
+        // Mark the student as admitted
+        $admission->is_admitted = true;
+        $admission->save();
+
+        return redirect()->back()->with('success', 'Account information sent to the student.');
+    }
+
+    protected function sendSmsWithUsernameAndPassword($to, $message)
     {
         // Get Twilio credentials from .env
         $twilioSid = env('TWILIO_SID');
@@ -174,15 +187,12 @@ Causing the Error!!
         // Initialize Twilio client
         $twilio = new Client($twilioSid, $twilioAuthToken);
 
-        // Compose the SMS message
-        $messageBody = "Your Username: $LastName$firstThreeLetters\nYour Password: $password";
-
         // Send SMS
         $twilio->messages->create(
-            $mobileNumber,
+            $to,
             [
                 'from' => $twilioPhoneNumber,
-                'body' => $messageBody,
+                'body' => $message,
             ]
         );
     }

@@ -66,6 +66,11 @@
     <x-panel>
         <main>
             <div class="container-fluid px-4">
+            @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <h1 class="mt-4">Admission</h1>
                 <div class="row">
                     <div class="table-responsive mt-4">
@@ -101,12 +106,13 @@
                                                 </button>
                                             </a>
                                         
-                                            <a href="{{ url('/admit/' . $item->id) }}" title="Admit Student">
+                                        <form method="POST" action="{{ route('admitStudent', $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                            @csrf
                                                 <button class="btn btn-success btn-sm btn-action">
                                                     <i class="fa fa-check" aria-hidden="true"></i> Admit
                                                 </button>
-                                            </a>
-                                        
+                                        </form>
+                      
                                             <form method="POST" action="{{ url('admission/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}

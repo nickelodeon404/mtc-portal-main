@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('mobile_number', 13)->nullable(false);
 
             $table->boolean('isVerified')->default(false);
+            $table->boolean('is_admitted')->default(false);
             
             $table->string('facebook')->nullable(true);
             $table->string('junior_high')->nullable(false);
