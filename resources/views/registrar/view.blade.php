@@ -115,7 +115,6 @@
                                                 </button>
                                             </form>
                                         </td>
-                                        d>
                                     </tr>
                                 @endforeach
                             </tbody>
