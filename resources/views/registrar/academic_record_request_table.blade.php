@@ -134,7 +134,7 @@
                                         <label for="message" class="form-label"><b>Message:</b></label><br>
                                         <textarea rows="4" cols="50" name="message" id="message"
                                             style="font-weight: bold; font-size: 15px;"
-                                            required>You can claim your requested document/s on:</textarea>
+                                            required>Good day! You can claim your requested document/s on:</textarea>
                                         <input type="date" id="message_date" name="message_date" required>
                                         <input type="time" id="message_time" name="message_time" required>
                                     </div>
