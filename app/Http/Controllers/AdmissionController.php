@@ -100,10 +100,7 @@ class AdmissionController extends Controller
         $user = User::create([
             'role_id' => 3,
 /*
-<<<<<<< Updated upstream
 Causing the Error!!
-=======
->>>>>>> Stashed changes
             'strands_id' => [
                                  "ABM" => 1,
                                  "GAS" => 2,
