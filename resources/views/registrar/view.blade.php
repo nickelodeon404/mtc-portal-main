@@ -95,13 +95,19 @@
                                         
 
                                         <td>
-                                            <a href="{{ url('/show-table' . $item->id) }}" title="Show Admissions">
+                                            <a href="{{ url('/show-table/' . $item->id) }}" title="Show Admissions">
                                                 <button class="btn btn-primary btn-sm btn-action">
                                                     <i class="fa fa-eye" aria-hidden="true"></i> View
                                                 </button>
                                             </a>
-
-                                            <form method="POST" action="{{ url('admission' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                        
+                                            <a href="{{ url('/admit/' . $item->id) }}" title="Admit Student">
+                                                <button class="btn btn-success btn-sm btn-action">
+                                                    <i class="fa fa-check" aria-hidden="true"></i> Admit
+                                                </button>
+                                            </a>
+                                        
+                                            <form method="POST" action="{{ url('admission/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-danger btn-sm btn-action" title="Delete Student" onclick="return confirm(&quot;Confirm delete?&quot;)">
@@ -109,6 +115,7 @@
                                                 </button>
                                             </form>
                                         </td>
+                                        d>
                                     </tr>
                                 @endforeach
                             </tbody>

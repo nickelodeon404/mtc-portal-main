@@ -117,7 +117,7 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="graduationType" class="form-label"><b> <span style="color: red;">*</span></b>Are you a:</label>
+                            <label for="graduationType" class="form-label">Are you a:</label>
                             <select class="form-select" id="graduation_type" name="graduation_type" required>
                                 <option value="" selected>Select an option</option>
                                 <option value="Public Completer" {{$admission->graduation_type == "Public Completer" ? "selected" : ""}}>Public Completer</option>
