@@ -95,7 +95,7 @@
                                         
 
                                         <td>
-                                            <a href="{{ url('/show-table/' . $item->id) }}" title="Show Admissions">
+                                            <a href="{{ url('/show-table' . $item->id) }}" title="Show Admissions">
                                                 <button class="btn btn-primary btn-sm btn-action">
                                                     <i class="fa fa-eye" aria-hidden="true"></i> View
                                                 </button>
