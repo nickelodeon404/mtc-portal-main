@@ -82,7 +82,11 @@
                                                 <input type="hidden" name="subjectLoads_id[]"
                                                     value="{{ $student->subjectLoad }}">
                                                 <input type="text" name="student_id[]" class="form-control" disabled
+<<<<<<< Updated upstream
                                                     readonly value="{{ $student->id }}"> 
+=======
+                                                    readonly  value="{{ $student->id }}">
+>>>>>>> Stashed changes
                                             </td>
                                             <td>
                                                 <input type="text" name="name[]" class="form-control" disabled

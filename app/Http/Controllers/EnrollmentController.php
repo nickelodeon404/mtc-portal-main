@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Enrolled;
 use App\Models\Admission;
+use App\Models\Enrolled;
 use App\Models\Enrollment;
-use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class EnrollmentController extends Controller
 {
@@ -92,43 +93,56 @@ class EnrollmentController extends Controller
     }
 
 
-    //ADD TO ENROLLED
-    public function addToEnrolled($id)
-{
-    try {
-        // Fetch the enrollment data using the provided $id
-        $enrollment = Enrollment::findOrFail($id);
 
-        // Store the data into the enrolled table
-        Enrolled::create([
-            'lrn' => $enrollment->lrn,
-            'email' => $enrollment->email,
-            'first_name' => $enrollment->first_name,
-            'middle_name' => $enrollment->middle_name,
-            'last_name' => $enrollment->last_name,
-            'extension' => $enrollment->extension,
-            'birthday' => $enrollment->birthday,
-            'age' => $enrollment->age,
-            'mobile_number' => $enrollment->mobile_number,
-            'facebook' => $enrollment->facebook,
-            'region' => $enrollment->region,
-            'province' => $enrollment->province,
-            'barangay' => $enrollment->barangay,
-            'city_municipality' => $enrollment->city_municipality,
-            'status' => $enrollment->status,
-            'grade_level' => $enrollment->grade_level,
-            'junior_high' => $enrollment->junior_high,
-            'graduation_type' => $enrollment->graduation_type,
-        ]);
-
-        // Delete the data from the enrollment table
-        $enrollment->delete();
-
-        return redirect()->back()->with('success', 'Student added to enrolled successfully.');
-    } catch (\Exception $e) {
-        return redirect()->back()->with('error', 'An error occurred while transferring the student to enrolled.');
-    }
-}
+   //ADD TO ENROLLED
+   public function addToEnrolled($id)
+   {
+       try {
+           // Fetch the enrollment data using the provided $id
+           $enrollment = Enrollment::findOrFail($id);
+   
+           // Log the data to check if it's being fetched correctly
+           Log::info('Enrollment Data: ' . json_encode($enrollment));
+   
+           // Store the data into the enrolled table
+           Enrolled::create([
+               'lrn' => $enrollment->lrn,
+               'email' => $enrollment->email,
+               'first_name' => $enrollment->first_name,
+               'middle_name' => $enrollment->middle_name,
+               'last_name' => $enrollment->last_name,
+               'extension' => $enrollment->extension,
+               'birthday' => $enrollment->birthday,
+               'age' => $enrollment->age,
+               'mobile_number' => $enrollment->mobile_number,
+               'facebook' => $enrollment->facebook,
+               'region' => $enrollment->region,
+               'province' => $enrollment->province,
+               'barangay' => $enrollment->barangay,
+               'city_municipality' => $enrollment->city_municipality,
+               'status' => $enrollment->status,
+               'grade_level' => $enrollment->grade_level,
+               'junior_high' => $enrollment->junior_high,
+               'graduation_type' => $enrollment->graduation_type,
+           ]);
+   
+           // Log a success message to check if data insertion is successful
+           Log::info('Data successfully inserted into Enrolled table');
+   
+           // Delete the data from the enrollment table
+           $enrollment->delete();
+   
+           // Log a success message to check if data deletion is successful
+           Log::info('Data successfully deleted from Enrollment table');
+   
+           return redirect()->back()->with('success', 'Student added to enrolled successfully.');
+       } catch (\Exception $e) {
+           // Log the exception message for debugging
+           Log::error('Exception: ' . $e->getMessage());
+   
+           return redirect()->back()->with('error', 'An error occurred while transferring the student to enrolled.');
+       }
+   }
     
     public function destroy($id)
     {

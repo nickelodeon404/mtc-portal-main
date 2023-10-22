@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('lrn');
             $table->string('email')->nullable(false);
             $table->string('first_name', 50)->nullable(false);
-            $table->string('middle_name',50)->nullable(true);
-            $table->string('last_name',50)->nullable(false);
-            $table->string('extension',5)->nullable(true);
+            $table->string('middle_name', 50)->nullable(true);
+            $table->string('last_name', 50)->nullable(false);
+            $table->string('extension', 5)->nullable(true);
             $table->date('birthday')->nullable();
             $table->integer('age')->nullable(false);
             $table->string('mobile_number', 13)->nullable(false);

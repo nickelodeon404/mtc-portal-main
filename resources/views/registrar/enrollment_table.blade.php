@@ -8,10 +8,10 @@
     {{--END--}}
 
     <style type="text/css">
-        body {
-            background-color: #f0f0f0; /* Adjust the background color as needed */
-        }
 
+        body {
+             background-color: #f0f0f0; /* Adjust the color as needed */
+             }
         a {
             text-decoration: none;
             color: #fff;
@@ -32,10 +32,16 @@
             text-align: center;
         }
 
-        /* Additional table styling for a beautiful look */
+        /* Additional table styling */
         .table-wider {
             background-color: #f5f5f5;
-            border-collapse: collapse;
+        }
+
+        .table-wider th,
+        .table-wider td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            text-align: center;
         }
 
         .table-wider th {
@@ -43,13 +49,12 @@
             color: #fff;
         }
 
-        .table-wider th, .table-wider td {
-            border: 1px solid #ccc;
-            padding: 8px;
+        .table-wider tr:nth-child(even) {
+            background-color: #f2f2f2;
         }
 
-        .table-wider td {
-            background-color: #fff;
+        .table-wider tr:hover {
+            background-color: #d1d1d1;
         }
 
         /* Button styling */

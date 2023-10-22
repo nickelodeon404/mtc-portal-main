@@ -97,6 +97,7 @@
                                         Manage
                                     </button>
 
+<<<<<<< Updated upstream
                                     <form method="POST" action="{{ url('document_types' . '/' . $item->id) }}"
                                         accept-charset="UTF-8" style="display:inline">
                                         {{ method_field('DELETE') }}
@@ -119,6 +120,25 @@
 
                     <!-- The Modal -->
                     <div class="modal fade" id="myModal-{{ $item->id }}">
+=======
+                                            <form method="POST" action="{{ url('document_types' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="btn btn-danger btn-sm btn-action" title="Delete Request" onclick="return confirm(&quot;Confirm delete?&quot;)">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <form action="{{ url('/sendsms') }}" method="get">
+                    {!! csrf_field() !!}
+                        <!-- The Modal -->
+                        <div class="modal fade" id="myModal">
+>>>>>>> Stashed changes
                         <div class="modal-dialog">
                             <div class="modal-content">
 

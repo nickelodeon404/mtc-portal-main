@@ -12,7 +12,11 @@ class SMSController extends Controller
 {
     public function sendSms(Request $request)
     {
+<<<<<<< Updated upstream
         // Validate the request data
+=======
+        
+>>>>>>> Stashed changes
         $validatedData = $request->validate([
             "mobile_number" => "required",
             "message_date" => "required",

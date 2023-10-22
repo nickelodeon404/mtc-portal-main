@@ -129,11 +129,11 @@ Route::delete('/document_types/{id}', [DocumentTypeController::class, 'destroy']
 
 
 //ROUTE FOR OTP TWILIO
-
+/*
 Route::post('/', function () {
    return view('admissions.index');
 })->name('index');
-
+*/
 Route::get('/verify', function () {
    return view('admissions.verify');
 })->name('verify');
