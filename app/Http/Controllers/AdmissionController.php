@@ -9,6 +9,7 @@ use App\Models\Admission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -97,7 +98,7 @@ class AdmissionController extends Controller
         $firstThreeLetters = substr(str_replace(' ', '', $validatedData['first_name']), 0, 3);
         $randomPassword = rand(100000, 999999);
         $user = User::create([
-            'role_id' => 3,
+            'role_id' => 3, 
             'name' => $validatedData['last_name'] . $validatedData['first_name'],
             'email' => $validatedData['last_name'] . $firstThreeLetters ,
             'password' => Hash::make($randomPassword),
@@ -123,6 +124,7 @@ class AdmissionController extends Controller
         //->create($validatedData['verification_code'], array('to' => $validatedData['mobile_number'], "sms"));
 
 //END OF OTP CREATE VERIFICATION
+        
 
         // $admission = Admission::create($validatedData);
         Admission::create([
@@ -157,15 +159,18 @@ class AdmissionController extends Controller
     {
         
         $admission = Admission::find($id);
-
+        
         if (!$admission) {
             return redirect()->back()->with('error', 'Admission record not found.');
         }
+        $randomPassword = rand(100000, 999999);
+
+        $admission->user->update(['password' => Hash::make($randomPassword)]);
 
         // Generate the message with username and password
         $message = "Welcome to our school!\n";
         $message .= "Your Username: " . $admission->user->email . "\n";
-        $message .= "Your Password: " . $admission->user->password . "\n";
+        $message .= "Your Password: " . $randomPassword . "\n";
 
         // Send the message using Twilio
         $this->sendSmsWithUsernameAndPassword($admission->mobile_number, $message);
@@ -176,6 +181,7 @@ class AdmissionController extends Controller
 
         return redirect()->back()->with('success', 'Account information sent to the student.');
     }
+
 
     protected function sendSmsWithUsernameAndPassword($to, $message)
     {
