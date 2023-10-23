@@ -112,7 +112,7 @@
     </section>
     
     
-    <section class="page-section" style="background-color: #f8d041;" id="">
+    <section class="page-section" style="background-color: #5c2c78;" id="">
         <div class="container px-4 px-lg-5" style="">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-4 d-flex justify-content-center align-items-center">
