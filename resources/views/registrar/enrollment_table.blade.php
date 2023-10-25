@@ -79,11 +79,13 @@
                                 <tr>
                                     <th>#</th>
                                     <th>LRN</th>
+                                    <th>Strand</th>
+                                    <th>Year Level</th>
+                                    <th>Section</th>
                                     <th>Email</th>
+                                    <th>Last Name</th>
                                     <th>First Name</th>
                                     <th>Middle Name</th>
-                                    <th>Last Name</th>
-                                    <th>Extension</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -92,10 +94,13 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->lrn }}</td>
+                                        <td>{{ $item->strand }}</td>
+                                        <td>{{ $item->year_level }}</td>
+                                        <td>{{ $item->section }}</td>
                                         <td>{{ $item->email }}</td>
+                                        <td>{{ $item->last_name }}</td>
                                         <td>{{ $item->first_name }}</td>
                                         <td>{{ $item->middle_name }}</td>
-                                        <td>{{ $item->last_name }}</td>
                                         <td>{{ $item->extension }}</td>
 
                                         <td>

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('enrollment', function (Blueprint $table) {
             $table->id();
             $table->string('lrn');
+            $table->string('strand')->nullable(false);
             $table->string('email')->nullable(false);
             $table->string('first_name', 50)->nullable(false);
             $table->string('middle_name', 50)->nullable(true);

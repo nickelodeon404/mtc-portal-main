@@ -13,6 +13,7 @@ class Enrollment extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'lrn',
+        'strand',
         'email',
         'first_name',
         'middle_name',

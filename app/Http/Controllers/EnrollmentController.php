@@ -34,6 +34,7 @@ class EnrollmentController extends Controller
     {
         $validatedData = $request->validate([
             'lrn' => 'required',
+            'strand' => 'required',
             'email' => 'required',
             'first_name' => 'required|max:50',
             'middle_name' => 'nullable|max:50',
@@ -107,6 +108,7 @@ class EnrollmentController extends Controller
            // Store the data into the enrolled table
            Enrolled::create([
                'lrn' => $enrollment->lrn,
+               'strand' => $enrollment->strand,
                'email' => $enrollment->email,
                'first_name' => $enrollment->first_name,
                'middle_name' => $enrollment->middle_name,

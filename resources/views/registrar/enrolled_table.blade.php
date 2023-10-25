@@ -76,10 +76,9 @@
                                     <th>#</th>
                                     <th>LRN</th>
                                     <th>Email</th>
+                                    <th>Last Name</th>
                                     <th>First Name</th>
                                     <th>Middle Name</th>
-                                    <th>Last Name</th>
-                                    <th>Extension</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -89,9 +88,9 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->lrn }}</td>
                                         <td>{{ $item->email }}</td>
+                                        <td>{{ $item->last_name }}</td>
                                         <td>{{ $item->first_name }}</td>
                                         <td>{{ $item->middle_name }}</td>
-                                        <td>{{ $item->last_name }}</td>
                                         <td>{{ $item->extension }}</td>
 
                                         <td>
