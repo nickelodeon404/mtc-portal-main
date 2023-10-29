@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Enrolled;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class EnrolledController extends Controller
 {
@@ -74,6 +76,12 @@ class EnrolledController extends Controller
         return redirect('/enrolled_table-table');
     }
 
+    public function export_user_pdf()
+    {
+        $enrolledData = Enrolled::all();
+        $pdf = Pdf::loadView('pdf.enrolled', compact('enrolledData'));
+        return $pdf->stream('enrolled.pdf');
+    }
 
  
 }

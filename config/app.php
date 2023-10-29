@@ -159,7 +159,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Barryvdh\DomPDF\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -170,6 +170,12 @@ return [
         App\Providers\RouteServiceProvider::class,
     ])->toArray(),
 
+    'aliases' => [
+        // ...
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+    ],
+    
+    
     /*
     |--------------------------------------------------------------------------
     | Class Aliases

@@ -114,6 +114,7 @@ Route::get('/enrolled_table-table', [EnrolledController::class, 'view']);
 Route::get('/show_enrolled-table{registrar}', [EnrolledController::class, 'show'])->name('enrolled.registrar.show');
 Route::post('/enrollment/{id}/add-to-enrolled', [EnrollmentController::class, 'addToEnrolled'])->name('enrollment.addToEnrolled');
 Route::delete('/enrolled/{id}', [EnrolledController::class, 'destroy'])->name('enrolled.destroy');
+Route::get('/export_user_pdf', [EnrolledController::class, 'export_user_pdf'])->name('export_user_pdf');
 
 //Route for Manage Account
 Route::get('/registrar', [ManageController::class, 'index']);

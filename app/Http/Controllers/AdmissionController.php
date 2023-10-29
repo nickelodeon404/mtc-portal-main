@@ -33,9 +33,9 @@ class AdmissionController extends Controller
         $data = DB::table('admission')->orderBy('id')->get();
         // $Users = User::all();
         // Fetch data for Enrollment section as well
-        $enrollmentData = DB::table('enrollment')->orderBy('grade_level')->get();
+        $enrollmentData = DB::table('enrollment')->orderBy('strand', 'grade_level', 'section')->get();
 
-        $enrolledData = DB::table('enrolled')->orderBy('grade_level')->get();
+        $enrolledData = DB::table('enrolled')->orderBy('strand', 'grade_level', 'section')->get();
 
         return view('registrar.index', [
             'data' => $data,

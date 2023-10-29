@@ -68,6 +68,7 @@
         <main>
             <div class="container-fluid px-4">
                 <h1 class="mt-4">Enrolled</h1>
+                <a class="btn btn-success" href="{{route('export_user_pdf')}}" style="margin-left: 94.5%; margin-right: auto;"> Export</a>
                 <div class="row">
                     <div class="table-responsive mt-4">
                         <table id="enrolled" class="table table-wider">
@@ -75,6 +76,9 @@
                                 <tr>
                                     <th>#</th>
                                     <th>LRN</th>
+                                    <th>Strand</th>
+                                    <th>Year Level</th>
+                                    <th>Section</th>
                                     <th>Email</th>
                                     <th>Last Name</th>
                                     <th>First Name</th>
@@ -87,6 +91,9 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->lrn }}</td>
+                                        <td>{{ $item->strand }}</td>
+                                        <td>{{ $item->grade_level }}</td>
+                                        <td>{{ $item->section }}</td>
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->last_name }}</td>
                                         <td>{{ $item->first_name }}</td>
