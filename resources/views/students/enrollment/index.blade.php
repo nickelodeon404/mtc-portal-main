@@ -108,14 +108,27 @@
                                     <!-- Add more grade levels as needed -->
                                 </select>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="lastSchool" class="form-label">Last School Attended</label>
-                                    <input type="text" class="form-control" id="junior_high" name="junior_high"
-                                        placeholder="Last School Attended" value="{{$admission->junior_high}}" style="background-color: #CDCDCD;" readonly>
-                                </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="strand" class="form-label">* Preferred Strand</label>
+                                <select class="form-select" name="strand" id="strand" required>
+                                    <option disabled selected>Select an option></option>
+                                    @foreach (\App\Models\Strand::all() as $strand) 
+                                    <option value="{{ $strand->acronym }}">{{ $strand->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="lastSchool" class="form-label">Last School Attended</label>
+                                <input type="text" class="form-control" id="junior_high" name="junior_high"
+                                        placeholder="Last School Attended" value="{{$admission->junior_high}}" style="background-color: #CDCDCD;" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
                         <div class="mb-3">
                             <label for="graduationType" class="form-label">Are you a:</label>
                             <select class="form-select" id="graduation_type" name="graduation_type" required>
@@ -125,6 +138,7 @@
                                 <option value="ALS Graduate" {{$admission->lrn == "ALS Graduate" ? "selected" : ""}}>ALS Graduate</option>
                             </select>
                         </div>
+                    </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>

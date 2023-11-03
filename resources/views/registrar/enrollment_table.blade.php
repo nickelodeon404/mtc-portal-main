@@ -96,7 +96,7 @@
                                         <td>{{ $item->lrn }}</td>
                                         <td>{{ $item->strand }}</td>
                                         <td>{{ $item->grade_level }}</td>
-                                        <td>{{ $item->section }}</td>
+                                        {{--<td>{{ $item->section }}</td>--}}
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->last_name }}</td>
                                         <td>{{ $item->first_name }}</td>

@@ -72,6 +72,9 @@
                                     	<td><strong>Grade Level:</strong> {{ $item->grade_level }}</td>
                                     </tr>
                                     <tr>
+                                    	<td><strong>Strand:</strong> {{ $item->strand }}</td>
+                                    </tr>
+                                    <tr>
                                     	<td><strong>Junior High:</strong> {{ $item->junior_high }}</td>
                                     </tr>
                                     <tr>
