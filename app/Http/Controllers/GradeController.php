@@ -87,4 +87,10 @@ class GradeController extends Controller
         $studentGrade = new Grade();
         return redirect()->back()->with('message', 'Grades Added Successfully.');
     }
+    public function export_grade_pdf()
+    {
+        $enrolledData = Enrolled::all();
+        $pdf = Pdf::loadView('pdf.enrolled', compact('gradeData'));
+        return $pdf->stream('grade.pdf');
+    }
 }

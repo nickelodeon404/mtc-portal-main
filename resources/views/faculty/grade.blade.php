@@ -54,7 +54,12 @@
                                     <!-- Add some margin and padding to align the button with the dropdown -->
                                     <div style="margin-top: 20px;">
                                         <button type="submit" class="btn btn-primary btn-block mt-2"> <i
-                                                class="fa-solid fa-filter"></i> Filter Students</button>
+                                                class="fa-solid fa-filter"></i> Filter Students
+                                        </button>
+                                    
+                                        <button class="btn btn-success btn-block mt-2">Export
+                                            <a href="{{route('export_user_pdf')}}" style="margin-top: 30px; margin-right: auto;"></a>
+                                        </button>
                                     </div>
                                 </div>
 
@@ -82,11 +87,7 @@
                                                 <input type="hidden" name="subjectLoads_id[]"
                                                     value="{{ $student->subjectLoad }}">
                                                 <input type="text" name="student_id[]" class="form-control" disabled
-<<<<<<< Updated upstream
                                                     readonly value="{{ $student->id }}"> 
-=======
-                                                    readonly  value="{{ $student->id }}">
->>>>>>> Stashed changes
                                             </td>
                                             <td>
                                                 <input type="text" name="name[]" class="form-control" disabled
