@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('enrolled', function (Blueprint $table) {
             $table->id();
             $table->string('lrn');
+            $table->string('strand')->nullable(false);
             $table->string('email')->nullable(false);
             $table->string('first_name', 50)->nullable(false);
             $table->string('middle_name', 50)->nullable(true);
@@ -28,14 +29,16 @@ return new class extends Migration
             $table->string('barangay')->nullable(false);
             $table->string('city_municipality')->nullable(false);
             $table->string('status')->nullable(false);
-
+            
+            $table->bigInteger('grade_level')->unsigned();
+/*
             // Create a foreign key column
             $table->foreignId('grade_level')
                   ->references('id')
                   ->on('enrolled')
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
-
+*/
             $table->string('junior_high')->nullable(false);
             $table->string('graduation_type')->nullable(false);
             $table->timestamps();

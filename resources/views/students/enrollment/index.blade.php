@@ -134,8 +134,8 @@
                             <select class="form-select" id="graduation_type" name="graduation_type" required>
                                 <option value="" selected>Select an option</option>
                                 <option value="Public Completer" {{$admission->graduation_type == "Public Completer" ? "selected" : ""}}>Public Completer</option>
-                                <option value="Private Completer" {{$admission->lrn == "Private Completer" ? "selected" : ""}}>Private Completer</option>
-                                <option value="ALS Graduate" {{$admission->lrn == "ALS Graduate" ? "selected" : ""}}>ALS Graduate</option>
+                                <option value="Private Completer" {{$admission->graduation_type == "Private Completer" ? "selected" : ""}}>Private Completer</option>
+                                <option value="ALS Graduate" {{$admission->graduation_type == "ALS Graduate" ? "selected" : ""}}>ALS Graduate</option>
                             </select>
                         </div>
                     </div>

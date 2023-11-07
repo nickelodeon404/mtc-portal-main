@@ -14,6 +14,7 @@ class Enrolled extends Model
 
     protected $fillable = [
         'lrn',
+        'strand',
         'email',
         'first_name',
         'middle_name',
@@ -34,8 +35,10 @@ class Enrolled extends Model
     ];
 
     // Define the relationship with the GradeLevel model (assuming you have one)
+/*
     public function gradeLevel()
     {
         return $this->belongsTo(Enrolled::class, 'grade_level');
     }
+*/
 }

@@ -116,7 +116,7 @@ Route::post('/enrollment/{id}/add-to-enrolled', [EnrollmentController::class, 'a
 Route::delete('/enrolled/{id}', [EnrolledController::class, 'destroy'])->name('enrolled.destroy');
 
 //PDF EXPORTING
-Route::get('/export_user_pdf', [EnrolledController::class, 'export_user_pdf'])->name('export_user_pdf');
+Route::get('/export_user_pdf', [EnrolledController::class, 'export_user_pdf'])->name('export_user_pdf'); //For Enrolled
 Route::get('/export_grade_pdf', [GradeController::class, 'export_grade_pdf'])->name('export_grade_pdf');
 
 //Route for Manage Account

@@ -89,7 +89,7 @@ class GradeController extends Controller
     }
     public function export_grade_pdf()
     {
-        $enrolledData = Enrolled::all();
+        $teacherload = Enrolled::all();
         $pdf = Pdf::loadView('pdf.enrolled', compact('gradeData'));
         return $pdf->stream('grade.pdf');
     }

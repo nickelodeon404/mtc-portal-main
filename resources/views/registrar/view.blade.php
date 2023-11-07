@@ -61,6 +61,20 @@
             margin-right: 5px;
         }
 
+        /* MODAL SIZE */
+        .custom-wide-modal {
+            max-width: 60%;
+        }
+
+        /* TABLE STRONG TEXT ALIGNMENT */
+        strong {
+            float: left;
+        }
+        .data{
+            float: left;
+            
+        }
+
     </style>
 
     <x-panel>
@@ -100,11 +114,15 @@
                                         
 
                                         <td>
-                                            <a href="{{ url('/show-table' . $item->id) }}" title="Show Admissions">
+                                            <!-- <a href="{{ url('/show-table' . $item->id) }}" title="Show Admissions">
                                                 <button class="btn btn-primary btn-sm btn-action">
                                                     <i class="fa fa-eye" aria-hidden="true"></i> View
                                                 </button>
-                                            </a>
+                                            </a> -->
+                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalAdminView-{{ $item->id }}">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                    View
+                                            </button>
                                         
                                         <form method="POST" action="{{ route('admitStudent', $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                             @csrf
@@ -126,6 +144,185 @@
                             </tbody>
                         </table>
                     </div>
+
+                    {{--MODAL FOR VIEW--}}
+                    @foreach($data as $item)
+                    <!-- The Modal -->
+                    <div class="modal fade" id="modalAdminView-{{ $item->id }}">
+                        <div class="modal-dialog custom-wide-modal">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">View Admission</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                <table class="table table-wider">
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            <strong>LRN:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->lrn }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Email:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->email }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>First Name:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->first_name }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Middle Name:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->middle_name }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Last Name:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->last_name }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Extension:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->extension }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Birthday:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->birthday }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Age:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->age }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Barangay:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->barangay }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>City/Municipality:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->city_municipality }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Province:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->province }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Mobile No:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->mobile_number }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Facebook Account:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->facebook }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Junior High:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->junior_high }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Year Graduated:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->year_graduated }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Strand:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->strand }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Graduation Type:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->graduation_type }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>PSA/Birth Certificate:</strong><br>
+                                                <div class="data">
+                                                    <img src="{{$item->psa ? asset('storage/images/' . $item->psa) : asset('img/no-image.webp')}}" alt="PSA" width="70" height="50">
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Form 138:</strong><br>
+                                                <div class="data">
+                                                    <img src="{{$item->form_138 ? asset('storage/images/' . $item->form_138): asset('img/no-image.webp')}}" alt="PSA" width="70" height="50">
+                                                </div>
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+{{--END OF MODAL VIEW--}}
+
                 </div>
             </div>
         </main>

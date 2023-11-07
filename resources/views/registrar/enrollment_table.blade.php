@@ -71,6 +71,10 @@
         strong {
             float: left;
         }
+        .data{
+            float: left;
+            
+        }
     </style>
 
     <x-panel>
@@ -115,25 +119,29 @@
                                         <td>{{ $item->extension }}</td>
 
                                         <td>
-                                            <a href="{{ url('/show_enrollment' . $item->id ) }}" title="Show Enrollment">
+                                            <!-- <a href="{{ url('/show_enrollment' . $item->id ) }}" title="Show Enrollment">
                                                 <button class="btn btn-primary btn-sm btn-action">
                                                     <i class="fa fa-eye" aria-hidden="true"></i> View
                                                 </button>
-                                            </a>
+                                            </a> -->
+                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalView-{{ $item->id }}">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                    View
+                                            </button>
 
-                                            <form method="POST" action="{{ route('enrollment.addToEnrolled', $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                           <!-- <form method="POST" action="{{ route('enrollment.addToEnrolled', $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-success btn-sm btn-action" title="Add to Enrolled" onclick="return confirm('Confirm and transfer to enrolled?')">
                                                     <i class="fa fa-check" aria-hidden="true"></i> Enroll
                                                 </button>
-                                            </form>
+                                            </form> -->
 
                                            <!-- <a href="{{ url('/enrollment' . $item->id) }}" title="Update">
                                                 <button class="btn btn-info btn-sm btn-action">
                                                     <i class="fa fa-pencil" aria-hidden="true"></i> Update
                                                 </button>
                                             </a> -->
-                                            <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#myModal-{{ $item->id }}">
+                                            <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modalUpdate-{{ $item->id }}">
                                             <i class="fa fa-pencil" aria-hidden="true"></i>
                                                     Update
                                             </button>
@@ -147,30 +155,209 @@
                                             </form>
                                         </td>
                                     </tr>
+                                    
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
+{{--MODAL FOR VIEW--}}
+                    @foreach($enrollmentData as $item)
+                    <!-- The Modal -->
+                    <div class="modal fade" id="modalView-{{ $item->id }}">
+                        <div class="modal-dialog custom-wide-modal">
+                            <div class="modal-content">
 
-                    <div class="table-responsive">
-                            <form action="{{ route('enrollment.update', $item->id) }}" method="POST">
-                            @csrf
-                            @method('PATCH')
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">View Enrollees</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
 
-                             <!-- The Modal -->
-                         <div class="modal fade" id="myModal-{{ $item->id }}">
-                            <div class="modal-dialog custom-wide-modal">
-                                <div class="modal-content">
-
-                            <!-- Modal Header -->
-                        <div class="modal-header">
-                            <h4 class="modal-title">Update Enrollees</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                <table class="table table-wider">
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            <strong>LRN:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->lrn }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Email:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->email }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>First Name:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->first_name }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Middle Name:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->middle_name }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Last Name:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->last_name }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Extension:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->extension }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Birthday:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->birthday }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Age:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->age }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Mobile No:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->mobile_number }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Facebook Account:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->facebook }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Region:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->region }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Province:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->province }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Barangay:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->barangay }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>City/Municipality:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->city_municipality }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Status:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->status }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Grade Level:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->grade_level }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Strand:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->strand }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Junior High:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->junior_high }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Graduation Type:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->graduation_type }}
+                                                </div>
+                                        </td>
+                                    </tr>    
+                                </thead>
+                            </table>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    @endforeach
+{{--END OF MODAL VIEW--}}
 
-                         <!-- Modal body -->
-                         <div class="modal-body">
-                         <table class="table table-wider">
+{{--MODAL FOR UPDATE--}}
+@foreach($enrollmentData as $item)
+                    <!-- The Modal -->
+                    <div class="modal fade" id="modalUpdate-{{ $item->id }}">
+                        <div class="modal-dialog custom-wide-modal">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Update Enrollees</h4>
+                                        <a href="{{ url('/enrollment_table-table') }}">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </a>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                <form action="{{ route('enrollment.addToEnrolled', $item->id) }}" method="POST" accept-charset="UTF-8">
+                                    @csrf  
+                                <table class="table table-wider">
                                 <thead>
                                     <tr>
                                         <td>
@@ -301,10 +488,10 @@
                                         <td>
                                             <strong>Grade Level:</strong> 
                                             <div class="col-md-15 mb-3">
-                                                <select class="form-select" id="grade_level" name="grade_level" value="{{$item->grade_level}}">
-                                                    <option disabled selected>Select One</option>
-                                                    <option>11</option>
-                                                    <option>12</option>
+                                                <select class="form-select" id="grade_level" name="grade_level">
+                                                <option disabled selected>Select an option</option>
+                                                    <option value="11" {{$item->grade_level == "11" ? "selected" : ""}}>11</option>
+                                                    <option value="12" {{$item->grade_level == "12" ? "selected" : ""}}>12</option>
                                                 </select>
                                             </div> 
                                         </td>
@@ -314,13 +501,11 @@
                                             <strong>Strand:</strong>
                                             <div class="col-md-15 mb-3">
                                                 <select class="form-select" name="strand" id="strand" required>
-                                                    <option disabled selected>Select an option></option>
+                                                    <option disabled selected>Select an option</option>
                                                         @foreach (\App\Models\Strand::all() as $strand) 
-                                                <option value="{{ $strand->acronym }}">{{ $strand->name }}</option>
+                                                    <option value="{{ $strand->acronym }}" {{ $item->strand == $strand->acronym ? "selected" : "" }}>{{ $strand->name }}</option>
                                                         @endforeach
                                                 </select>
-                                            </div>
-                                            </div>
                                             </div>
                                         </td>
                                     </tr>
@@ -339,17 +524,19 @@
                                                 <select class="form-select" id="graduation_type" name="graduation_type">
                                                     <option disabled selected>Select an option</option>
                                                     <option value="Public Completer" {{$item->graduation_type == "Public Completer" ? "selected" : ""}}>Public Completer</option>
-                                                    <option value="Private Completer" {{$item->lrn == "Private Completer" ? "selected" : ""}}>Private Completer</option>
-                                                    <option value="ALS Graduate" {{$item->lrn == "ALS Graduate" ? "selected" : ""}}>ALS Graduate</option>
+                                                    <option value="Private Completer" {{$item->graduation_type == "Private Completer" ? "selected" : ""}}>Private Completer</option>
+                                                    <option value="ALS Graduate" {{$item->graduation_type == "ALS Graduate" ? "selected" : ""}}>ALS Graduate</option>
                                                 </select>
                                             </div> 
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <button type="submit" class="btn btn-success" style="position: relative;">Update</button>
+                                            <button type="submit" class="btn btn-success" style="position: relative; title="Add to Enrolled" onclick="return confirm('Confirm and transfer to enrolled?')">
+                                                    <i class="fa fa-check" aria-hidden="true"></i> Enroll
+                                                </button>
 
-                                            <a href="{{ url('/enrollment_table-table') }}" title="Edit Admissions">
+                                            <a href="{{ url('/enrollment_table-table') }}">
                                                 <button class="btn btn-primary">
                                                         Back
                                                 </button>
@@ -362,6 +549,11 @@
                         </form>
                     </div>
                 </div>
+            </div>
+        </div>
+        @endforeach
+{{--END OF MODAL UPDATE--}}
+
             </div>
         </main>
         <x-footer />
@@ -379,5 +571,7 @@
     });
 </script>
 {{--END--}}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 
 @endsection
