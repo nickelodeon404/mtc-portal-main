@@ -75,22 +75,11 @@
                 </div>
                 <div class="col-lg-8 align-self-baseline">
                     <p class="text-white-75 mb-5">Stay Informed</p>
-                    <a class="btn btn-primary btn-xl" href="#mtc">Find Out More</a>
+                    <a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
                 </div>
             </div>
         </div>
     </header>
-
-    <!-- MTC Group of Schools -->
-    <section class="page-section" style="background-color: #5c2c78;" id="mtc">
-        <div class="container px-4 px-lg-5" style="">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-4 d-flex justify-content-center align-items-center">
-                    <img src="/img/aboutt.jpg" alt="about" width="1520" height="900">
-                </div>
-            </div>
-        </div>    
-    </section>    
     
     <!-- About -->
     <section class="page-section" style="background-color: #5c2c78;" id="about">
@@ -120,6 +109,55 @@
             </div>
         </div>
     </section>
+
+    <!-- Video Section -->
+    <section class="page-section" style="background-color: #5c2c78;" id="video">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <video id="myVideo" width="100%" height="auto" controls>
+                        <source src="/video/mother-theresa-colegio-de-iriga.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    // Get the video element
+    var video = document.getElementById("myVideo");
+
+    // Function to play the video when it comes into view
+    function playVideoOnScroll() {
+        // Get the position of the video relative to the viewport
+        var rect = video.getBoundingClientRect();
+
+        // Play the video when it's in the viewport
+        if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+            video.play();
+        } else {
+            // Pause the video when it's not in the viewport
+            video.pause();
+        }
+    }
+
+    // Attach the playVideoOnScroll function to the scroll event
+    window.addEventListener("scroll", playVideoOnScroll);
+
+    // Play the video when the page loads if it's initially in view
+    window.addEventListener("load", playVideoOnScroll);
+    </script>
+
+        <!-- MTC Group of Schools -->
+        <section class="page-section" style="background-color: #5c2c78;" id="mtc">
+            <div class="container px-4 px-lg-5" style="">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                        <img src="/img/aboutt.jpg" alt="about" width="1520" height="900">
+                    </div>
+                </div>
+            </div>    
+        </section>    
     
    <!-- Philosophy -->
 <section class="page-section" style="background-color: #5c2c78;" id="philosophy">
