@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,6 +17,27 @@
         .nav-link:hover {
             text-decoration: underline;
         }
+
+        /* Style the modal to match your existing layout */
+        .modal-content {
+            background-color: #d7dce1; /* Background color */
+            color: #000000; /* Text color */
+            border: 1px solid #d2d1d1; /* Border color */
+            border-radius: 0; /* Border radius */
+        }
+
+        .modal-header {
+            border-bottom: 1px solid #000000; /* Border color */
+            background-color: #d7dce1; /* Header background color */
+            color: #000000; /* Header text color */
+        }
+
+        .modal-footer {
+            border-top: 1px solid #000000; /* Border color */
+            background-color: #d7dce1; /* Footer background color */
+            color: #000000; /* Footer text color */
+        }
+        
     </style>
 </head>
 
@@ -49,21 +71,21 @@
                 </ul>
             </li>
             <!-- User Dropdown -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button"
-                    data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                    <li><a class="dropdown-item" href="#!">Settings</a></li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li><a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                          document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a></li>
-                </ul>
-            </li>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button"
+        data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+        <!-- Open the modal when clicking on the "Settings" link -->
+        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#settingsModal">Settings</a></li>
+        <li>
+            <hr class="dropdown-divider" />
+        </li>
+        <li><a class="dropdown-item" href="{{ route('logout') }}"
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a></li>
+    </ul>
+</li>
             <!-- Logout Form -->
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
@@ -73,6 +95,47 @@
     <div id="layoutSidenav">
         @yield('content')
     </div>
+    <!-- Modal -->
+<div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="settingsModalLabel">Settings</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5 class="modal-title" id="settingsModalLabel">Update Information</h5>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td>Name:</td>
+                            <td contenteditable="false">{{ auth()->user()->name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Address:</td>
+                            <td contenteditable="true">Insert your address here</td> <!-- Replace with actual address -->
+                        </tr>
+                        <tr>
+                            <td>Contact Number:</td>
+                            <td contenteditable="true">Insert your contact number here</td> <!-- Replace with actual phone number -->
+                        </tr>
+                        <tr>
+                            <td>Email Address:</td>
+                            <td contenteditable="true">Insert your email address here</td> <!-- Replace with actual email address -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Update</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#changePasswordModal">Change Password</button>
+                <!-- Add additional buttons if needed -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
     <script src="{{asset('js/admin.js')}}"></script>
