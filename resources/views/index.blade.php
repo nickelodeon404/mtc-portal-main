@@ -122,7 +122,7 @@
     </section>
     
    <!-- Philosophy -->
-<section class="page-section" style="background-color: #F1CC4A;" id="philosophy">
+<section class="page-section" style="background-color: #5c2c78;" id="philosophy">
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-lg-8 text-center">
@@ -169,7 +169,7 @@
 </section>
 
 <!-- Mission -->
-<section class="page-section" style="background-color: #F1CC4A;" id="mission">
+<section class="page-section" style="background-color: #5c2c78;" id="mission">
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-lg-8 text-center">
