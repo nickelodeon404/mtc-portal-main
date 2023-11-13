@@ -85,7 +85,7 @@
                         {{ session('success') }}
                     </div>
                 @endif
-                <h1 class="mt-4">Admission</h1>
+                <h1 class="mt-4">Admitted</h1>
                 <div class="row">
                     <div class="table-responsive mt-4">
                         <table id="admission" class="table table-wider">
@@ -102,7 +102,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($data as $item)
+                                @foreach($admitted as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->lrn }}</td>
@@ -119,19 +119,12 @@
                                                     <i class="fa fa-eye" aria-hidden="true"></i> View
                                                 </button>
                                             </a> -->
-                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalAdminView-{{ $item->id }}">
+                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalAdmitView-{{ $item->id }}">
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                                     View
                                             </button>
-                                        
-                                        <form method="POST" action="{{ route('admission.admitStudent', $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                            @csrf
-                                                <button class="btn btn-success btn-sm btn-action">
-                                                    <i class="fa fa-check" aria-hidden="true"></i> Admit
-                                                </button>
-                                        </form>
                       
-                                            <form method="POST" action="{{ url('admission/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                            <form method="POST" action="{{ url('admitted/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-danger btn-sm btn-action" title="Delete Student" onclick="return confirm(&quot;Confirm delete?&quot;)">
@@ -148,7 +141,7 @@
                     {{--MODAL FOR VIEW--}}
                     @foreach($data as $item)
                     <!-- The Modal -->
-                    <div class="modal fade" id="modalAdminView-{{ $item->id }}">
+                    <div class="modal fade" id="modalAdmitView-{{ $item->id }}">
                         <div class="modal-dialog custom-wide-modal">
                             <div class="modal-content">
 

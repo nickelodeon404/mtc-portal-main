@@ -78,9 +78,10 @@ class EnrollmentController extends Controller
         // $item = YourModelName::findOrFail($id);
 
         // or, fetch data for editing using query builder
-        $item = DB::table('enrollment')->where('id', $id)->first();
 
-        return view('/registrar/show_enrollment', ['item' => $item]); //'show' in the code is the show.blade.php.
+        //$item = DB::table('enrollment')->where('id', $id)->first();
+
+        //return view('/registrar/show_enrollment', ['item' => $item]); //'show' in the code is the show.blade.php.
     }
     public function view()
     {
@@ -94,7 +95,7 @@ class EnrollmentController extends Controller
     }
 
 
-// this is for showing the error in add to enrolled
+//Add to Enrolled
 public function addToEnrolled($id)
 {
     try {
@@ -144,59 +145,6 @@ public function addToEnrolled($id)
         return redirect()->back()->with('error', 'An error occurred while transferring the student to enrolled.');
     }
 }
-/*
-//This is the real code for add to enrolled
-   //ADD TO ENROLLED
-public function addToEnrolled($id)
-{
-    try {
-        // Fetch the enrollment data using the provided $id
-        $enrollment = Enrollment::findOrFail($id);
-
-        // Log the data to check if it's being fetched correctly
-        Log::info('Enrollment Data: ' . json_encode($enrollment));
-
-        // Store the data into the enrolled table
-        Enrolled::create([
-            'lrn' => $enrollment->lrn,
-            'strand' => $enrollment->strand,
-            'email' => $enrollment->email,
-            'first_name' => $enrollment->first_name,
-            'middle_name' => $enrollment->middle_name,
-            'last_name' => $enrollment->last_name,
-            'extension' => $enrollment->extension,
-            'birthday' => $enrollment->birthday,
-            'age' => $enrollment->age,
-            'mobile_number' => $enrollment->mobile_number,
-            'facebook' => $enrollment->facebook,
-            'region' => $enrollment->region,
-            'province' => $enrollment->province,
-            'barangay' => $enrollment->barangay,
-            'city_municipality' => $enrollment->city_municipality,
-            'status' => $enrollment->status,
-            'grade_level' => $enrollment->grade_level,
-            'junior_high' => $enrollment->junior_high,
-            'graduation_type' => $enrollment->graduation_type,
-        ]);
-
-        // Log a success message to check if data insertion is successful
-        Log::info('Data successfully inserted into Enrolled table');
-
-        // Delete the data from the enrollment table
-        $enrollment->delete();
-
-        // Log a success message to check if data deletion is successful
-        Log::info('Data successfully deleted from Enrollment table');
-
-        return redirect()->back()->with('success', 'Student added to enrolled successfully.');
-    } catch (\Exception $e) {
-        // Log the exception message for debugging
-        Log::error('Exception: ' . $e->getMessage());
-
-        return redirect()->back()->with('error', 'An error occurred while transferring the student to enrolled.');
-    }
-}
-*/
     
     public function destroy($id)
     {

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\EnrolledController;
 use App\Http\Controllers\AdmissionController;
+use App\Http\Controllers\AdmittedController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\DocumentTypeController;
 use App\Http\Controllers\ManageController;
@@ -93,7 +94,7 @@ Route::post('/enrollment', [EnrollmentController::class, 'store']);
 Route::get('/registrar', [AdmissionController::class, 'index']);
 Route::get('/view-table', [AdmissionController::class, 'view']);
 Route::get('/show-table{registrar}', [AdmissionController::class, 'show'])->name('admin.registrar.show');
-Route::post('/view-table/{id}', 'App\Http\Controllers\AdmissionController@admitStudent')->name('admitStudent');
+//Route::post('/view-table/{id}', 'App\Http\Controllers\AdmissionController@admitStudent')->name('admitStudent');
 Route::delete('/admission/{id}', [AdmissionController::class, 'destroy'])->name('admission.destroy');
 
 //Route for Enrollment
@@ -114,6 +115,12 @@ Route::get('/enrolled_table-table', [EnrolledController::class, 'view']);
 Route::get('/show_enrolled-table{registrar}', [EnrolledController::class, 'show'])->name('enrolled.registrar.show');
 Route::post('/enrollment/{id}/add-to-enrolled', [EnrollmentController::class, 'addToEnrolled'])->name('enrollment.addToEnrolled');
 Route::delete('/enrolled/{id}', [EnrolledController::class, 'destroy'])->name('enrolled.destroy');
+
+//Route for Admitted
+Route::get('/registrar', [AdmittedController::class, 'index']);
+Route::get('/admitted_table-table', [AdmittedController::class, 'view']);
+Route::post('/admission/{id}/add-to-admitted', [AdmissionController::class, 'admitStudent'])->name('admission.admitStudent');
+Route::delete('/admitted/{id}', [AdmittedController::class, 'destroy'])->name('admitted.destroy');
 
 //PDF EXPORTING
 Route::get('/export_user_pdf', [EnrolledController::class, 'export_user_pdf'])->name('export_user_pdf'); //For Enrolled

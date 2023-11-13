@@ -80,9 +80,9 @@
                     <div class="col-12 d-flex justify-content-between">
                         <h1 class="mt-4">Manage User Accounts</h1>
                         <div>
-                            <a href="{{ url('/add-account') }}" class="btn btn-add-account" style="margin-top: 30px;">
+                            <button type="button" class="btn btn-add-account" style="margin-top: 30px;" data-bs-toggle="modal" data-bs-target="#modalAdd">
                                 Add Account
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -112,7 +112,7 @@
                                     <!-- To display asterisks for the password -->
                                     <!-- <td>{{ str_repeat('*', strlen($item->password)) }}</td> -->
                                     <td>
-                                        <a href="{{ url('/show-table' . $item->id) }}" title="Show Admissions">
+                                        <a href="{{ url('/show-table' . $item->id) }}">
                                             <button class="btn btn-primary btn-sm btn-action">
                                                 <i class="fa fa-eye" aria-hidden="true"></i> View
                                             </button>
@@ -135,6 +135,48 @@
                         </tbody>
                     </table>
                 </div>
+{{--MODAL ADD ACCOUNT--}}
+                <form action="{{ url('users') }}" method="post">
+                    @csrf
+
+                    <!-- The Modal -->
+                    <div class="modal fade" id="modalAdd">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Create Account</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <div class="mb-4">
+                                        <label for="lrn" class="form-label"><b>Name:</b></label>
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="Name" value="" required><br>
+
+                                        <label for="lrn" class="form-label"><b>Role ID</b></label>
+                                            <select class="form-select" id="status" name="status" required>
+                                                <option value="" selected>Select One</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                        </select><br>
+
+                                        <label for="lrn" class="form-label"><b>Email:</b></label>
+                                        <input type="text" class="form-control" name="email" id="email" placeholder="Email" value="" required><br>
+
+                                        <label for="lrn" class="form-label"><b>Password:</b></label>
+                                        <input type="password" class="form-control" name="name" id="password" placeholder="Password" value="" required><br>
+
+                                    <button type="submit" class="btn btn-primary">Create</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+{{--END MODAL ADD ACCOUNT--}}
             </div>
         </main>
         <x-footer />

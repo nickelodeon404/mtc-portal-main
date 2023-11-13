@@ -17,26 +17,6 @@
         .nav-link:hover {
             text-decoration: underline;
         }
-
-        /* Style the modal to match your existing layout */
-        .modal-content {
-            background-color: #d7dce1; /* Background color */
-            color: #000000; /* Text color */
-            border: 1px solid #d2d1d1; /* Border color */
-            border-radius: 0; /* Border radius */
-        }
-
-        .modal-header {
-            border-bottom: 1px solid #000000; /* Border color */
-            background-color: #d7dce1; /* Header background color */
-            color: #000000; /* Header text color */
-        }
-
-        .modal-footer {
-            border-top: 1px solid #000000; /* Border color */
-            background-color: #d7dce1; /* Footer background color */
-            color: #000000; /* Footer text color */
-        }
         
     </style>
 </head>
@@ -96,7 +76,7 @@
         @yield('content')
     </div>
     <!-- Modal -->
-<div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+<div class="modal fade" id="settingsModal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

@@ -26,6 +26,7 @@ class Admission extends Model
         'mobile_number',
 
         'isVerified',
+        'is_admitted',
         
         'facebook',
         'junior_high',

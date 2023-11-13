@@ -45,9 +45,10 @@ class EnrolledController extends Controller
         // $item = YourModelName::findOrFail($id);
 
         // or, fetch data for editing using query builder
-        $item = DB::table('enrolled')->where('id', $id)->first();
+        
+        //$item = DB::table('enrolled')->where('id', $id)->first();
 
-        return view('/registrar/show_enrolled', ['item' => $item]); //'show' in the code is the show.blade.php.
+        //return view('/registrar/show_enrolled', ['item' => $item]); //'show' in the code is the show.blade.php.
     }
 
     public function view()

@@ -25,7 +25,7 @@
                     <a class="nav-link" href="{{ url('/view-table') }}">
                         <i class="fas fa-user-graduate"></i> Admissions
                     </a>
-                    <a class="nav-link" href="{{ url('/view-table') }}">
+                    <a class="nav-link" href="{{ url('/admitted_table-table') }}">
                         <i class="fas fa-user-graduate"></i> Admitted
                     </a>
                     <a class="nav-link" href="{{ url('/enrollment_table-table') }}">

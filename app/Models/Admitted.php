@@ -9,7 +9,7 @@ class Admitted extends Model
 {
     use HasFactory;
 
-    protected $table = 'admission';
+    protected $table = 'admitted';
     protected $primaryKey = 'id';
     protected $fillable = [
         'lrn',
@@ -26,6 +26,7 @@ class Admitted extends Model
         'mobile_number',
 
         'isVerified',
+        'is_admitted',
         
         'facebook',
         'junior_high',
