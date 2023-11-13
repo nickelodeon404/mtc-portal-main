@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Log;
 
 use Illuminate\Support\Facades\Http;
 use Twilio\Rest\Client;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+//use GuzzleHttp\Client;
+
 
 
 
@@ -31,8 +32,6 @@ class AdmissionController extends Controller
     {
         //$Admission = Admission::all(); //Admission in Admission::all(); -> is the model name from models folder.
         $data = DB::table('admission')->orderBy('id')->get();
-
-        $admitted = DB::table('admitted')->orderBy('id')->get()->toArray();
         // $Users = User::all();
         // Fetch data for Enrollment section as well
         $enrollmentData = DB::table('enrollment')->orderBy('strand', 'grade_level', 'section')->get();
@@ -41,7 +40,6 @@ class AdmissionController extends Controller
 
         return view('registrar.index', [
             'data' => $data,
-            'admitted' => $admitted,
             'enrollmentData' => $enrollmentData,
             'enrolledData' => $enrolledData,
             'users' => $Users,
@@ -60,7 +58,6 @@ class AdmissionController extends Controller
         // $validatedData = $request->all();
         // dd($request); //all field that exist in a table no need to one by one.
         $validatedData = $request->validate([
-            "user_id" => "required",
             "lrn" => "required",
             "first_name" => "required",
             "middle_name" => "required",
@@ -69,10 +66,6 @@ class AdmissionController extends Controller
             "birthday" => "required",
             "age" => "required",
             "mobile_number" => "required",
-            //added
-            "isVerified" => "required",
-            "is_admitted" => "required",
-            //end
             "email" => "required|email",
             "facebook" => "nullable",
             "barangay" => "required",
@@ -83,8 +76,8 @@ class AdmissionController extends Controller
             "graduation_type" => "required",
             "strand" => "required",
             "confirmationCheck" => "required",
-            'psa' => 'nullable|file|mimes:jpeg,jpg,png|max:2048', // Validate as a file with a max size of 2048 KB.
-            'form_138' => 'nullable|mimes:jpeg,jpg,png|max:2048', // Validate as a file with a max size of 2048 KB.
+         //   'psa' => 'nullable|file|mimes:jpeg,jpg,png|max:2048', // Validate as a file with a max size of 2048 KB.
+         //   'form_138' => 'nullable|mimes:jpeg,jpg,png|max:2048', // Validate as a file with a max size of 2048 KB.
         ]);
 
         // Store the uploaded PSA image in the 'public/images' directory
@@ -135,8 +128,7 @@ class AdmissionController extends Controller
         
 
         // $admission = Admission::create($validatedData);
-       $admission = Admission::create([
-            //"users_id" => $validatedData['user_id'],
+        Admission::create([
             "users_id" => $user->id,
             "lrn" => $validatedData['lrn'],
             "first_name" => $validatedData['first_name'],
@@ -156,11 +148,7 @@ class AdmissionController extends Controller
             "graduation_type" => $validatedData['graduation_type'],
             "strand" => $validatedData['strand'],
             "confirmationCheck" => $validatedData['confirmationCheck'],
-            // new added
-            "psa" => $validatedData['psa'],
-            "form_138" => $validatedData['form_138'],
-            "isVerified" => $validatedData['isVerified'],
-            "is_admitted" => $validatedData['is_admitted'],
+            // Hash the password
         ]);
 
         return redirect()->route('verify')->with(['mobile_number' => $validatedData['mobile_number']]); //this is from otp.
@@ -168,7 +156,6 @@ class AdmissionController extends Controller
         // Pass $randomPassword as a parameter when redirecting to the 'admitStudent' route
     }
 
-//Admit Student also transfer the admission data to admitted.
     public function admitStudent($id)
     {
         $admission = Admission::find($id);
@@ -177,6 +164,7 @@ class AdmissionController extends Controller
             return redirect()->back()->with('error', 'Admission record not found.');
         }
     
+        // Generate a random password for the admitted student
         $randomPassword = rand(100000, 999999);
     
         $admission->user->update(['password' => Hash::make($randomPassword)]);
@@ -189,67 +177,34 @@ class AdmissionController extends Controller
         // Send the message using Twilio
         $this->sendSmsWithUsernameAndPassword($admission->mobile_number, $message);
     
-        // Mark the student as admitted
-        $admission->is_admitted = true;
-        $admission->save();
-    
-        return redirect()->back()->with('success', 'Account information sent to the student.');
-    
         try {
-            // Fetch the admission data using the provided $id
-            $admission = Admission::findOrFail($id);
+            // Begin a database transaction for integrity
+            DB::beginTransaction();
     
-            // Log the data to check if it's being fetched correctly
-            Log::info('Admission Data: ' . json_encode($admission));
+            // Transfer data to the 'Admitted' table
+            $admittedData = $admission->toArray();
+            $admittedData['is_admitted'] = true; // Set the student as admitted
+            Admitted::create($admittedData);
     
-            // Store the data into the admitted table
-            Admitted::create([
-                "users_id" => $admission->users_id,
-                "lrn" => $admission->lrn,
-                "first_name" => $admission->first_name,
-                "middle_name" => $admission->middle_name,
-                "last_name" => $admission->last_name,
-                "extension" => $admission->extension,
-                "birthday" => $admission->birthday,
-                "age" => $admission->age,
-                "mobile_number" => $admission->mobile_number,
-                "email" => $admission->email,
-                "facebook" => $admission->facebook,
-                "barangay" => $admission->barangay,
-                "city_municipality" => $admission->city_municipality,
-                "province" => $admission->province,
-                "year_graduated" => $admission->year_graduated,
-                "junior_high" => $admission->junior_high,
-                "graduation_type" => $admission->graduation_type,
-                "strand" => $admission->strand,
-                "psa" => $admission->psa,
-                "form_138" => $admission->form_138,
-                "isVerified" => $admission->isVerified,
-                "is_admitted" => $admission->is_admitted,
-                "confirmationCheck" => $admission->confirmationCheck,
-            ]);
-    
-            // Log a success message to check if data insertion is successful
-            Log::info('Data successfully inserted into Admitted table');
-    
-            // Delete the data from the admission table
+            // Delete the data from the Admission table
             $admission->delete();
     
-            // Log a success message to check if data deletion is successful
-            Log::info('Data successfully deleted from Admission table');
+            // Commit the transaction if everything succeeds
+            DB::commit();
     
-            // return redirect()->back()->with('success', 'Student added to admitted successfully.');
+            return redirect()->back()->with('success', 'Student added to admitted successfully.');
         } catch (ModelNotFoundException $e) {
             // Handle the case where admission is not found, return a response, etc.
+            DB::rollBack(); // Roll back the transaction if there's an error
             return redirect()->back()->with('error', 'Admission record not found.');
         } catch (\Exception $e) {
             // Dump and die with the exception message for debugging
+            DB::rollBack(); // Roll back the transaction if there's an error
             dd($e->getMessage());
-    
             return redirect()->back()->with('error', 'An error occurred while transferring the student to admitted.');
         }
     }
-//END
+
 
     protected function sendSmsWithUsernameAndPassword($to, $message)
     {
@@ -306,9 +261,9 @@ class AdmissionController extends Controller
         // $item = YourModelName::findOrFail($id);
         // or, fetch data for editing using query builder
 
-        //$item = DB::table('admission')->where('id', $id)->first();
+        $item = DB::table('admission')->where('id', $id)->first();
 
-        //return view('/registrar/show', ['item' => $item]); //'show' in the code is the edit.blade.php.
+        return view('/registrar/show', ['item' => $item]); //'show' in the code is the edit.blade.php.
     }
 
 
@@ -316,13 +271,11 @@ class AdmissionController extends Controller
     {
         $data = DB::table('admission')->orderBy('id')->get()->toArray(); //ordered by strand alphabetically
 
-        $admitted = DB::table('admitted')->orderBy('id')->get()->toArray();
-
         $enrollmentData = DB::table('enrollment')->orderBy('grade_level')->get()->toArray(); //ordered by strand alphabetically
 
         $enrolledData = DB::table('enrolled')->orderBy('grade_level')->get()->toArray();
 
-        return view('registrar.view', ['data' => $data, 'enrollmentData' => $enrollmentData, 'enrolledData' => $enrolledData, 'admitted' => $admitted]);
+        return view('registrar.view', ['data' => $data, 'enrollmentData' => $enrollmentData, 'enrolledData' => $enrolledData]);
     }
 
 
@@ -341,3 +294,4 @@ class AdmissionController extends Controller
         return redirect('/view-table');
     }
 }
+
