@@ -5,7 +5,9 @@
     <x-panel>
         <main>
             <div class="container-fluid px-4 mt-4">
-                <h1 class="mb-4">Grades</h1>
+                <h1 class="mb-4"><b>Grades</b></h1>
+                <h3 class="mb-4">First Semester</h3>
+                <h4 class="mb-4">School Year 2023-2024</h4>
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-hover">
                         <thead>

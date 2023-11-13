@@ -92,17 +92,17 @@
                     <div class="col-xl-3 col-md-6">
                         <div class="card bg-dark text-white mb-4">
                             <div class="card-body">
-                                <span class="heading"><i class="fas fa-file-alt icon"></i>Academic Record Request</span>
-                                <span class="badge bg-danger">{{ count($reqDocument ?? []) }}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-dark text-white mb-4">
-                            <div class="card-body">
                                 <span class="heading"><i class="fas fa-user-graduate icon"></i>Enrollment</span>
                                 <span class="badge bg-danger">{{ count($enrollmentData ?? []) }}</span>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-dark text-white mb-4">
+                        <div class="card-body">
+                            <span class="heading"><i class="fas fa-file-alt icon"></i>Academic Record Request</span>
+                            <span class="badge bg-danger">{{ count($reqDocument ?? []) }}</span>
                         </div>
                     </div>
                 </div>
