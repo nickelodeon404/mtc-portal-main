@@ -2,9 +2,9 @@
 @section('content')
     @include('registrar._sidenav')
     <style type="text/css">
-
-        /* Set background color for the entire page */
-        body {
+        
+         /* Set background color for the entire page */
+         body {
             background-color: #f0f0f0; /* Adjust the color as needed */
         }
         a {
@@ -46,6 +46,7 @@
             font-size: 28px;
             margin: 20px 0;
         }
+        
 
          /* Style for cards */
          .card {
@@ -53,7 +54,7 @@
             border: none;
             box-shadow: 0 4px 8px rgba(138, 2, 153, 0.313);
             border-radius: 5px;
-            padding: 10px;
+            padding: 5px;
             margin: 5px; /* Increase the margin to make the cards larger */
         }
 
@@ -72,6 +73,13 @@
             width: 100%;
             height: 400px; /* Adjust the height as needed */
         }
+        .center-card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80%;
+        }
+        
     </style>
     <x-panel>
         <main>
@@ -81,28 +89,33 @@
                 </ol>
                 <h1 class="mt-4"> Dashboard</h1>
                 <div class="row">
+                    <!-- Centered Admissions Card -->
                     <div class="col-xl-3 col-md-6">
-                        <div class="card bg-dark text-white mb-4">
-                            <div class="card-body">
+                        <div class="card bg-dark text-white mb-4 center-card">
+                            <div class="card-body text-center">
                                 <span class="heading"><i class="fas fa-graduation-cap icon"></i>Admissions</span>
                                 <span class="badge bg-danger">{{ count($data ?? []) }}</span>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Centered Enrollment Card -->
                     <div class="col-xl-3 col-md-6">
-                        <div class="card bg-dark text-white mb-4">
-                            <div class="card-body">
+                        <div class="card bg-dark text-white mb-4 center-card">
+                            <div class="card-body text-center">
                                 <span class="heading"><i class="fas fa-user-graduate icon"></i>Enrollment</span>
                                 <span class="badge bg-danger">{{ count($enrollmentData ?? []) }}</span>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-3 col-md-6">
-                    <div class="card bg-dark text-white mb-4">
-                        <div class="card-body">
-                            <span class="heading"><i class="fas fa-file-alt icon"></i>Academic Record Request</span>
-                            <span class="badge bg-danger">{{ count($reqDocument ?? []) }}</span>
+
+                    <!-- Centered Academic Record Request Card -->
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-dark text-white mb-4 center-card">
+                            <div class="card-body text-center">
+                                <span class="heading"><i class="fas fa-file-alt icon"></i>Academic Record Request</span>
+                                <span class="badge bg-danger">{{ count($reqDocument ?? []) }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>

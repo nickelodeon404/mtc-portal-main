@@ -114,14 +114,14 @@ class DatabaseSeeder extends Seeder
 
         $faculty = User::factory()->create([
             'name' => 'Faculty',
-            'email' => 'faculty@example.com',
+            'email' => 'faculty',
             'password' => Hash::make('111'),
             'role_id' => 1
         ]);
 
         DB::table('users')->insert([
             'name' => 'Registrar',
-            'email' => 'registrar@example.com',
+            'email' => 'registrar',
             'password' => Hash::make('111'),
             'role_id' => 2
         ]);

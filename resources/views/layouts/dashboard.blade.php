@@ -75,9 +75,16 @@
     <div id="layoutSidenav">
         @yield('content')
     </div>
+
     <!-- Modal -->
+<<<<<<< Updated upstream
 <div class="modal fade" id="settingsModal">
     <div class="modal-dialog">
+=======
+<div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <!-- Add modal-xl class to make the modal extra-large -->
+>>>>>>> Stashed changes
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="settingsModalLabel">Settings</h5>
@@ -108,13 +115,13 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Update</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#changePasswordModal">Change Password</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-toggle="modal"
+                    data-bs-target="#changePasswordModal">Change Password</button>
                 <!-- Add additional buttons if needed -->
             </div>
         </div>
     </div>
 </div>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
