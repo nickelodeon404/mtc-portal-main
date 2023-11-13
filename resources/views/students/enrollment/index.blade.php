@@ -110,9 +110,9 @@
                             </div>
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="strand" class="form-label">* Preferred Strand</label>
+                                <label for="strand" class="form-label"></label> Preferred Strand</label>
                                 <select class="form-select" name="strand" id="strand" required>
-                                    <option disabled selected>Select an option></option>
+                                    <option disabled selected>Select an option</option>
                                     @foreach (\App\Models\Strand::all() as $strand) 
                                     <option value="{{ $strand->acronym }}">{{ $strand->name }}</option>
                                     @endforeach
@@ -130,7 +130,7 @@
                         </div>
                         <div class="col-md-6">
                         <div class="mb-3">
-                            <label for="graduationType" class="form-label">Are you a:</label>
+                            <label for="graduationType" class="form-label"><b> <span style="color: red;">*</span></b>Are you a:</label>
                             <select class="form-select" id="graduation_type" name="graduation_type" required>
                                 <option value="" selected>Select an option</option>
                                 <option value="Public Completer" {{$admission->graduation_type == "Public Completer" ? "selected" : ""}}>Public Completer</option>
@@ -146,4 +146,6 @@
         </main>
         <x-footer />
     </x-panel>
+
+    
 @endsection
