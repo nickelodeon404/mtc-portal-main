@@ -71,6 +71,19 @@
             background-color: #27ae60; /* Change the hover color */
         }
 
+        /* MODAL SIZE */
+        .custom-wide-modal {
+            max-width: 60%;
+        }
+
+        /* TABLE STRONG TEXT ALIGNMENT */
+        strong {
+            float: left;
+        }
+        .data{
+            float: left;
+            
+        }
     </style>
 
     <x-panel>
@@ -117,16 +130,16 @@
                                     <!-- To display asterisks for the password -->
                                     <!-- <td>{{ str_repeat('*', strlen($item->password)) }}</td> -->
                                     <td>
-                                        <a href="{{ url('/show-table' . $item->id) }}">
-                                            <button class="btn btn-primary btn-sm btn-action">
-                                                <i class="fa fa-eye" aria-hidden="true"></i> View
+                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalManageView-{{ $item->id }}">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                    View
                                             </button>
-                                        </a>
-                                        <a href="{{ url('/users/' . $item->id) }}" title="Update Account">
-                                            <button class="btn btn-warning btn-sm btn-action">
-                                                <i class="fa fa-edit" aria-hidden="true"></i> Update
+
+                                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modalManageUpdate-{{ $item->id }}">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                    Update
                                             </button>
-                                        </a>
+
                                         <form method="POST" action="{{ url('users' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                             {{ method_field('DELETE') }}
                                             {{ csrf_field() }}
@@ -140,6 +153,149 @@
                         </tbody>
                     </table>
                 </div>
+{{--MODAL VIEW ACCOUNT--}}
+            @foreach($user as $item)
+                    <!-- The Modal -->
+                    <div class="modal fade" id="modalManageView-{{ $item->id }}">
+                        <div class="modal-dialog custom-wide-modal">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">View Account</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                <table class="table table-wider">
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            <strong>Name:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->name }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Role ID:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->role_id }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Username:</strong><br>
+                                                <div class="data">
+                                                    {{ $item->email }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                            <strong>Password:</strong><br>
+                                                <div class="data">
+                                                {{ str_repeat('*', strlen($item->password)) }}
+                                                </div>
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            @endforeach
+{{--END MODAL VIEW ACCOUNT--}}
+
+
+{{--MODAL UPDATE ACCOUNT--}}
+@foreach($user as $item)
+                    <!-- The Modal -->
+                    <div class="modal fade" id="modalManageUpdate-{{ $item->id }}">
+                        <div class="modal-dialog custom-wide-modal">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Update Account</h4>
+                                        <a href="{{ url('/manage-table') }}">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </a>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                <form action="{{ url('users/' . $item->id) }}" method="post">
+                                    @csrf 
+                                    @method('PATCH')
+                                <table class="table table-wider">
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            <strong>Name:</strong> 
+                                            <div class="col-md-15 mb-3"> 
+                                                <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{$item->name}}">
+                                            </div> 
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Role ID:</strong> 
+                                            <div class="col-md-15 mb-3"> 
+                                                <select class="form-select" id="role_id" name="role_id" required>
+                                                    <option value="" selected>Select One</option>
+                                                        @foreach(\App\Models\Roles::all() as $role)
+                                                            <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                                        @endforeach
+                                                </select>
+                                            </div> 
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Username:</strong> 
+                                            <div class="col-md-15 mb-3"> 
+                                                <input type="text" class="form-control" id="email" name="email" placeholder="Username" value="{{$item->email}}">
+                                            </div> 
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Password:</strong> 
+                                            <div class="col-md-15 mb-3"> 
+                                                <input type="password" class="form-control" id="password" name="password" placeholder="Enter Last Name" value="{{$item->password}}"> 
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <button type="submit" class="btn btn-success" style="position: relative; title="Update Account" onclick="return confirm('Confirm the update?')">
+                                                    <i class="fa fa-check" aria-hidden="true"></i> Update
+                                                </button>
+
+                                            <a href="{{ url('/manage-table') }}">
+                                                <button class="btn btn-primary">
+                                                        Back
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                   
+                                </thead>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+{{--END MODAL UPDATE ACCOUNT--}}
+
+
 {{--MODAL ADD ACCOUNT--}}
                 <form action="{{ url('users') }}" method="post">
                     @csrf
@@ -170,7 +326,7 @@
                                         </select><br>
 
                                         <label for="username" class="form-label"><b>Username:</b></label>
-                                        <input type="text" class="form-control" name="email" id="email" placeholder="Email" value="" required><br>
+                                        <input type="text" class="form-control" name="email" id="email" placeholder="Username" value="" required><br>
 
                                         <label for="password" class="form-label"><b>Password:</b></label>
                                         <input type="password" class="form-control" name="password" id="password" placeholder="Password" value="" required><br>

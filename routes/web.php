@@ -133,6 +133,9 @@ Route::get('/manage-table', [ManageController::class, 'view']);
 Route::delete('/users/{id}', [ManageController::class, 'destroy'])->name('users.destroy');
 //Route For Create Account
 Route::post('/users', [CreateAccountController::class, 'store']);
+//Route For Update Account
+Route::patch('/users/{id}', [ManageController::class, 'update'])
+    ->name('users.update');
 
 
 
