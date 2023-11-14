@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admission;
+use App\Models\Admitted;
 use App\Models\Enrolled;
 use App\Models\Enrollment;
 use Illuminate\Http\RedirectResponse;
@@ -165,7 +166,7 @@ public function addToEnrolled($id)
         $userid = auth()->user()->id;
         // dd(Admission::where("users_id", "=", $userid)->first());
         return view("students.enrollment.index", [
-            "admission" => Admission::where("users_id", "=", $userid)->first()
+            "admitted" => Admitted::where("users_id", "=", $userid)->first()
         ]);
     }
 

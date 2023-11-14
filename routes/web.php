@@ -11,6 +11,7 @@ use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\DocumentTypeController;
 use App\Http\Controllers\ManageController;
 use App\Http\Controllers\SMSController;
+use App\Http\Controllers\CreateAccountController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -130,6 +131,9 @@ Route::get('/export_grade_pdf', [GradeController::class, 'export_grade_pdf'])->n
 Route::get('/registrar', [ManageController::class, 'index']);
 Route::get('/manage-table', [ManageController::class, 'view']);
 Route::delete('/users/{id}', [ManageController::class, 'destroy'])->name('users.destroy');
+//Route For Create Account
+Route::post('/users', [CreateAccountController::class, 'store']);
+
 
 
 //Route For record_requests table

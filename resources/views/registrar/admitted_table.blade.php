@@ -139,7 +139,7 @@
                     </div>
 
                     {{--MODAL FOR VIEW--}}
-                    @foreach($data as $item)
+                    @foreach($admitted as $item)
                     <!-- The Modal -->
                     <div class="modal fade" id="modalAdmitView-{{ $item->id }}">
                         <div class="modal-dialog custom-wide-modal">

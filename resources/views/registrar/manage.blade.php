@@ -76,6 +76,11 @@
     <x-panel>
         <main>
             <div class="container-fluid px-4">
+            @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <div class="row">
                     <div class="col-12 d-flex justify-content-between">
                         <h1 class="mt-4">Manage User Accounts</h1>
@@ -157,14 +162,14 @@
                                         <input type="text" class="form-control" name="name" id="name" placeholder="Name" value="" required><br>
 
                                         <label for="lrn" class="form-label"><b>Role ID</b></label>
-                                            <select class="form-select" id="status" name="status" required>
+                                            <select class="form-select" id="role_id" name="role_id" required>
                                                 <option value="" selected>Select One</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
+                                                @foreach(\App\Models\Roles::all() as $role)
+                                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                                @endforeach
                                         </select><br>
 
-                                        <label for="lrn" class="form-label"><b>Email:</b></label>
+                                        <label for="lrn" class="form-label"><b>Username:</b></label>
                                         <input type="text" class="form-control" name="email" id="email" placeholder="Email" value="" required><br>
 
                                         <label for="lrn" class="form-label"><b>Password:</b></label>
