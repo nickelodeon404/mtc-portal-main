@@ -77,14 +77,8 @@
     </div>
 
     <!-- Modal -->
-<<<<<<< Updated upstream
 <div class="modal fade" id="settingsModal">
     <div class="modal-dialog">
-=======
-<div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <!-- Add modal-xl class to make the modal extra-large -->
->>>>>>> Stashed changes
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="settingsModalLabel">Settings</h5>

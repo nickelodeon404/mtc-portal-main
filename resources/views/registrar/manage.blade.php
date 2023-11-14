@@ -161,7 +161,7 @@
                                         <label for="lrn" class="form-label"><b>Name:</b></label>
                                         <input type="text" class="form-control" name="name" id="name" placeholder="Name" value="" required><br>
 
-                                        <label for="lrn" class="form-label"><b>Role ID</b></label>
+                                        <label for="roleid" class="form-label"><b>Role ID</b></label>
                                             <select class="form-select" id="role_id" name="role_id" required>
                                                 <option value="" selected>Select One</option>
                                                 @foreach(\App\Models\Roles::all() as $role)
@@ -169,11 +169,11 @@
                                                 @endforeach
                                         </select><br>
 
-                                        <label for="lrn" class="form-label"><b>Username:</b></label>
+                                        <label for="username" class="form-label"><b>Username:</b></label>
                                         <input type="text" class="form-control" name="email" id="email" placeholder="Email" value="" required><br>
 
-                                        <label for="lrn" class="form-label"><b>Password:</b></label>
-                                        <input type="password" class="form-control" name="name" id="password" placeholder="Password" value="" required><br>
+                                        <label for="password" class="form-label"><b>Password:</b></label>
+                                        <input type="password" class="form-control" name="password" id="password" placeholder="Password" value="" required><br>
 
                                     <button type="submit" class="btn btn-primary">Create</button>
                                 </div>
