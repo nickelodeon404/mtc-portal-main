@@ -60,7 +60,7 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf <!-- Include the CSRF token -->
                         <div class="mb-4">
-                            <label for="email" class="form-label text-white">Email</label>
+                            <label for="email" class="form-label text-white">Username</label>
                             <input type="text" id="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus>
                             @error('email')
                                 <div class="invalid-feedback">
