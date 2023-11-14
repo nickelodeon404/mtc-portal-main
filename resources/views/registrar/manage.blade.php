@@ -170,7 +170,7 @@
                                         </select><br>
 
                                         <label for="username" class="form-label"><b>Username:</b></label>
-                                        <input type="text" class="form-control" name="email" id="email" placeholder="Email" value="" required><br>
+                                        <input type="text" class="form-control" name="email" id="email" placeholder="Username" value="" required><br>
 
                                         <label for="password" class="form-label"><b>Password:</b></label>
                                         <input type="password" class="form-control" name="password" id="password" placeholder="Password" value="" required><br>
