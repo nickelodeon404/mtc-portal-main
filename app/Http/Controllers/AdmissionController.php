@@ -119,9 +119,9 @@ class AdmissionController extends Controller
         $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
         $twilio = new Client($twilio_sid, $token);
 
-        // $verification = $twilio->verify->v2->services($twilio_verify_sid)
-        // ->verifications
-        // ->create($validatedData['mobile_number'], "sms");
+        $verification = $twilio->verify->v2->services($twilio_verify_sid)
+        ->verifications
+        ->create($validatedData['mobile_number'], "sms");
         //->create($validatedData['verification_code'], array('to' => $validatedData['mobile_number'], "sms"));
 
 //END OF OTP CREATE VERIFICATION
@@ -296,4 +296,3 @@ class AdmissionController extends Controller
         return redirect('/view-table');
     }
 }
-
