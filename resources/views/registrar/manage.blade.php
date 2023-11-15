@@ -3,6 +3,10 @@
 @section('content')
     @include('registrar._sidenav')
 
+    {{--PAGINATION--}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    {{--END--}}
+
     <style type="text/css">
 
         body {
@@ -105,7 +109,7 @@
                     </div>
                 </div>
                 <div class="table-responsive mt-4">
-                    <table class="table table-wider">
+                    <table id="manage" class="table table-wider">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -247,9 +251,9 @@
                                             <strong>Role ID:</strong> 
                                             <div class="col-md-15 mb-3"> 
                                                 <select class="form-select" id="role_id" name="role_id" required>
-                                                    <option value="" selected>Select One</option>
+                                                    <option disabled selected>Select One</option>
                                                         @foreach(\App\Models\Roles::all() as $role)
-                                                            <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                                            <option value="{{ $role->id }}" {{ $item->role_id == $role->id ? "selected" : "" }}>{{ $role->name }}</option>
                                                         @endforeach
                                                 </select>
                                             </div> 
@@ -343,4 +347,16 @@
         <x-footer />
     </x-panel>
 </section>
+
+{{--PAGINATION--}}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Add jQuery -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> <!-- Add DataTables script -->
+<script>
+    $(document).ready(function () {
+        $('#manage').DataTable({
+            pagingType: 'full_numbers'
+        });
+    });
+</script>
+{{--END--}}
 @endsection
