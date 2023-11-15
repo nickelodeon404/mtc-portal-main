@@ -50,13 +50,16 @@
                     <li><a class="dropdown-item" href="#!">View All Notifications</a></li>
                 </ul>
             </li> -->
-            <!-- User Dropdown -->
+          <!-- User Dropdown -->
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button"
         data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
         <!-- Open the modal when clicking on the "Settings" link -->
-        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#settingsModal">Settings</a></li>
+       
+        <li>
+            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#settingsModal-{{ auth()->user()->id }}">Change Password</a>
+        </li>
         <li>
             <hr class="dropdown-divider" />
         </li>
@@ -66,6 +69,7 @@
             </a></li>
     </ul>
 </li>
+
             <!-- Logout Form -->
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
@@ -77,49 +81,60 @@
     </div>
 
     <!-- Modal -->
-<div class="modal fade" id="settingsModal">
+
+<div class="modal fade" id="settingsModal-{{ auth()->user()->id }}">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="settingsModalLabel">Settings</h5>
+                <h5 class="modal-title" id="settingsModalLabel">Change Password</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <h5 class="modal-title" id="settingsModalLabel">Update Information</h5>
-                <table class="table table-bordered">
-                    <tbody>
-                        <tr>
-                            <td>Name:</td>
-                            <td contenteditable="false">{{ auth()->user()->name }}</td>
-                        </tr>
-                        <tr>
-                            <td>Address:</td>
-                            <td contenteditable="true">Insert your address here</td> 
-                        </tr>
-                        <tr>
-                            <td>Contact Number:</td>
-                            <td contenteditable="true">Insert your contact number here</td>
-                        </tr>
-                        <tr>
-                            <td>Email Address:</td>
-                            <td contenteditable="true">Insert your email address here</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Update</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-toggle="modal"
-                    data-bs-target="#changePasswordModal">Change Password</button>
-                <!-- Add additional buttons if needed -->
-            </div>
+            <form action="{{ url('users/' . auth()->user()->id) }}" method="post">
+                @csrf
+                @method('PATCH')
+                <div class="modal-body">
+                    <table class="table table-wider">
+                        <thead>
+                            <tr>
+                                <td>
+                                    <strong>Name:</strong>
+                                    <div class="col-md-15 mb-3">
+                                        {{ auth()->user()->name }}
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>New Password:</strong>
+                                    <div class="col-md-15 mb-3">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter New Password" value="{{ auth()->user()->password }}">
+                                    </div>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" style="position: relative;" title="Update Account" onclick="return confirm('Confirm the update?')">
+                        <i class="fa fa-check" aria-hidden="true"></i> Update
+                    </button>
+                    <!-- Add additional buttons if needed -->
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
+<script>
+    @if(session('password_changed'))
+        alert("Password changed successfully!");
+    @endif
+</script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
     <script src="{{asset('js/admin.js')}}"></script>
+
 </body>
 
 </html>
