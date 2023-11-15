@@ -38,6 +38,8 @@
     <!-- FullCalendar CSS and JavaScript -->
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
 
     <!-- Custom CSS for Event Calendar -->
     <style>
@@ -82,26 +84,25 @@
     </style>
 
     <!-- JavaScript for Event Calendar -->
+    
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
                 editable: true,
                 selectable: true,
-                events: [
-                    {
-                        title: 'Event 1',
-                        start: '2023-10-10',
-                        end: '2023-10-10'
+                selectHelper: true,
+                events: {
+                    url: '{{ route("get-event") }}',
+                    method: 'GET',
+                    extraParams: {
+                        _token: '{{ csrf_token() }}'
                     },
-                    {
-                        title: 'Event 2',
-                        start: '2023-10-15',
-                        end: '2023-10-16'
-                    },
-                    // Add more events as needed
-                ],
+                    failure: function () {
+                        alert('There was an error while fetching events!');
+                    }
+                },
                 eventBackgroundColor: '#3498db',
                 eventTextColor: '#ffffff',
                 headerToolbar: {
@@ -109,19 +110,111 @@
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
                 },
-                dateClick: function(info) {
+                displayEventTime: false,
+                dateClick: function (info) {
                     var title = prompt('Event Title:');
+                    var startDate = prompt('Start Date and Time (YYYY-MM-DD HH:mm):');
+                    var endDate = prompt('End Date and Time (YYYY-MM-DD HH:mm):');
+
                     if (title) {
+                       
                         calendar.addEvent({
                             title: title,
-                            start: info.dateStr,
-                            allDay: true
+                            start: startDate,
+                            end: endDate,
+                            allDay: false // Assuming events can have specific times
+                        });
+
+                        // Send AJAX request to store the event in the database
+                        $.ajax({
+                            url: '{{ route("calendar-events.store") }}',
+                            type: 'POST',
+                            data: {
+                                title: title,
+                                start: startDate,
+                                end: endDate,
+                                _token: '{{ csrf_token() }}'
+                            },
+                            success: function (response) {
+                                console.log(response);
+                            },
+                            error: function (error) {
+                                console.error(error);
+                            }
                         });
                     }
+                },
+                eventClick: function (info) {
+                var action = prompt('Do you want to edit or delete this event? Type "edit" or "delete":');
+
+                if (action === 'edit') {
+                    editEvent(info);
+                } else if (action === 'delete') {
+                    deleteEvent(info);
                 }
-            });
-            calendar.render();
+            },
         });
+
+        calendar.render();
+        
+        function editEvent(info) {
+                var eventTitle = prompt('Edit Event Title:', info.event.title);
+                var newStartDate = prompt('Edit Event Start Date (YYYY-MM-DD HH:mm):', info.event.startStr);
+                var newEndDate = prompt('Edit Event End Date (YYYY-MM-DD HH:mm):', info.event.end ? info.event.endStr : '');
+
+                if (eventTitle !== null && newStartDate !== null) {
+                    info.event.setProp('title', eventTitle);
+                    info.event.setStart(newStartDate);
+                    info.event.setEnd(newEndDate);
+
+                    // Send AJAX request to update the event in the database
+                    $.ajax({
+                        url: '{{ route("calendar-events.update", ":id") }}'.replace(':id', info.event.id),
+                        type: 'PUT',
+                        data: {
+                            title: eventTitle,
+                            start: newStartDate,
+                            end: newEndDate,
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function (response) {
+                            console.log(response);
+                        },
+                        error: function (error) {
+                            console.error(error);
+                        }
+                    });
+                } else {
+                    // User clicked Cancel, revert the changes
+                    info.revert();
+                }
+            }
+
+
+        function deleteEvent(info) {
+            if (confirm('Are you sure you want to delete this event?')) {
+                // Send AJAX request to delete the event from the database
+                $.ajax({
+                    url: '{{ route("calendar-events.delete", ":id") }}'.replace(':id', info.event.id),
+                    type: 'DELETE',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function (response) {
+                        console.log(response);
+                        info.event.remove(); // Remove the event from the calendar
+                    },
+                    error: function (error) {
+                        console.error(error);
+                    }
+                });
+            }
+        }
+    });
     </script>
+
+
+
+
     <!-- End JavaScript for Event Calendar -->
 @endsection

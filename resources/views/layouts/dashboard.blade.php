@@ -94,15 +94,15 @@
                         </tr>
                         <tr>
                             <td>Address:</td>
-                            <td contenteditable="true">Insert your address here</td> <!-- Replace with actual address -->
+                            <td contenteditable="true">Insert your address here</td> 
                         </tr>
                         <tr>
                             <td>Contact Number:</td>
-                            <td contenteditable="true">Insert your contact number here</td> <!-- Replace with actual phone number -->
+                            <td contenteditable="true">Insert your contact number here</td>
                         </tr>
                         <tr>
                             <td>Email Address:</td>
-                            <td contenteditable="true">Insert your email address here</td> <!-- Replace with actual email address -->
+                            <td contenteditable="true">Insert your email address here</td>
                         </tr>
                     </tbody>
                 </table>

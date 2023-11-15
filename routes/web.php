@@ -12,6 +12,7 @@ use App\Http\Controllers\DocumentTypeController;
 use App\Http\Controllers\ManageController;
 use App\Http\Controllers\SMSController;
 use App\Http\Controllers\CreateAccountController;
+use App\Http\Controllers\CalendarController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -122,6 +123,9 @@ Route::get('/registrar', [AdmittedController::class, 'index']);
 Route::get('/admitted_table-table', [AdmittedController::class, 'view']);
 Route::post('/admission/{id}/add-to-admitted', [AdmissionController::class, 'admitStudent'])->name('admission.admitStudent');
 Route::delete('/admitted/{id}', [AdmittedController::class, 'destroy'])->name('admitted.destroy');
+//Route For Update User Information
+Route::patch('/admitted/{id}', [AdmittedController::class, 'update'])
+    ->name('admitted.update');
 
 //PDF EXPORTING
 Route::get('/export_user_pdf', [EnrolledController::class, 'export_user_pdf'])->name('export_user_pdf'); //For Enrolled
@@ -175,3 +179,11 @@ Route::get('/academic_record_request_table', 'App\Http\Controllers\DocumentTypeC
 Route::post('/send-sms', 'App\Http\Controllers\SMSController@sendSms')->name('send-sms');
 
 //END OF SMS NOTIFICATION IN TWILIO
+
+//calendar
+Route::get('/faculty/calendar', [CalendarController::class, 'index'])->name('calendar.index');
+Route::get('/faculty/get-event', [CalendarController::class, 'getEvent'])->name('get-event');
+Route::get('/faculty/create', [CalendarController::class, 'create'])->name('calendar-events.create');
+Route::post('/faculty/store', [CalendarController::class, 'store'])->name('calendar-events.store');
+Route::put('/faculty/update/{id}', [CalendarController::class, 'update'])->name('calendar-events.update');
+Route::delete('/faculty/delete/{id}', [CalendarController::class, 'delete'])->name('calendar-events.delete');

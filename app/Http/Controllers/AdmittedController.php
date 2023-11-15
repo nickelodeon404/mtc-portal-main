@@ -60,6 +60,22 @@ class AdmittedController extends Controller
         return view('registrar.admitted_table', ['data' => $data, 'enrollmentData' => $enrollmentData, 'enrolledData' => $enrolledData, 'admitted' => $admitted]);
     }
 
+//Edit the data
+   public function update(Request $request, string $id): RedirectResponse
+   {
+       $validatedData = $request->all();
+   
+       $admitted = Admitted::find($id);
+   
+       if (!$admitted) {
+           return redirect()->back()->with('error', 'Admitted User not found.');
+       }
+   
+       $admitted->update($validatedData);
+   
+       return redirect()->back()->with('success', 'User Information updated successfully.');
+   }
+
     public function destroy($id)
     {
         $admitted = Admitted::find($id);
