@@ -146,18 +146,19 @@
     <!-- JavaScript to create and populate the bar graph -->
     <script>
         var Grade11 = @json($G11);
-        console.log(Grade11);
-        3
+        
         const acronym = Grade11.map(item => item.acronym);
-        const studentCount = Grade11.map(item => item.studentsCount);
+        const studentCount = Grade11.map(item => item.users_count);
+        // const studentCount = Grade11.length;
+        console.log(studentCount);
         var Grade12 = @json($G12);
         
         // const acronym1 = Grade12.map(item => item.acronym);
-        const studentCount1 = Grade12.map(item => item.studentsCount);
+        const studentCount1 = Grade12.map(item => item.users_count);
         console.log(studentCount1);
         var ctx = document.getElementById('barGraph').getContext('2d');
         var data = {
-            labels: acronym, 
+            labels: ['Dataset'], 
             datasets: [
                 {
                     label: 'Grade 11',
