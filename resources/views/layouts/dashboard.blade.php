@@ -36,7 +36,7 @@
             @auth
             <h5 class="d-flex align-items-center justify-content-center text-light ml-3 mb-0">{{auth()->user()->name }}</h5>
             @endauth
-            <!-- Notification Icon -->
+            <!-- Notification Icon 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="notificationDropdown" href="#" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-bell"></i></a>
@@ -49,7 +49,7 @@
                     </li>
                     <li><a class="dropdown-item" href="#!">View All Notifications</a></li>
                 </ul>
-            </li>
+            </li> -->
             <!-- User Dropdown -->
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button"
