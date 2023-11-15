@@ -76,12 +76,12 @@
                     <form action="{{ url('document_types') }}" method="POST">
                         {!! csrf_field() !!}
                         <div class="mb-4">
-                            @foreach (\App\Models\Admission::where('users_id', auth()->user()->id)->get() as $admission)
+                            @foreach (\App\Models\Admitted::where('users_id', auth()->user()->id)->get() as $admitted)
                                 <label for="student"><strong>Name:</strong>
-                                    <br><input type="text" id="student" name="student" value="{{ $admission->first_name }} {{ $admission->last_name }}" style="font-weight: bold; border: none;" readonly>
+                                    <br><input type="text" id="student" name="student" value="{{ $admitted->first_name }} {{ $admitted->last_name }}" style="font-weight: bold; border: none;" readonly>
                                 </label>
                                 <label for="mobile_number"><strong>Phone No:</strong>
-                                    <br><input type="text" id="mobile_number" name="mobile_number" value="{{ $admission->mobile_number}} " style="font-weight: bold; border: none;" readonly>
+                                    <br><input type="text" id="mobile_number" name="mobile_number" value="{{ $admitted->mobile_number}} " style="font-weight: bold; border: none;" readonly>
                                 </label>
                                 <!-- <label for="student_phone_number">Phone Number:</label>
                                 <input type="text" name="student_phone_number" class="form-control" required> -->
