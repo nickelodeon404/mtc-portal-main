@@ -158,7 +158,7 @@
         console.log(studentCount1);
         var ctx = document.getElementById('barGraph').getContext('2d');
         var data = {
-            labels: ['Dataset'], 
+            labels: acronym, 
             datasets: [
                 {
                     label: 'Grade 11',
