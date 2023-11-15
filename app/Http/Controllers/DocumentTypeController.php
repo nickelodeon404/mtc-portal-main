@@ -20,18 +20,20 @@ class DocumentTypeController extends Controller
         $G11 = DB::table('users')
             ->join('student_section', 'student_section.student_id', '=', 'users.id')
             ->join('section', 'student_section.section_id', '=', 'section.id')
+            ->join('strands', 'strands.id', '=', 'section.strand_id')
             ->where('section.year_level', '=', '11')
             ->where('users.role_id', '=', 3)
-            ->selectRaw('section.year_level as acronym, COUNT(*) as users_count')
-            ->groupBy('section.year_level')
+            ->selectRaw('strands.acronym as acronym, COUNT(*) as users_count')
+            ->groupBy('strands.acronym')
             ->get();
         $G12 = DB::table('users')
         ->join('student_section', 'student_section.student_id', '=', 'users.id')
         ->join('section', 'student_section.section_id', '=', 'section.id')
+        ->join('strands', 'strands.id', '=', 'section.strand_id')
         ->where('section.year_level', '=', '12')
         ->where('users.role_id', '=', 3)
-        ->selectRaw('section.year_level as acronym, COUNT(*) as users_count')
-        ->groupBy('section.year_level')
+        ->selectRaw('strands.acronym as acronym, COUNT(*) as users_count')
+        ->groupBy('strands.acronym')
         ->get();
         // Fetch data for Enrollment section as well
         $enrollmentData = DB::table('enrollment')->orderBy('grade_level')->get();

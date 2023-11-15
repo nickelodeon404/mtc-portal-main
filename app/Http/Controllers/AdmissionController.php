@@ -148,8 +148,8 @@ class AdmissionController extends Controller
             "graduation_type" => $validatedData['graduation_type'],
             "strand" => $validatedData['strand'],
             "confirmationCheck" => $validatedData['confirmationCheck'],
-            "psa" => $validatedData['psa'],
-            "form_138" => $validatedData['form_138']
+           // "psa" => $validatedData['psa'],
+           // "form_138" => $validatedData['form_138']
             // Hash the password
         ]);
 
@@ -296,4 +296,3 @@ class AdmissionController extends Controller
         return redirect('/view-table');
     }
 }
-
