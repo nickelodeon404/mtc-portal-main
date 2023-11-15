@@ -111,10 +111,10 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="strand" class="form-label"></label> Preferred Strand</label>
-                                <select class="form-select" name="strand" id="strand" required>
-                                    <option disabled selected>Select an option</option>
-                                    @foreach (\App\Models\Strand::all() as $strand) 
-                                    <option value="{{ $strand->acronym }}">{{ $strand->name }}</option>
+                                <select class="form-select" name="strand" id="strand" style="background-color: #CDCDCD;" readonly>
+                                    <!-- <option disabled selected>Select an option</option> -->
+                                    @foreach (\App\Models\Admitted::all() as $strand) 
+                                    <option value="{{ $strand->strand }}" {{ $strand->strand == $strand->strand ? "selected" : "" }}>{{ $strand->strand }}</option>
                                     @endforeach
                                 </select>
                             </div>

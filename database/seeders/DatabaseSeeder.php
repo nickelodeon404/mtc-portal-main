@@ -114,23 +114,32 @@ class DatabaseSeeder extends Seeder
 
         $faculty = User::factory()->create([
             'name' => 'Faculty',
-            'email' => 'faculty',
+            'email' => 'faculty@example.com',
             'password' => Hash::make('111'),
-            'role_id' => 1
+            'role_id' => 1,
+            'emailaddress' => 'faculty@example.com',
+            'address' => 'facultyAddress',
+            'mobile_number' => '+63123456789',
         ]);
 
         DB::table('users')->insert([
             'name' => 'Registrar',
-            'email' => 'registrar',
+            'email' => 'registrar@gmail.com',
             'password' => Hash::make('111'),
-            'role_id' => 2
+            'role_id' => 2,
+            'emailaddress' => 'registrar@gmail.com',
+            'address' => 'RegistrarAddress',
+            'mobile_number' => '+63123456789',
         ]);
     
         $student = User::factory()->create([
             'name' => 'default',
             'email' => 'default@example.com',
             'password' => Hash::make('111'),
-            'role_id' => 3
+            'role_id' => 3,
+            'emailaddress' => 'default@gmail.com',
+            'address' => 'defaultAddress',
+            'mobile_number' => '+63123456789',
         ]);
     /*
         User::factory()->create([

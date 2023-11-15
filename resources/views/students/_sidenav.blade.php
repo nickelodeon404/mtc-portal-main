@@ -82,7 +82,7 @@
                                        <td>
                                            <strong>Mobile No:</strong> 
                                            <div class="col-md-15 mb-3"> 
-                                               <input type="tel" class="form-control" id="mobile_number" name="mobile_number" placeholder="Enter Mobile Number" value="{{$item->mobile_number}}"> 
+                                               <input type="tel" class="form-control" id="mobile_number" name="mobile_number" maxlength="13" placeholder="Enter Mobile Number" value="{{$item->mobile_number}}"> 
                                            </div>
                                        </td>
                                    </tr>
@@ -137,4 +137,29 @@
        @endforeach
 {{--END--}}
 </body>
+{{--THIS SCRIPT PREVENTS THE MOBILE NUMBER COUNTRY CODE TO BE ERASED!!--}}
+<script>
+    // Get the input element
+    var mobileNumberInput = document.getElementById("mobile_number");
+
+    // Store the initial value
+    var initialValue = "+63";
+
+    // Listen for the input event
+    mobileNumberInput.addEventListener("input", function () {
+        // Check if the input value starts with "+63"
+        if (!mobileNumberInput.value.startsWith(initialValue)) {
+            // If not, prepend "+63" to the input value
+            mobileNumberInput.value = initialValue + mobileNumberInput.value;
+        }
+    });
+
+    // Listen for the keydown event to handle backspace
+    mobileNumberInput.addEventListener("keydown", function (event) {
+        if (event.key === "Backspace" && mobileNumberInput.selectionStart <= initialValue.length) {
+            // Prevent backspace when the cursor is at or before "+63"
+            event.preventDefault();
+        }
+    });
+</script>
 </html>

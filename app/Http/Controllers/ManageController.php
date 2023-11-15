@@ -50,7 +50,7 @@ class ManageController extends Controller
    
        $user->update($validatedData);
    
-       return redirect('/manage-table')->with('success', 'User data updated successfully.');
+       return redirect()->back()->with('success', 'User data updated successfully.');
    }
 
    public function destroy($id)

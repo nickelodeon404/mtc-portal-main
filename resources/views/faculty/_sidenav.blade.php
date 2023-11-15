@@ -25,6 +25,12 @@
                         </div>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <!-- Modal Button -->
+                    <a href="#" type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#modalUpdateInfoStudent">
+                        Update Information
+                    </a>
+                </li>
             </ul>
         </div>
             <!-- <ul class="nav">
@@ -40,8 +46,99 @@
         </div>
     </nav>
 </div>
+{{--MODAL--}}
+ @foreach (\App\Models\User::all() as $item) <!-- MANUAL CALLING FROM DIRECTORY IS BETTER -->
+    <div class="modal fade" id="modalUpdateInfoStudent">
+        <div class="modal-dialog custom-wide-modal">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Update Information</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
 
+                <!-- Modal body -->
+                <div class="modal-body">
+                <form action="{{ url('users/' . $item->id) }}" method="post">
+                     @csrf 
+                     @method('PATCH') 
+                               <table class="table table-wider">
+                               <thead>
+                                   <tr>
+                                       <td>
+                                           <strong>Name:</strong> 
+                                           <div class="col-md-15 mb-3"> 
+                                               {{ auth()->user()->name }}
+                                           </div> 
+                                       </td>
+                                   </tr>
+                                       <td>
+                                           <strong>Mobile No:</strong> 
+                                           <div class="col-md-15 mb-3"> 
+                                               <input type="tel" class="form-control" id="mobile_number" name="mobile_number" maxlength="13" placeholder="Enter Mobile Number" value="{{$item->mobile_number}}"> 
+                                           </div>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>
+                                           <strong>Email Address:</strong> 
+                                           <div class="col-md-15 mb-3"> 
+                                               <input type="email" class="form-control" id="emailaddress" name="emailaddress" placeholder="Enter Email Address" value="{{$item->emailaddress}}"> 
+                                           </div>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>
+                                           <strong>Address:</strong> 
+                                           <div class="col-md-15 mb-3"> 
+                                               <input type="text" class="form-control" id="address" name="address" placeholder="Enter Address" value="{{$item->address}}"> 
+                                           </div>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>
+                                           <button type="submit" class="btn btn-success" style="position: relative; onclick="return confirm('Confirm and update information?')">
+                                                   <i class="fa fa-check" aria-hidden="true"></i> Update
+                                               </button>
+                                           </a>
+                                       </td>
+                                   </tr>
+                                  
+                               </thead>
+                           </table>
+                       </form>
+                   </div>
+               </div>
+           </div>
+       </div>
+       @endforeach
+{{--END--}}
+</body>
+{{--THIS SCRIPT PREVENTS THE MOBILE NUMBER COUNTRY CODE TO BE ERASED!!--}}
+<script>
+    // Get the input element
+    var mobileNumberInput = document.getElementById("mobile_number");
 
+    // Store the initial value
+    var initialValue = "+63";
+
+    // Listen for the input event
+    mobileNumberInput.addEventListener("input", function () {
+        // Check if the input value starts with "+63"
+        if (!mobileNumberInput.value.startsWith(initialValue)) {
+            // If not, prepend "+63" to the input value
+            mobileNumberInput.value = initialValue + mobileNumberInput.value;
+        }
+    });
+
+    // Listen for the keydown event to handle backspace
+    mobileNumberInput.addEventListener("keydown", function (event) {
+        if (event.key === "Backspace" && mobileNumberInput.selectionStart <= initialValue.length) {
+            // Prevent backspace when the cursor is at or before "+63"
+            event.preventDefault();
+        }
+    });
+</script>
 
 <style>
     /* CSS for navigation enhancements */
