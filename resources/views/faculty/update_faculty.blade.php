@@ -1,4 +1,4 @@
-    @extends('layouts.dashboard')
+   <!--  @extends('layouts.dashboard')
 
     @section('content')
         @include('faculty._sidenav')
@@ -48,4 +48,4 @@
                     background-color: #f0f0f0; /* Adjust the color as needed */
                 }
             </style>
-    @endsection
+    @endsection -->

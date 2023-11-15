@@ -27,13 +27,13 @@
                 </li>
             </ul>
         </div>
-            <ul class="nav">
+            <!-- <ul class="nav">
                 <li class="nav-item">
                     <a class="nav-link" href="update_faculty">
                         <i class="fas fa-user-cog"></i> Update Faculty Information
                     </a>
                 </li>
-            </ul>
+            </ul> -->
         <div class="sb-sidenav-footer">
             <div class="small">Logged in as:</div>
             <span class="user-name">{{ Auth::user()->name }}</span>
