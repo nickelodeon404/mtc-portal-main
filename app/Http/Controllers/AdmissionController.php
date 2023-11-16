@@ -250,7 +250,7 @@ class AdmissionController extends Controller
             $admission = tap(Admission::where('mobile_number', $validatedData['mobile_number']))->update(['isVerified' => true]);
             // Authenticate user 
             //User::login($admission->first());
-            return redirect()->route('index')->with(['success' => 'mobile number verified']);
+            return redirect()->route('index')->with(['success' => 'Your admission application has been submitted successfully! Please wait for the confirmation on your cellphone number']);
         }
         return back()->with(['mobile_number' => $validatedData['mobile_number'], 'error' => 'Invalid verification code entered!']);
     }
