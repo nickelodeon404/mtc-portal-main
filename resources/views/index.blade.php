@@ -64,7 +64,11 @@
     }
 </style>
 
-
+            @if(session('success'))
+                <div class="alert alert-success mt-3">
+                    {{ session('success') }}
+                </div>
+                @endif
     <!-- Masthead -->
     <header class="masthead">
         <div class="container px-4 px-lg-5 h-100">
