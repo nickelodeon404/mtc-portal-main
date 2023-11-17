@@ -55,8 +55,6 @@ class AdmissionController extends Controller
 
     public function store(Request $request)
     {
-        // $validatedData = $request->all();
-        // dd($request); //all field that exist in a table no need to one by one.
         $validatedData = $request->validate([
             "lrn" => "required",
             "first_name" => "required",
@@ -76,22 +74,22 @@ class AdmissionController extends Controller
             "graduation_type" => "required",
             "strand" => "required",
             "confirmationCheck" => "required",
-         //   'psa' => 'nullable|file|mimes:jpeg,jpg,png|max:2048', // Validate as a file with a max size of 2048 KB.
-         //   'form_138' => 'nullable|mimes:jpeg,jpg,png|max:2048', // Validate as a file with a max size of 2048 KB.
+            'psa' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
+            // Validate as an image with a max size of 2048 KB.
+            'form_138' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
+            // Validate as an image with a max size of 2048 KB.
         ]);
 
         // Store the uploaded PSA image in the 'public/images' directory
         if ($request->hasFile('psa')) {
             $psaPath = $request->file('psa')->store('images', 'public');
             $validatedData['psa'] = $psaPath;
-
         }
 
         // Store the uploaded Form 138 image in the 'public/images' directory
         if ($request->hasFile('form_138')) {
             $form138Path = $request->file('form_138')->store('images', 'public');
             $validatedData['form_138'] = $form138Path;
-
         }
 
         // dd($validatedData['first_name']);

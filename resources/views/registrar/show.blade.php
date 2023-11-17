@@ -78,7 +78,7 @@
                                     	<td><strong>PSA/Birth Certificate:</strong> <img src="{{$item->psa ? asset('storage/images/' . $item->psa) : asset('img/no-image.webp')}}" alt="PSA" width="70" height="50"></td>
                                     </tr>
                                     <tr>
-                                    	<td><strong>Form 138:</strong> <img src="{{$item->form_138 ? asset('storage/images/' . $item->form_138): asset('img/no-image.webp')}}" alt="PSA" width="70" height="50"></td>
+                                    	<td><strong>Form 138:</strong> <img src="{{$item->form_138 ? asset('storage/images/' . $item->form_138): asset('img/no-image.webp')}}" alt="Form 138" width="70" height="50"></td>
                                     </tr>
                                          <tr>
                                             <td>

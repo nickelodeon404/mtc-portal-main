@@ -136,6 +136,7 @@
                                 _token: '{{ csrf_token() }}'
                             },
                             success: function (response) {
+                                calendar.refetchEvents();
                                 console.log(response);
                             },
                             error: function (error) {
@@ -178,6 +179,7 @@
                             _token: '{{ csrf_token() }}'
                         },
                         success: function (response) {
+                            calendar.refetchEvents();
                             console.log(response);
                         },
                         error: function (error) {
@@ -201,8 +203,8 @@
                         _token: '{{ csrf_token() }}'
                     },
                     success: function (response) {
-                        console.log(response);
                         info.event.remove(); // Remove the event from the calendar
+                        console.log(response);
                     },
                     error: function (error) {
                         console.error(error);
