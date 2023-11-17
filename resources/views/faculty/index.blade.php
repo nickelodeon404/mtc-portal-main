@@ -6,6 +6,11 @@
     <x-panel>
         <main>
             <div class="container mt-4">
+            @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                 <!-- Faculty Profile Section -->
                 <div class="row justify-content-center">
                     <div class="col-md-8">
@@ -138,6 +143,7 @@
                             success: function (response) {
                                 calendar.refetchEvents();
                                 console.log(response);
+                                calendar.refetchEvents();
                             },
                             error: function (error) {
                                 console.error(error);

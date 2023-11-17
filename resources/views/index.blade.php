@@ -63,11 +63,14 @@
         }
     }
 </style>
-
-
     <!-- Masthead -->
     <header class="masthead">
         <div class="container px-4 px-lg-5 h-100">
+        @if(session('success'))
+                <div class="alert alert-success mt-3">
+                    {{ session('success') }}
+                </div>
+                @endif
             <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
                 <div class="col-lg-8 align-self-end">
                     <h1 class="text-white font-weight-bold">Welcome!!</h1>

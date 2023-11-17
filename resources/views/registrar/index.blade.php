@@ -84,6 +84,11 @@
     <x-panel>
         <main>
             <div class="container-fluid px-4">
+            @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                 <ol class="breadcrumb mt-4">
                     <li class="breadcrumb-item active"><b>Mother Theresa Colegio de Iriga</b></li>
                 </ol>

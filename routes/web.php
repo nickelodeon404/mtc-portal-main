@@ -13,6 +13,7 @@ use App\Http\Controllers\ManageController;
 use App\Http\Controllers\SMSController;
 use App\Http\Controllers\CreateAccountController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\FacultyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -123,9 +124,7 @@ Route::get('/registrar', [AdmittedController::class, 'index']);
 Route::get('/admitted_table-table', [AdmittedController::class, 'view']);
 Route::post('/admission/{id}/add-to-admitted', [AdmissionController::class, 'admitStudent'])->name('admission.admitStudent');
 Route::delete('/admitted/{id}', [AdmittedController::class, 'destroy'])->name('admitted.destroy');
-//Route For Update User Information
-Route::patch('/admitted/{id}', [AdmittedController::class, 'update'])
-    ->name('admitted.update');
+
 
 //PDF EXPORTING
 Route::get('/export_user_pdf', [EnrolledController::class, 'export_user_pdf'])->name('export_user_pdf'); //For Enrolled
@@ -149,7 +148,17 @@ Route::get('/registrar', [DocumentTypeController::class, 'index']);
 Route::get('/academic_record_request_table-table', [DocumentTypeController::class, 'view']);
 Route::delete('/document_types/{id}', [DocumentTypeController::class, 'destroy'])->name('document_types.destroy');
 
+//Route For Update User Information Faculty
+Route::patch('/users/{id}', [FacultyController::class, 'update'])
+    ->name('users.update');
 
+//Route For Update User Information Registrar
+//Route::patch('/users/{id}', [RegistrarController::class, 'update'])
+ //   ->name('users.update');
+
+//Route For Update User Information Student
+Route::patch('/admitted/{id}', [AdmittedController::class, 'update'])
+    ->name('admitted.update');
 
 //ROUTE FOR OTP TWILIO
 /*

@@ -117,9 +117,9 @@ class AdmissionController extends Controller
         $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
         $twilio = new Client($twilio_sid, $token);
 
-        // $verification = $twilio->verify->v2->services($twilio_verify_sid)
-        // ->verifications
-        // ->create($validatedData['mobile_number'], "sms");
+        $verification = $twilio->verify->v2->services($twilio_verify_sid)
+        ->verifications
+        ->create($validatedData['mobile_number'], "sms");
         //->create($validatedData['verification_code'], array('to' => $validatedData['mobile_number'], "sms"));
 
 //END OF OTP CREATE VERIFICATION
@@ -146,8 +146,8 @@ class AdmissionController extends Controller
             "graduation_type" => $validatedData['graduation_type'],
             "strand" => $validatedData['strand'],
             "confirmationCheck" => $validatedData['confirmationCheck'],
-            "psa" => $validatedData['psa'],
-            "form_138" => $validatedData['form_138']
+           // "psa" => $validatedData['psa'],
+           // "form_138" => $validatedData['form_138']
             // Hash the password
         ]);
 
@@ -248,7 +248,7 @@ class AdmissionController extends Controller
             $admission = tap(Admission::where('mobile_number', $validatedData['mobile_number']))->update(['isVerified' => true]);
             // Authenticate user 
             //User::login($admission->first());
-            return redirect()->route('index')->with(['success' => 'mobile number verified']);
+            return redirect()->route('index')->with(['success' => 'Your admission application has been submitted successfully! Please wait for the confirmation on your cellphone number']);
         }
         return back()->with(['mobile_number' => $validatedData['mobile_number'], 'error' => 'Invalid verification code entered!']);
     }
@@ -294,4 +294,3 @@ class AdmissionController extends Controller
         return redirect('/view-table');
     }
 }
-

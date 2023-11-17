@@ -18,6 +18,9 @@ return new class extends Migration
             // $table->foreignId('strands_id')->constrained()->onUpdate('cascade'); 
             // $table->enum('year_level', [11, 12, 'not applicable']);
             $table->string('email')->unique();
+            $table->string('emailaddress')->nullable(false);
+            $table->string('address')->nullable(false);
+            $table->string('mobile_number', 13)->nullable(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
