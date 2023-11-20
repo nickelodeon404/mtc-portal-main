@@ -94,7 +94,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="facebook_account" class="form-label">* Facebook Account</label>
-                                <input type="text" class="form-control" name="facebook" id="facebook" placeholder="Facebook Account" required>
+                                <input type="text" class="form-control" name="facebook" id="facebook" placeholder="Enter your Facebook Link" required>
                             </div>
                         </div>
                     </div>

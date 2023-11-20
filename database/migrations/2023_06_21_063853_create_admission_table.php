@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('users_id')->constrained()->onUpdate('cascade');
             $table->string('lrn', 50)->nullable(false);
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable(false);
             $table->string('first_name', 50)->nullable(false);
             $table->string('middle_name', 50)->nullable(true);
             $table->string('last_name', 50)->nullable(false);

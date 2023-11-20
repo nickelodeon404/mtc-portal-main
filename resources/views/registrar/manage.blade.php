@@ -114,7 +114,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
-                                <th>Role ID</th>
+                                <th>Role Type</th>
                                 <!-- <th>Strand ID</th> -->
                                 <!-- <th>Year Level</th> -->
                                 <!-- <th>Username</th> -->
@@ -127,12 +127,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->name }}</td>
-                                    <td>{{ $item->role_id }}</td>
-                                   {{-- <td>{{ $item->strands_id }}</td> --}}
-                                   {{-- <td>{{ $item->year_level }}</td> --}}
-                                    <!-- <td>{{ $item->email }}</td> -->
-                                    <!-- To display asterisks for the password -->
-                                    <!-- <td>{{ str_repeat('*', strlen($item->password)) }}</td> -->
+                                    <td>{{ \App\Models\Roles::find($item->role_id)->name }}</td>
                                     <td>
                                         <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalManageView-{{ $item->id }}">
                                             <i class="fa fa-eye" aria-hidden="true"></i>
@@ -184,9 +179,9 @@
                                     </tr>
                                     <tr>
                                     	<td>
-                                            <strong>Role ID:</strong><br>
+                                            <strong>Role Type:</strong><br>
                                                 <div class="data">
-                                                    {{ $item->role_id }}
+                                                    {{ $item->name }}
                                                 </div>
                                         </td>
                                     </tr>
@@ -248,7 +243,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <strong>Role ID:</strong> 
+                                            <strong>Role Type:</strong> 
                                             <div class="col-md-15 mb-3"> 
                                                 <select class="form-select" id="role_id" name="role_id" required>
                                                     <option disabled selected>Select One</option>

@@ -124,7 +124,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('users')->insert([
             'name' => 'Registrar',
-            'email' => 'registrar@gmail.com',
+            'email' => 'registrar@example.com',
             'password' => Hash::make('111'),
             'role_id' => 2,
             'emailaddress' => 'registrar@gmail.com',
@@ -222,7 +222,7 @@ class DatabaseSeeder extends Seeder
             'barangay' => 'Bagumbayan',
             'city_municipality' => 'Baao',
             'province' => 'Camarines Sur',
-            'mobile_number' => '+639926226129',
+            'mobile_number' => '+639123456789',
             'junior_high' => 'Baao National High School',
             'year_graduated' => '2016',
             'strand' => 'STEM',
