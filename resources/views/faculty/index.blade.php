@@ -221,8 +221,5 @@
     });
     </script>
 
-
-
-
     <!-- End JavaScript for Event Calendar -->
 @endsection
