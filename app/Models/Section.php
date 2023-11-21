@@ -17,6 +17,7 @@ class Section extends Model
         'grade_level',
     ];
 
+    
 /* 
    public function student()
     {
@@ -32,5 +33,9 @@ class Section extends Model
     public function gradeLevel()
     {
         return $this->belongsTo(Enrolled::class, 'grade_level');
+    }
+    public function User()
+    {
+        return $this->hasMany(User::class, 'strands_id', 'section');
     }
 }

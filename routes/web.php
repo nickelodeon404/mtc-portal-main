@@ -10,7 +10,7 @@ use App\Http\Controllers\AdmittedController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\DocumentTypeController;
 use App\Http\Controllers\ManageController;
-use App\Http\Controllers\SMSController;
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\CreateAccountController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\FacultyController;
@@ -109,7 +109,7 @@ Route::delete('/enrollment/{id}', [EnrollmentController::class, 'destroy'])->nam
 Route::get('/enrollment{id}', [EnrollmentController::class, 'edit'])
     ->name('enrollment.edit');
 
-Route::patch('/enrollment{id}', [EnrollmentController::class, 'update'])
+Route::patch('/enrollment{id}/update', [EnrollmentController::class, 'update'])
     ->name('enrollment.update');
 
 //Route for Enrolled
@@ -196,3 +196,8 @@ Route::get('/faculty/create', [CalendarController::class, 'create'])->name('cale
 Route::post('/faculty/store', [CalendarController::class, 'store'])->name('calendar-events.store');
 Route::put('/faculty/update/{id}', [CalendarController::class, 'update'])->name('calendar-events.update');
 Route::delete('/faculty/delete/{id}', [CalendarController::class, 'delete'])->name('calendar-events.delete');
+
+//section
+use App\Http\Controllers\SectionsController;
+
+Route::get('/sections', [SectionController::class, 'index'])->name('sections.index');

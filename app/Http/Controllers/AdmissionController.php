@@ -101,6 +101,9 @@ class AdmissionController extends Controller
             'name' => $validatedData['last_name'] . $validatedData['first_name'],
             'email' => $validatedData['last_name'] . $firstThreeLetters ,
             'password' => Hash::make($randomPassword),
+            'emailaddress' => 'nullable',
+            'address' => 'nullable',
+            'mobile_number' => 'nullable',
             // Hash the password
         ]);
         // Fetch the valid options for "strand" from the database

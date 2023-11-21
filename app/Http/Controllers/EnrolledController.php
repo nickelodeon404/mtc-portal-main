@@ -33,8 +33,13 @@ class EnrolledController extends Controller
     	$validatedData = $request->all();
 
     	$enrolled = Enrolled::create($validatedData);
+        // Assuming you have a variable $enrolled representing your model
+        $enrolled->section = $request->input('section');
+        // Other assignment of values
+        $enrolled->save();
 
-    	// Optionally, you can redirect to a success page or perform additional actions
+
+        // Optionally, you can redirect to a success page or perform additional actions
 
         return redirect()->back()->with('success', 'Success!! Your enrollment was submitted!!');
     }

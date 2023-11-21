@@ -30,6 +30,7 @@ class Enrolled extends Model
         'city_municipality',
         'status',
         'grade_level',
+        'section',
         'junior_high',
         'graduation_type',
     ];

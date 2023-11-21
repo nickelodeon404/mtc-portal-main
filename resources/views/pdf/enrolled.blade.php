@@ -24,7 +24,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->first_name }} {{ $item->middle_name }} {{ $item->last_name }}</td>
-                    <td>{{ $item->section }}</td>
+                    <td>{{ $item->strand }} {{ $item->grade_level }}-{{ $item->section }}</td>
                     <td>{{ $item->mobile_number }}</td>
                 </tr>
                 @endforeach

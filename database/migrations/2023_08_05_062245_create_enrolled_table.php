@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('status')->nullable(false);
             
             $table->bigInteger('grade_level')->unsigned();
+            $table->string('section')->nullable(false);
 /*
             // Create a foreign key column
             $table->foreignId('grade_level')

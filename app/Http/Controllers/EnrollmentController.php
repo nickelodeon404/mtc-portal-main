@@ -97,56 +97,65 @@ class EnrollmentController extends Controller
 
 
 //Add to Enrolled
-public function addToEnrolled($id)
-{
-    try {
-        // Fetch the enrollment data using the provided $id
-        $enrollment = Enrollment::findOrFail($id);
+    public function addToEnrolled($id)
+    {
+        try {
+            // Fetch the enrollment data using the provided $id
+            $enrollment = Enrollment::findOrFail($id);
 
-        // Log the data to check if it's being fetched correctly
-        Log::info('Enrollment Data: ' . json_encode($enrollment));
+            // Fetch the selected section from the form
+            $selectedSection = request('section');
 
-        // Store the data into the enrolled table
-        Enrolled::create([
-            'lrn' => $enrollment->lrn,
-            'strand' => $enrollment->strand,
-            'email' => $enrollment->email,
-            'first_name' => $enrollment->first_name,
-            'middle_name' => $enrollment->middle_name,
-            'last_name' => $enrollment->last_name,
-            'extension' => $enrollment->extension,
-            'birthday' => $enrollment->birthday,
-            'age' => $enrollment->age,
-            'mobile_number' => $enrollment->mobile_number,
-            'facebook' => $enrollment->facebook,
-            'region' => $enrollment->region,
-            'province' => $enrollment->province,
-            'barangay' => $enrollment->barangay,
-            'city_municipality' => $enrollment->city_municipality,
-            'status' => $enrollment->status,
-            'grade_level' => $enrollment->grade_level,
-            'junior_high' => $enrollment->junior_high,
-            'graduation_type' => $enrollment->graduation_type,
-        ]);
+            // Log the data to check if it's being fetched correctly
+            Log::info('Enrollment Data: ' . json_encode($enrollment));
 
-        // Log a success message to check if data insertion is successful
-        Log::info('Data successfully inserted into Enrolled table');
+            // Find or create the enrolled record based on LRN
+            $enrolled = Enrolled::updateOrCreate(
+                ['lrn' => $enrollment->lrn],
+                [
+                    'strand' => request('strand'),
+                    'email' => request('email'),
+                    'first_name' => request('first_name'),
+                    'middle_name' => request('middle_name'),
+                    'last_name' => request('last_name'),
+                    'extension' => request('extension'),
+                    'birthday' => request('birthday'),
+                    'age' => request('age'),
+                    'mobile_number' => request('mobile_number'),
+                    'facebook' => request('facebook'),
+                    'region' => request('region'),
+                    'province' => request('province'),
+                    'barangay' => request('barangay'),
+                    'city_municipality' => request('city_municipality'),
+                    'status' => request('status'),
+                    'grade_level' => request('grade_level'),
+                    'section' => $selectedSection,
+                    'junior_high' => request('junior_high'),
+                    'graduation_type' => request('graduation_type'),
+                ]
+            );
 
-        // Delete the data from the enrollment table
-        $enrollment->delete();
 
-        // Log a success message to check if data deletion is successful
-        Log::info('Data successfully deleted from Enrollment table');
+            // Log a success message to check if data insertion/update is successful
+            Log::info('Data successfully inserted/updated in Enrolled table');
 
-        return redirect()->back()->with('success', 'Student added to enrolled successfully.');
-    } catch (\Exception $e) {
-        // Dump and die with the exception message for debugging
-        dd($e->getMessage());
+            // Delete the data from the enrollment table
+            $enrollment->delete();
 
-        return redirect()->back()->with('error', 'An error occurred while transferring the student to enrolled.');
+            // Log a success message to check if data deletion is successful
+            Log::info('Data successfully deleted from Enrollment table');
+
+            return redirect()->back()->with('success', 'Student added/updated in enrolled successfully.');
+        } catch (\Exception $e) {
+            // Dump and die with the exception message for debugging
+            dd($e->getMessage());
+
+            return redirect()->back()->with('error', 'An error occurred while transferring the student to enrolled.');
+        }
     }
-}
-    
+
+
+
     public function destroy($id)
     {
         $enrollment = Enrollment::find($id);
@@ -171,21 +180,21 @@ public function addToEnrolled($id)
     }
 
     //Edit the data
-public function update(Request $request, string $id): RedirectResponse
-{
-    $validatedData = $request->all();
+    public function update(Request $request, string $id): RedirectResponse
+    {
+        $validatedData = $request->all();
 
-    $enrollment = Enrollment::find($id);
+        $enrollment = Enrollment::find($id);
 
+        if (!$enrollment) {
+            return redirect()->back()->with('error', 'Enrollment not found.');
+        }
 
-    if (!$enrollment) {
-        return redirect()->back()->with('error', 'Enrollment not found.');
+        $enrollment->update($validatedData);
+
+        return redirect('/enrollment_table-table')->with('success', 'Enrollment data updated successfully.');
     }
 
-    $enrollment->update($validatedData);
-
-    return redirect('/enrollment_table-table')->with('success', 'Enrollment data updated successfully.');
-}
 
 
 }

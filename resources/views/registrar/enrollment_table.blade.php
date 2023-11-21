@@ -511,6 +511,19 @@
                                     </tr>
                                     <tr>
                                         <td>
+                                            <strong>Section:</strong>
+                                            <div class="col-md-15 mb-3">
+                                                <select class="form-select" name="section" id="section" required>
+                                                    <option disabled selected>Select an option</option>
+                                                    @foreach (\App\Models\Section::all() as $section)
+                                                    <option value="{{ $section->name }}">{{ $section->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
                                             <strong>Last School Attended:</strong>
                                             <div class="col-md-15 mb-3"> 
                                                 <input type="text" class="form-control" id="junior_high" name="junior_high" placeholder="Last School Attended" value="{{$item->junior_high}}"> 
@@ -570,6 +583,7 @@
         });
     });
 </script>
+
 {{--END--}}
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
