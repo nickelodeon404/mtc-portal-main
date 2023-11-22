@@ -80,8 +80,7 @@
         @yield('content')
     </div>
 
-    <!-- Modal -->
-
+   <!-- Modal -->
 <div class="modal fade" id="settingsModal-{{ auth()->user()->id }}">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -105,9 +104,25 @@
                             </tr>
                             <tr>
                                 <td>
+                                    <strong>Old Password:</strong>
+                                    <div class="col-md-15 mb-3">
+                                        <input type="password" class="form-control" id="old_password" name="old_password" placeholder="Enter Old Password">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
                                     <strong>New Password:</strong>
                                     <div class="col-md-15 mb-3">
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter New Password" value="{{ auth()->user()->password }}">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter New Password">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Confirm New Password:</strong>
+                                    <div class="col-md-15 mb-3">
+                                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm New Password">
                                     </div>
                                 </td>
                             </tr>
@@ -124,6 +139,7 @@
         </div>
     </div>
 </div>
+
 
 <script>
     @if(session('password_changed'))
