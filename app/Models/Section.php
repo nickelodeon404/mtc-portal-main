@@ -38,4 +38,5 @@ class Section extends Model
     {
         return $this->hasMany(User::class, 'strands_id', 'section');
     }
+    
 }

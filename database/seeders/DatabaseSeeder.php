@@ -141,32 +141,6 @@ class DatabaseSeeder extends Seeder
             'address' => 'defaultAddress',
             'mobile_number' => '+63123456789',
         ]);
-    /*
-        User::factory()->create([
-            'name' => 'default1',
-            'email' => 'example1@example.com',
-            'year_level' => '12',
-            'strands_id' => $GAS->id,
-            'password' => Hash::make('do not login this account'),
-            'role_id' => 3
-        ]);
-        User::factory()->create([
-            'name' => 'default2',
-            'email' => 'example2@example.com',
-            'year_level' => '11',
-            'strands_id' => $STEM->id,
-            'password' => Hash::make('do not login this account'),
-            'role_id' => 3
-        ]);
-        User::factory()->create([
-            'name' => 'default3',
-            'email' => 'example3@example.com',
-            'year_level' => '12',
-            'strands_id' => $STEM->id,
-            'password' => Hash::make('do not login this account'),
-            'role_id' => 3
-        ]);
-    */
     
         $sl1 = SubjectLoad::factory()->create([
             'students_id' => $student->id,
@@ -228,7 +202,7 @@ class DatabaseSeeder extends Seeder
             'strand' => 'STEM',
             'graduation_type' => 'public',
         ]);
-
+//GRADE 11 SECTION
         $A = Section::factory()->create([
             'strand_id' => 1,
             'year_level' => '11',
@@ -259,6 +233,199 @@ class DatabaseSeeder extends Seeder
             'year_level' => '11',
             'name' => "C"
         ]);
+
+        Section::factory()->create([
+            'strand_id' => 3,
+            'year_level' => '11',
+            'name' => "A"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 3,
+            'year_level' => '11',
+            'name' => "B"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 3,
+            'year_level' => '11',
+            'name' => "C"
+        ]);
+
+        Section::factory()->create([
+            'strand_id' => 4,
+            'year_level' => '11',
+            'name' => "A"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 4,
+            'year_level' => '11',
+            'name' => "B"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 4,
+            'year_level' => '11',
+            'name' => "C"
+        ]);
+
+        Section::factory()->create([
+            'strand_id' => 5,
+            'year_level' => '11',
+            'name' => "A"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 5,
+            'year_level' => '11',
+            'name' => "B"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 5,
+            'year_level' => '11',
+            'name' => "C"
+        ]);
+
+        Section::factory()->create([
+            'strand_id' => 6,
+            'year_level' => '11',
+            'name' => "A"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 6,
+            'year_level' => '11',
+            'name' => "B"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 6,
+            'year_level' => '11',
+            'name' => "C"
+        ]);
+
+        Section::factory()->create([
+            'strand_id' => 7,
+            'year_level' => '11',
+            'name' => "A"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 7,
+            'year_level' => '11',
+            'name' => "B"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 7,
+            'year_level' => '11',
+            'name' => "C"
+        ]);
+
+//GRADE 12 SECTION
+        Section::factory()->create([
+            'strand_id' => 1,
+            'year_level' => '12',
+            'name' => "A"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 1,
+            'year_level' => '12',
+            'name' => "B"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 1,
+            'year_level' => '12',
+            'name' => "C"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 2,
+            'year_level' => '12',
+            'name' => "A"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 2,
+            'year_level' => '12',
+            'name' => "B"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 2,
+            'year_level' => '12',
+            'name' => "C"
+        ]);
+
+        Section::factory()->create([
+            'strand_id' => 3,
+            'year_level' => '12',
+            'name' => "A"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 3,
+            'year_level' => '12',
+            'name' => "B"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 3,
+            'year_level' => '12',
+            'name' => "C"
+        ]);
+
+        Section::factory()->create([
+            'strand_id' => 4,
+            'year_level' => '12',
+            'name' => "A"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 4,
+            'year_level' => '12',
+            'name' => "B"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 4,
+            'year_level' => '12',
+            'name' => "C"
+        ]);
+
+        Section::factory()->create([
+            'strand_id' => 5,
+            'year_level' => '12',
+            'name' => "A"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 5,
+            'year_level' => '12',
+            'name' => "B"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 5,
+            'year_level' => '12',
+            'name' => "C"
+        ]);
+
+        Section::factory()->create([
+            'strand_id' => 6,
+            'year_level' => '12',
+            'name' => "A"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 6,
+            'year_level' => '12',
+            'name' => "B"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 6,
+            'year_level' => '12',
+            'name' => "C"
+        ]);
+
+        Section::factory()->create([
+            'strand_id' => 7,
+            'year_level' => '12',
+            'name' => "A"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 7,
+            'year_level' => '12',
+            'name' => "B"
+        ]);
+        Section::factory()->create([
+            'strand_id' => 7,
+            'year_level' => '12',
+            'name' => "C"
+        ]);
+        
         StudentSection::factory()->create([
             'section_id' => $A->id,
             'student_id' => $student->id

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('first_name', 50)->nullable(false);
             $table->string('middle_name', 50)->nullable(true);
             $table->string('last_name', 50)->nullable(false);
+            $table->string('section', 20)->nullable(false);
             $table->string('extension', 5)->nullable(true);
             $table->date('birthday')->nullable();
             $table->integer('age')->nullable(false);
@@ -31,7 +32,6 @@ return new class extends Migration
             $table->string('status')->nullable(false);
             
             $table->bigInteger('grade_level')->unsigned();
-            $table->string('section')->nullable(false);
 /*
             // Create a foreign key column
             $table->foreignId('grade_level')

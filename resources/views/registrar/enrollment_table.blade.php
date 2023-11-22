@@ -502,9 +502,9 @@
                                             <div class="col-md-15 mb-3">
                                                 <select class="form-select" name="strand" id="strand" required>
                                                     <option disabled selected>Select an option</option>
-                                                        @foreach (\App\Models\Strand::all() as $strand) 
-                                                    <option value="{{ $strand->acronym }}" {{ $item->strand == $strand->acronym ? "selected" : "" }}>{{ $strand->name }}</option>
-                                                        @endforeach
+                                                    @foreach (\App\Models\Strand::all() as $strand) 
+                                                        <option value="{{ $strand->acronym }}" {{ $item->strand == $strand->acronym ? "selected" : "" }}>{{ $strand->name }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </td>
@@ -515,10 +515,17 @@
                                             <div class="col-md-15 mb-3">
                                                 <select class="form-select" name="section" id="section" required>
                                                     <option disabled selected>Select an option</option>
-                                                    @foreach (\App\Models\Section::all() as $section)
-                                                    <option value="{{ $section->name }}">{{ $section->name }}</option>
+                                                    <!-- @foreach (\App\Models\Section::all() as $section)
+                                                        @php
+                                                            $strand = \App\Models\Strand::find($section->strand_id);
+                                                        @endphp
+                                                        <option value="{{ $section->name }}"{{ $strand && $strand->id == $section->name ? " selected" : "" }}>
+                                                        {{ $strand ? $strand->acronym : 'No Strand Found' }} - {{ $section->name }}
+                                                        </option>
+                                                    @endforeach -->
+                                                    @foreach (\App\Models\Section::where('strand_id', 1)->get() as $section)
+                                                        <option value="{{ $section->name }}">{{ $section->name }}</option>
                                                     @endforeach
-                                                </select>
                                             </div>
                                         </td>
                                     </tr>
@@ -548,12 +555,6 @@
                                             <button type="submit" class="btn btn-success" style="position: relative; title="Add to Enrolled" onclick="return confirm('Confirm and transfer to enrolled?')">
                                                     <i class="fa fa-check" aria-hidden="true"></i> Enroll
                                                 </button>
-
-                                            <a href="{{ url('/enrollment_table-table') }}">
-                                                <button class="btn btn-primary">
-                                                        Back
-                                                </button>
-                                            </a>
                                         </td>
                                     </tr>
                                    

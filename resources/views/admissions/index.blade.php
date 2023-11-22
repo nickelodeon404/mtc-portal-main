@@ -170,13 +170,32 @@
                             </div>
                         </div>
                     </div>
-                    
+
+                    <div class="row-md-6">
+                        <div class="mb-3">
+                            <fieldset>
+                                <legend>Terms and Agreement for Data Protection</legend>
+                            <div class="terms-agreement" style="border: 1px outset black; background: #fff;">
+                            <p style="text-indent: 5px;">   1.	I agree to the collection, processing, and storage of my personal data by Mother Theresa Colegio de Iriga, Inc. for the purposes of academic administration, providing educational services, and maintaining student records.<br></p>
+                            <p style="text-indent: 5px;">   2.  I understand that the personal data collected may include, but is not limited to, my name, contact information, academic records, and other relevant information necessary for educational purposes.<br></p>
+                            <p style="text-indent: 5px;">   3.	I acknowledge that MTC Portal of Mother Theresa Colegio de Iriga, Inc. will implement appropriate technical and organizational measures to ensure the security and confidentiality of my personal data.<br></p>
+                            <p style="text-indent: 5px;">   4.	I understand that my personal data will not be disclosed or shared with third parties without my explicit consent, except as required by law.<br></p>
+                            <p style="text-indent: 5px;">   5.	I agree to comply with the rules and regulations of MTC Portal regarding the use of its systems and services.
+                            </div>
+                            </fieldset>
+                        </div>
+                    </div>                    
 
                     <div class="row-md-6">
                         <div class="form-check mb-3">
                             <input class="form-check-input" type="checkbox" name="confirmationCheck" id="confirmationCheck" required>
-                            <label class="form-check-label" for="confirmationCheck">I confirm that the documents
-                                are correctly submitted.</label>
+                            <label class="form-check-label" for="confirmationCheck">I hereby certify that the above information is true and correct to the best of my knowledge.</label>
+                        </div>
+                    </div>
+                    <div class="row-md-6">
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" name="confirmationCheck1" id="confirmationCheck1" required>
+                            <label class="form-check-label" for="confirmationCheck"> I agree to the terms and agreement for data protection based on the REPUBLIC ACT 10173 also known as DATA PRIVACY ACT OF 2012.</label>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
