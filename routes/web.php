@@ -14,6 +14,8 @@ use App\Http\Controllers\SectionController;
 use App\Http\Controllers\CreateAccountController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\AddressController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -198,6 +200,8 @@ Route::put('/faculty/update/{id}', [CalendarController::class, 'update'])->name(
 Route::delete('/faculty/delete/{id}', [CalendarController::class, 'delete'])->name('calendar-events.delete');
 
 //section
-use App\Http\Controllers\SectionsController;
-
 Route::get('/sections', [SectionController::class, 'index'])->name('sections.index');
+
+//address
+Route::get('/get-municipalities/{province_id}', [AddressController::class, 'getMunicipalities'])->name('get-municipalities');
+Route::get('/get-barangays/{municipality_id}', [AddressController::class, 'getBarangays'])->name('get-barangays');

@@ -101,22 +101,33 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="mb-3">
+                                <label for="provinces" class="form-label">* Province</label>
+                                <select name="provinces" class="form-control" id="provinces">
+                                    <option disabled selected>Select Province</option>
+                                    @foreach (\App\Models\Province::all() as $provinces)
+                                    <option value="{{ $provinces->id }}">{{ $provinces->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="city_municiality" class="form-label">* City/Municipality</label>
+                                <select name="municipalities" class="form-select form-control" id="municipalities">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
                                 <label for="barangay" class="form-label">* Barangay</label>
-                                <input type="text" class="form-control" name="barangay" id="barangay" placeholder="Barangay" required>
+                                <select name="barangay" class="form-select form-control" id="barangay">
+                                    <option value=""></option>
+                                </select>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="mb-3">
-                                <label for="city_municipality" class="form-label">* City/Municipality</label>
-                                <input type="text" class="form-control" name="city_municipality" id="city_municipality" placeholder="City/Municipality" required>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="mb-3">
-                                <label for="province" class="form-label">* Province</label>
-                                <input type="text" class="form-control" name="province" id="province" placeholder="Province" required>
-                            </div>
-                        </div>
+                        
+                        
                     </div>
                     <div class="row">
                         <div class="col-md-6">
@@ -236,5 +247,63 @@
         }
     });
 </script>
+<!-- Include jQuery -->
+
+
+<!-- Include jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#provinces').on('change', function () {
+            var province_id = this.value;
+            fetchMunicipalities(province_id);
+        });
+
+        $('#municipalities').on('change', function () {
+            var municipality_id = this.value;
+            fetchBarangays(municipality_id);
+        });
+
+        function fetchMunicipalities(province_id) {
+            $.ajax({
+                url: '{{ route("get-municipalities", ["province_id" => ":province_id"]) }}'.replace(':province_id', province_id),
+                type: 'GET',
+                success: function (res) {
+                    populateDropdown($('#municipalities'), res, 'Select Municipality');
+                    resetDropdown($('#barangay'), 'Select Barangay');
+                }
+            });
+        }
+
+        function fetchBarangays(municipality_id) {
+            $.ajax({
+                url: '{{ route("get-barangays", ["municipality_id" => ":municipality_id"]) }}'.replace(':municipality_id', municipality_id),
+                type: 'GET',
+                success: function (res) {
+                    populateDropdown($('#barangay'), res, 'Select Barangay');
+                }
+            });
+        }
+
+        function populateDropdown($dropdown, data, defaultOption) {
+            $dropdown.html('<option value="">' + defaultOption + '</option>');
+            $.each(data, function (key, value) {
+                $dropdown.append('<option value="' + value.id + '">' + value.name + '</option>');
+            });
+        }
+
+        function resetDropdown($dropdown, defaultOption) {
+            $dropdown.html('<option value="">' + defaultOption + '</option>');
+        }
+    });
+</script>
+
+
+
+
+
+
+
 
 @endsection
