@@ -74,6 +74,7 @@ class DocumentTypeController extends Controller
     {
         $validatedData = $request->validate([
             'student' => 'required',
+            'transaction_number' => 'required',
             'mobile_number' => 'required',
             'document_type' => 'required|array',
             'purpose' => 'required'
@@ -93,6 +94,7 @@ class DocumentTypeController extends Controller
             // Create a new DocumentType instance and save it
             $documentType = new DocumentType();
             $documentType->student = $validatedData['student'];
+            $documentType->transaction_number = $validatedData['transaction_number'];
             $documentType->mobile_number = $validatedData['mobile_number'];
             $documentType->document_type = $ard;
             $documentType->purpose = $validatedData['purpose'];

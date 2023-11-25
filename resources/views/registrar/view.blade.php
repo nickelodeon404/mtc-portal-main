@@ -238,7 +238,7 @@
                                     	<td>
                                             <strong>City/Municipality:</strong><br>
                                                 <div class="data">
-                                                    {{ $item->city_municipality }}
+                                                    {{ $item->municipalities }}
                                                 </div>
                                         </td>
                                     </tr>
@@ -246,7 +246,7 @@
                                     	<td>
                                             <strong>Province:</strong><br>
                                                 <div class="data">
-                                                    {{ $item->province }}
+                                                    {{ $item->provinces }}
                                                 </div>
                                         </td>
                                     </tr>

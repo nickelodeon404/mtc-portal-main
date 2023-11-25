@@ -196,7 +196,7 @@ class DatabaseSeeder extends Seeder
             'barangay' => 'Bagumbayan',
             'municipalities' => 'Baao',
             'provinces' => 'Camarines Sur',
-            'mobile_number' => '+639123456789',
+            'mobile_number' => '+639509337434',
             'junior_high' => 'Baao National High School',
             'year_graduated' => '2016',
             'strand' => 'STEM',

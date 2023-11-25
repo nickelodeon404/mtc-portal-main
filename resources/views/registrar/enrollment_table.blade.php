@@ -269,7 +269,7 @@
                                     	<td>
                                             <strong>Province:</strong><br>
                                                 <div class="data">
-                                                    {{ $item->province }}
+                                                    {{ $item->provinces }}
                                                 </div>
                                         </td>
                                     </tr>
@@ -285,7 +285,7 @@
                                     	<td>
                                             <strong>City/Municipality:</strong><br>
                                                 <div class="data">
-                                                    {{ $item->city_municipality }}
+                                                    {{ $item->municipalities }}
                                                 </div>
                                         </td>
                                     </tr>
@@ -451,7 +451,7 @@
                                         <td>
                                             <strong>Province:</strong> 
                                             <div class="col-md-15 mb-3"> 
-                                                <input type="text" class="form-control" id="province" name="province" placeholder="Enter Province" value="{{$item->province}}"> 
+                                                <input type="text" class="form-control" id="provinces" name="provinces" placeholder="Enter Province" value="{{$item->provinces}}"> 
                                             </div>
                                         </td>
                                     </tr>
@@ -467,7 +467,7 @@
                                         <td>
                                             <strong>City/Municipality:</strong> 
                                             <div class="col-md-15 mb-3"> 
-                                                <input type="text" class="form-control" id="city_municipality" name="city_municipality" placeholder="Enter City/Municipality" value="{{$item->city_municipality}}">
+                                                <input type="text" class="form-control" id="municipalities" name="municipalities" placeholder="Enter City/Municipality" value="{{$item->municipalities}}">
                                             </div>
                                         </td>
                                     </tr>

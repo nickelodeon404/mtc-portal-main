@@ -27,7 +27,7 @@ class Enrolled extends Model
         'region',
         'provinces',
         'barangay',
-        'mhnicipalities',
+        'municipalities',
         'status',
         'grade_level',
         'section',

@@ -76,7 +76,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="provinceInput" class="form-label">Province</label>
-                                <input type="text" class="form-control" id="province" name="province" placeholder="Enter Province" value="{{$admitted->province}}" style="background-color: #CDCDCD;" readonly>
+                                <input type="text" class="form-control" id="provinces" name="provinces" placeholder="Enter Province" value="{{$admitted->provinces}}" style="background-color: #CDCDCD;" readonly>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="barangayInput" class="form-label">Barangay</label>
@@ -86,7 +86,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="cityInput" class="form-label">City/Municipality</label>
-                                <input type="text" class="form-control" id="city_municipality" name="city_municipality" placeholder="Enter City/Municipality" value="{{$admitted->city_municipality}}" style="background-color: #CDCDCD;" readonly>
+                                <input type="text" class="form-control" id="municipalities" name="municipalities" placeholder="Enter City/Municipality" value="{{$admitted->municipalities}}" style="background-color: #CDCDCD;" readonly>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="statusSelect" class="form-label"><b> <span style="color: red;">*</span></b>Status</label>
