@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('document_types', function (Blueprint $table) {
             $table->id();
+            $table->string('transaction_number')->nullable(false);
             $table->string('student')->nullable(false);
             $table->string('mobile_number')->nullable(false);
             $table->string('document_type')->nullable(false);

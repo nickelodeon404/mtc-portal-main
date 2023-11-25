@@ -23,8 +23,8 @@ return new class extends Migration
             $table->date('birthday')->nullable(false);
             $table->integer('age')->nullable(false);
             $table->string('barangay')->nullable(false);
-            $table->string('city_municipality')->nullable(false);
-            $table->string('province')->nullable(false);
+            $table->string('municipalities')->nullable(false);
+            $table->string('provinces')->nullable(false);
             $table->string('mobile_number', 13)->nullable(false);
 
             $table->boolean('isVerified')->default(false);

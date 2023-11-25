@@ -112,7 +112,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3">
-                                <label for="city_municiality" class="form-label">* City/Municipality</label>
+                                <label for="municipalities" class="form-label">* City/Municipality</label>
                                 <select name="municipalities" class="form-select form-control" id="municipalities">
                                     <option value=""></option>
                                 </select>

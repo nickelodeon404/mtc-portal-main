@@ -138,6 +138,11 @@
                                         <input type="date" id="message_date" name="message_date" required>
                                         <input type="time" id="message_time" name="message_time" required>
                                     </div>
+                                    <!-- Include the transaction number -->
+                                    <input type="hidden" name="transaction_number" value="{{ $transactionNumber }}">
+                                    @php
+                                        $transactionNumber++; // Increment the transaction number for the next iteration
+                                    @endphp
                                     <input type="hidden" name="mobile_number" value="{{ $item->mobile_number }}">
                                     <input type="hidden" name="document_type" value="{{ $item->document_type }}">
                                     <input type="hidden" name="student" value="{{ $item->student }}">

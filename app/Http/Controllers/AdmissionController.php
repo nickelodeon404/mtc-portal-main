@@ -6,6 +6,9 @@ use App\Models\User;
 use App\Models\Strand;
 use App\Models\Admission;
 use App\Models\Admitted;
+use App\Models\Province;
+use App\Models\Barangay;
+use App\Models\Municipality;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -67,8 +70,8 @@ class AdmissionController extends Controller
             "email" => "required|email",
             "facebook" => "nullable",
             "barangay" => "required",
-            "city_municipality" => "required",
-            "province" => "required",
+            "municipalities" => "required",
+            "provinces" => "required",
             "year_graduated" => "required",
             "junior_high" => "required",
             "graduation_type" => "required",
@@ -142,8 +145,8 @@ class AdmissionController extends Controller
             "email" => $validatedData['email'],
             "facebook" => $validatedData['facebook'],
             "barangay" => $validatedData['barangay'],
-            "city_municipality" => $validatedData['city_municipality'],
-            "province" => $validatedData['province'],
+            "municipalities" => $validatedData['municipalities'],
+            "provinces" => $validatedData['provinces'],
             "year_graduated" => $validatedData['year_graduated'],
             "junior_high" => $validatedData['junior_high'],
             "graduation_type" => $validatedData['graduation_type'],

@@ -26,9 +26,9 @@ return new class extends Migration
             $table->string('mobile_number', 13)->nullable(false);
             $table->string('facebook')->nullable(true);
             $table->string('region')->nullable(false);
-            $table->string('province')->nullable(false);
+            $table->string('provinces')->nullable(false);
             $table->string('barangay')->nullable(false);
-            $table->string('city_municipality')->nullable(false);
+            $table->string('municipalities')->nullable(false);
             $table->string('status')->nullable(false);
             
             $table->bigInteger('grade_level')->unsigned();

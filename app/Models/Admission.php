@@ -21,8 +21,8 @@ class Admission extends Model
         'birthday',
         'age',
         'barangay',
-        'city_municipality',
-        'province',
+        'municipalities',
+        'provinces',
         'mobile_number',
 
         'isVerified',
