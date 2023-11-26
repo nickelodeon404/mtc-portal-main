@@ -134,7 +134,7 @@ class DatabaseSeeder extends Seeder
     
         $student = User::factory()->create([
             'name' => 'default',
-            'email' => 'default@example.com',
+            'email' => 'default',
             'password' => Hash::make('111'),
             'role_id' => 3,
             'emailaddress' => 'default@gmail.com',
