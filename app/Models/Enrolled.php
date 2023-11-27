@@ -33,6 +33,8 @@ class Enrolled extends Model
         'section',
         'junior_high',
         'graduation_type',
+
+        'strand_id',
     ];
 
     // Define the relationship with the GradeLevel model (assuming you have one)
@@ -42,4 +44,8 @@ class Enrolled extends Model
         return $this->belongsTo(Enrolled::class, 'grade_level');
     }
 */
+public function strand()
+{
+    return $this->belongsTo(Strand::class, 'strand');
+}
 }

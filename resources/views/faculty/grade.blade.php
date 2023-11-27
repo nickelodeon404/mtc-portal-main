@@ -64,7 +64,34 @@
                                 </div>
 
                             </div>
+
                         </form>
+                        {{-- Add the filtering logic here --}}
+                        @php
+                            $selectedYear = request('year');
+                            $selectedStrand = request('strand');
+                            $selectedSection = request('section');
+
+                            $studentsQuery = \App\Models\Enrolled::query()->with('strand');
+
+                            if ($selectedYear) {
+                                $studentsQuery->where('grade_level', $selectedYear);
+                            }
+
+                            if ($selectedStrand) {
+                                $studentsQuery->whereHas('strand', function ($query) use ($selectedStrand) {
+                                    $query->where('id', $selectedStrand);
+                                });
+                            }
+
+                            if ($selectedSection) {
+                                $studentsQuery->where('section', $selectedSection);
+                            }
+
+                            $students = $studentsQuery->get();
+
+                        @endphp
+                        {{-- End of filtering logic --}}
                         <form action="{{ route('faculty.grade.post') }}" method="POST">
                             @csrf
                             <table class="table">
@@ -81,17 +108,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($students as $student)
+                                @foreach ($students as $student)
                                         <tr>
                                             <td>
                                                 <input type="hidden" name="subjectLoads_id[]"
                                                     value="{{ $student->subjectLoad }}">
                                                 <input type="text" name="student_id[]" class="form-control" disabled
-                                                    readonly value="{{ $student->id }}"> 
+                                                    readonly value="{{ $student->lrn }}"> 
                                             </td>
                                             <td>
                                                 <input type="text" name="name[]" class="form-control" disabled
-                                                    value="{{ $student->name }}" readonly>
+                                                    value="{{ $student->first_name }} {{ $student->last_name }}" readonly>
                                             </td>
                                             <td>
                                                 <input type="text" name="strand[]" class="form-control" disabled
@@ -99,7 +126,7 @@
                                             </td>
                                             <td>
                                                 <input type="text" name="year[]" class="form-control" disabled
-                                                    value="{{ $student->year_level }}" readonly>
+                                                    value="{{ $student->grade_level }}" readonly>
                                             </td>
                                             <td>
                                                 <input type="text" name="section[]" class="form-control" disabled

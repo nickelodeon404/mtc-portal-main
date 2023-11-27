@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Strand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\AcademicRecordDocuments;
@@ -35,6 +36,7 @@ class DocumentTypeController extends Controller
         ->selectRaw('strands.acronym as acronym, COUNT(*) as users_count')
         ->groupBy('strands.acronym')
         ->get();
+
         // Fetch data for Enrollment section as well
         $enrollmentData = DB::table('enrollment')->orderBy('grade_level')->get();
 
