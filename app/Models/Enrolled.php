@@ -33,8 +33,6 @@ class Enrolled extends Model
         'section',
         'junior_high',
         'graduation_type',
-
-        'strand_id',
     ];
 
     // Define the relationship with the GradeLevel model (assuming you have one)

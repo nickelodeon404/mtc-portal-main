@@ -30,11 +30,13 @@
                                     <label for="strand" class="form-label">* Preferred Strand</label>
                                     <select class="form-select" name="strand" id="strand">
                                         <option value="" selected>All</option>
-                                        @foreach (\App\Models\Strand::all() as $strand)
-                                            <option value="{{ $strand->id }}"
-                                                {{ request('strand') == $strand->id ? 'selected' : '' }}>{{ $strand->name }}
-                                            </option>
-                                        @endforeach
+                                        <option value="ABM" {{ request('strand') == 'ABM' ? 'selected' : '' }}>Accountancy Business & Management</option>
+                                        <option value="GAS" {{ request('strand') == 'GAS' ? 'selected' : '' }}>General Academic Strand</option>
+                                        <option value="HUMSS" {{ request('strand') == 'HUMSS' ? 'selected' : '' }}>Humanities & Social Sciences</option>
+                                        <option value="STEM" {{ request('strand') == 'STEM' ? 'selected' : '' }}>Science, Technology, Engineering & Mathematics</option>
+                                        <option value="TVL-ICT" {{ request('strand') == 'TVL-ICT' ? 'selected' : '' }}>Information and Communications Technology</option>
+                                        <option value="TVL-HE" {{ request('strand') == 'TVL-HE' ? 'selected' : '' }}>Home Economics</option>
+                                        <option value="ARTS & DESIGN" {{ request('strand') == 'ARTS & DESIGN' ? 'selected' : '' }}>Arts & Design</option>
                                     </select>
                                 </div>
                                 <div class="col-md-3">
@@ -72,16 +74,14 @@
                             $selectedStrand = request('strand');
                             $selectedSection = request('section');
 
-                            $studentsQuery = \App\Models\Enrolled::query()->with('strand');
+                            $studentsQuery = \App\Models\Enrolled::query();
 
                             if ($selectedYear) {
                                 $studentsQuery->where('grade_level', $selectedYear);
                             }
 
                             if ($selectedStrand) {
-                                $studentsQuery->whereHas('strand', function ($query) use ($selectedStrand) {
-                                    $query->where('id', $selectedStrand);
-                                });
+                                $studentsQuery->where('strand', $selectedStrand);
                             }
 
                             if ($selectedSection) {
@@ -89,7 +89,6 @@
                             }
 
                             $students = $studentsQuery->get();
-
                         @endphp
                         {{-- End of filtering logic --}}
                         <form action="{{ route('faculty.grade.post') }}" method="POST">
