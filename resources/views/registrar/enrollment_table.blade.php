@@ -80,12 +80,12 @@
     <x-panel>
         <main>
             <div class="container-fluid px-4">
+                <h1 class="mt-4">Enrollment</h1>
                 @if(session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
                     </div>
                 @endif
-                <h1 class="mt-4">Enrollment</h1>
                 <div class="row">
                     <div class="table-responsive mt-4">
                         <table id="enrollment" class="table table-wider">

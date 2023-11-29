@@ -17,11 +17,12 @@ class SMSController extends Controller
             "mobile_number" => "required",
             "message_date" => "required",
             "message_time" => "required",
+            "message_transactNo" => "required",
             "message" => "required",
         ]);
 
         // Get the validated data
-        $message = $validatedData['message'] . ' ' . $validatedData['message_date'] . ' ' . $validatedData['message_time'];
+        $message = $validatedData['message'] . ' ' . $validatedData['message_date'] . ' ' . $validatedData['message_time'] .  ' ' . $validatedData['message_transactNo'];
         $mobileNumber = $validatedData['mobile_number'];
 
         // Get Twilio credentials from the environment

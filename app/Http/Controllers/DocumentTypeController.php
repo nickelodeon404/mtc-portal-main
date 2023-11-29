@@ -76,7 +76,6 @@ class DocumentTypeController extends Controller
     {
         $validatedData = $request->validate([
             'student' => 'required',
-            'transaction_number' => 'required',
             'mobile_number' => 'required',
             'document_type' => 'required|array',
             'purpose' => 'required'
@@ -96,7 +95,6 @@ class DocumentTypeController extends Controller
             // Create a new DocumentType instance and save it
             $documentType = new DocumentType();
             $documentType->student = $validatedData['student'];
-            $documentType->transaction_number = $validatedData['transaction_number'];
             $documentType->mobile_number = $validatedData['mobile_number'];
             $documentType->document_type = $ard;
             $documentType->purpose = $validatedData['purpose'];
@@ -120,6 +118,6 @@ class DocumentTypeController extends Controller
         $ard->delete();
 
         // Optionally, redirect to a different route after successful deletion.
-        return redirect('/academic_record_request_table-table');
+        return redirect()->back()->with('success', 'Success!! The Requested Document is Claimed');
     }
 }

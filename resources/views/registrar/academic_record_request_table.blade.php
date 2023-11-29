@@ -69,6 +69,11 @@
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4">Academic Record Request</h1>
+            @if(session('success'))
+                <div class="alert alert-success mt-3">
+                    {{ session('success') }}
+                </div>
+                @endif
             <div class="row">
                 <div class="table-responsive mt-4">
                     <table id="academic" class="table table-wider">
@@ -101,10 +106,8 @@
                                         accept-charset="UTF-8" style="display:inline">
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}
-                                        <button type="submit" class="btn btn-danger btn-sm btn-action"
-                                            title="Delete Request"
-                                            onclick="return confirm(&quot;Confirm delete?&quot;)">
-                                            <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                                        <button type="submit" class="btn btn-success btn-sm btn-action">
+                                            <i class="fa fa-trash" aria-hidden="true"></i> Claimed
                                         </button>
                                     </form>
                                 </td>
@@ -137,12 +140,9 @@
                                             required>Good day! You can claim your requested document/s on:</textarea>
                                         <input type="date" id="message_date" name="message_date" required>
                                         <input type="time" id="message_time" name="message_time" required>
+                                        <input type="number" id="message_transactNo" name="message_transactNo" placeholder="Transaction No#" required>
                                     </div>
-                                    <!-- Include the transaction number -->
-                                    <input type="hidden" name="transaction_number" value="{{ $transactionNumber }}">
-                                    @php
-                                        $transactionNumber++; // Increment the transaction number for the next iteration
-                                    @endphp
+
                                     <input type="hidden" name="mobile_number" value="{{ $item->mobile_number }}">
                                     <input type="hidden" name="document_type" value="{{ $item->document_type }}">
                                     <input type="hidden" name="student" value="{{ $item->student }}">

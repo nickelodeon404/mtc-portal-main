@@ -11,12 +11,12 @@
     <x-panel>
         <main>
             <div class="container-fluid px-4">
+                <h1 class="mt-4">Enrollment Form</h1>
                 @if(session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
                     </div>
                 @endif
-                <h1 class="mt-4">Enrollment Form</h1>
                 <p><span style="color: red;">* required fields</span></p>
                 <div class="container">
                     <form action="{{ url('enrollment') }}" method="POST">

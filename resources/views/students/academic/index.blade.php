@@ -65,13 +65,13 @@
         <main>
             <div class="container-fluid px-4">
                 <ol class="breadcrumb mt-4">
-                    @if(session('success'))
+                </ol>
+                <h1 class="mt-4">Academic Record Request</h1><br>
+                @if(session('success'))
                         <div class="alert alert-success">
                             {{ session('success') }}
                         </div>
                     @endif
-                </ol>
-                <h1 class="mt-4">Academic Record Request</h1><br>
                 <div class="container-fluid">
                     <form action="{{ url('document_types') }}" method="POST">
                         {!! csrf_field() !!}
