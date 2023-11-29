@@ -1627,8 +1627,46 @@ class BarangaySeeder extends Seeder
             ['name' => 'Uson', 'municipality_id' => 344],
             ['name' => 'Villasocorro', 'municipality_id' => 344],
             ['name' => 'Villadima (Santa Cruz)', 'municipality_id' => 344],
-            //
-
+            //Lupi
+            ['name' => 'Alleomar', 'municipality_id' => 345],
+            ['name' => 'Bagangan Sr.', 'municipality_id' => 345],
+            ['name' => 'Bagong Sikat', 'municipality_id' => 345],
+            ['name' => 'Bel-Cruz', 'municipality_id' => 345],
+            ['name' => 'Bangon', 'municipality_id' => 345],
+            ['name' => 'Barrera Jr.', 'municipality_id' => 345],
+            ['name' => 'Barrera Sr.', 'municipality_id' => 345],
+            ['name' => 'Belwang', 'municipality_id' => 345],
+            ['name' => 'Buenasuerte', 'municipality_id' => 345],
+            ['name' => 'Bulawan Jr.', 'municipality_id' => 345],
+            ['name' => 'Bulawan Sr.', 'municipality_id' => 345],
+            ['name' => 'Cabutagan', 'municipality_id' => 345],
+            ['name' => 'Casay', 'municipality_id' => 345],
+            ['name' => 'Colacling (Del Rosario)', 'municipality_id' => 345],
+            ['name' => 'Cristo Rey', 'municipality_id' => 345],
+            ['name' => 'Del Carmen', 'municipality_id' => 345],
+            ['name' => 'Haguimit', 'municipality_id' => 345],
+            ['name' => 'Halubán (Pigbasagan)', 'municipality_id' => 345],
+            ['name' => 'Kaibigan', 'municipality_id' => 345],
+            ['name' => 'La Purísima', 'municipality_id' => 345],
+            ['name' => 'Lourdes', 'municipality_id' => 345],
+            ['name' => 'Mangcawayan', 'municipality_id' => 345],
+            ['name' => 'Napolidan', 'municipality_id' => 345],
+            ['name' => 'Población', 'municipality_id' => 345],
+            ['name' => 'Polantuna', 'municipality_id' => 345],
+            ['name' => 'Sagrada', 'municipality_id' => 345],
+            ['name' => 'Salvación', 'municipality_id' => 345],
+            ['name' => 'San Isidro', 'municipality_id' => 345],
+            ['name' => 'San José', 'municipality_id' => 345],
+            ['name' => 'San Pedro', 'municipality_id' => 345],
+            ['name' => 'San Rafael Norte', 'municipality_id' => 345],
+            ['name' => 'San Rafael Sur', 'municipality_id' => 345],
+            ['name' => 'San Ramon', 'municipality_id' => 345],
+            ['name' => 'San Vicente', 'municipality_id' => 345],
+            ['name' => 'Sooc', 'municipality_id' => 345],
+            ['name' => 'Tanawán', 'municipality_id' => 345],
+            ['name' => 'Tible', 'municipality_id' => 345],
+            ['name' => 'Tapi (Lupi Nuevo)', 'municipality_id' => 345]
+            //Magarao
             
         ];
 
