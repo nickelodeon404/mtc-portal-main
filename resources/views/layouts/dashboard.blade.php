@@ -108,7 +108,15 @@
                                 <td>
                                     <strong>Mobile Number:</strong>
                                     <div class="col-md-15 mb-3">
-                                        <input type="text" class="form-control" id="mobile_number" name="mobile_number" value="{{ auth()->user()->mobile_number}}" readonly>
+                                        @if(auth()->user()->role_id == 3)
+                                            @foreach (\App\Models\Admitted::all() as $item)
+                                                @if(auth()->user()->id)
+                                                    <input type="text" class="form-control" id="mobile_number" name="mobile_number" value="{{ $item->mobile_number }}" readonly>
+                                                @endif
+                                            @endforeach
+                                        @else
+                                            <input type="text" class="form-control" id="mobile_number" name="mobile_number" value="{{ auth()->user()->mobile_number }}" readonly>
+                                        @endif
                                     </div>
                                 </td>
                             </tr>
@@ -159,7 +167,6 @@
         </div>
     </div>
 </div>
-
 
 <script>
     @if(session('password_changed'))

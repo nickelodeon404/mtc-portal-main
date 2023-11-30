@@ -84,6 +84,7 @@
                                 <th>Phone Number</th>
                                 <th>Requested Document/s</th>
                                 <th>Purpose</th>
+                                <th>Date</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -95,6 +96,7 @@
                                 <td>{{ $item->mobile_number }}</td>
                                 <td>{{ $item->document_type }}</td>
                                 <td>{{ $item->purpose }}</td>
+                                <td>{{ $item->created_at }}</td>
 
                                 <td>
                                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
