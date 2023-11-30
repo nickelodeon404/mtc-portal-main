@@ -9,6 +9,8 @@ use App\Models\Admitted;
 use App\Models\Province;
 use App\Models\Barangay;
 use App\Models\Municipality;
+use App\Models\ActivityLog;
+
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -99,6 +101,10 @@ class AdmissionController extends Controller
         $LastName = $validatedData['last_name'];
         $firstThreeLetters = substr(str_replace(' ', '', $validatedData['first_name']), 0, 3);
         $randomPassword = rand(100000, 999999);
+
+        // Check if the user is authenticated before accessing their id
+        $userId = auth()->user() ? auth()->user()->id : null;
+
         $user = User::create([
             'role_id' => 3, 
             'name' => $validatedData['last_name'] . $validatedData['first_name'],
@@ -112,6 +118,14 @@ class AdmissionController extends Controller
         // Fetch the valid options for "strand" from the database
         $strands = Strand::all(); // Assuming "Strand" is the model for the "strands" table
 
+        // Check if the user is authenticated before creating the activity log
+        if ($userId !== null) {
+            ActivityLog::create([
+                'user_id' => $userId,
+                'action' => 'user_created',
+                'details' => 'User created: ' . $user->name,
+            ]);
+        }
 //Message Generator
        // $this->sendSmsWithUserIdAndPassword($LastName, $firstThreeLetters, $randomPassword, $validatedData['mobile_number']);
 
@@ -157,6 +171,15 @@ class AdmissionController extends Controller
             // Hash the password
         ]);
 
+        // Log the activity for admission creation
+        if ($userId !== null) {
+            ActivityLog::create([
+                'user_id' => $userId,
+                'action' => 'admission_created',
+                'details' => 'Admission created for user: ' . $user->name,
+            ]);
+        }
+
         return redirect()->route('verify')->with(['mobile_number' => $validatedData['mobile_number']]); //this is from otp.
         //return redirect()->back()->with('success', 'Admission form submitted successfully');
         // Pass $randomPassword as a parameter when redirecting to the 'admitStudent' route
@@ -197,6 +220,13 @@ class AdmissionController extends Controller
     
             // Commit the transaction if everything succeeds
             DB::commit();
+
+            // Log the activity for admission admission
+            ActivityLog::create([
+                'user_id' => auth()->user()->id,
+                'action' => 'student_admitted',
+                'details' => 'Student admitted: ' . $admission->user->name,
+            ]);
     
             return redirect()->back()->with('success', 'Student added to admitted successfully.');
         } catch (ModelNotFoundException $e) {

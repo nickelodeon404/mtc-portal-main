@@ -40,6 +40,9 @@
                     <a class="nav-link" href="{{ url('/manage-table') }}">
                         <i class="fas fa-user-cog"></i> Manage Account
                     </a>
+                    <a class="nav-link" href="{{ url('/activity_log') }}">
+                        <i class="fas fa-user-cog"></i> User Activity Log
+                    </a>
                     <!-- Modal Button -->
                     <!-- <a href="#" type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#modalUpdateInfoStudent">
                         Update Information

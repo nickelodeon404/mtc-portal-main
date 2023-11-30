@@ -266,21 +266,28 @@
                                         <td>
                                             <strong>Password:</strong> 
                                             <div class="col-md-15 mb-3"> 
-                                                <input type="password" class="form-control" id="password" name="password" placeholder="Enter Last Name" value="{{$item->password}}"> 
+                                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="{{$item->password}}"> 
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <button type="submit" class="btn btn-success" style="position: relative; title="Update Account" onclick="return confirm('Confirm the update?')">
+                                            <strong>Re-Enter Password:</strong>
+                                            <div class="col-md-15 mb-3">
+                                                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation"
+                                                    placeholder="Confirm Password" value="{{$item->password}}">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <button type="submit" class="btn btn-success" style="position: relative;" title="Update Account" onclick="return confirm('Confirm the update?')">
                                                     <i class="fa fa-check" aria-hidden="true"></i> Update
                                                 </button>
 
-                                            <a href="{{ url('/manage-table') }}">
-                                                <button class="btn btn-primary">
-                                                        Back
-                                                </button>
-                                            </a>
+                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                                                Back
+                                            </button>
                                         </td>
                                     </tr>
                                    
@@ -353,5 +360,6 @@
         });
     });
 </script>
+
 {{--END--}}
 @endsection

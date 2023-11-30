@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admission;
+use App\Models\ActivityLog;
 use App\Models\Admitted;
 use App\Models\Enrolled;
 use App\Models\Enrollment;
@@ -57,6 +57,13 @@ class EnrollmentController extends Controller
         ]);
 
         $enrollment = Enrollment::create($validatedData);
+
+        // Log the activity for enrollment creation
+        ActivityLog::create([
+            'user_id' => auth()->user()->id,
+            'action' => 'enrollment_created',
+            'details' => 'Enrollment created for user: ' . $enrollment->first_name . ' ' . $enrollment->last_name,
+        ]);
 
         // Optionally, you can redirect to a success page or perform additional actions
 
@@ -145,6 +152,13 @@ class EnrollmentController extends Controller
             // Log a success message to check if data deletion is successful
             Log::info('Data successfully deleted from Enrollment table');
 
+            // Log the activity for adding to enrolled
+            ActivityLog::create([
+                'user_id' => auth()->user()->id,
+                'action' => 'added_to_enrolled',
+                'details' => 'Student added to enrolled: ' . $enrolled->first_name . ' ' . $enrolled->last_name,
+            ]);
+
             return redirect()->back()->with('success', 'Student added/updated in enrolled successfully.');
         } catch (\Exception $e) {
             // Dump and die with the exception message for debugging
@@ -166,6 +180,13 @@ class EnrollmentController extends Controller
 
         // Perform the deletion logic, for example:
         $enrollment->delete();
+
+        // Log the activity for enrollment deletion
+        ActivityLog::create([
+            'user_id' => auth()->user()->id,
+            'action' => 'enrollment_deleted',
+            'details' => 'Enrollment deleted: ' . $enrollment->first_name . ' ' . $enrollment->last_name,
+        ]);
 
         // Optionally, redirect to a different route after successful deletion.
         return redirect('/enrollment_table-table');

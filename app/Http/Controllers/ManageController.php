@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use App\Models\User;
 use App\Models\Admitted;
 use App\Models\Admission;
+use App\Models\ActivityLog;
 use Illuminate\Support\Facades\DB;
 
 class ManageController extends Controller
@@ -40,13 +41,27 @@ class ManageController extends Controller
    //Edit the data
    public function update(Request $request, string $id): RedirectResponse
    {
-       $validatedData = $request->all();
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'role_id' => 'required',
+            'email' => 'required|email|unique:users,email,' . $id,
+            'password' => 'nullable|min:6|confirmed',
+            // 'confirmed' checks if 'password' and 'password_confirmation' match
+        ]);
    
        $user = User::find($id);
    
        if (!$user) {
            return redirect()->back()->with('error', 'User not found.');
        }
+
+        // Log the activity
+        ActivityLog::create([
+            'user_id' => auth()->user()->id,
+            // Assuming you have authentication set up
+            'action' => 'user_updated',
+            'details' => 'User data updated',
+        ]);
    
        $user->update($validatedData);
    
@@ -60,6 +75,13 @@ class ManageController extends Controller
        if (!$user) {
            // Handle the case where user is not found, return a response, etc.
        }
+
+        ActivityLog::create([
+            'user_id' => auth()->user()->$id,
+            // Assuming you have authentication set up
+            'action' => 'user_deleted',
+            'details' => 'User data deleted',
+        ]);
 
        // Check if there are related records in the 'admitted' table
        $relatedAdmissions = Admission::where('users_id', $id)->get();

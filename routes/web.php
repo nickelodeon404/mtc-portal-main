@@ -15,6 +15,7 @@ use App\Http\Controllers\CreateAccountController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\Admin\ActivityLogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -141,7 +142,11 @@ Route::post('/users', [CreateAccountController::class, 'store']);
 //Route For Update Account
 Route::patch('/users/{id}', [ManageController::class, 'update'])
     ->name('users.update');
-
+//Activity Log
+Route::middleware(['auth', 'registrar'])->group(function () {
+    Route::get('/activity_log', [ActivityLogController::class, 'index'])->name('registrar.activity_log');
+    // Add other routes as needed
+});
 
 
 //Route For record_requests table
