@@ -1668,6 +1668,7 @@ class BarangaySeeder extends Seeder
             ['name' => 'Tapi (Lupi Nuevo)', 'municipality_id' => 345]
             //Magarao
             
+            
         ];
 
 
