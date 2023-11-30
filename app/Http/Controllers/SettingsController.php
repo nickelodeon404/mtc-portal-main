@@ -56,11 +56,9 @@ class SettingsController extends Controller
 
     public function sendOtp(Request $request)
     {
-        $user = Auth::user();
-
         // Validate the form data
         $request->validate([
-            'mobile_number' => 'required|numeric|digits:10',
+            'mobile_number' => 'required|numeric',
         ]);
 
         $otp = rand(100000, 999999);
@@ -83,12 +81,13 @@ class SettingsController extends Controller
 
         $twilio = new Client($twilioSid, $token);
 
+        $body = "Your OTP for verification: $otp";
+
         $verification = $twilio->verify->v2->services($twilioVerifySid)
             ->verifications
-            ->create($to, "sms", [
-                'body' => "Your OTP for password change: $otp",
-            ]);
+            ->create($to, "sms", compact('body'));
     }
 
-    
+
+
 }

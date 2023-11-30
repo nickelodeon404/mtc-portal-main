@@ -200,23 +200,27 @@
         });
 
         function sendOtp() {
-            var phoneNumber = document.getElementById("mobile_number").value;
+        var phoneNumber = $("#mobile_number").val();
 
-            $.ajax({
-                url: "{{ route('send-otp') }}",
-                type: "POST",
-                data: {
-                    _token: "{{ csrf_token() }}",
-                    mobile_number: phoneNumber
-                },
-                success: function (response) {
-                    alert(response.message);
-                },
-                error: function (xhr) {
+        $.ajax({
+            url: "{{ route('send-otp') }}",
+            type: "POST",
+            data: {
+                _token: "{{ csrf_token() }}",
+                mobile_number: phoneNumber
+            },
+            success: function (response) {
+                alert('OTP sent successfully. Check your mobile for the code.');
+            },
+            error: function (xhr) {
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    alert(xhr.responseJSON.message);
+                } else {
                     alert('Error sending OTP. Please try again.');
                 }
-            });
-        }
+            }
+        });
+    }
     });
 </script>
 
