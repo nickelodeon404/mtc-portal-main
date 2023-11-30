@@ -13,6 +13,8 @@
     <link href="{{asset('css/admin.css')}}" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     {{-- <script src="//unpkg.com/alpinejs" defer></script> --}}
+    
+
     <style>
         .nav-link:hover {
             text-decoration: underline;
@@ -104,9 +106,17 @@
                             </tr>
                             <tr>
                                 <td>
+                                    <strong>Mobile Number:</strong>
+                                    <div class="col-md-15 mb-3">
+                                        <input type="text" class="form-control" id="mobile_number" name="mobile_number" value="{{ auth()->user()->mobile_number}}" readonly>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
                                     <strong>Old Password:</strong>
                                     <div class="col-md-15 mb-3">
-                                        <input type="password" class="form-control" id="old_password" name="old_password" placeholder="Enter Old Password">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Old Password">
                                     </div>
                                 </td>
                             </tr>
@@ -122,7 +132,16 @@
                                 <td>
                                     <strong>Confirm New Password:</strong>
                                     <div class="col-md-15 mb-3">
-                                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm New Password">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Confirm New Password">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Enter OTP:</strong>
+                                    <div class="col-md-15 mb-3">
+                                        <input type="text" class="form-control" id="otp" name="otp" placeholder="Enter OTP">
+                                        <small id="otpTimer"></small>
                                     </div>
                                 </td>
                             </tr>
@@ -130,6 +149,7 @@
                     </table>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" id="sendOtpBtn" class="btn btn-info">Send OTP</button>
                     <button type="submit" class="btn btn-success" style="position: relative;" title="Update Account" onclick="return confirm('Confirm the update?')">
                         <i class="fa fa-check" aria-hidden="true"></i> Update
                     </button>
@@ -146,6 +166,60 @@
         alert("Password changed successfully!");
     @endif
 </script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var otpTimer;
+        var otpTimerValue = 300; // 5 minutes in seconds
+
+        function startOtpTimer() {
+            otpTimer = setInterval(function () {
+                otpTimerValue--;
+                updateOtpTimer();
+                if (otpTimerValue <= 0) {
+                    clearInterval(otpTimer);
+                    disableOtpInput();
+                }
+            }, 1000);
+        }
+
+        function updateOtpTimer() {
+            var minutes = Math.floor(otpTimerValue / 60);
+            var seconds = otpTimerValue % 60;
+            document.getElementById("otpTimer").innerHTML = "OTP will expire in " + minutes + "m " + seconds + "s";
+        }
+
+        function disableOtpInput() {
+            document.getElementById("otp").disabled = true;
+            document.getElementById("otpTimer").innerHTML = "OTP expired. Please resend.";
+        }
+
+        document.getElementById("sendOtpBtn").addEventListener("click", function () {
+            sendOtp();
+            startOtpTimer();
+        });
+
+        function sendOtp() {
+            var phoneNumber = document.getElementById("mobile_number").value;
+
+            $.ajax({
+                url: "{{ route('send-otp') }}",
+                type: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    mobile_number: phoneNumber
+                },
+                success: function (response) {
+                    alert(response.message);
+                },
+                error: function (xhr) {
+                    alert('Error sending OTP. Please try again.');
+                }
+            });
+        }
+    });
+</script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>

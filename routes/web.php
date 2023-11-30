@@ -194,6 +194,11 @@ Route::get('update_faculty' , function () {
 Route::get('/academic_record_request_table', 'App\Http\Controllers\DocumentTypeController@view')->name('academic_record_request_table');
 Route::post('/send-sms', 'App\Http\Controllers\SMSController@sendSms')->name('send-sms');
 
+use App\Http\Controllers\SettingsController;
+
+Route::post('send-otp', [SettingsController::class, 'sendOtp'])->name('send-otp');
+// Route::get('/layout/dashboard', 'SettingsController@showEnrollmentDetails')->name('enrollment');
+
 //END OF SMS NOTIFICATION IN TWILIO
 
 //calendar

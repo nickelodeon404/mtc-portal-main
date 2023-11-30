@@ -65,5 +65,11 @@ class User extends Authenticatable
         return $this->hasMany(RecordRequest::class, 'student_id');
     }
 
-    
+    // In the User model (App\Models\User)
+    public function enrolled()
+    {
+        return $this->hasOne(Enrollment::class); // Change the relationship type based on your actual relationship
+    }
+
+
 }
