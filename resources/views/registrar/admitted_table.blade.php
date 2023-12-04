@@ -88,7 +88,7 @@
                 <h1 class="mt-4">Admitted</h1>
                 <div class="row">
                     <div class="table-responsive mt-4">
-                        <table id="admission" class="table table-wider">
+                        <table id="admitted" class="table table-wider">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -328,7 +328,7 @@
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> <!-- Add DataTables script -->
 <script>
     $(document).ready(function () {
-        $('#admission').DataTable({
+        $('#admitted').DataTable({
             pagingType: 'full_numbers'
         });
     });

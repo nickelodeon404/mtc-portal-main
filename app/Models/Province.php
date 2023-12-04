@@ -17,6 +17,6 @@ class Province extends Model
 
     public function municipalities()
     {
-        return $this->hasMany(Municipality::class);
+        return $this->hasMany(Municipality::class, 'province_id', 'id');
     }
 }

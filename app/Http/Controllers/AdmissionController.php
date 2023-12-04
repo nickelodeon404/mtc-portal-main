@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Log;
 
 use Illuminate\Support\Facades\Http;
 use Twilio\Rest\Client;
+use Illuminate\Validation\ValidationException;
 //use GuzzleHttp\Client;
 
 
@@ -60,6 +61,7 @@ class AdmissionController extends Controller
 
     public function store(Request $request)
     {
+    try {
         $validatedData = $request->validate([
             "lrn" => "required",
             "first_name" => "required",
@@ -84,6 +86,14 @@ class AdmissionController extends Controller
             'form_138' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
             // Validate as an image with a max size of 2048 KB.
         ]);
+
+// Check if the email already exists in the admission table
+    $existingAdmission = Admission::where('email', $validatedData['email'])->first();
+
+    if ($existingAdmission) {
+// Return an error message or handle the situation where the email already exists
+        return redirect()->back()->with('error', 'Admission failed!! Email already exist');
+    }
 
         // Store the uploaded PSA image in the 'public/images' directory
         if ($request->hasFile('psa')) {
@@ -181,8 +191,13 @@ class AdmissionController extends Controller
         }
 
         return redirect()->route('verify')->with(['mobile_number' => $validatedData['mobile_number']]); //this is from otp.
-        //return redirect()->back()->with('success', 'Admission form submitted successfully');
-        // Pass $randomPassword as a parameter when redirecting to the 'admitStudent' route
+        } catch (ValidationException $e) {
+            // Handle validation errors
+            return redirect()->back()->withErrors($e->errors())->withInput()->with('error', 'Validation error occurred');
+        } catch (\Exception $e) {
+            // Handle other exceptions
+            return redirect()->back()->with('error', 'An error occurred');
+        }
     }
 
     public function admitStudent($id)

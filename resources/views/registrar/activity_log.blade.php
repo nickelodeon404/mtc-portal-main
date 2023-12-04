@@ -4,14 +4,59 @@
 @include('registrar._sidenav')
 
 {{--PAGINATION--}}
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-    {{--END--}} <style type="text/css"> /* Set background color for the entire page */ body { background-color: #f0f0f0;
-    /* Adjust the color as needed */ } a { text-decoration: none; color: #fff; } a:hover { color: #fff; } .table-wider {
-    width: 100%; max-width: 100%; } .table-wider th, .table-wider td { white-space: nowrap; text-align: center; } /*
-    Additional table styling */ .table-wider { background-color: #f5f5f5; } .table-wider th, .table-wider td { border:
-    1px solid #dee2e6; padding: 8px; text-align: center; } .table-wider th { background-color: #5c2c78; color: #fff; }
-    .table-wider tr:nth-child(even) { background-color: #f2f2f2; } .table-wider tr:hover { background-color: #d1d1d1; }
-    /* Button styling */ .btn-action { margin-right: 5px; } </style>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    {{--END--}}
+
+    <style type="text/css">
+
+        body {
+             background-color: #f0f0f0; /* Adjust the color as needed */
+             }
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        a:hover {
+            color: #fff;
+        }
+
+        .table-wider {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .table-wider th, .table-wider td {
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        /* Additional table styling for a beautiful look */
+        .table-wider {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .table-wider th, .table-wider td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .table-wider th {
+            background-color: #5c2c78;
+            color: #fff;
+        }
+
+        .table-wider tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .table-wider tr:hover {
+            background-color: #d1d1d1;
+        }
+
+    </style>
 
 
 <x-panel>
@@ -20,7 +65,7 @@
             <h1 class="mt-4">User Activity Log</h1>
             <div class="row">
                 <div class="table-responsive mt-4">
-                    <table id="academic" class="table table-wider">
+                    <table id="activitylog" class="table table-wider">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -57,7 +102,7 @@
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> <!-- Add DataTables script -->
 <script>
     $(document).ready(function () {
-        $('#academic').DataTable({
+        $('#activitylog').DataTable({
             pagingType: 'full_numbers'
         });
     });

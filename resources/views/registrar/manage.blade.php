@@ -98,6 +98,11 @@
                         {{ session('success') }}
                     </div>
                 @endif
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
                 <div class="row">
                     <div class="col-12 d-flex justify-content-between">
                         <h1 class="mt-4">Manage User Accounts</h1>
@@ -181,7 +186,7 @@
                                     	<td>
                                             <strong>Role Type:</strong><br>
                                                 <div class="data">
-                                                    {{ $item->name }}
+                                                {{ \App\Models\Roles::find($item->role_id)->name }}
                                                 </div>
                                         </td>
                                     </tr>

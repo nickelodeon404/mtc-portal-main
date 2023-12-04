@@ -24,6 +24,11 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-lg-8">
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
                 <h1><b>Admission</b></h1>
                 <p><span style="color: red;">* required fields</span></p>
                 <form action="{{ url('admission') }}" method="POST" enctype="multipart/form-data">
