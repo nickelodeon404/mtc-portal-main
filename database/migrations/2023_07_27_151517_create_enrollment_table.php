@@ -23,6 +23,7 @@ return new class extends Migration
             $table->date('birthday')->nullable();
             $table->integer('age')->nullable(false);
             $table->string('mobile_number', 13)->nullable(false);
+            $table->string('emergency_number', 13)->nullable(false);
             $table->string('facebook')->nullable(true);
             $table->string('region')->nullable(false);
             $table->string('provinces')->nullable(false);

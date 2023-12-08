@@ -79,7 +79,7 @@ class EnrolledController extends Controller
         $enrolled->delete();
 
         // Optionally, redirect to a different route after successful deletion.
-        return redirect('/enrolled_table-table');
+        return redirect()->back()->with('success', 'Student data deleted successfully.');
     }
 
     public function export_user_pdf()

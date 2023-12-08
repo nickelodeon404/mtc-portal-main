@@ -82,6 +82,11 @@
         <main>
             <div class="container-fluid px-4">
                 <h1 class="mt-4">Enrolled</h1>
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <a class="btn btn-success" href="{{route('export_user_pdf')}}" style="margin-left: 94.5%; margin-right: auto;"> Export</a>
                 <div class="row">
                     <div class="table-responsive mt-4">
@@ -307,7 +312,15 @@
                                                     {{ $item->graduation_type }}
                                                 </div>
                                         </td>
-                                    </tr>    
+                                    </tr> 
+                                    <tr>
+                                    	<td>
+                                            <strong>Mobile No. In case of emergency</strong><br>
+                                                <div class="data">
+                                                    {{ $item->emergency_number }}
+                                                </div>
+                                        </td>
+                                    </tr>     
                                 </thead>
                             </table>
                                 </div>

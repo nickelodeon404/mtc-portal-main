@@ -44,6 +44,7 @@ class EnrollmentController extends Controller
             'birthday' => 'required|date',
             'age' => 'required|integer',
             'mobile_number' => 'required|string',
+            'emergency_number' => 'required|string',
             'facebook' => 'nullable',
             'region' => 'required',
             'provinces' => 'required',
@@ -104,7 +105,7 @@ class EnrollmentController extends Controller
 
 
 //Add to Enrolled
-    public function addToEnrolled($id)
+    public function addToEnrolled(Request $request, $id)
     {
         try {
             // Fetch the enrollment data using the provided $id
@@ -112,6 +113,11 @@ class EnrollmentController extends Controller
 
             // Fetch the selected section from the form
             $selectedSection = request('section');
+
+        // Check if the section is not selected
+        if (!$request->has('section') || $request->input('section') === null) {
+            return redirect()->back()->with('error', 'Please select a section.');
+        }
 
             // Log the data to check if it's being fetched correctly
             Log::info('Enrollment Data: ' . json_encode($enrollment));
@@ -129,6 +135,7 @@ class EnrollmentController extends Controller
                     'birthday' => request('birthday'),
                     'age' => request('age'),
                     'mobile_number' => request('mobile_number'),
+                    'emergency_number' => request('emergency_number'),
                     'facebook' => request('facebook'),
                     'region' => request('region'),
                     'provinces' => request('provinces'),
@@ -189,7 +196,7 @@ class EnrollmentController extends Controller
         ]);
 
         // Optionally, redirect to a different route after successful deletion.
-        return redirect('/enrollment_table-table');
+        return redirect()->back()->with('success', 'Student data deleted successfully.');
     }
 
     public function studentIndex(){

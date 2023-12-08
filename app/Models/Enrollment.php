@@ -22,6 +22,7 @@ class Enrollment extends Model
         'birthday',
         'age',
         'mobile_number',
+        'emergency_number',
         'facebook',
         'region',
         'provinces',

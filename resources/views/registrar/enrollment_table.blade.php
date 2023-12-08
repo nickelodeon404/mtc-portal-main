@@ -86,6 +86,11 @@
                         {{ session('success') }}
                     </div>
                 @endif
+                @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+                @endif
                 <div class="row">
                     <div class="table-responsive mt-4">
                         <table id="enrollment" class="table table-wider">
@@ -328,7 +333,15 @@
                                                     {{ $item->graduation_type }}
                                                 </div>
                                         </td>
-                                    </tr>    
+                                    </tr> 
+                                    <tr>
+                                    	<td>
+                                            <strong>Mobile No. In case of emergency</strong><br>
+                                                <div class="data">
+                                                    {{ $item->emergency_number }}
+                                                </div>
+                                        </td>
+                                    </tr>   
                                 </thead>
                             </table>
                                 </div>
@@ -419,7 +432,7 @@
                                         <td>
                                             <strong>Mobile No:</strong> 
                                             <div class="col-md-15 mb-3"> 
-                                                <input type="tel" class="form-control" id="mobile_number" name="mobile_number" placeholder="Enter Mobile Number" value="{{$item->mobile_number}}"> 
+                                                <input type="tel" class="form-control" id="mobile_number" name="mobile_number" placeholder="Enter Mobile Number" value="{{$item->mobile_number}}" onkeydown="handleBackspace(event, this)"> 
                                             </div>
                                         </td>
                                     </tr>
@@ -515,17 +528,11 @@
                                             <div class="col-md-15 mb-3">
                                                 <select class="form-select" name="section" id="section" required>
                                                     <option disabled selected>Select an option</option>
-                                                    <!-- @foreach (\App\Models\Section::all() as $section)
-                                                        @php
-                                                            $strand = \App\Models\Strand::find($section->strand_id);
-                                                        @endphp
-                                                        <option value="{{ $section->name }}"{{ $strand && $strand->id == $section->name ? " selected" : "" }}>
-                                                        {{ $strand ? $strand->acronym : 'No Strand Found' }} - {{ $section->name }}
-                                                        </option>
-                                                    @endforeach -->
-                                                    @foreach (\App\Models\Section::where('strand_id', 1)->get() as $section)
-                                                        <option value="{{ $section->name }}">{{ $section->name }}</option>
-                                                    @endforeach
+                                                    {{--@foreach (\App\Models\Section::where('strand_id', 1)->get() as $section)--}}
+                                                        <option value="A">A</option>
+                                                        <option value="B">B</option>
+                                                        <option value="C">C</option>
+                                                    {{--@endforeach--}}
                                             </div>
                                         </td>
                                     </tr>
@@ -552,12 +559,19 @@
                                     </tr>
                                     <tr>
                                         <td>
+                                            <strong>Mobile No. In case of emergency</strong> 
+                                            <div class="col-md-15 mb-3"> 
+                                                <input type="tel" class="form-control" id="emergency_number" name="emergency_number" placeholder="Enter Mobile Number" value="{{$item->emergency_number}}" onkeydown="handleBackspace(event, this)"> 
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
                                             <button type="submit" class="btn btn-success" style="position: relative; title="Add to Enrolled" onclick="return confirm('Confirm and transfer to enrolled?')">
                                                     <i class="fa fa-check" aria-hidden="true"></i> Enroll
                                                 </button>
                                         </td>
                                     </tr>
-                                   
                                 </thead>
                             </table>
                         </form>
@@ -585,6 +599,28 @@
     });
 </script>
 
+{{--END--}}
+
+{{--THIS SCRIPT PREVENTS THE MOBILE NUMBER COUNTRY CODE TO BE ERASED!!--}}
+
+<script>
+function handleBackspace(event, input) {
+    const keyCode = event.keyCode || event.which;
+    const countryCode = '+63';
+    let number = input.value.trim();
+
+    if (keyCode === 8 && number === countryCode) {
+        event.preventDefault(); // Prevent default backspace behavior when the value is '+63'
+        return;
+    }
+
+    if (keyCode === 8 && number.startsWith(countryCode) && input.selectionStart === 0 && input.selectionEnd === number.length) {
+        // If all text is selected including '+63', delete only the selected text excluding '+63'
+        input.setSelectionRange(countryCode.length, number.length);
+        event.preventDefault();
+    }
+}
+</script>
 {{--END--}}
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>

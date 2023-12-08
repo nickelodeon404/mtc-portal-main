@@ -304,11 +304,4 @@
     });
 </script>
 
-
-
-
-
-
-
-
 @endsection

@@ -4,16 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Municipality;
-use App\Models\Barangay;
-use App\Models\Province;
 
 class AddressController extends Controller
 {
     public function getMunicipalities(Request $request)
     {
-        $municipalities = Municipality::where('name', $request->name)
-            ->with('province') // Load related province data
+        $municipalities = DB::table('municipalities')
+            ->where('province_id', $request->province_id)
             ->get();
 
         return response()->json($municipalities);
@@ -21,8 +18,8 @@ class AddressController extends Controller
 
     public function getBarangays(Request $request)
     {
-        $barangays = Barangay::where('municipality_id', $request->municipality_id)
-            ->with('municipality') // Load related municipality data
+        $barangays = DB::table('barangay') // Assuming your table is named "barangays"
+            ->where('municipality_id', $request->municipality_id)
             ->get();
 
         return response()->json($barangays);
