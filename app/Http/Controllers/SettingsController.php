@@ -15,19 +15,21 @@ class SettingsController extends Controller
     
     public function updatePassword(Request $request)
     {
-        $user = Auth::user();
+        // Fetch the authenticated user
+        $user = auth()->user();
 
         // Validate the form data
         $request->validate([
             'old_password' => 'required',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:6',
+            'password_confirmation' => 'required',
             'otp' => 'required|numeric',
         ]);
 
-        // Check if the old password matches the user's current password
-        if (!Hash::check($request->old_password, $user->password)) {
-            return redirect()->back()->with('error', 'The old password is incorrect.');
-        }
+    // Check if the old password matches the user's current password
+    if (!Hash::check($request->old_password, auth()->user()->password)) {
+        return redirect()->back()->with('error', 'The old password is incorrect.');
+    }
 
         // Check if the entered OTP matches the one sent
         $otpKey = "otp_{$user->phone}";

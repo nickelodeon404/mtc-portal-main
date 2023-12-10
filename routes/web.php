@@ -14,6 +14,7 @@ use App\Http\Controllers\SectionController;
 use App\Http\Controllers\CreateAccountController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\RegistrarController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\Admin\ActivityLogController;
 
@@ -156,12 +157,12 @@ Route::get('/academic_record_request_table-table', [DocumentTypeController::clas
 Route::delete('/document_types/{id}', [DocumentTypeController::class, 'destroy'])->name('document_types.destroy');
 
 //Route For Update User Information Faculty
-Route::patch('/users/{id}', [FacultyController::class, 'update'])
-    ->name('users.update');
+Route::patch('/users/{id}', [FacultyController::class, 'FacultyUpdate'])
+    ->name('users.FacultyUpdate');
 
 //Route For Update User Information Registrar
-//Route::patch('/users/{id}', [RegistrarController::class, 'update'])
- //   ->name('users.update');
+Route::patch('/users/{id}', [RegistrarController::class, 'RegistrarUpdate'])
+   ->name('users.RegistrarUpdate');
 
 //Route For Update User Information Student
 Route::patch('/admitted/{id}', [AdmittedController::class, 'update'])

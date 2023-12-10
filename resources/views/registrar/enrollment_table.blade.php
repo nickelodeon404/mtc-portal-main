@@ -376,7 +376,7 @@
                                         <td>
                                             <strong>LRN:</strong> 
                                             <div class="col-md-15 mb-3"> 
-                                                <input type="text" class="form-control" id="lrn" name="lrn" placeholder="Enter LRN" value="{{$item->lrn}}">
+                                                <input type="text" class="form-control" id="lrn" name="lrn" placeholder="Enter LRN" value="{{$item->lrn}}" required>
                                             </div> 
                                         </td>
                                     </tr>
@@ -384,7 +384,7 @@
                                         <td>
                                             <strong>First Name:</strong> 
                                             <div class="col-md-15 mb-3"> 
-                                                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name" value="{{$item->first_name}}">
+                                                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name" value="{{$item->first_name}}" required>
                                             </div> 
                                         </td>
                                     </tr>
@@ -392,7 +392,7 @@
                                         <td>
                                             <strong>Middle Name:</strong> 
                                             <div class="col-md-15 mb-3"> 
-                                                <input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="Enter Middle Name" value="{{$item->middle_name}}">
+                                                <input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="Enter Middle Name" value="{{$item->middle_name}}" required>
                                             </div> 
                                         </td>
                                     </tr>
@@ -400,7 +400,7 @@
                                         <td>
                                             <strong>Last Name:</strong> 
                                             <div class="col-md-15 mb-3"> 
-                                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name" value="{{$item->last_name}}"> 
+                                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name" value="{{$item->last_name}}" required> 
                                             </div>
                                         </td>
                                     </tr>
@@ -416,7 +416,7 @@
                                         <td>
                                             <strong>Birthday:</strong> 
                                             <div class="col-md-15 mb-3"> 
-                                                <input type="date" class="form-control" id="birthday" name="birthday" value="{{$item->birthday}}"> 
+                                                <input type="date" class="form-control" id="birthday" name="birthday" value="{{$item->birthday}}" required> 
                                             </div>
                                         </td>
                                     </tr>
@@ -424,7 +424,7 @@
                                         <td>
                                             <strong>Age:</strong> 
                                             <div class="col-md-15 mb-3"> 
-                                                <input type="number" class="form-control" id="age" name="age" placeholder="Enter Age" value="{{$item->age}}"> 
+                                                <input type="number" class="form-control" id="age" name="age" placeholder="Enter Age" value="{{$item->age}}" required> 
                                             </div>
                                         </td>
                                     </tr>
@@ -432,7 +432,7 @@
                                         <td>
                                             <strong>Mobile No:</strong> 
                                             <div class="col-md-15 mb-3"> 
-                                                <input type="tel" class="form-control" id="mobile_number" name="mobile_number" placeholder="Enter Mobile Number" value="{{$item->mobile_number}}" onkeydown="handleBackspace(event, this)"> 
+                                                <input type="tel" class="form-control" id="mobile_number" name="mobile_number" placeholder="Enter Mobile Number" value="{{$item->mobile_number}}" onkeydown="handleBackspace(event, this)" required> 
                                             </div>
                                         </td>
                                     </tr>
@@ -440,7 +440,7 @@
                                         <td>
                                             <strong>Email:</strong> 
                                             <div class="col-md-15 mb-3"> 
-                                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Address" value="{{$item->email}}"> 
+                                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Address" value="{{$item->email}}" required> 
                                             </div>
                                         </td>
                                     </tr>
@@ -448,7 +448,7 @@
                                         <td>
                                             <strong>Facebook Account:</strong> 
                                             <div class="col-md-15 mb-3"> 
-                                                <input type="text" class="form-control" id="facebook" name="facebook" placeholder="Enter Facebook Account" value="{{$item->facebook}}"> 
+                                                <input type="text" class="form-control" id="facebook" name="facebook" placeholder="Enter Facebook Account" value="{{$item->facebook}}" required> 
                                             </div>
                                         </td>
                                     </tr>
@@ -456,7 +456,7 @@
                                         <td>
                                             <strong>Region:</strong> 
                                             <div class="col-md-15 mb-3"> 
-                                                <input type="text" class="form-control" id="region" name="region" placeholder="Enter Region" value="{{$item->region}}"> 
+                                                <input type="text" class="form-control" id="region" name="region" placeholder="Enter Region" value="{{$item->region}}" required> 
                                             </div>
                                         </td>
                                     </tr>
@@ -464,7 +464,7 @@
                                         <td>
                                             <strong>Province:</strong> 
                                             <div class="col-md-15 mb-3"> 
-                                                <input type="text" class="form-control" id="provinces" name="provinces" placeholder="Enter Province" value="{{$item->provinces}}"> 
+                                                <input type="text" class="form-control" id="provinces" name="provinces" placeholder="Enter Province" value="{{$item->provinces}}" required> 
                                             </div>
                                         </td>
                                     </tr>
@@ -472,7 +472,7 @@
                                         <td>
                                             <strong>Barangay:</strong> 
                                             <div class="col-md-15 mb-3"> 
-                                                <input type="text" class="form-control" id="barangay" name="barangay" placeholder="Enter Barangay" value="{{$item->barangay}}"> 
+                                                <input type="text" class="form-control" id="barangay" name="barangay" placeholder="Enter Barangay" value="{{$item->barangay}}" required> 
                                             </div>
                                         </td>
                                     </tr>
@@ -480,7 +480,7 @@
                                         <td>
                                             <strong>City/Municipality:</strong> 
                                             <div class="col-md-15 mb-3"> 
-                                                <input type="text" class="form-control" id="municipalities" name="municipalities" placeholder="Enter City/Municipality" value="{{$item->municipalities}}">
+                                                <input type="text" class="form-control" id="municipalities" name="municipalities" placeholder="Enter City/Municipality" value="{{$item->municipalities}}" required>
                                             </div>
                                         </td>
                                     </tr>
@@ -488,7 +488,7 @@
                                         <td>
                                             <strong>Status:</strong> 
                                             <div class="col-md-15 mb-3">
-                                            <select class="form-select" id="status" name="status">
+                                            <select class="form-select" id="status" name="status" required>
                                                 <option disabled selected>Select One</option>
                                                 <option value="New Student" {{$item->status == "New Student" ? "selected" : ""}}>New Student</option>
                                                 <option value="Transfer Student" {{$item->status == "Transfer Student" ? "selected" : ""}}>Transfer Student</option>
@@ -501,7 +501,7 @@
                                         <td>
                                             <strong>Grade Level:</strong> 
                                             <div class="col-md-15 mb-3">
-                                                <select class="form-select" id="grade_level" name="grade_level">
+                                                <select class="form-select" id="grade_level" name="grade_level" required>
                                                 <option disabled selected>Select an option</option>
                                                     <option value="11" {{$item->grade_level == "11" ? "selected" : ""}}>11</option>
                                                     <option value="12" {{$item->grade_level == "12" ? "selected" : ""}}>12</option>
@@ -540,7 +540,7 @@
                                         <td>
                                             <strong>Last School Attended:</strong>
                                             <div class="col-md-15 mb-3"> 
-                                                <input type="text" class="form-control" id="junior_high" name="junior_high" placeholder="Last School Attended" value="{{$item->junior_high}}"> 
+                                                <input type="text" class="form-control" id="junior_high" name="junior_high" placeholder="Last School Attended" value="{{$item->junior_high}}" required> 
                                             </div>
                                         </td>
                                     </tr>
@@ -548,7 +548,7 @@
                                         <td>
                                             <strong>Graduation Type:</strong>
                                             <div class="col-md-15 mb-3">
-                                                <select class="form-select" id="graduation_type" name="graduation_type">
+                                                <select class="form-select" id="graduation_type" name="graduation_type" required>
                                                     <option disabled selected>Select an option</option>
                                                     <option value="Public Completer" {{$item->graduation_type == "Public Completer" ? "selected" : ""}}>Public Completer</option>
                                                     <option value="Private Completer" {{$item->graduation_type == "Private Completer" ? "selected" : ""}}>Private Completer</option>
@@ -561,7 +561,7 @@
                                         <td>
                                             <strong>Mobile No. In case of emergency</strong> 
                                             <div class="col-md-15 mb-3"> 
-                                                <input type="tel" class="form-control" id="emergency_number" name="emergency_number" placeholder="Enter Mobile Number" value="{{$item->emergency_number}}" onkeydown="handleBackspace(event, this)"> 
+                                                <input type="tel" class="form-control" id="emergency_number" name="emergency_number" placeholder="Enter Mobile Number" value="{{$item->emergency_number}}" onkeydown="handleBackspace(event, this)" required> 
                                             </div>
                                         </td>
                                     </tr>

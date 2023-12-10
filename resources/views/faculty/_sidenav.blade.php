@@ -47,7 +47,7 @@
     </nav>
 </div>
 {{--MODAL--}}
- @foreach (\App\Models\User::all() as $item) <!-- MANUAL CALLING FROM DIRECTORY IS BETTER -->
+@foreach (\App\Models\User::where('role_id', 1)->get() as $item) <!-- MANUAL CALLING FROM DIRECTORY IS BETTER -->
     <div class="modal fade" id="modalUpdateInfoStudent">
         <div class="modal-dialog custom-wide-modal">
             <div class="modal-content">
@@ -75,7 +75,7 @@
                                        <td>
                                            <strong>Mobile No:</strong> 
                                            <div class="col-md-15 mb-3"> 
-                                               <input type="tel" class="form-control" id="mobile_number" name="mobile_number" maxlength="13" placeholder="Enter Mobile Number" value="{{$item->mobile_number}}"> 
+                                               <input type="tel" class="form-control" id="mobile_number" name="mobile_number" maxlength="13" placeholder="Enter Mobile Number" value="{{ auth()->user()->mobile_number }}" required> 
                                            </div>
                                        </td>
                                    </tr>
@@ -83,7 +83,7 @@
                                        <td>
                                            <strong>Email Address:</strong> 
                                            <div class="col-md-15 mb-3"> 
-                                               <input type="email" class="form-control" id="emailaddress" name="emailaddress" placeholder="Enter Email Address" value="{{$item->emailaddress}}"> 
+                                               <input type="email" class="form-control" id="emailaddress" name="emailaddress" placeholder="Enter Email Address" value="{{ auth()->user()->emailaddress }}" required> 
                                            </div>
                                        </td>
                                    </tr>
@@ -91,7 +91,7 @@
                                        <td>
                                            <strong>Address:</strong> 
                                            <div class="col-md-15 mb-3"> 
-                                               <input type="text" class="form-control" id="address" name="address" placeholder="Enter Address" value="{{$item->address}}"> 
+                                               <input type="text" class="form-control" id="address" name="address" placeholder="Enter Address" value="{{ auth()->user()->address }}" required> 
                                            </div>
                                        </td>
                                    </tr>

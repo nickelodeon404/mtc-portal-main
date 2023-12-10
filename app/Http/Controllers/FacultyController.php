@@ -15,7 +15,7 @@ class FacultyController extends Controller
         $userInfo = DB::table('users')->orderBy('id')->get();
        // $roles = Roles::orderBy('id')->get();
 
-        return view('faculty.index', ['userInfo' => $userInfo]);
+        //return view('faculty.index', ['userInfo' => $userInfo]);
 
     }
 
@@ -30,7 +30,7 @@ class FacultyController extends Controller
         return redirect()->back()->with('success', 'Success!! Your admit was submitted!!');
     }
 
-    public function update(Request $request, string $id): RedirectResponse
+    public function FacultyUpdate(Request $request, string $id): RedirectResponse
     {
         $validatedData = $request->all();
     

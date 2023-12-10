@@ -233,7 +233,7 @@
 
                                 <!-- Modal body -->
                                 <div class="modal-body">
-                                <form action="{{ url('users/' . $item->id) }}" method="post">
+                                <form action="{{ url('users/' . $item->id) }}" method="post" onsubmit="return validatePasswords(this)">
                                     @csrf 
                                     @method('PATCH')
                                 <table class="table table-wider">
@@ -242,7 +242,7 @@
                                         <td>
                                             <strong>Name:</strong> 
                                             <div class="col-md-15 mb-3"> 
-                                                <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{$item->name}}">
+                                                <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{$item->name}}" required>
                                             </div> 
                                         </td>
                                     </tr>
@@ -263,7 +263,7 @@
                                         <td>
                                             <strong>Username:</strong> 
                                             <div class="col-md-15 mb-3"> 
-                                                <input type="text" class="form-control" id="email" name="email" placeholder="Username" value="{{$item->email}}">
+                                                <input type="text" class="form-control" id="email" name="email" placeholder="Username" value="{{$item->email}}" required>
                                             </div> 
                                         </td>
                                     </tr>
@@ -271,16 +271,16 @@
                                         <td>
                                             <strong>Password:</strong> 
                                             <div class="col-md-15 mb-3"> 
-                                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="{{$item->password}}"> 
+                                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="{{$item->password}}" required> 
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <strong>Re-Enter Password:</strong>
+                                            <strong>Confirm Password:</strong>
                                             <div class="col-md-15 mb-3">
-                                                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation"
-                                                    placeholder="Confirm Password" value="{{$item->password}}">
+                                                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Re-Enter Password" value="" required>
+                                                <span id="passwordError" style="color: red; display: none;"><b>Error: Passwords mismatch!!</b></span>
                                             </div>
                                         </td>
                                     </tr>
@@ -366,5 +366,24 @@
     });
 </script>
 
+{{--END--}}
+
+{{--Prevent password change if the password and confirm password do not match--}}
+<script>
+function validatePasswords(form) {
+    var password = form.querySelector('.form-control[name="password"]').value;
+    var confirmPassword = form.querySelector('.form-control[name="password_confirmation"]').value;
+
+    var passwordError = form.querySelector('#passwordError'); // Check this selector
+
+    if (password === confirmPassword) {
+        passwordError.style.display = 'none';
+        return true; // Allow form submission
+    } else {
+        passwordError.style.display = 'block';
+        return false; // Prevent form submission
+    }
+}
+</script>
 {{--END--}}
 @endsection

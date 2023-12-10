@@ -44,9 +44,9 @@
                         <i class="fas fa-user-cog"></i> User Activity Log
                     </a>
                     <!-- Modal Button -->
-                    <!-- <a href="#" type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#modalUpdateInfoStudent">
+                    <a href="#" type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#modalUpdateInfoRegistrar">
                         Update Information
-                    </a>    -->
+                    </a>    
                 </div>
             </div>
             <div class="sb-sidenav-footer">
@@ -55,10 +55,10 @@
             </div>
         </nav>
     </div>
-{{--
+
     {{--MODAL--}}
- @foreach (\App\Models\User::all() as $item) <!-- MANUAL CALLING FROM DIRECTORY IS BETTER -->
-    <div class="modal fade" id="modalUpdateInfoStudent">
+ @foreach (\App\Models\User::where('role_id', 2)->get() as $item) <!-- MANUAL CALLING FROM DIRECTORY IS BETTER -->
+    <div class="modal fade" id="modalUpdateInfoRegistrar">
         <div class="modal-dialog custom-wide-modal">
             <div class="modal-content">
                 <!-- Modal Header -->
@@ -85,7 +85,7 @@
                                        <td>
                                            <strong>Mobile No:</strong> 
                                            <div class="col-md-15 mb-3"> 
-                                               <input type="tel" class="form-control" id="mobile_number" name="mobile_number" maxlength="13" placeholder="Enter Mobile Number" value="{{$item->mobile_number}}"> 
+                                               <input type="tel" class="form-control" id="mobile_number" name="mobile_number" maxlength="13" placeholder="Enter Mobile Number" value="{{ auth()->user()->mobile_number}}" required> 
                                            </div>
                                        </td>
                                    </tr>
@@ -93,7 +93,7 @@
                                        <td>
                                            <strong>Email Address:</strong> 
                                            <div class="col-md-15 mb-3"> 
-                                               <input type="email" class="form-control" id="emailaddress" name="emailaddress" placeholder="Enter Email Address" value="{{$item->emailaddress}}"> 
+                                               <input type="email" class="form-control" id="emailaddress" name="emailaddress" placeholder="Enter Email Address" value="{{ auth()->user()->emailaddress}}" required> 
                                            </div>
                                        </td>
                                    </tr>
@@ -101,7 +101,7 @@
                                        <td>
                                            <strong>Address:</strong> 
                                            <div class="col-md-15 mb-3"> 
-                                               <input type="text" class="form-control" id="address" name="address" placeholder="Enter Address" value="{{$item->address}}"> 
+                                               <input type="text" class="form-control" id="address" name="address" placeholder="Enter Address" value="{{ auth()->user()->address}}" required> 
                                            </div>
                                        </td>
                                    </tr>
@@ -123,10 +123,10 @@
        </div>
        @endforeach
 {{--END--}}
---}}
+
 </body>
 {{--THIS SCRIPT PREVENTS THE MOBILE NUMBER COUNTRY CODE TO BE ERASED!!--}}
-<!-- <script>
+<script>
     // Get the input element
     var mobileNumberInput = document.getElementById("mobile_number");
 
@@ -149,6 +149,6 @@
             event.preventDefault();
         }
     });
-</script> -->
+</script>
 </body>
 </html>

@@ -90,7 +90,7 @@
                 <h5 class="modal-title" id="settingsModalLabel">Change Password</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{ url('users/' . auth()->user()->id) }}" method="post">
+            <form action="{{ url('users/' . auth()->user()->id) }}" method="post" onsubmit="return validatePasswords(this)">
                 @csrf
                 @method('PATCH')
                 <div class="modal-body">
@@ -124,7 +124,7 @@
                                 <td>
                                     <strong>Old Password:</strong>
                                     <div class="col-md-15 mb-3">
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Old Password">
+                                        <input type="password" class="form-control" id="old_password" name="old_password" placeholder="Enter Old Password" required>
                                     </div>
                                 </td>
                             </tr>
@@ -132,7 +132,7 @@
                                 <td>
                                     <strong>New Password:</strong>
                                     <div class="col-md-15 mb-3">
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter New Password">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter New Password" required>
                                     </div>
                                 </td>
                             </tr>
@@ -140,7 +140,8 @@
                                 <td>
                                     <strong>Confirm New Password:</strong>
                                     <div class="col-md-15 mb-3">
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="Confirm New Password">
+                                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm New Password" required>
+                                        <span id="passwordError" style="color: red; display: none;"><b>Error: Passwords mismatch!!</b></span>
                                     </div>
                                 </td>
                             </tr>
@@ -148,7 +149,7 @@
                                 <td>
                                     <strong>Enter OTP:</strong>
                                     <div class="col-md-15 mb-3">
-                                        <input type="text" class="form-control" id="otp" name="otp" placeholder="Enter OTP">
+                                        <input type="text" class="form-control" id="otp" name="otp" placeholder="Enter OTP" required>
                                         <small id="otpTimer"></small>
                                     </div>
                                 </td>
@@ -235,6 +236,25 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
     <script src="{{asset('js/admin.js')}}"></script>
+
+{{-- Prevent password change if the new password and confirmation do not match --}}
+<script>
+    function validatePasswords(form) {
+        var newPassword = form.querySelector('.form-control[name="password"]').value;
+        var confirmPassword = form.querySelector('.form-control[name="password_confirmation"]').value;
+
+        var passwordError = form.querySelector('#passwordError');
+
+        if (newPassword === confirmPassword) {
+            passwordError.style.display = 'none';
+            return true; // Allow form submission
+        } else {
+            passwordError.style.display = 'block';
+            return false; // Prevent form submission
+        }
+    }
+</script>
+{{-- END --}}
 
 </body>
 
