@@ -10,7 +10,7 @@ class ActivityLogController extends Controller
 {
     public function index()
     {
-        $activityLogs = ActivityLog::latest()->paginate(10);
+        $activityLogs = ActivityLog::latest()->get(); // Retrieving all logs without pagination
         return view('registrar.activity_log', compact('activityLogs'));
     }
 }

@@ -87,7 +87,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $activityLogs->links() }}
                 </div>
                 
             </div>
@@ -101,11 +100,12 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Add jQuery -->
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> <!-- Add DataTables script -->
 <script>
-    $(document).ready(function () {
-        $('#activitylog').DataTable({
-            pagingType: 'full_numbers'
-        });
+var $activitylog = jQuery.noConflict();
+$activitylog(document).ready(function() {
+    $activitylog('#activitylog').DataTable({
+        pagingType: 'full_numbers'
     });
+});
 </script>
 {{-- END --}}
 @endsection

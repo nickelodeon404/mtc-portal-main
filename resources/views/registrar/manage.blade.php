@@ -359,8 +359,9 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Add jQuery -->
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> <!-- Add DataTables script -->
 <script>
-    $(document).ready(function () {
-        $('#manage').DataTable({
+    var $manage = jQuery.noConflict();
+    $manage(document).ready(function () {
+        $manage('#manage').DataTable({
             pagingType: 'full_numbers'
         });
     });

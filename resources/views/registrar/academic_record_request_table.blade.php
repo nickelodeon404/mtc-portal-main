@@ -166,8 +166,9 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Add jQuery -->
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> <!-- Add DataTables script -->
 <script>
-    $(document).ready(function () {
-        $('#academic').DataTable({
+    var $academic = jQuery.noConflict();
+    $academic(document).ready(function () {
+        $academic('#academic').DataTable({
             pagingType: 'full_numbers'
         });
     });
