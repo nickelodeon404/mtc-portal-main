@@ -109,7 +109,11 @@
                                     <strong>Mobile Number:</strong>
                                     <div class="col-md-15 mb-3">
                                         @if(auth()->user()->role_id == 3)
-                                            <input type="text" class="form-control" id="mobile_number" name="mobile_number" value="{{ $admitted->mobile_number }}" readonly>
+                                            @foreach (\App\Models\Admitted::where('users_id', auth()->user()->id)->get() as $admitted)
+                                                @if(auth()->user()->id)
+                                                    <input type="text" class="form-control" id="mobile_number" name="mobile_number" value="{{ $admitted->mobile_number }}" readonly>
+                                                @endif
+                                            @endforeach
                                         @else
                                             <input type="text" class="form-control" id="mobile_number" name="mobile_number" value="{{ auth()->user()->mobile_number }}" readonly>
                                         @endif

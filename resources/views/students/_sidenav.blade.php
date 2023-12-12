@@ -54,7 +54,7 @@
     </div>
     
  {{--MODAL--}}
- @foreach (\App\Models\Admitted::all() as $item) <!-- MANUAL CALLING FROM DIRECTORY IS BETTER -->
+ @foreach (\App\Models\Admitted::where('users_id', auth()->user()->id)->get() as $admitted) <!-- MANUAL CALLING FROM DIRECTORY IS BETTER -->
     <div class="modal fade" id="modalUpdateInfoStudent">
         <div class="modal-dialog custom-wide-modal">
             <div class="modal-content">
@@ -66,7 +66,7 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                <form action="{{ url('admitted/' . $item->id) }}" method="post">
+                <form action="{{ url('admitted/' . $admitted->id) }}" method="post">
                      @csrf 
                      @method('PATCH') 
                                <table class="table table-wider">
