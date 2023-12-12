@@ -82,7 +82,7 @@
                                        <td>
                                            <strong>Mobile No:</strong> 
                                            <div class="col-md-15 mb-3"> 
-                                               <input type="tel" class="form-control" id="mobile_number" name="mobile_number" maxlength="13" placeholder="Enter Mobile Number" value="{{$item->mobile_number}}"> 
+                                               <input type="tel" class="form-control" id="mobile_number" name="mobile_number" maxlength="13" placeholder="Enter Mobile Number" value="{{$admitted->mobile_number}}"> 
                                            </div>
                                        </td>
                                    </tr>
@@ -90,7 +90,7 @@
                                        <td>
                                            <strong>Email:</strong> 
                                            <div class="col-md-15 mb-3"> 
-                                               <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Address" value="{{$item->email}}"> 
+                                               <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Address" value="{{$admitted->email}}"> 
                                            </div>
                                        </td>
                                    </tr>
@@ -98,7 +98,7 @@
                                        <td>
                                            <strong>Barangay:</strong> 
                                            <div class="col-md-15 mb-3"> 
-                                               <input type="text" class="form-control" id="barangay" name="barangay" placeholder="Enter Barangay" value="{{$item->barangay}}"> 
+                                               <input type="text" class="form-control" id="barangay" name="barangay" placeholder="Enter Barangay" value="{{$admitted->barangay}}"> 
                                            </div>
                                        </td>
                                    </tr>
@@ -106,7 +106,7 @@
                                        <td>
                                            <strong>City/Municipality:</strong> 
                                            <div class="col-md-15 mb-3"> 
-                                               <input type="text" class="form-control" id="municipalities" name="municipalities" placeholder="Enter City/Municipality" value="{{$item->municipalities}}">
+                                               <input type="text" class="form-control" id="municipalities" name="municipalities" placeholder="Enter City/Municipality" value="{{$admitted->municipalities}}">
                                            </div>
                                        </td>
                                    </tr>
@@ -114,7 +114,7 @@
                                        <td>
                                            <strong>Province:</strong> 
                                            <div class="col-md-15 mb-3"> 
-                                               <input type="text" class="form-control" id="provinces" name="provinces" placeholder="Enter Province" value="{{$item->provinces}}"> 
+                                               <input type="text" class="form-control" id="provinces" name="provinces" placeholder="Enter Province" value="{{$admitted->provinces}}"> 
                                            </div>
                                        </td>
                                    </tr>

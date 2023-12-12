@@ -56,8 +56,26 @@
             background-color: #d1d1d1;
         }
 
-    </style>
+        /* Button styling */
+        .btn-action {
+            margin-right: 5px;
+        }
 
+        /* MODAL SIZE */
+        .custom-wide-modal {
+            max-width: 60%;
+        }
+
+        /* TABLE STRONG TEXT ALIGNMENT */
+        strong {
+            float: left;
+        }
+        .data{
+            float: left;
+            
+        }
+
+    </style>
 
 <x-panel>
     <main>

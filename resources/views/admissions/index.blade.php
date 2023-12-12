@@ -215,7 +215,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+                </form><br><br>
                 @if(session('success'))
                 <div class="alert alert-success mt-3">
                     {{ session('success') }}

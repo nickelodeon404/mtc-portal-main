@@ -5,12 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Strand;
 use App\Models\Admission;
-use App\Models\Admitted;
-use App\Models\Province;
-use App\Models\Barangay;
-use App\Models\Municipality;
-use App\Models\ActivityLog;
-
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,7 +18,6 @@ use Illuminate\Support\Facades\Log;
 
 use Illuminate\Support\Facades\Http;
 use Twilio\Rest\Client;
-use Illuminate\Validation\ValidationException;
 //use GuzzleHttp\Client;
 
 
@@ -61,7 +54,8 @@ class AdmissionController extends Controller
 
     public function store(Request $request)
     {
-    try {
+        // $validatedData = $request->all();
+        // dd($request); //all field that exist in a table no need to one by one.
         $validatedData = $request->validate([
             "lrn" => "required",
             "first_name" => "required",
@@ -74,68 +68,45 @@ class AdmissionController extends Controller
             "email" => "required|email",
             "facebook" => "nullable",
             "barangay" => "required",
-            "municipalities" => "required",
-            "provinces" => "required",
+            "city_municipality" => "required",
+            "province" => "required",
             "year_graduated" => "required",
             "junior_high" => "required",
             "graduation_type" => "required",
             "strand" => "required",
             "confirmationCheck" => "required",
-            'psa' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
-            // Validate as an image with a max size of 2048 KB.
-            'form_138' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
-            // Validate as an image with a max size of 2048 KB.
+         //   'psa' => 'nullable|file|mimes:jpeg,jpg,png|max:2048', // Validate as a file with a max size of 2048 KB.
+         //   'form_138' => 'nullable|mimes:jpeg,jpg,png|max:2048', // Validate as a file with a max size of 2048 KB.
         ]);
-
-// Check if the email already exists in the admission table
-    $existingAdmission = Admission::where('email', $validatedData['email'])->first();
-
-    if ($existingAdmission) {
-// Return an error message or handle the situation where the email already exists
-        return redirect()->back()->with('error', 'Admission failed!! Email already exist');
-    }
 
         // Store the uploaded PSA image in the 'public/images' directory
         if ($request->hasFile('psa')) {
             $psaPath = $request->file('psa')->store('images', 'public');
             $validatedData['psa'] = $psaPath;
+
         }
 
         // Store the uploaded Form 138 image in the 'public/images' directory
         if ($request->hasFile('form_138')) {
             $form138Path = $request->file('form_138')->store('images', 'public');
             $validatedData['form_138'] = $form138Path;
+
         }
 
         // dd($validatedData['first_name']);
         $LastName = $validatedData['last_name'];
         $firstThreeLetters = substr(str_replace(' ', '', $validatedData['first_name']), 0, 3);
         $randomPassword = rand(100000, 999999);
-
-        // Check if the user is authenticated before accessing their id
-        $userId = auth()->user() ? auth()->user()->id : null;
-
         $user = User::create([
             'role_id' => 3, 
             'name' => $validatedData['last_name'] . $validatedData['first_name'],
             'email' => $validatedData['last_name'] . $firstThreeLetters ,
             'password' => Hash::make($randomPassword),
-            'emailaddress' => $validatedData['email'],
-            'address' => $validatedData['barangay']. $validatedData['municipalities']. $validatedData['provinces'],
-            'mobile_number' => $validatedData['mobile_number'],
             // Hash the password
         ]);
         // Fetch the valid options for "strand" from the database
         $strands = Strand::all(); // Assuming "Strand" is the model for the "strands" table
 
-        // Check if the user is authenticated before creating the activity log
-        if ($userId !== null) {
-            ActivityLog::create([
-                'user_id' => $userId,
-                'action' => 'user_created',
-                'details' => 'User created: ' . $user->name,
-            ]);
-        }
 //Message Generator
        // $this->sendSmsWithUserIdAndPassword($LastName, $firstThreeLetters, $randomPassword, $validatedData['mobile_number']);
 
@@ -169,91 +140,46 @@ class AdmissionController extends Controller
             "email" => $validatedData['email'],
             "facebook" => $validatedData['facebook'],
             "barangay" => $validatedData['barangay'],
-            "municipalities" => $validatedData['municipalities'],
-            "provinces" => $validatedData['provinces'],
+            "city_municipality" => $validatedData['city_municipality'],
+            "province" => $validatedData['province'],
             "year_graduated" => $validatedData['year_graduated'],
             "junior_high" => $validatedData['junior_high'],
             "graduation_type" => $validatedData['graduation_type'],
             "strand" => $validatedData['strand'],
             "confirmationCheck" => $validatedData['confirmationCheck'],
-           // "psa" => $validatedData['psa'],
-           // "form_138" => $validatedData['form_138']
             // Hash the password
         ]);
 
-        // Log the activity for admission creation
-        if ($userId !== null) {
-            ActivityLog::create([
-                'user_id' => $userId,
-                'action' => 'admission_created',
-                'details' => 'Admission created for user: ' . $user->name,
-            ]);
-        }
-
         return redirect()->route('verify')->with(['mobile_number' => $validatedData['mobile_number']]); //this is from otp.
-        } catch (ValidationException $e) {
-            // Handle validation errors
-            return redirect()->back()->withErrors($e->errors())->withInput()->with('error', 'Validation error occurred');
-        } catch (\Exception $e) {
-            // Handle other exceptions
-            return redirect()->back()->with('error', 'An error occurred');
-        }
+        //return redirect()->back()->with('success', 'Admission form submitted successfully');
+        // Pass $randomPassword as a parameter when redirecting to the 'admitStudent' route
     }
 
     public function admitStudent($id)
     {
+        
         $admission = Admission::find($id);
-    
+        
         if (!$admission) {
             return redirect()->back()->with('error', 'Admission record not found.');
         }
-    
-        // Generate a random password for the admitted student
         $randomPassword = rand(100000, 999999);
-    
+
         $admission->user->update(['password' => Hash::make($randomPassword)]);
-    
+
         // Generate the message with username and password
         $message = "Welcome to our school!\n";
         $message .= "Your Username: " . $admission->user->email . "\n";
         $message .= "Your Password: " . $randomPassword . "\n";
-    
+
         // Send the message using Twilio
         $this->sendSmsWithUsernameAndPassword($admission->mobile_number, $message);
-    
-        try {
-            // Begin a database transaction for integrity
-            DB::beginTransaction();
-    
-            // Transfer data to the 'Admitted' table
-            $admittedData = $admission->toArray();
-            $admittedData['is_admitted'] = true; // Set the student as admitted
-            Admitted::create($admittedData);
-    
-            // Delete the data from the Admission table
-            $admission->delete();
-    
-            // Commit the transaction if everything succeeds
-            DB::commit();
 
-            // Log the activity for admission admission
-            ActivityLog::create([
-                'user_id' => auth()->user()->id,
-                'action' => 'student_admitted',
-                'details' => 'Student admitted: ' . $admission->user->name,
-            ]);
-    
-            return redirect()->back()->with('success', 'Student added to admitted successfully.');
-        } catch (ModelNotFoundException $e) {
-            // Handle the case where admission is not found, return a response, etc.
-            DB::rollBack(); // Roll back the transaction if there's an error
-            return redirect()->back()->with('error', 'Admission record not found.');
-        } catch (\Exception $e) {
-            // Dump and die with the exception message for debugging
-            DB::rollBack(); // Roll back the transaction if there's an error
-            dd($e->getMessage());
-            return redirect()->back()->with('error', 'An error occurred while transferring the student to admitted.');
-        }
+        // Mark the student as admitted
+        $admission->is_admitted = true;
+        $admission->save();
+
+        return redirect()->back()->with('success', 'Account information sent to the student.');
     }
 
 
@@ -299,7 +225,7 @@ class AdmissionController extends Controller
             $admission = tap(Admission::where('mobile_number', $validatedData['mobile_number']))->update(['isVerified' => true]);
             // Authenticate user 
             //User::login($admission->first());
-            return redirect()->route('index')->with(['success' => 'Your admission application has been submitted successfully! Please wait for the confirmation on your cellphone number']);
+            return redirect()->route('index')->with(['success' => 'mobile number verified']);
         }
         return back()->with(['mobile_number' => $validatedData['mobile_number'], 'error' => 'Invalid verification code entered!']);
     }

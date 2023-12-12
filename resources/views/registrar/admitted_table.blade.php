@@ -295,7 +295,7 @@
                                     	<td>
                                             <strong>PSA/Birth Certificate:</strong><br>
                                                 <div class="data">
-                                                    <img src="{{$item->psa ? asset('storage/images/' . $item->psa) : asset('img/no-image.webp')}}" alt="PSA" width="70" height="50">
+                                                    <img src="{{ $item->psa }}" alt="PSA" width="70" height="50">
                                                 </div>
                                         </td>
                                     </tr>
@@ -303,7 +303,7 @@
                                     	<td>
                                             <strong>Form 138:</strong><br>
                                                 <div class="data">
-                                                    <img src="{{$item->form_138 ? asset('storage/images/' . $item->form_138): asset('img/no-image.webp')}}" alt="Form 138" width="70" height="50">
+                                                <img src="{{ $item->form_138 }}" alt="FORM 138" width="70" height="50">
                                                 </div>
                                         </td>
                                     </tr>
