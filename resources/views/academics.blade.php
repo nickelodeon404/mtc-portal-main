@@ -72,12 +72,12 @@
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse justify-content-center" id="navbarResponsive">
                 <ul class="navbar-nav my-2 my-lg-0 d-fle align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/academics">Academics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about" style="font-size: 18px;">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/academics" style="font-size: 18px;">Academics</a></li>
                     <li class="nav-item"><a class="nav-link" href="/"><img src="./assets/img/logo.png" alt=""
                                 style="width: 100px;"></a></li>
-                    <li class="nav-item"><a class="nav-link" href="/admission">Admission</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admission" style="font-size: 18px;">Admission</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login" style="font-size: 18px;">Login</a></li>
                 </ul>
             </div>
         </div>

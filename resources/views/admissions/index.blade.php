@@ -76,35 +76,33 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                       {{-- <!-- <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="age" class="form-label">* Age</label>
                                 <input type="number" class="form-control" name="age" id="age" placeholder="Age" required> 
                             </div>
-                        </div>
+                        </div> --> --}}
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="mobile_number" class="form-label">* Mobile Number</label>
                                 <input type="tel" class="form-control" name="mobile_number" id="mobile_number" value="+63" maxlength="13" placeholder="Mobile Number" required>
                             </div> 
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="email" class="form-label">* Email Address</label>
                                 <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">         
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="facebook_account" class="form-label">* Facebook Account</label>
-                                <input type="text" class="form-control" name="facebook" id="facebook" placeholder="Enter your Facebook Link" required>
+                                <input type="text" class="form-control" name="facebook" id="facebook" placeholder="Enter your Facebook Link" value="https://web.faebook.com/" required>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="provinces" class="form-label">* Province</label>
                                 <select name="provinces" class="form-control" id="provinces">
@@ -115,7 +113,9 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                    </div>
+                    <div class="row">       
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="municipalities" class="form-label">* City/Municipality</label>
                                 <select name="municipalities" class="form-select form-control" id="municipalities">
@@ -123,7 +123,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="barangay" class="form-label">* Barangay</label>
                                 <select name="barangay" class="form-select form-control" id="barangay">

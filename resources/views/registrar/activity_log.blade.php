@@ -89,7 +89,7 @@
                                 <th>ID</th>
                                 <th>User</th>
                                 <th>Action</th>
-                                <th>Details</th>
+                                {{--<th>Details</th>--}}
                                 <th>Timestamp</th>
                             </tr>
                         </thead>
@@ -99,7 +99,7 @@
                             <td>{{ $log->id }}</td>
                             <td>{{ $log->user->name ?? 'Guest' }}</td>
                             <td>{{ $log->action }}</td>
-                            <td>{{ $log->details }}</td>
+                            {{--<td>{{ $log->details }}</td>--}}
                             <td>{{ $log->created_at }}</td>
                             </tr>
                             @endforeach

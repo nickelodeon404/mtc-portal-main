@@ -218,14 +218,14 @@
                                                 </div>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    {{-- <!-- <tr>
                                     	<td>
                                             <strong>Age:</strong><br>
                                                 <div class="data">
                                                     {{ $item->age }}
                                                 </div>
                                         </td>
-                                    </tr>
+                                    </tr> --> --}}
                                     <tr>
                                     	<td>
                                             <strong>Barangay:</strong><br>

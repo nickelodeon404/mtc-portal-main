@@ -19,7 +19,7 @@ class Admitted extends Model
         'last_name',
         'extension',
         'birthday',
-        'age',
+        // 'age',
         'barangay',
         'municipalities',
         'provinces',

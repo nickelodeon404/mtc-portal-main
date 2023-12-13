@@ -21,7 +21,7 @@ class Enrolled extends Model
         'last_name',
         'extension',
         'birthday',
-        'age',
+        // 'age',
         'mobile_number',
         'emergency_number',
         'facebook',
