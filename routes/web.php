@@ -216,3 +216,6 @@ Route::get('/sections', [SectionController::class, 'index'])->name('sections.ind
 //address
 Route::get('/get-municipalities/{province_id}', [AddressController::class, 'getMunicipalities'])->name('get-municipalities');
 Route::get('/get-barangays/{municipality_id}', [AddressController::class, 'getBarangays'])->name('get-barangays');
+
+//Activity Log Route for delete
+Route::delete('/activity_logs/{id}', [ActivityLogController::class, 'destroy'])->name('activity_logs.destroy');

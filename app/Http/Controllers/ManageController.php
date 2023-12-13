@@ -57,7 +57,7 @@ class ManageController extends Controller
 
         // Log the activity
         ActivityLog::create([
-            'user_id' => auth()->user()->id,
+            'user_id' => auth()->user()->role_id,
             // Assuming you have authentication set up
             'action' => 'user_updated',
             'details' => 'User data updated',
@@ -77,7 +77,7 @@ class ManageController extends Controller
        }
 
         ActivityLog::create([
-            'user_id' => auth()->user()->$id,
+            'user_id' => auth()->user()->role_id,
             // Assuming you have authentication set up
             'action' => 'user_deleted',
             'details' => 'User data deleted',

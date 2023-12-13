@@ -61,7 +61,7 @@ class EnrollmentController extends Controller
 
         // Log the activity for enrollment creation
         ActivityLog::create([
-            'user_id' => auth()->user()->id,
+            'user_id' => auth()->user()->role_id,
             'action' => 'enrollment_created',
             'details' => 'Enrollment created for user: ' . $enrollment->first_name . ' ' . $enrollment->last_name,
         ]);
@@ -161,7 +161,7 @@ class EnrollmentController extends Controller
 
             // Log the activity for adding to enrolled
             ActivityLog::create([
-                'user_id' => auth()->user()->id,
+                'user_id' => auth()->user()->role_id,
                 'action' => 'added_to_enrolled',
                 'details' => 'Student added to enrolled: ' . $enrolled->first_name . ' ' . $enrolled->last_name,
             ]);
@@ -190,7 +190,7 @@ class EnrollmentController extends Controller
 
         // Log the activity for enrollment deletion
         ActivityLog::create([
-            'user_id' => auth()->user()->id,
+            'user_id' => auth()->user()->role_id,
             'action' => 'enrollment_deleted',
             'details' => 'Enrollment deleted: ' . $enrollment->first_name . ' ' . $enrollment->last_name,
         ]);

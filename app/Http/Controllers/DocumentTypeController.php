@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\AcademicRecordDocuments;
 use App\Models\DocumentType; // Make sure to import the RecordRequest model
 //use App\Models\Admission; //NEWLY ADD
+use App\Models\ActivityLog;
 use Illuminate\Support\Facades\Http;
 //use Twilio\Rest\Client; //NEWLY ADDED
 
@@ -108,6 +109,13 @@ class DocumentTypeController extends Controller
 
     public function destroy($id)
     {
+
+        ActivityLog::create([
+            'user_id' => auth()->user()->role_id,
+            'action' => 'Requested document/s claimed',
+            'details' => 'Requested document/s claimed',
+        ]);
+
         $ard = DocumentType::find($id);
 
         if (!$ard) {

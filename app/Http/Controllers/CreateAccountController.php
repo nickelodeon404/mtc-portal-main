@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Roles;
+use App\Models\ActivityLog;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
@@ -36,6 +37,12 @@ class CreateAccountController extends Controller
                 "role_id" => $validatedData['role_id'],
                 "email" => $validatedData['email'],
                 "password" => $validatedData['password'],
+            ]);
+
+            ActivityLog::create([
+                'user_id' => auth()->user()->role_id,
+                'action' => 'new user account created',
+                'details' => 'account created',
             ]);
 
             return redirect()->back()->with('success', 'Success!! Account was Created!!');

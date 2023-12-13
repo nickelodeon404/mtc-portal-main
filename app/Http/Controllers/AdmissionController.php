@@ -223,7 +223,7 @@ class AdmissionController extends Controller
 
             // Log the activity for admission admission
             ActivityLog::create([
-                'user_id' => auth()->user()->id,
+                'user_id' => auth()->user()->role_id,
                 'action' => 'student_admitted',
                 'details' => 'Student admitted: ' . $admission->user->name,
             ]);

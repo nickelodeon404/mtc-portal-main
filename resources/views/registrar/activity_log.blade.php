@@ -81,6 +81,11 @@
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4">User Activity Log</h1>
+            @if(session('success'))
+                <div class="alert alert-success mt-3">
+                    {{ session('success') }}
+                </div>
+                @endif
             <div class="row">
                 <div class="table-responsive mt-4">
                     <table id="activitylog" class="table table-wider">
@@ -91,16 +96,27 @@
                                 <th>Action</th>
                                 {{--<th>Details</th>--}}
                                 <th>Timestamp</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($activityLogs as $log)
                             <tr>
                             <td>{{ $log->id }}</td>
-                            <td>{{ $log->user->name ?? 'Guest' }}</td>
+                            <td>{{ auth()->user()->name }}</td>
                             <td>{{ $log->action }}</td>
                             {{--<td>{{ $log->details }}</td>--}}
                             <td>{{ $log->created_at }}</td>
+                            <td>
+                                <form method="POST" action="{{ url('activity_logs' . '/' . $log->id) }}"
+                                        accept-charset="UTF-8" style="display:inline">
+                                        {{ method_field('DELETE') }}
+                                        {{ csrf_field() }}
+                                        <button type="submit" class="btn btn-danger btn-sm btn-action">
+                                            <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
