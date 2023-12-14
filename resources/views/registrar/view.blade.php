@@ -218,14 +218,14 @@
                                                 </div>
                                         </td>
                                     </tr>
-                                    {{-- <!-- <tr>
+                                    <tr>
                                     	<td>
                                             <strong>Age:</strong><br>
                                                 <div class="data">
                                                     {{ $item->age }}
                                                 </div>
                                         </td>
-                                    </tr> --> --}}
+                                    </tr> 
                                     <tr>
                                     	<td>
                                             <strong>Barangay:</strong><br>
@@ -299,21 +299,29 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                    	<td>
+                                        <td>
                                             <strong>PSA/Birth Certificate:</strong><br>
-                                                <div class="data">
-                                                    <img src="{{$item->psa ? asset('storage/images/' . $item->psa) : asset('img/no-image.webp')}}" alt="PSA" width="70" height="50">
-                                                </div>
+                                            <div class="data">
+                                                <a href="{{ $item->psa ? asset('storage/images/' . $item->psa) : '#' }}" target="_blank">
+                                                    <img src="{{ $item->psa ? asset('storage/images/' . $item->psa) : asset('img/no-image.webp') }}"
+                                                        alt="PSA" width="70" height="50">
+                                                </a>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                    	<td>
+                                        <td>
                                             <strong>Form 138:</strong><br>
-                                                <div class="data">
-                                                    <img src="{{$item->form_138 ? asset('storage/images/' . $item->form_138): asset('img/no-image.webp')}}" alt="Form 138" width="70" height="50">
-                                                </div>
+                                            <div class="data">
+                                                <a href="{{ $item->form_138 ? asset('storage/images/' . $item->form_138) : '#' }}" target="_blank">
+                                                    <img src="{{ $item->form_138 ? asset('storage/images/' . $item->form_138) : asset('img/no-image.webp') }}"
+                                                        alt="Form 138" width="70" height="50">
+                                                </a>
+                                            </div>
                                         </td>
                                     </tr>
+
+
                                 </thead>
                             </table>
                                 </div>

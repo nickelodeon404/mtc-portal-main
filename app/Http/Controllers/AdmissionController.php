@@ -67,7 +67,7 @@ class AdmissionController extends Controller
             "last_name" => "required",
             "extension" => "nullable",
             "birthday" => "required",
-            // "age" => "required",
+            "age" => "required",
             "mobile_number" => "required",
             "email" => "required|email",
             "facebook" => "nullable",
@@ -85,7 +85,6 @@ class AdmissionController extends Controller
             // Validate as an image with a max size of 2048 KB.
         ]);
 
-        // Store the uploaded PSA image in the 'public/images' directory
         if ($request->hasFile('psa')) {
             $psaPath = $request->file('psa')->store('images', 'public');
             $validatedData['psa'] = $psaPath;
@@ -96,6 +95,9 @@ class AdmissionController extends Controller
             $form138Path = $request->file('form_138')->store('images', 'public');
             $validatedData['form_138'] = $form138Path;
         }
+
+        // Save $validatedData to the database
+
 
         // dd($validatedData['first_name']);
         $LastName = $validatedData['last_name'];
@@ -154,7 +156,7 @@ class AdmissionController extends Controller
             "last_name" => $validatedData['last_name'],
             "extension" => $validatedData['extension'],
             "birthday" => $validatedData['birthday'],
-            // "age" => $validatedData['age'],
+            "age" => $validatedData['age'],
             "mobile_number" => $validatedData['mobile_number'],
             "email" => $validatedData['email'],
             "facebook" => $validatedData['facebook'],
@@ -166,8 +168,8 @@ class AdmissionController extends Controller
             "graduation_type" => $validatedData['graduation_type'],
             "strand" => $validatedData['strand'],
             "confirmationCheck" => $validatedData['confirmationCheck'],
-           // "psa" => $validatedData['psa'],
-           // "form_138" => $validatedData['form_138']
+           "psa" => $psaPath,
+           "form_138" => $form138Path
             // Hash the password
         ]);
 

@@ -50,10 +50,10 @@
                             </div>
                         </div>
                         <div class="row">
-                           {{-- <!-- <div class="col-md-6 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label for="ageInput" class="form-label"><b>Age</b></label>
                                 <input type="number" class="form-control" id="age" name="age" placeholder="Enter Age" value="{{$admitted->age}}" style="background-color: #CDCDCD;" readonly>
-                            </div> --> --}}
+                            </div> 
                             <div class="col-md-6 mb-3">
                                 <label for="mobileInput" class="form-label"><b>Mobile Number</b></label>
                                 <input type="tel" class="form-control" id="mobile_number" name="mobile_number" placeholder="Enter Mobile Number" value="{{$admitted->mobile_number}}" style="background-color: #CDCDCD;" readonly>

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('last_name', 50)->nullable(false);
             $table->string('extension', 5)->nullable(true);
             $table->date('birthday')->nullable(false);
-            // $table->integer('age')->nullable(false);
+            $table->integer('age')->nullable(false);
             $table->string('barangay')->nullable(false);
             $table->string('municipalities')->nullable(false);
             $table->string('provinces')->nullable(false);

@@ -76,12 +76,12 @@
                         </div>
                     </div>
                     <div class="row">
-                       {{-- <!-- <div class="col-md-6">
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="age" class="form-label">* Age</label>
                                 <input type="number" class="form-control" name="age" id="age" placeholder="Age" required> 
                             </div>
-                        </div> --> --}}
+                        </div> 
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="mobile_number" class="form-label">* Mobile Number</label>

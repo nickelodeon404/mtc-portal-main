@@ -192,7 +192,7 @@ class DatabaseSeeder extends Seeder
             'middle_name' => 'Student_middle_name',
             'last_name' => 'Student_last_name',
             'birthday' => '2023-10-02',
-            // 'age' => '23',
+            'age' => '23',
             'barangay' => 'Bagumbayan',
             'municipalities' => 'Baao',
             'provinces' => 'Camarines Sur',
