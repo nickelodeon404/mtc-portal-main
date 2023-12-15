@@ -36,7 +36,7 @@ return new class extends Migration
             $table->string('strand')->nullable(false);
             $table->string('graduation_type')->nullable(false);
             $table->string('psa')->nullable(true);
-            $table->string('form_138')->nullable(true);
+            $table->text('form_138')->nullable(true);
             $table->timestamps();
         });
     }

@@ -301,55 +301,31 @@
                                     <tr>
                                         <td>
                                             <strong>PSA/Birth Certificate:</strong><br>
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
                                                 <div class="data">
                                                     <a href="{{asset('storage/' . $item->psa)}}">
                                                     <img src="{{asset('storage/' . $item->psa)}}" alt="PSA" width="100" height="120">
                                                 </a>
                                                 </div>
-=======
->>>>>>> Stashed changes
-                                            <div class="data">
-                                                <a href="{{ $item->psa ? asset('storage/images/' . $item->psa) : '#' }}" target="_blank">
-                                                    <img src="{{ $item->psa ? asset('storage/images/' . $item->psa) : asset('img/no-image.webp') }}"
-                                                        alt="PSA" width="70" height="50">
-                                                </a>
-                                            </div>
-<<<<<<< Updated upstream
-=======
->>>>>>> 23668fc892c61afd8bb34cc6b18f90eeafbe2ca3
->>>>>>> Stashed changes
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Form 138:</strong><br>
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-                                                <div class="data">
-                                                    @foreach (explode(',', $item->form_138) as $path)
-                                                <a href="{{ asset('storage/' . trim($path)) }}">
-                                                <img class="img-thumbnail bg-secondary mx-3"src="{{ asset('storage/' . trim($path)) }}" alt="Image" width="50" height="50">
+                                <tr>
+                                    <td>
+                                        <strong>Form 138</strong><br>
+                                        <div class="data">
+                                            @php
+                                            $form138Paths = $item->form_138 ? explode(',', $item->form_138) : [];
+                                            @endphp
+                                            @foreach ($form138Paths as $path)
+                                            <a href="{{ asset('storage/' . $path) }}">
+                                                <img src="{{ asset('storage/' . $path) }}" alt="FORM 138" width="100" height="120">
                                             </a>
-        @endforeach
-                                                </div>
-=======
->>>>>>> Stashed changes
-                                            <div class="data">
-                                                <a href="{{ $item->form_138 ? asset('storage/images/' . $item->form_138) : '#' }}" target="_blank">
-                                                    <img src="{{ $item->form_138 ? asset('storage/images/' . $item->form_138) : asset('img/no-image.webp') }}"
-                                                        alt="Form 138" width="70" height="50">
-                                                </a>
-                                            </div>
-<<<<<<< Updated upstream
-=======
->>>>>>> 23668fc892c61afd8bb34cc6b18f90eeafbe2ca3
->>>>>>> Stashed changes
-                                        </td>
-                                    </tr>
+                                            @endforeach
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+
 
 
                                 </thead>

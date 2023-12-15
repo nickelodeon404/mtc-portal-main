@@ -292,21 +292,41 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                    	<td>
+                                        <td>
                                             <strong>PSA/Birth Certificate:</strong><br>
-                                                <div class="data">
-                                                    <img src="{{ $item->psa }}" alt="PSA" width="70" height="50">
-                                                </div>
+                                            <div class="data">
+                                                <a href="{{asset('storage/' . $item->psa)}}">
+                                                    <img src="{{asset('storage/' . $item->psa)}}" alt="PSA" width="100" height="120">
+                                                </a>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                    	<td>
-                                            <strong>Form 138:</strong><br>
-                                                <div class="data">
-                                                <img src="{{ $item->form_138 }}" alt="FORM 138" width="70" height="50">
-                                                </div>
+                                        <td>
+                                            <strong>Form 138</strong><br>
+                                            <div class="data">
+                                                @php
+                                                $form138Paths = $item->form_138 ? explode(',', $item->form_138) : [];
+                                                @endphp
+                                                @foreach ($form138Paths as $path)
+                                                <a href="{{ asset('storage/' . $path) }}">
+                                                    <img src="{{ asset('storage/' . $path) }}" alt="FORM 138" width="100" height="120">
+                                                </a>
+                                                @endforeach
+                                            </div>
                                         </td>
                                     </tr>
+
+                                    
+                                    
+                                    </thead>
+
+                                    
+                                    
+                                    </thead>
+
+
+
                                 </thead>
                             </table>
                                 </div>

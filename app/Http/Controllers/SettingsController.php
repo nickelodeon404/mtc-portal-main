@@ -6,17 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 use App\Models\ActivityLog;
-use App\Models\Enrolled;
 use Twilio\Rest\Client;
 
 class SettingsController extends Controller
 {
-    
+
     public function updatePassword(Request $request)
     {
-        // Fetch the authenticated user
-        $user = auth()->user();
+        $user = Auth::user();
 
         // Validate the form data
         $request->validate([
@@ -31,11 +30,8 @@ class SettingsController extends Controller
         return redirect()->back()->with('error', 'The old password is incorrect.');
     }
 
-        // Check if the entered OTP matches the one sent
-        $otpKey = "otp_{$user->phone}";
-        $storedOtp = Cache::get($otpKey);
-
-        if (!$storedOtp || $request->otp != $storedOtp) {
+        // Verify OTP using Twilio
+        if (!$this->verifyOtp($request->otp, $user->mobile_number)) {
             return redirect()->back()->with('error', 'Invalid OTP. Please try again.');
         }
 
@@ -44,14 +40,13 @@ class SettingsController extends Controller
         $user->save();
 
         // Log the activity
-        ActivityLog::create([
-            'user_id' => $user->id,
-            'action' => 'password_changed',
-            'details' => 'User changed password',
-        ]);
-
-        // Clear the OTP from the cache
-        Cache::forget($otpKey);
+        if ($userId !== null) {
+            ActivityLog::create([
+                'user_id' => $userId,
+                'action' => 'password_changed',
+                'details' => 'User changed password',
+            ]);
+        }
 
         return redirect()->back()->with('success', 'Password updated successfully.');
     }
@@ -59,36 +54,55 @@ class SettingsController extends Controller
     public function sendOtp(Request $request)
     {
         // Validate the form data
-        $request->validate([
+        $validatedData = $request->validate([
             'mobile_number' => 'required|numeric',
         ]);
+        $token = getenv("TWILIO_AUTH_TOKEN");
+        $twilio_sid = getenv("TWILIO_SID");
+        $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
 
-        $otp = rand(100000, 999999);
-        $phoneNumber = $request->mobile_number;
+        $twilio = new Client($twilio_sid, $token);
 
-        // Store the OTP in the cache with a 5-minute expiration
-        Cache::put("otp_{$phoneNumber}", $otp, now()->addMinutes(5));
+        $verification = $twilio->verify->v2->services($twilio_verify_sid)
+            ->verifications
+            ->create($validatedData['mobile_number'], "sms");
 
         // Send OTP via Twilio Verify
-        $this->sendTwilioVerify($phoneNumber, $otp);
 
         return response()->json(['message' => 'OTP sent successfully']);
     }
 
-    private function sendTwilioVerify($to, $otp)
+    public function verifyOtp(Request $request)
     {
+        $validatedData = $request->validate([
+            'otp' => 'required|numeric',
+            'mobile_number' => 'required|numeric',
+        ]);
+
         $token = getenv("TWILIO_AUTH_TOKEN");
-        $twilioSid = getenv("TWILIO_SID");
-        $twilioVerifySid = getenv("TWILIO_VERIFY_SID");
+        $twilio_sid = getenv("TWILIO_SID");
+        $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
 
-        $twilio = new Client($twilioSid, $token);
+        $twilio = new Client($twilio_sid, $token);
 
-        $body = "Your OTP for verification: $otp";
+        $verification = $twilio->verify->v2->services($twilio_verify_sid)
+            ->verificationChecks
+            ->create([
+                'to' => $validatedData['mobile_number'],
+                'code' => $validatedData['otp'],
+            ]);
 
-        $verification = $twilio->verify->v2->services($twilioVerifySid)
-            ->verifications
-            ->create($to, "sms", compact('body'));
+        if ($verification->valid) {
+            // Do something when OTP is verified successfully
+            return response()->json(['message' => 'OTP verified successfully']);
+        } else {
+            // Handle invalid OTP
+            return response()->json(['error' => 'Invalid OTP'], 422);
+        }
     }
+
+    
+
 
 
 

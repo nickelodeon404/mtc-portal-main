@@ -42,7 +42,7 @@ Route::get('admission', function () {
 });
 
 Route::get('academics', function () { //academics = blade name identifyer this is the one that input to the href
-    return view('academics');          //academics = blade name
+    return view('academics'); //academics = blade name
 });
 
 
@@ -71,7 +71,7 @@ Route::get('academic', function () {
 
 Route::get('grades', [GradeController::class, 'studentGrade'])->middleware('student');
 
-Route::get('faculty',[HomeController::class, 'faculty'])->middleware('faculty');
+Route::get('faculty', [HomeController::class, 'faculty'])->middleware('faculty');
 
 //ROUTE FOR FACULTY GRADE
 Route::get('grade', [GradeController::class, 'facultyGrading'])->middleware('faculty');
@@ -107,7 +107,7 @@ Route::delete('/admission/{id}', [AdmissionController::class, 'destroy'])->name(
 //Route for Enrollment
 Route::get('/registrar', [EnrollmentController::class, 'index']);
 Route::get('/enrollment_table-table', [EnrollmentController::class, 'view']);
-Route::get('/show_enrollment{registrar}', [EnrollmentController::class, 'show'])->name('enrollmment.registrar.show');//view enrollment data
+Route::get('/show_enrollment{registrar}', [EnrollmentController::class, 'show'])->name('enrollmment.registrar.show'); //view enrollment data
 Route::delete('/enrollment/{id}', [EnrollmentController::class, 'destroy'])->name('enrollment.destroy');
 /*Route for updating the student data in enrollment table*/
 Route::get('/enrollment{id}', [EnrollmentController::class, 'edit'])
@@ -162,7 +162,7 @@ Route::patch('/users/{id}', [FacultyController::class, 'FacultyUpdate'])
 
 //Route For Update User Information Registrar
 Route::patch('/users/{id}', [RegistrarController::class, 'RegistrarUpdate'])
-   ->name('users.RegistrarUpdate');
+    ->name('users.RegistrarUpdate');
 
 //Route For Update User Information Student
 Route::patch('/admitted/{id}', [AdmittedController::class, 'update'])
@@ -175,7 +175,7 @@ Route::post('/', function () {
 })->name('index');
 */
 Route::get('/verify', function () {
-   return view('admissions.verify');
+    return view('admissions.verify');
 })->name('verify');
 
 
@@ -187,8 +187,8 @@ Route::post('/verify', 'App\Http\Controllers\AdmissionController@verify')->name(
 //END OF TWILIO ROUTE
 
 //ROUTE FOR Update_Faculty
-Route::get('update_faculty' , function () {
-    return view ('/faculty/update_faculty');
+Route::get('update_faculty', function () {
+    return view('/faculty/update_faculty');
 });
 
 //SEND SMS NOTIFICATION IN TWILIO
