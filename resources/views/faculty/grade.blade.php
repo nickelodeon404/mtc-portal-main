@@ -132,7 +132,7 @@
                                                     value="{{ $student->section ?? 'Unknown' }}" readonly>
                                             </td>
                                             <td>
-                                                <input type="number" name="final_grade[]" onchange="updateRemarks(this)"
+                                                <input type="number" name="final_grade[]" onchange="updateRemarks(this)"  oninput="validateInput(this, 1, 100)"
                                                     class="form-control"
                                                     value="{{ old('final_grade')[$loop->index] ?? (\App\Models\Grade::where('subjectLoads_id', $student->subjectLoad)->first()->grade ?? '') }}"
                                                     required>
@@ -185,6 +185,15 @@
             } 
             remarksInput.value = remarks;
         }
+        function validateInput(inputElement, min, max) {
+    let value = parseInt(inputElement.value);
+
+    if (isNaN(value) || value < min) {
+        inputElement.value = min;
+    } else if (value > max) {
+        inputElement.value = max;
+    }
+}
         document.addEventListener('DOMContentLoaded', function() {
             const finalGradeInputs = document.querySelectorAll('input[name="final_grade[]"]');
             finalGradeInputs.forEach(function(input) {

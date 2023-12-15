@@ -80,10 +80,9 @@ class AdmissionController extends Controller
             "graduation_type" => "required",
             "strand" => "required",
             "confirmationCheck" => "required",
-            'psa' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
-            // Validate as an image with a max size of 2048 KB.
+           'psa' => 'nullable|file|mimes:jpeg,jpg,png|max:2048', // Validate as a file with a max size of 2048 KB.
             'form_138.*' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
-            // Validate as an image with a max size of 2048 KB.
+            // Update validation for multiple files
         ]);
 
         if ($request->hasFile('psa')) {
@@ -104,6 +103,7 @@ class AdmissionController extends Controller
             $validatedData['form_138'] = null; // Handle the case when no files are uploaded
         }
 
+        // Save $validatedData to the database
 
         // // Store the uploaded Form 138 image in the 'public/images' directory
         // if ($request->hasFile('form_138')) {
@@ -185,6 +185,8 @@ class AdmissionController extends Controller
             "confirmationCheck" => $validatedData['confirmationCheck'],
             "psa" => $validatedData['psa'],
             "form_138" => $validatedData['form_138'],
+
+
             // Hash the password
         ]);
 
