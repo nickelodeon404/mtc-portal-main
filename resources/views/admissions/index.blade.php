@@ -301,7 +301,32 @@
         function resetDropdown($dropdown, defaultOption) {
             $dropdown.html('<option value="">' + defaultOption + '</option>');
         }
+
+        function calculateAge() {
+        // Get the selected birthday value
+        var birthday = document.getElementById('birthday').value;
+
+        // Calculate the age
+        var today = new Date();
+        var birthDate = new Date(birthday);
+        var age = today.getFullYear() - birthDate.getFullYear();
+
+        // Adjust age if birthday hasn't occurred yet this year
+        var monthDiff = today.getMonth() - birthDate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+
+        // Set the calculated age in the age input field
+        document.getElementById('age').value = age;
+        }
+
+        // Attach the calculateAge function to the change event of the birthday input
+        document.getElementById('birthday').addEventListener('change', calculateAge);
+
     });
+
+    
 </script>
 
 @endsection
