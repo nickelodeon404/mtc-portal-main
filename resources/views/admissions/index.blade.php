@@ -76,28 +76,12 @@
                         </div>
                     </div>
                     <div class="row">
-<<<<<<< Updated upstream
                         <div class="col-md-6">
-=======
-<<<<<<< HEAD
-                       <div class="col-md-6">
-=======
-                        <div class="col-md-6">
->>>>>>> 23668fc892c61afd8bb34cc6b18f90eeafbe2ca3
->>>>>>> Stashed changes
                             <div class="mb-3">
                                 <label for="age" class="form-label">* Age</label>
-                                <input type="number" class="form-control" name="age" id="age" placeholder="Age" disabled> 
+                                <input type="number" class="form-control" name="age" id="age" placeholder="Age" required> 
                             </div>
-<<<<<<< Updated upstream
                         </div> 
-=======
-<<<<<<< HEAD
-                        </div>
-=======
-                        </div> 
->>>>>>> 23668fc892c61afd8bb34cc6b18f90eeafbe2ca3
->>>>>>> Stashed changes
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="mobile_number" class="form-label">* Mobile Number</label>
@@ -115,7 +99,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="facebook_account" class="form-label">* Facebook Account</label>
-                                <input type="text" class="form-control" name="facebook" id="facebook" placeholder="Enter your Facebook Link" value="https://web.faebook.com/" required>
+                                <input type="text" class="form-control" name="facebook" id="facebook" placeholder="Enter your Facebook Link" value="https://web.facebook.com/" required>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -198,7 +182,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="form138" class="form-label">Photo of Form 138 </label>
-                                <input type="file" class="form-control" name="form_138[]" id="form_138" multiple required>
+                                <input type="file" class="form-control" name="form_138" id="form_138">
                             </div>
                         </div>
                     </div>
@@ -318,29 +302,6 @@
             $dropdown.html('<option value="">' + defaultOption + '</option>');
         }
     });
-
-    function calculateAge() {
-        // Get the selected birthday value
-        var birthday = document.getElementById('birthday').value;
-
-        // Calculate the age
-        var today = new Date();
-        var birthDate = new Date(birthday);
-        var age = today.getFullYear() - birthDate.getFullYear();
-
-        // Adjust age if birthday hasn't occurred yet this year
-        var monthDiff = today.getMonth() - birthDate.getMonth();
-        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-            age--;
-        }
-
-        // Set the calculated age in the age input field
-        document.getElementById('age').value = age;
-    }
-
-    // Attach the calculateAge function to the change event of the birthday input
-    document.getElementById('birthday').addEventListener('change', calculateAge);
-
 </script>
 
 @endsection

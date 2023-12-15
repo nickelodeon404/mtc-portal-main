@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Log;
 
 use Illuminate\Support\Facades\Http;
 use Twilio\Rest\Client;
+
 //use GuzzleHttp\Client;
 
 
@@ -35,9 +36,9 @@ class AdmissionController extends Controller
 
     public function index()
     {
-        $Admission = Admission::all(); //Admission in Admission::all(); -> is the model name from models folder.
+        //$Admission = Admission::all(); //Admission in Admission::all(); -> is the model name from models folder.
         $data = DB::table('admission')->orderBy('id')->get();
-        $Users = User::all();
+        // $Users = User::all();
         // Fetch data for Enrollment section as well
         $enrollmentData = DB::table('enrollment')->orderBy('strand', 'grade_level', 'section')->get();
 
@@ -60,8 +61,6 @@ class AdmissionController extends Controller
 
     public function store(Request $request)
     {
-        // $validatedData = $request->all();
-        // dd($request); //all field that exist in a table no need to one by one.
         $validatedData = $request->validate([
             "lrn" => "required",
             "first_name" => "required",
@@ -74,15 +73,17 @@ class AdmissionController extends Controller
             "email" => "required|email",
             "facebook" => "nullable",
             "barangay" => "required",
-            "city_municipality" => "required",
-            "province" => "required",
+            "municipalities" => "required",
+            "provinces" => "required",
             "year_graduated" => "required",
             "junior_high" => "required",
             "graduation_type" => "required",
             "strand" => "required",
             "confirmationCheck" => "required",
-         //   'psa' => 'nullable|file|mimes:jpeg,jpg,png|max:2048', // Validate as a file with a max size of 2048 KB.
-         //   'form_138' => 'nullable|mimes:jpeg,jpg,png|max:2048', // Validate as a file with a max size of 2048 KB.
+            'psa' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
+            // Validate as an image with a max size of 2048 KB.
+            'form_138' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
+            // Validate as an image with a max size of 2048 KB.
         ]);
 
         if ($request->hasFile('psa')) {
@@ -93,50 +94,62 @@ class AdmissionController extends Controller
 
         if ($request->hasFile('form_138')) {
             $imagePaths = [];
-    
+
             foreach ($request->file('form_138') as $file) {
                 $imagePath = $file->store('images', 'public');
                 $imagePaths[] = $imagePath;
             }
-    
+
             $validatedData['form_138'] = $imagePaths;
         }
 
-<<<<<<< Updated upstream
-        // Save $validatedData to the database
+        // if ($request->hasFile('psa')) {
+        //     $psaPath = $request->file('psa')->store('images', 'public');
+        //     $validatedData['psa'] = $psaPath;
+        // }
 
-=======
-<<<<<<< HEAD
         // // Store the uploaded Form 138 image in the 'public/images' directory
         // if ($request->hasFile('form_138')) {
         //     $form138Path = $request->file('form_138')->store('images', 'public');
         //     $validatedData['form_138'] = $form138Path;
-
         // }
-=======
+
         // Save $validatedData to the database
 
->>>>>>> 23668fc892c61afd8bb34cc6b18f90eeafbe2ca3
->>>>>>> Stashed changes
 
         // dd($validatedData['first_name']);
         $LastName = $validatedData['last_name'];
         $firstThreeLetters = substr(str_replace(' ', '', $validatedData['first_name']), 0, 3);
         $randomPassword = rand(100000, 999999);
+
+        // Check if the user is authenticated before accessing their id
+        $userId = auth()->user() ? auth()->user()->id : null;
+
         $user = User::create([
-            'role_id' => 3, 
+            'role_id' => 3,
             'name' => $validatedData['last_name'] . $validatedData['first_name'],
-            'email' => $validatedData['last_name'] . $firstThreeLetters ,
+            'email' => $validatedData['last_name'] . $firstThreeLetters,
             'password' => Hash::make($randomPassword),
+            'emailaddress' => $validatedData['email'],
+            'address' => $validatedData['barangay'] . $validatedData['municipalities'] . $validatedData['provinces'],
+            'mobile_number' => $validatedData['mobile_number'],
             // Hash the password
         ]);
         // Fetch the valid options for "strand" from the database
         $strands = Strand::all(); // Assuming "Strand" is the model for the "strands" table
 
-//Message Generator
-       // $this->sendSmsWithUserIdAndPassword($LastName, $firstThreeLetters, $randomPassword, $validatedData['mobile_number']);
+        // Check if the user is authenticated before creating the activity log
+        if ($userId !== null) {
+            ActivityLog::create([
+                'user_id' => $userId,
+                'action' => 'user_created',
+                'details' => 'User created: ' . $user->name,
+            ]);
+        }
+        //Message Generator
+        // $this->sendSmsWithUserIdAndPassword($LastName, $firstThreeLetters, $randomPassword, $validatedData['mobile_number']);
 
-//OTP CREATE VERIFICATION
+        //OTP CREATE VERIFICATION
 
         // Get credentials from .env 
         $token = getenv("TWILIO_AUTH_TOKEN");
@@ -145,12 +158,12 @@ class AdmissionController extends Controller
         $twilio = new Client($twilio_sid, $token);
 
         $verification = $twilio->verify->v2->services($twilio_verify_sid)
-        ->verifications
-        ->create($validatedData['mobile_number'], "sms");
+            ->verifications
+            ->create($validatedData['mobile_number'], "sms");
         //->create($validatedData['verification_code'], array('to' => $validatedData['mobile_number'], "sms"));
 
-//END OF OTP CREATE VERIFICATION
-        
+        //END OF OTP CREATE VERIFICATION
+
 
         // $admission = Admission::create($validatedData);
         Admission::create([
@@ -166,27 +179,26 @@ class AdmissionController extends Controller
             "email" => $validatedData['email'],
             "facebook" => $validatedData['facebook'],
             "barangay" => $validatedData['barangay'],
-            "city_municipality" => $validatedData['city_municipality'],
-            "province" => $validatedData['province'],
+            "municipalities" => $validatedData['municipalities'],
+            "provinces" => $validatedData['provinces'],
             "year_graduated" => $validatedData['year_graduated'],
             "junior_high" => $validatedData['junior_high'],
             "graduation_type" => $validatedData['graduation_type'],
             "strand" => $validatedData['strand'],
             "confirmationCheck" => $validatedData['confirmationCheck'],
-<<<<<<< Updated upstream
-           "psa" => $psaPath,
-           "form_138" => $form138Path
-=======
-<<<<<<< HEAD
             "psa" => $validatedData['psa'],
             "form_138" => implode(',', $validatedData['form_138']),
-=======
-           "psa" => $psaPath,
-           "form_138" => $form138Path
->>>>>>> 23668fc892c61afd8bb34cc6b18f90eeafbe2ca3
->>>>>>> Stashed changes
             // Hash the password
         ]);
+
+        // Log the activity for admission creation
+        if ($userId !== null) {
+            ActivityLog::create([
+                'user_id' => $userId,
+                'action' => 'admission_created',
+                'details' => 'Admission created for user: ' . $user->name,
+            ]);
+        }
 
         return redirect()->route('verify')->with(['mobile_number' => $validatedData['mobile_number']]); //this is from otp.
         //return redirect()->back()->with('success', 'Admission form submitted successfully');
@@ -196,36 +208,36 @@ class AdmissionController extends Controller
     public function admitStudent($id)
     {
         $admission = Admission::find($id);
-    
+
         if (!$admission) {
             return redirect()->back()->with('error', 'Admission record not found.');
         }
-    
+
         // Generate a random password for the admitted student
         $randomPassword = rand(100000, 999999);
-    
+
         $admission->user->update(['password' => Hash::make($randomPassword)]);
-    
+
         // Generate the message with username and password
         $message = "Welcome to our school!\n";
         $message .= "Your Username: " . $admission->user->email . "\n";
         $message .= "Your Password: " . $randomPassword . "\n";
-    
+
         // Send the message using Twilio
         $this->sendSmsWithUsernameAndPassword($admission->mobile_number, $message);
-    
+
         try {
             // Begin a database transaction for integrity
             DB::beginTransaction();
-    
+
             // Transfer data to the 'Admitted' table
             $admittedData = $admission->toArray();
             $admittedData['is_admitted'] = true; // Set the student as admitted
             Admitted::create($admittedData);
-    
+
             // Delete the data from the Admission table
             $admission->delete();
-    
+
             // Commit the transaction if everything succeeds
             DB::commit();
 
@@ -235,9 +247,9 @@ class AdmissionController extends Controller
                 'action' => 'student_admitted',
                 'details' => 'Student admitted: ' . $admission->user->name,
             ]);
-    
+
             return redirect()->back()->with('success', 'Student added to admitted successfully.');
-        } catch (\Exception $e) {
+        } catch (ModelNotFoundException $e) {
             // Handle the case where admission is not found, return a response, etc.
             DB::rollBack(); // Roll back the transaction if there's an error
             return redirect()->back()->with('error', 'Admission record not found.');
@@ -270,7 +282,7 @@ class AdmissionController extends Controller
         );
     }
 
-// OTP VERIFY DATA
+    // OTP VERIFY DATA
     protected function verify(Request $request)
     {
         $validatedData = $request->validate([
@@ -296,7 +308,7 @@ class AdmissionController extends Controller
         }
         return back()->with(['mobile_number' => $validatedData['mobile_number'], 'error' => 'Invalid verification code entered!']);
     }
-//END OF OTP VERIFY DATA
+    //END OF OTP VERIFY DATA
 
     public function view()
     {
