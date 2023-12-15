@@ -295,12 +295,16 @@
                                         <td>
                                             <strong>PSA/Birth Certificate:</strong><br>
                                             <div class="data">
-                                                <a href="{{asset('storage/' . $item->psa)}}">
-                                                    <img src="{{asset('storage/' . $item->psa)}}" alt="PSA" width="100" height="120">
+                                                @if($item->psa)
+                                                @php $decryptedPsaPath = Crypt::decrypt($item->psa); @endphp
+                                                <a href="{{ asset('storage/' . $decryptedPsaPath) }}">
+                                                    <img src="{{ asset('storage/' . $decryptedPsaPath) }}" alt="PSA" width="100" height="120">
                                                 </a>
+                                                @endif
                                             </div>
                                         </td>
                                     </tr>
+                                    
                                     <tr>
                                         <td>
                                             <strong>Form 138</strong><br>
@@ -309,13 +313,15 @@
                                                 $form138Paths = $item->form_138 ? explode(',', $item->form_138) : [];
                                                 @endphp
                                                 @foreach ($form138Paths as $path)
-                                                <a href="{{ asset('storage/' . $path) }}">
-                                                    <img src="{{ asset('storage/' . $path) }}" alt="FORM 138" width="100" height="120">
+                                                @php $decryptedPath = Crypt::decrypt($path); @endphp
+                                                <a href="{{ asset('storage/' . $decryptedPath) }}">
+                                                    <img src="{{ asset('storage/' . $decryptedPath) }}" alt="FORM 138" width="100" height="120">
                                                 </a>
                                                 @endforeach
                                             </div>
                                         </td>
                                     </tr>
+
 
                                     
                                     

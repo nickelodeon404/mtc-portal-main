@@ -15,6 +15,7 @@ use App\Models\ActivityLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -87,7 +88,9 @@ class AdmissionController extends Controller
 
         if ($request->hasFile('psa')) {
             $psaPath = $request->file('psa')->store('images', 'public');
-            $validatedData['psa'] = $psaPath;
+            $validatedData['psa'] = Crypt::encrypt($psaPath);
+        } else {
+            $validatedData['psa'] = null; // Set 'psa' to null if no file is uploaded
         }
 
         if ($request->hasFile('form_138')) {
@@ -95,13 +98,15 @@ class AdmissionController extends Controller
 
             foreach ($request->file('form_138') as $file) {
                 $path = $file->store('images', 'public');
-                $form138Paths[] = $path;
+                $form138Paths[] = Crypt::encrypt($path);
             }
 
             $validatedData['form_138'] = implode(',', $form138Paths);
         } else {
             $validatedData['form_138'] = null; // Handle the case when no files are uploaded
         }
+
+
 
         // Save $validatedData to the database
 

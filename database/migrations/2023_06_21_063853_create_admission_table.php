@@ -35,7 +35,7 @@ return new class extends Migration
             $table->string('year_graduated')->nullable(true);
             $table->string('strand')->nullable(false);
             $table->string('graduation_type')->nullable(false);
-            $table->string('psa')->nullable(true);
+            $table->text('psa')->nullable();
             $table->text('form_138')->nullable();
             $table->timestamps();
         });
