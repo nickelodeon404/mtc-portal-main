@@ -35,9 +35,9 @@ class AdmissionController extends Controller
 
     public function index()
     {
-        //$Admission = Admission::all(); //Admission in Admission::all(); -> is the model name from models folder.
+        $Admission = Admission::all(); //Admission in Admission::all(); -> is the model name from models folder.
         $data = DB::table('admission')->orderBy('id')->get();
-        // $Users = User::all();
+        $Users = User::all();
         // Fetch data for Enrollment section as well
         $enrollmentData = DB::table('enrollment')->orderBy('strand', 'grade_level', 'section')->get();
 
@@ -60,6 +60,8 @@ class AdmissionController extends Controller
 
     public function store(Request $request)
     {
+        // $validatedData = $request->all();
+        // dd($request); //all field that exist in a table no need to one by one.
         $validatedData = $request->validate([
             "lrn" => "required",
             "first_name" => "required",
@@ -72,62 +74,65 @@ class AdmissionController extends Controller
             "email" => "required|email",
             "facebook" => "nullable",
             "barangay" => "required",
-            "municipalities" => "required",
-            "provinces" => "required",
+            "city_municipality" => "required",
+            "province" => "required",
             "year_graduated" => "required",
             "junior_high" => "required",
             "graduation_type" => "required",
             "strand" => "required",
             "confirmationCheck" => "required",
-            'psa' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
-            // Validate as an image with a max size of 2048 KB.
-            'form_138' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
-            // Validate as an image with a max size of 2048 KB.
+         //   'psa' => 'nullable|file|mimes:jpeg,jpg,png|max:2048', // Validate as a file with a max size of 2048 KB.
+         //   'form_138' => 'nullable|mimes:jpeg,jpg,png|max:2048', // Validate as a file with a max size of 2048 KB.
         ]);
 
         if ($request->hasFile('psa')) {
             $psaPath = $request->file('psa')->store('images', 'public');
             $validatedData['psa'] = $psaPath;
+
         }
 
-        // Store the uploaded Form 138 image in the 'public/images' directory
         if ($request->hasFile('form_138')) {
-            $form138Path = $request->file('form_138')->store('images', 'public');
-            $validatedData['form_138'] = $form138Path;
+            $imagePaths = [];
+    
+            foreach ($request->file('form_138') as $file) {
+                $imagePath = $file->store('images', 'public');
+                $imagePaths[] = $imagePath;
+            }
+    
+            $validatedData['form_138'] = $imagePaths;
         }
 
+<<<<<<< Updated upstream
         // Save $validatedData to the database
 
+=======
+<<<<<<< HEAD
+        // // Store the uploaded Form 138 image in the 'public/images' directory
+        // if ($request->hasFile('form_138')) {
+        //     $form138Path = $request->file('form_138')->store('images', 'public');
+        //     $validatedData['form_138'] = $form138Path;
+
+        // }
+=======
+        // Save $validatedData to the database
+
+>>>>>>> 23668fc892c61afd8bb34cc6b18f90eeafbe2ca3
+>>>>>>> Stashed changes
 
         // dd($validatedData['first_name']);
         $LastName = $validatedData['last_name'];
         $firstThreeLetters = substr(str_replace(' ', '', $validatedData['first_name']), 0, 3);
         $randomPassword = rand(100000, 999999);
-
-        // Check if the user is authenticated before accessing their id
-        $userId = auth()->user() ? auth()->user()->id : null;
-
         $user = User::create([
             'role_id' => 3, 
             'name' => $validatedData['last_name'] . $validatedData['first_name'],
             'email' => $validatedData['last_name'] . $firstThreeLetters ,
             'password' => Hash::make($randomPassword),
-            'emailaddress' => $validatedData['email'],
-            'address' => $validatedData['barangay']. $validatedData['municipalities']. $validatedData['provinces'],
-            'mobile_number' => $validatedData['mobile_number'],
             // Hash the password
         ]);
         // Fetch the valid options for "strand" from the database
         $strands = Strand::all(); // Assuming "Strand" is the model for the "strands" table
 
-        // Check if the user is authenticated before creating the activity log
-        if ($userId !== null) {
-            ActivityLog::create([
-                'user_id' => $userId,
-                'action' => 'user_created',
-                'details' => 'User created: ' . $user->name,
-            ]);
-        }
 //Message Generator
        // $this->sendSmsWithUserIdAndPassword($LastName, $firstThreeLetters, $randomPassword, $validatedData['mobile_number']);
 
@@ -161,26 +166,27 @@ class AdmissionController extends Controller
             "email" => $validatedData['email'],
             "facebook" => $validatedData['facebook'],
             "barangay" => $validatedData['barangay'],
-            "municipalities" => $validatedData['municipalities'],
-            "provinces" => $validatedData['provinces'],
+            "city_municipality" => $validatedData['city_municipality'],
+            "province" => $validatedData['province'],
             "year_graduated" => $validatedData['year_graduated'],
             "junior_high" => $validatedData['junior_high'],
             "graduation_type" => $validatedData['graduation_type'],
             "strand" => $validatedData['strand'],
             "confirmationCheck" => $validatedData['confirmationCheck'],
+<<<<<<< Updated upstream
            "psa" => $psaPath,
            "form_138" => $form138Path
+=======
+<<<<<<< HEAD
+            "psa" => $validatedData['psa'],
+            "form_138" => implode(',', $validatedData['form_138']),
+=======
+           "psa" => $psaPath,
+           "form_138" => $form138Path
+>>>>>>> 23668fc892c61afd8bb34cc6b18f90eeafbe2ca3
+>>>>>>> Stashed changes
             // Hash the password
         ]);
-
-        // Log the activity for admission creation
-        if ($userId !== null) {
-            ActivityLog::create([
-                'user_id' => $userId,
-                'action' => 'admission_created',
-                'details' => 'Admission created for user: ' . $user->name,
-            ]);
-        }
 
         return redirect()->route('verify')->with(['mobile_number' => $validatedData['mobile_number']]); //this is from otp.
         //return redirect()->back()->with('success', 'Admission form submitted successfully');
@@ -231,7 +237,7 @@ class AdmissionController extends Controller
             ]);
     
             return redirect()->back()->with('success', 'Student added to admitted successfully.');
-        } catch (ModelNotFoundException $e) {
+        } catch (\Exception $e) {
             // Handle the case where admission is not found, return a response, etc.
             DB::rollBack(); // Roll back the transaction if there's an error
             return redirect()->back()->with('error', 'Admission record not found.');
