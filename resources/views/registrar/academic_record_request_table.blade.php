@@ -141,7 +141,7 @@
                                             style="font-weight: bold; font-size: 15px;"
                                             required>Good day! You can claim your requested document/s on:</textarea>
                                         <input type="date" id="message_date" name="message_date" required>
-                                        <input type="time" id="message_time" name="message_time" required>
+                                        <input type="time" id="message_time" name="message_time" required step="1800">
                                         <input type="number" id="message_transactNo" name="message_transactNo" placeholder="Transaction No#" required>
                                     </div>
 

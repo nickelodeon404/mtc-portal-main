@@ -22,7 +22,8 @@ class SMSController extends Controller
         ]);
 
         // Get the validated data
-        $message = $validatedData['message'] . ' ' . $validatedData['message_date'] . ' ' . $validatedData['message_time'] .  ' ' . $validatedData['message_transactNo'];
+        // $message = $validatedData['message'] . ' ' . $validatedData['message_date'] . ' ' . $validatedData['message_time'] .  "\n Your Transaction No. is: " . $validatedData['message_transactNo'];
+        $message = $validatedData['message'] . ' ' . $validatedData['message_date'] . ' ' . date('h:i A', strtotime($validatedData['message_time'])) .  "\n Your Transaction No. is: " . $validatedData['message_transactNo'];
         $mobileNumber = $validatedData['mobile_number'];
 
         // Get Twilio credentials from the environment
