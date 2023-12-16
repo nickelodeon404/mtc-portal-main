@@ -331,8 +331,13 @@
                                         <label for="roleid" class="form-label"><b>Role ID</b></label>
                                             <select class="form-select" id="role_id" name="role_id" required>
                                                 <option value="" selected>Select One</option>
-                                                @foreach(\App\Models\Roles::all() as $role)
+                                                <!-- @foreach(\App\Models\Roles::all() as $role)
                                                     <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                                @endforeach -->
+                                                @foreach(\App\Models\Roles::all() as $role)
+                                                    @if($role->id !== 3)
+                                                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                                    @endif
                                                 @endforeach
                                         </select><br>
 
