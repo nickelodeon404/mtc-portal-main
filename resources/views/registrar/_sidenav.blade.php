@@ -25,15 +25,9 @@
                     <a class="nav-link" href="{{ url('/view-table') }}">
                         <i class="fas fa-user-graduate"></i> Admissions
                     </a>
-<<<<<<< Updated upstream
-                    <!-- <a class="nav-link" href="{{ url('/admitted_table-table') }}">
-                        <i class="fas fa-user-graduate"></i> Admitted
-                    </a> -->
-=======
                     {{--<!-- <a class="nav-link" href="{{ url('/admitted_table-table') }}">
                         <i class="fas fa-user-graduate"></i> Admitted
                     </a> -->--}}
->>>>>>> Stashed changes
                     <a class="nav-link" href="{{ url('/enrollment_table-table') }}">
                         <i class="fas fa-graduation-cap"></i> Enrollment
                     </a>
