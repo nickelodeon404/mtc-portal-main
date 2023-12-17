@@ -75,6 +75,11 @@
             float: left;
             
         }
+        .form-select{
+            width: 200px;
+            margin-left: 5px;
+            
+        }
 
     </style>
 
@@ -87,7 +92,52 @@
                         {{ session('success') }}
                     </div>
                 @endif
-                <a class="btn btn-success" href="{{route('export_user_pdf')}}" style="margin-left: 94.5%; margin-right: auto;"> Export</a>
+                <form method="GET" action="{{ route('export_user_pdf') }}" style="display: flex; margin-left: 55%;">
+                    <!-- Your search input for Strand -->    
+                        <div class="mb-3">
+                            <select class="form-select" id="strand" name="strand">
+                                <option disabled selected>Select Strand</option>
+                                <option value="">All</option>
+                                <option value="ABM" {{ request('strand') == 'ABM' ? 'selected' : '' }}>ABM</option>
+                                <option value="GAS" {{ request('strand') == 'GAS' ? 'selected' : '' }}>GAS</option>
+                                <option value="HUMSS" {{ request('strand') == 'HUMSS' ? 'selected' : '' }}>HUMSS</option>
+                                <option value="STEM" {{ request('strand') == 'STEM' ? 'selected' : '' }}>STEM</option>
+                                <option value="TVL-ICT" {{ request('strand') == 'TVL-ICT' ? 'selected' : '' }}>TVL-ICT</option>
+                                <option value="TVL-HE" {{ request('strand') == 'TVL-HE' ? 'selected' : '' }}>TVL-HE</option>
+                                <option value="ARTS & DESIGN" {{ request('strand') == 'ARTS & DESIGN' ? 'selected' : '' }}>ARTS & DESIGN</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-select" id="section" name="section">
+                                <option disabled selected>Select Section</option>
+                                <option value="">All</option>
+                                <option value="A"
+                                    {{ request('section') == 'A' ? 'selected' : '' }}>A
+                                </option>
+                                <option value="B"
+                                    {{ request('section') == 'B' ? 'selected' : '' }}>B
+                                </option>
+                                <option value="C"
+                                    {{ request('section') == 'C' ? 'selected' : '' }}>C
+                                </option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                               <select class="form-select" id="grade_level" name="grade_level">
+                                    <option disabled selected>Select Year Level</option>
+                                    <option value="">All</option>
+                                    <!-- Add your year options here -->
+                                    <option value="11" {{ request('grade_level') == 11 ? 'selected' : '' }}>Grade 11
+                                    </option>
+                                    <option value="12" {{ request('grade_level') == 12 ? 'selected' : '' }}>Grade 12
+                                    </option>
+                                </select>
+                        </div>
+                    <!-- Search button -->
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-success" style="margin-left: 5px;">Export PDF</button>
+                        </div>
+                </form>
                 <div class="row">
                     <div class="table-responsive mt-4">
                         <table id="enrolled" class="table table-wider">

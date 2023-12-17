@@ -44,11 +44,15 @@
                                     <select name="section" id="section" class="form-control">
                                         <option value="" selected>All</option>
                                         <!-- Add your section options here -->
-                                        @foreach ($sections as $section)
-                                            <option value="{{ $section }}"
-                                                {{ request('section') == $section ? 'selected' : '' }}>{{ $section }}
+                                            <option value="A"
+                                                {{ request('section') == 'A' ? 'selected' : '' }}>A
                                             </option>
-                                        @endforeach
+                                            <option value="B"
+                                                {{ request('section') == 'B' ? 'selected' : '' }}>B
+                                            </option>
+                                            <option value="C"
+                                                {{ request('section') == 'C' ? 'selected' : '' }}>C
+                                            </option>
                                         <!-- Add more options as needed -->
                                     </select>
                                 </div>

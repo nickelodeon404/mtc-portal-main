@@ -90,7 +90,7 @@ class AdmissionController extends Controller
             ->orWhere('lrn', $validatedData['lrn'])
             ->orWhere('first_name', $validatedData['first_name'])
             ->orWhere('last_name', $validatedData['last_name'])
-            ->orWhere('mobile_number', $validatedData['mobile_number'])
+            //->orWhere('mobile_number', $validatedData['mobile_number']) //UNCOMMENT THIS IF YOU ALREADY AVAIL TWILIO CREDITS....
             ->orWhere('facebook', $validatedData['facebook'])
             ->first();
 
@@ -99,7 +99,7 @@ class AdmissionController extends Controller
             ->orWhere('lrn', $validatedData['lrn'])
             ->orWhere('first_name', $validatedData['first_name'])
             ->orWhere('last_name', $validatedData['last_name'])
-            ->orWhere('mobile_number', $validatedData['mobile_number'])
+            //->orWhere('mobile_number', $validatedData['mobile_number']) //UNCOMMENT THIS IF YOU ALREADY AVAIL TWILIO CREDITS....
             ->orWhere('facebook', $validatedData['facebook'])
             ->first();
 

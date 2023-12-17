@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Enrolled;
+use App\Models\Strand;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf;
-
 
 class EnrolledController extends Controller
 {
@@ -82,10 +82,36 @@ class EnrolledController extends Controller
         return redirect()->back()->with('success', 'Student data deleted successfully.');
     }
 
-    public function export_user_pdf()
+    public function export_user_pdf(Request $request)
     {
-        $enrolledData = Enrolled::all();
-        $pdf = Pdf::loadView('pdf.enrolled', compact('enrolledData'));
+        // Get the filter criteria from the request
+        $strandFilter = $request->input('strand');
+        $sectionFilter = $request->input('section');
+        $gradelevelFilter = $request->input('grade_level');
+    
+        // Start with a base query
+        $query = Enrolled::query();
+    
+        // Apply filters based on the provided criteria
+        if ($strandFilter) {
+            $query->where('strand', $strandFilter);
+        }
+    
+        if ($sectionFilter) {
+            $query->where('section', $sectionFilter);
+        }
+    
+        if ($gradelevelFilter) {
+            $query->where('grade_level', $gradelevelFilter);
+        }
+    
+        // Fetch filtered data
+        $enrolledData = $query->get();
+    
+        // Load the view for PDF
+        $pdf = PDF::loadView('pdf.enrolled', compact('enrolledData'));
+    
+        // Return the PDF file for download/streaming
         return $pdf->stream('enrolled.pdf');
     }
 
