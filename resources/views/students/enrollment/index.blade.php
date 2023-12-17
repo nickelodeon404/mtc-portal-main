@@ -62,32 +62,32 @@
                                 <label for="emailInput" class="form-label"><b>Email Address</b></label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Address" value="{{$admitted->email}}" style="background-color: #CDCDCD;" readonly>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="facebookInput" class="form-label"><b>Facebook Account</b></label>
                                 <input type="text" class="form-control" id="facebook" name="facebook" placeholder="Enter Facebook Account" value="{{$admitted->facebook}}" style="background-color: #CDCDCD;" readonly>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="regionInput" class="form-label"> <b> <span style="color: red;">*</span></b> <b>Region</b></label>
                                 <input type="text" class="form-control" id="region" name="region" placeholder="Enter Region" value="{{$admitted->region}}" required>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="provinceInput" class="form-label"><b>Province</b></label>
                                 <input type="text" class="form-control" id="provinces" name="provinces" placeholder="Enter Province" value="{{$admitted->provinces}}" style="background-color: #CDCDCD;" readonly>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="barangayInput" class="form-label"><b>Barangay</b></label>
                                 <input type="text" class="form-control" id="barangay" name="barangay" placeholder="Enter Barangay" value="{{$admitted->barangay}}" style="background-color: #CDCDCD;" readonly>
                             </div>
-                        </div>
-                        <div class="row"> 
                             <div class="col-md-6 mb-3">
                                 <label for="cityInput" class="form-label"><b>City/Municipality</b></label>
                                 <input type="text" class="form-control" id="municipalities" name="municipalities" placeholder="Enter City/Municipality" value="{{$admitted->municipalities}}" style="background-color: #CDCDCD;" readonly>
                             </div>
+                        </div>
+                        <div class="row"> 
                             <div class="col-md-6 mb-3">
                                 <label for="statusSelect" class="form-label"><b> <span style="color: red;">*</span></b><b>Status</b></label>
                                 <select class="form-select" id="status" name="status" required>
@@ -97,8 +97,6 @@
                                     <option>Returning Student</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="row">    
                             <div class="col-md-6 mb-3">
                                 <label for="gradeSelect" class="form-label"><b> <span style="color: red;">*</span></b><b>Grade Level to Enroll</b></label>
                                 <select class="form-select" id="grade_level" name="grade_level" required>
@@ -108,6 +106,8 @@
                                     <!-- Add more grade levels as needed -->
                                 </select>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="strand" class="form-label"></label><b>Preferred Strand</b></label>
@@ -118,16 +118,16 @@
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
-                        </div>
-                        <div class="row">    
-                        <div class="col-md-6">
+                            </div>
+                            <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="lastSchool" class="form-label"><b>Last School Attended</b></label>
                                 <input type="text" class="form-control" id="junior_high" name="junior_high"
                                         placeholder="Last School Attended" value="{{$admitted->junior_high}}" style="background-color: #CDCDCD;" readonly>
                             </div>
+                            </div>
                         </div>
+                        <div class="row">    
                         <div class="col-md-6">
                         <div class="mb-3">
                             <label for="graduationType" class="form-label"><b> <span style="color: red;">*</span></b><b>Are you a:</b></label>
@@ -139,13 +139,11 @@
                             </select>
                         </div>
                     </div>
-                    </div>
-                    <div class="row">               
                     <div class="col-md-6 mb-3">
                                 <label for="mobileInput1" class="form-label"><b>Mobile No. In case of emergency</b></label>
                                 <input type="tel" class="form-control" id="emergency_number" name="emergency_number" placeholder="Enter Mobile Number" value="+63" maxlength="13" required>
                             </div>
-                        </div>
+                    </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
