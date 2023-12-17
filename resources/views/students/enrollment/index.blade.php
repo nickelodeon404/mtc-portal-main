@@ -145,6 +145,11 @@
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
+                            <label for="guardian" class="form-label"> <b> <span style="color: red;">*</span></b> <b>Name of Guardian</b></label>
+                            <input type="text" class="form-control" id="guardian" name="Guardian" placeholder="Enter name of guardian" value="{{$admitted->guardian}}" required>
+                        </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
                                     <label for="mobileInput1" class="form-label"><b><span style="color: red;">*</span></b><b>Mobile No. In case of emergency</b></label>
                                     <input type="tel" class="form-control" id="emergency_number" name="emergency_number" placeholder="Enter Mobile Number" value="+63" maxlength="13" required>
                                 </div>
