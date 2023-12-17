@@ -345,7 +345,7 @@
                                         <input type="text" class="form-control" name="email" id="email" placeholder="Username" value="" required><br>
 
                                         <label for="password" class="form-label"><b>Password:</b></label>
-                                        <input type="password" class="form-control" name="password" id="password" placeholder="Password" value="" required><br>
+                                        <input type="password" class="form-control" name="password" id="password" placeholder="Please put 8-16 characters" value="" required><br>
 
                                     <button type="submit" class="btn btn-primary">Create</button>
                                 </div>

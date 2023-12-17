@@ -57,6 +57,33 @@ class EnrollmentController extends Controller
 
         ]);
 
+    // Check if the email already exists in the enrollment table
+    $existingEnrollment = Enrollment::where('email', $validatedData['email'])
+        ->orWhere('lrn', $validatedData['lrn'])
+        ->orWhere('first_name', $validatedData['first_name'])
+        ->orWhere('middle_name', $validatedData['middle_name'])
+        ->orWhere('last_name', $validatedData['last_name'])
+        ->orWhere('mobile_number', $validatedData['mobile_number'])
+        ->orWhere('emergency_number', $validatedData['emergency_number'])
+        ->orWhere('facebook', $validatedData['facebook'])
+        ->first();
+
+    // Check if the email already exists in the enrolled table
+    $existingEnrolled = Enrolled::where('email', $validatedData['email'])
+        ->orWhere('lrn', $validatedData['lrn'])
+        ->orWhere('first_name', $validatedData['first_name'])
+        ->orWhere('middle_name', $validatedData['middle_name'])
+        ->orWhere('last_name', $validatedData['last_name'])
+        ->orWhere('mobile_number', $validatedData['mobile_number'])
+        ->orWhere('emergency_number', $validatedData['emergency_number'])
+        ->orWhere('facebook', $validatedData['facebook'])
+        ->first();
+
+    if ($existingEnrollment || $existingEnrolled) {
+        // Return an error message or handle the situation where the email already exists
+        return redirect()->back()->with('error', "Error: You can't duplicate your enrollment");
+    }
+
         $enrollment = Enrollment::create($validatedData);
 
         // Log the activity for enrollment creation

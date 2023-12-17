@@ -85,6 +85,28 @@ class AdmissionController extends Controller
             'form_138.*' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
             // Update validation for multiple files
         ]);
+        // Check if the email already exists in the admission table
+        $existingAdmission = Admission::where('email', $validatedData['email'])
+            ->orWhere('lrn', $validatedData['lrn'])
+            ->orWhere('first_name', $validatedData['first_name'])
+            ->orWhere('last_name', $validatedData['last_name'])
+            ->orWhere('mobile_number', $validatedData['mobile_number'])
+            ->orWhere('facebook', $validatedData['facebook'])
+            ->first();
+
+        // Check if the email already exists in the admitted table
+        $existingAdmitted = Admitted::where('email', $validatedData['email'])
+            ->orWhere('lrn', $validatedData['lrn'])
+            ->orWhere('first_name', $validatedData['first_name'])
+            ->orWhere('last_name', $validatedData['last_name'])
+            ->orWhere('mobile_number', $validatedData['mobile_number'])
+            ->orWhere('facebook', $validatedData['facebook'])
+            ->first();
+
+        if ($existingAdmission || $existingAdmitted) {
+            // Return an error message or handle the situation where the email already exists
+            return redirect()->back()->with('error', 'Error: The user already exists in our database');
+        }
 
         if ($request->hasFile('psa')) {
             $psaPath = $request->file('psa')->store('images', 'public');
@@ -137,6 +159,7 @@ class AdmissionController extends Controller
             'mobile_number' => $validatedData['mobile_number'],
             // Hash the password
         ]);
+
         // Fetch the valid options for "strand" from the database
         $strands = Strand::all(); // Assuming "Strand" is the model for the "strands" table
 

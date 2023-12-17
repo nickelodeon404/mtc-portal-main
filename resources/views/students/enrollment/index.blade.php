@@ -17,6 +17,11 @@
                         {{ session('success') }}
                     </div>
                 @endif
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
                 <p><span style="color: red;">* required fields</span></p>
                 <div class="container">
                     <form action="{{ url('enrollment') }}" method="POST">
