@@ -420,14 +420,14 @@
                                             </div>
                                         </td>
                                     </tr>
-                                   {{-- <!-- <tr>
+                                   <tr>
                                         <td>
                                             <strong>Age:</strong> 
                                             <div class="col-md-15 mb-3"> 
                                                 <input type="number" class="form-control" id="age" name="age" placeholder="Enter Age" value="{{$item->age}}" required> 
                                             </div>
                                         </td>
-                                    </tr> --> --}}
+                                    </tr>
                                     <tr>
                                         <td>
                                             <strong>Mobile No:</strong> 

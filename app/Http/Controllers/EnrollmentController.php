@@ -133,7 +133,7 @@ class EnrollmentController extends Controller
                     'last_name' => request('last_name'),
                     'extension' => request('extension'),
                     'birthday' => request('birthday'),
-                    // 'age' => request('age'),
+                    'age' => request('age'),
                     'mobile_number' => request('mobile_number'),
                     'emergency_number' => request('emergency_number'),
                     'facebook' => request('facebook'),
