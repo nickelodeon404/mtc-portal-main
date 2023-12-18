@@ -113,7 +113,7 @@
                                 <select name="provinces" class="form-control" id="provinces">
                                     <option disabled selected>Select Province</option>
                                     @foreach (\App\Models\Province::all() as $provinces)
-                                    <option value="{{ $provinces->id }}">{{ $provinces->name }}</option>
+                                    <option value="{{ $provinces->name }}">{{ $provinces->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -265,8 +265,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('#provinces').on('change', function () {
-            var province_id = this.value;
-            fetchMunicipalities(province_id);
+    var province_id = this.value;
+    fetchMunicipalities(province_id);
         });
 
         $('#municipalities').on('change', function () {
@@ -276,21 +276,27 @@
 
         function fetchMunicipalities(province_id) {
             $.ajax({
-                url: '{{ route("get-municipalities", ["province_id" => ":province_id"]) }}'.replace(':province_id', province_id),
+                url: '/get-municipalities/' + province_id,
                 type: 'GET',
                 success: function (res) {
                     populateDropdown($('#municipalities'), res, 'Select Municipality');
                     resetDropdown($('#barangay'), 'Select Barangay');
+                },
+                error: function () {
+                    console.error('Failed to fetch municipalities.');
                 }
             });
         }
 
         function fetchBarangays(municipality_id) {
             $.ajax({
-                url: '{{ route("get-barangays", ["municipality_id" => ":municipality_id"]) }}'.replace(':municipality_id', municipality_id),
+                url: '/get-barangays/' + municipality_id,
                 type: 'GET',
                 success: function (res) {
                     populateDropdown($('#barangay'), res, 'Select Barangay');
+                },
+                error: function () {
+                    console.error('Failed to fetch barangays.');
                 }
             });
         }
@@ -298,13 +304,14 @@
         function populateDropdown($dropdown, data, defaultOption) {
             $dropdown.html('<option value="">' + defaultOption + '</option>');
             $.each(data, function (key, value) {
-                $dropdown.append('<option value="' + value.id + '">' + value.name + '</option>');
+                $dropdown.append('<option value="' + value.name + '">' + value.name + '</option>');
             });
         }
 
         function resetDropdown($dropdown, defaultOption) {
             $dropdown.html('<option value="">' + defaultOption + '</option>');
         }
+
 
         function calculateAge() {
         // Get the selected birthday value

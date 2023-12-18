@@ -8,20 +8,31 @@ use Illuminate\Support\Facades\DB;
 class AddressController extends Controller
 {
     public function getMunicipalities(Request $request)
-    {
-        $municipalities = DB::table('municipalities')
-            ->where('province_id', $request->province_id)
-            ->get();
+{
+    $provinceName = $request->province_id;
+    $province = \App\Models\Province::where('name', $provinceName)->first();
 
-        return response()->json($municipalities);
+    if (!$province) {
+        return response()->json([]);
     }
 
-    public function getBarangays(Request $request)
-    {
-        $barangays = DB::table('barangay') // Assuming your table is named "barangays"
-            ->where('municipality_id', $request->municipality_id)
-            ->get();
+    $municipalities = \App\Models\Municipality::where('province_id', $province->id)->get(['name']);
 
-        return response()->json($barangays);
+    return response()->json($municipalities);
+}
+
+public function getBarangays(Request $request)
+{
+    $municipalityName = $request->municipality_id;
+    $municipality = \App\Models\Municipality::where('name', $municipalityName)->first();
+
+    if (!$municipality) {
+        return response()->json([]);
     }
+
+    $barangays = \App\Models\Barangay::where('municipality_id', $municipality->id)->get(['name']);
+
+    return response()->json($barangays);
+}
+
 }

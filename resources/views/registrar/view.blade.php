@@ -304,7 +304,7 @@
                                             <div class="data">
                                                 @if($item->psa)
                                                 @php $decryptedPsaPath = Crypt::decrypt($item->psa); @endphp
-                                                <a href="{{ asset('storage/' . $decryptedPsaPath) }}">
+                                                <a href="{{ asset('storage/' . $decryptedPsaPath) }}" target="_blank">
                                                     <img src="{{ asset('storage/' . $decryptedPsaPath) }}" alt="PSA" width="100" height="120">
                                                 </a>
                                                 @endif
@@ -321,7 +321,7 @@
                                                 @endphp
                                                 @foreach ($form138Paths as $path)
                                                 @php $decryptedPath = Crypt::decrypt($path); @endphp
-                                                <a href="{{ asset('storage/' . $decryptedPath) }}">
+                                                <a href="{{ asset('storage/' . $decryptedPath) }}" target="_blank">
                                                     <img src="{{ asset('storage/' . $decryptedPath) }}" alt="FORM 138" width="100" height="120">
                                                 </a>
                                                 @endforeach
