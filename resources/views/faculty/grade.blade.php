@@ -136,7 +136,7 @@
                                                     value="{{ $student->section ?? 'Unknown' }}" readonly>
                                             </td>
                                             <td>
-                                                <input type="number" name="final_grade[]" onchange="updateRemarks(this)"  oninput="validateInput(this, 1, 100)"
+                                                <input type="number" name="final_grade[]" onchange="updateRemarks(this)"  oninput="validateInput(this, 65, 100)"
                                                     class="form-control"
                                                     value="{{ old('final_grade')[$loop->index] ?? (\App\Models\Grade::where('subjectLoads_id', $student->subjectLoad)->first()->grade ?? '') }}"
                                                     required>

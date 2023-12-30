@@ -80,8 +80,8 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="age" class="form-label">* Age</label>
-                                <input type="number" class="form-control" name="age" id="age" placeholder="Age" required> 
-                            </div>
+                                <input type="number" class="form-control" name="age" id="age" placeholder="Age" required readonly>
+                            </div>                            
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
