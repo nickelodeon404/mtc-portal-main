@@ -2,6 +2,35 @@
 @section('content')
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Custom CSS styles for the terms and agreement section */
+        fieldset {
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            background-color: #f9f9f9;
+        }
+        legend {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        .terms-agreement {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #999;
+            background-color: #fff;
+        }
+        .terms-agreement p {
+            margin-bottom: 10px;
+            text-indent: 20px;
+            line-height: 1.5;
+        }
+        </style>
 </head>
 <!-- Masthead -->
 <header class="masthead">
@@ -195,13 +224,13 @@
                         <div class="mb-3">
                             <fieldset>
                                 <legend>Terms and Agreement for Data Protection</legend>
-                            <div class="terms-agreement" style="border: 1px outset black; background: #fff;">
-                            <p style="text-indent: 5px;">   1.	I agree to the collection, processing, and storage of my personal data by Mother Theresa Colegio de Iriga, Inc. for the purposes of academic administration, providing educational services, and maintaining student records.<br></p>
-                            <p style="text-indent: 5px;">   2.  I understand that the personal data collected may include, but is not limited to, my name, contact information, academic records, and other relevant information necessary for educational purposes.<br></p>
-                            <p style="text-indent: 5px;">   3.	I acknowledge that MTC Portal of Mother Theresa Colegio de Iriga, Inc. will implement appropriate technical and organizational measures to ensure the security and confidentiality of my personal data.<br></p>
-                            <p style="text-indent: 5px;">   4.	I understand that my personal data will not be disclosed or shared with third parties without my explicit consent, except as required by law.<br></p>
-                            <p style="text-indent: 5px;">   5.	I agree to comply with the rules and regulations of MTC Portal regarding the use of its systems and services.
-                            </div>
+                                <div class="terms-agreement">
+                                    <p>1. I agree to the collection, processing, and storage of my personal data by Mother Theresa Colegio de Iriga, Inc. for the purposes of academic administration, providing educational services, and maintaining student records.</p>
+                                    <p>2. I understand that the personal data collected may include, but is not limited to, my name, contact information, academic records, and other relevant information necessary for educational purposes.</p>
+                                    <p>3. I acknowledge that MTC Portal of Mother Theresa Colegio de Iriga, Inc. will implement appropriate technical and organizational measures to ensure the security and confidentiality of my personal data.</p>
+                                    <p>4. I understand that my personal data will not be disclosed or shared with third parties without my explicit consent, except as required by law.</p>
+                                    <p>5. I agree to comply with the rules and regulations of MTC Portal regarding the use of its systems and services.</p>
+                                </div>
                             </fieldset>
                         </div>
                     </div>                    

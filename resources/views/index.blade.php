@@ -62,6 +62,7 @@
             transform: rotate(360deg);
         }
     }
+    
 </style>
     <!-- Masthead -->
     <header class="masthead">
@@ -252,21 +253,21 @@
 </section>
 
 
-    <!-- Footer -->
-    <footer class="bg-light py-5">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-end small text-end text-muted">
-                <div class="col-lg-8">
-                    <h3 class="contact-heading text-black mt-0">
-                        <span class="contact-icon">&#9990;</span> Contact us <!-- Unicode call icon -->
-                    </h3>
-                    <p class="text-black mb-2 footer-content">Address: Brookside, San Roque, Iriga City</p>
-                    <p class="text-black mb-2 footer-content">Email: <a href="mailto:mtc.iriga@gmail.com">mtc.iriga@gmail.com</a></p>
-                    <p class="text-black mb-2 footer-content">Contact numbers: 0946-340-3540 / 0946-879-3445</p>
-                    <p class="text-black mb-2 footer-content">Phone: 05 433 16866</p>
-                </div>
+   <!-- Footer -->
+<footer class="bg-light py-5">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-end small text-end text-muted">
+            <div class="col-lg-8">
+                <h3 class="contact-heading text-black mt-0">
+                    <span class="contact-icon">&#9990;</span> Contact us <!-- Unicode call icon -->
+                </h3>
+                <p class="text-black mb-2 footer-content">Address: Brookside, San Roque, Iriga City</p>
+                <p class="text-black mb-2 footer-content">Email: <a href="mailto:mtc.iriga@gmail.com">mtc.iriga@gmail.com</a></p>
+                <p class="text-black mb-2 footer-content">Contact numbers: 0946-340-3540 / 0946-879-3445</p>
+                <p class="text-black mb-2 footer-content">Phone: 05 433 16866</p>
             </div>
         </div>
-    </footer>
-    <!-- Footer -->
+    </div>
+</footer>
+<!-- Footer -->
 @endsection
